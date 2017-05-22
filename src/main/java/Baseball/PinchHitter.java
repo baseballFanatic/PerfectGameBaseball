@@ -1,0 +1,4 @@
+package Baseball;
+
+class PinchHitter {
+}

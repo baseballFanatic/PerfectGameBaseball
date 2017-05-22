@@ -1,0 +1,122 @@
+package Baseball;
+
+
+import java.util.List;
+
+class FielderStats {
+    private int errors, gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful;
+    private double fieldingPercentage;
+
+    FielderStats() {
+    }
+
+
+    int getGameRunnersThrownOut() {
+        return gameRunnersThrownOut;
+    }
+
+    void setGameRunnersThrownOut(int gameRunnersThrownOut) {
+        this.gameRunnersThrownOut = gameRunnersThrownOut;
+    }
+
+    int getGameRunnersSuccessful() {
+        return gameRunnersSuccessful;
+    }
+
+    void setGameRunnersSuccessful(int gameRunnersSuccessful) {
+        this.gameRunnersSuccessful = gameRunnersSuccessful;
+    }
+
+    public int getErrors() {
+        return errors;
+    }
+
+    public void setErrors(int errors) {
+        this.errors = errors;
+    }
+
+    int getGameErrors() {
+        return gameErrors;
+    }
+
+    void setGameErrors(int gameErrors) {
+        this.gameErrors = gameErrors;
+    }
+
+    double getFieldingPercentage() {
+        return fieldingPercentage;
+    }
+
+    void setFieldingPercentage(double fieldingPercentage) {
+        this.fieldingPercentage = fieldingPercentage;
+    }
+
+    int getGameAssists() {
+        return gameAssists;
+    }
+
+    void setGameAssists(int gameAssists) {
+        this.gameAssists = gameAssists;
+    }
+
+    int getGamePutOuts() {
+        return gamePutOuts;
+    }
+
+    void setGamePutOuts(int gamePutOuts) {
+        this.gamePutOuts = gamePutOuts;
+    }
+
+    int getGameDoublePlay() {
+        return gameDoublePlay;
+    }
+
+    private void setGameDoublePlay(int gameDoublePlay) {
+        this.gameDoublePlay = gameDoublePlay;
+    }
+
+    void updateStandardDoublePlay(Fielder currentFielder, List<Fielder> fielderList, InPlayPosition positionStart,
+                                  InPlayPosition positionMiddle, InPlayPosition positionEnd) {
+        Fielder infielderDoublePlayStart = currentFielder.getCurrentFielder(positionStart, fielderList);
+        infielderDoublePlayStart.getFielderStats().setGameDoublePlay(infielderDoublePlayStart.getFielderStats().getGameDoublePlay() + 1);
+        infielderDoublePlayStart.getFielderStats().setGameAssists(infielderDoublePlayStart.getFielderStats().getGameAssists() + 1);
+        Fielder infielderDoublePlayMiddle = currentFielder.getCurrentFielder(positionMiddle, fielderList);
+        infielderDoublePlayMiddle.getFielderStats().setGameDoublePlay(infielderDoublePlayMiddle.getFielderStats().getGameDoublePlay() + 1);
+        infielderDoublePlayMiddle.getFielderStats().setGameAssists(infielderDoublePlayMiddle.getFielderStats().getGameAssists() + 1);
+        infielderDoublePlayMiddle.getFielderStats().setGamePutOuts(infielderDoublePlayMiddle.getFielderStats().getGamePutOuts() + 1);
+        Fielder infielderDoublePlayEnd = currentFielder.getCurrentFielder(positionEnd, fielderList);
+        infielderDoublePlayEnd.getFielderStats().setGameDoublePlay(infielderDoublePlayEnd.getFielderStats().getGameDoublePlay() + 1);
+        infielderDoublePlayEnd.getFielderStats().setGamePutOuts(infielderDoublePlayEnd.getFielderStats().getGamePutOuts() + 1);
+        System.out.printf("Batter hits into a double play %s-%s-%s.%n",
+                currentFielder.getNameLast(), infielderDoublePlayMiddle.getNameLast(), infielderDoublePlayEnd.getNameLast());
+        System.out.printf("Assist: %s(%d)%nAssist: %s(%d)%nPut Out: %s(%d)%nPut Out: %s(%d)", infielderDoublePlayStart.getNameLast(),
+                infielderDoublePlayStart.getFielderStats().getGameAssists(), infielderDoublePlayMiddle.getNameLast(),
+                infielderDoublePlayMiddle.getFielderStats().getGameAssists(), infielderDoublePlayMiddle.getNameLast(),
+                infielderDoublePlayMiddle.getFielderStats().getGamePutOuts(), infielderDoublePlayEnd.getNameLast(),
+                infielderDoublePlayEnd.getFielderStats().getGamePutOuts());
+    }
+
+    void updateUnassistedDoublePlay(Fielder currentFielder, List<Fielder> fielderList, InPlayPosition positionStart,
+                                    InPlayPosition positionEnd) {
+        Fielder infielderDoublePlayStart = currentFielder.getCurrentFielder(positionStart, fielderList);
+        infielderDoublePlayStart.getFielderStats().setGameDoublePlay(infielderDoublePlayStart.getFielderStats().getGameDoublePlay() + 1);
+        infielderDoublePlayStart.getFielderStats().setGamePutOuts(infielderDoublePlayStart.getFielderStats().getGamePutOuts() + 1);
+        infielderDoublePlayStart.getFielderStats().setGameAssists(infielderDoublePlayStart.getFielderStats().getGameAssists() + 1);
+        Fielder infielderDoublePlayEnd = currentFielder.getCurrentFielder(positionEnd, fielderList);
+        infielderDoublePlayEnd.getFielderStats().setGameDoublePlay(infielderDoublePlayEnd.getFielderStats().getGameDoublePlay() + 1);
+        infielderDoublePlayEnd.getFielderStats().setGamePutOuts(infielderDoublePlayEnd.getFielderStats().getGamePutOuts() + 1);
+        System.out.printf("Batter hits into double play - %s-%s!%n", currentFielder.getNameLast(), infielderDoublePlayEnd.getNameLast());
+        System.out.printf("Assist: %s(%d)%nPut Out: %s(%d)%nPut Out: %s(%d)%n", infielderDoublePlayStart.getNameLast(),
+                infielderDoublePlayStart.getFielderStats().getGameAssists(), infielderDoublePlayStart.getNameLast(),
+                infielderDoublePlayStart.getFielderStats().getGamePutOuts(),
+                infielderDoublePlayEnd.getNameLast(),infielderDoublePlayEnd.getFielderStats().getGamePutOuts());
+    }
+
+    void updateOutfieldAssist(Fielder currentFielder, InPlayPosition tagPosition, List<Fielder> fielderList) {
+        Fielder infielderWithPutOut = currentFielder.getCurrentFielder(tagPosition, fielderList);
+        infielderWithPutOut.getFielderStats().setGamePutOuts(infielderWithPutOut.getFielderStats().getGamePutOuts() + 1);
+        currentFielder.getFielderStats().setGameAssists(currentFielder.getFielderStats().getGameAssists() + 1);
+        System.out.printf("Assist: %s(%d)%nPut out: %s(%d)%n", currentFielder.getNameLast(), currentFielder.getFielderStats().getGameAssists(),
+                infielderWithPutOut.getNameLast(), infielderWithPutOut.getFielderStats().getGamePutOuts());
+    }
+}
