@@ -8,7 +8,7 @@ class BatterStats {
             sacrificeFlies, groundedIntoDp, sGamesPlayed, sGamesStarted, sAtBats, sHits, sRuns, caughtStealing,
             sDoubles, sTriples, sHomeRuns, sRbi, sWalks, sStrikeOuts, sHitByPitch,
             sPlateAppearances, sSacrificeHits, sSacrificeFlies, gameDate, histPercentPlayed, actualPlayPercent,
-            awardPoints, pinchAtBat, pinchHit, rispAtBat, rispHit, rispRbi, rispSingle, rispDouble, rispTriple,
+            awardPoints, pinchAtBat, pinchHit, pinchRbi, rispAtBat, rispHit, rispRbi, rispSingle, rispDouble, rispTriple,
             rispHomeRun, rispWalk, rispStrikeOut, rispGroundedIntoDp, rispHitByPitch, leftOnBase, gameGamePlayed,
             gameGameStarted, gameAtBats, gameHits, gameRuns, gameRbi, gameSingle, gameDouble, gameTriple, gameHomeRun,
             gameWalk, gameStrikeOut, gameHitByPitch, gameGidp, gameLeftOnBase, gameRispAtBat, gameRispHit, gameRispSingle,
@@ -16,6 +16,14 @@ class BatterStats {
             gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases,
             gameCaughtStealing, sStolenBases, sCaughtStealing, gameRispGidp;
     private boolean isRunEarned = true;
+
+    public int getPinchRbi() {
+        return pinchRbi;
+    }
+
+    public void setPinchRbi(int pinchRbi) {
+        this.pinchRbi = pinchRbi;
+    }
 
     double getOnBasePercentage() {
         return onBasePercentage;

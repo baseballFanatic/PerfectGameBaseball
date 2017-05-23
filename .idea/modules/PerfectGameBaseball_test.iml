@@ -11,6 +11,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="PerfectGameBaseball_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-thymeleaf:1.4.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.42" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:1.4.3.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.thymeleaf:thymeleaf-spring4:2.1.5.RELEASE" level="project" />
