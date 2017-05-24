@@ -14,7 +14,16 @@ class BatterStats {
             gameWalk, gameStrikeOut, gameHitByPitch, gameGidp, gameLeftOnBase, gameRispAtBat, gameRispHit, gameRispSingle,
             gameRispDouble, gameRispTriple, gameRispHomeRun, gameRispRbi, gameRispStrikeOut, gameRispWalk,
             gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases,
-            gameCaughtStealing, sStolenBases, sCaughtStealing, gameRispGidp;
+            gameCaughtStealing, sStolenBases, sCaughtStealing, gameRispGidp, yearID;
+
+    public int getYearID() {
+        return yearID;
+    }
+
+    public void setYearID(int yearID) {
+        this.yearID = yearID;
+    }
+
     private boolean isRunEarned = true;
 
     public int getPinchRbi() {

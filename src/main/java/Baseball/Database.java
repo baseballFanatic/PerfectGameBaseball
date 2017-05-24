@@ -2,6 +2,8 @@ package Baseball;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
     // JDBC driver name and database URL
@@ -16,8 +18,7 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
 
-        try
-        {
+        try {
             // Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
@@ -32,58 +33,37 @@ public class Database {
             createPgbsSeasons(stmt);
             createPgbsTeams(stmt);
 
-            int yearID=1927;
+            int yearID = 1927;
             insertPgbsBatters(conn, yearID);
             insertPgbsPitchers(conn, yearID);
             insertPgbsFielders(conn, yearID);
             insertPgbsTeams(conn, yearID);
 //            insertPgbsSeasons(conn, yearID);
 
-
-            // Extract data from result set
-/*            while (rs.next())
-            {
-                // Retrieve by column name
-                String playerID = rs.getString("playerID");
-                int yearID = rs.getInt("yearID");
-                String teamID = rs.getString("teamID");
-
-                // Display values
-                System.out.print("ID: " + playerID);
-                System.out.print(", Year: " + yearID);
-                System.out.println(", Team: " + teamID);
-            }*/
-
             // Clean-up environment
             //rs.close();
             stmt.close();
             conn.close();
-        } catch (SQLException se)
-        {
+        } catch (SQLException se) {
             se.printStackTrace();
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally
-        {
+        } finally {
             // Block used to close resources
-            try
-            {
-                if(stmt != null)
+            try {
+                if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2)
-            {
-                try
-                {
-                    if(conn != null)
+            } catch (SQLException se2) {
+                try {
+                    if (conn != null)
                         conn.close();
-                } catch (SQLException se)
-                {
+                } catch (SQLException se) {
                     se.printStackTrace();
                 }
             }
         }
     }
+
     private static void createPgbsBatters(Statement stmt) throws SQLException {
         String batters;
         batters = "CREATE table pgbs_batters " +
@@ -155,8 +135,7 @@ public class Database {
         stmt.executeUpdate(batters);
     }
 
-    private static void createPgbsPitchers(Statement stmt) throws SQLException
-    {
+    private static void createPgbsPitchers(Statement stmt) throws SQLException {
         String pitchers;
         pitchers = "CREATE TABLE pgbs_pitchers " +
                 " (nameFirst varchar(255)," +
@@ -207,8 +186,7 @@ public class Database {
         stmt.executeUpdate(pitchers);
     }
 
-    private static void createPgbsFielders(Statement stmt) throws SQLException
-    {
+    private static void createPgbsFielders(Statement stmt) throws SQLException {
         String fielders;
         fielders = "CREATE TABLE pgbs_fielders" +
                 "( nameFirst varchar(255), " +
@@ -243,8 +221,7 @@ public class Database {
         stmt.executeUpdate(fielders);
     }
 
-    private static void createPgbsSeasons(Statement stmt) throws SQLException
-    {
+    private static void createPgbsSeasons(Statement stmt) throws SQLException {
         String seasons;
         seasons = "CREATE TABLE pgbs_season_reference" +
                 "(yearID int(11)," +
@@ -291,8 +268,7 @@ public class Database {
         stmt.executeUpdate(seasons);
     }
 
-    private static void createPgbsTeams(Statement stmt) throws SQLException
-    {
+    private static void createPgbsTeams(Statement stmt) throws SQLException {
         String teams;
         teams = "CREATE TABLE pgbs_teams" +
                 " (yearID int(11)," +
@@ -397,8 +373,7 @@ public class Database {
         stmt.executeUpdate(teams);
     }
 
-    private static void insertPgbsBatters(Connection conn, int yearID) throws SQLException
-    {
+    private static void insertPgbsBatters(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("insert into pgbs_batters (nameFirst," +
                 " nameLast," +
                 "    bats," +
@@ -432,8 +407,7 @@ public class Database {
         statement.executeUpdate();
     }
 
-    private static void insertPgbsPitchers(Connection conn, int yearID) throws SQLException
-    {
+    private static void insertPgbsPitchers(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_pitchers (" +
                 " nameFirst, " +
                 " nameLast, " +
@@ -479,30 +453,29 @@ public class Database {
         statement.executeUpdate();
     }
 
-    private static void insertPgbsFielders(Connection conn, int yearID) throws SQLException
-    {
+    private static void insertPgbsFielders(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_fielders (" +
-            " nameFirst, " +
-            " nameLast, " +
-            " playerID, " +
-            " yearID, " +
-            " stint, " +
-            " teamID, " +
-            " lgID, " +
-            " POS, " +
-            " G, " +
-            " GS, " +
-            " innOuts, " +
-            " PO, " +
-            " A, " +
-            " E, " +
-            " DP, " +
-            " PB, " +
-            " WP, " +
-            " SB, " +
-            " CS, " +
-            " ZR) " +
-            " SELECT m.nameFirst, " +
+                " nameFirst, " +
+                " nameLast, " +
+                " playerID, " +
+                " yearID, " +
+                " stint, " +
+                " teamID, " +
+                " lgID, " +
+                " POS, " +
+                " G, " +
+                " GS, " +
+                " innOuts, " +
+                " PO, " +
+                " A, " +
+                " E, " +
+                " DP, " +
+                " PB, " +
+                " WP, " +
+                " SB, " +
+                " CS, " +
+                " ZR) " +
+                " SELECT m.nameFirst, " +
                 " m.nameLast, " +
                 " f.* " +
                 " FROM fielding as f " +
@@ -512,8 +485,7 @@ public class Database {
         statement.executeUpdate();
     }
 
-    private static void insertPgbsSeasons(Connection conn, int yearID) throws SQLException
-    {
+    private static void insertPgbsSeasons(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_seasons " +
                 " (yearID=?, " +
                 " alEastChamp=?, " +
@@ -596,8 +568,7 @@ public class Database {
         statement.executeUpdate();
     }
 
-    private static void insertPgbsTeams(Connection conn, int yearID) throws SQLException
-    {
+    private static void insertPgbsTeams(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_teams " +
                 " (yearID, " +
                 " lgID, " +
@@ -653,5 +624,105 @@ public class Database {
         statement.setInt(1, yearID);
 
         statement.executeUpdate();
+    }
+
+    public static List<Batter> selectBatters(String teamID, int yearID, Batter batter) {
+        Connection conn = null;
+
+        List<Batter> batters = new ArrayList<>();
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT * from pgbs_batters " +
+                    " where teamID=? " +
+                    " and yearID=?" +
+                    " order by AB desc" +
+                    " limit 9");
+            stmt.setString(1, teamID);
+            stmt.setInt(2, yearID);
+
+            ResultSet rs = stmt.executeQuery();
+
+            // Extract data from result set
+            while (rs.next()) {
+                batter = new Batter();
+                // Retrieve by column name
+                batter.setNameFirst(rs.getString("nameFirst"));
+                batter.setNameLast(rs.getString("nameLast"));
+                // Sets Hands based on bats
+                if (rs.getString("bats") == "R")
+                {
+                    batter.setBats(Hands.RIGHT);
+                } else if (rs.getString("bats") == "L")
+                {
+                    batter.setBats(Hands.LEFT);
+                } else
+                {
+                    batter.setBats(Hands.BOTH);
+                }
+                batter.setPlayerId(rs.getString("playerID"));
+                batter.getBatterStats().setYearID(rs.getInt("yearID"));
+                batter.setStint(rs.getInt("stint"));
+                batter.setTeamID(rs.getString("teamID"));
+                batter.setLgID(rs.getString("lgID"));
+                batter.getBatterStats().setGamesPlayed(rs.getInt("G"));
+                batter.getBatterStats().setAtBats(rs.getInt("AB"));
+                batter.getBatterStats().setRuns(rs.getInt("R"));
+                batter.getBatterStats().setHits(rs.getInt("H"));
+                batter.getBatterStats().setDoubles(rs.getInt("2B"));
+                batter.getBatterStats().setTriples(rs.getInt("3B"));
+                batter.getBatterStats().setHomeRuns(rs.getInt("HR"));
+                batter.getBatterStats().setRbi(rs.getInt("RBI"));
+                batter.getBatterStats().setStolenBases(rs.getInt("SB"));
+                batter.getBatterStats().setCaughtStealing(rs.getInt("CS"));
+                batter.getBatterStats().setWalks(rs.getInt("BB"));
+                batter.getBatterStats().setStrikeOuts(rs.getInt("SO"));
+
+/*                batter.getBatterStats().setIntentionalWalks(Integer.parseInt(rs.getString("IBB")));
+                batter.getBatterStats().setHitByPitch(Integer.parseInt(rs.getString("HBP")));
+                batter.getBatterStats().setSacrificeHits(Integer.parseInt(rs.getString("SH")));
+                batter.getBatterStats().setSacrificeFlies(Integer.parseInt(rs.getString("RS")));
+                batter.getBatterStats().setGroundedIntoDp(Integer.parseInt(rs.getString("GIDP")));*/
+
+                batter.getBatterStats().setSpeedRating(7);
+                batter.getBatterStats().calculateBatterProbabilities();
+
+                batters.add(batter);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        String[] positions = new String[]
+                {
+                        "CATCHER", "FIRST_BASE", "SECOND_BASE", "THIRD_BASE", "SHORTSTOP",
+                        "LEFT_FIELD", "CENTER_FIELD", "RIGHT_FIELD", "DESIGNATED_HITTER"
+                };
+        for (String position : positions)
+        {
+            for (Batter hitter : batters)
+            {
+                if (hitter.getPosition() == null)
+                {
+                    hitter.setPosition(position);
+                    break;
+                }
+            }
+        }
+        return batters;
     }
 }

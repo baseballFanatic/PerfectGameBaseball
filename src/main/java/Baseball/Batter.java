@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Batter extends Player {
-    private String round, battingOrder, position;
+    private String round, battingOrder, position, teamID, lgID;
     private Hands bats;
     private BatterStats batterStats = new BatterStats();
     private boolean availability;
-    private int awardPoints;
+    private int awardPoints, stint;
     private Base firstBase = new Base();
     private Base secondBase = new Base();
     private Base thirdBase = new Base();
@@ -23,6 +23,46 @@ public class Batter extends Player {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.position = position;
+    }
+
+    public String getLgID() {
+        return lgID;
+    }
+
+    public void setLgID(String lgID) {
+        this.lgID = lgID;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
+    }
+
+    public int getAwardPoints() {
+        return awardPoints;
+    }
+
+    public void setAwardPoints(int awardPoints) {
+        this.awardPoints = awardPoints;
+    }
+
+    public int getStint() {
+        return stint;
+    }
+
+    public void setStint(int stint) {
+        this.stint = stint;
     }
 
     public Hands getBats() {
@@ -119,9 +159,14 @@ public class Batter extends Player {
 
     List<Batter> getBatterList(boolean visitors) {
         List<Batter> batterList = new ArrayList<>();
+        Batter batter = new Batter();
 
         if (visitors) {
-            batterList.add(new Batter("Rickey", "Henderson", Hands.LEFT, "LEFT_FIELD"));
+            int yearID=1927;
+            String teamID="NYA";
+            batterList = Database.selectBatters(teamID, yearID, batter);
+
+/*            batterList.add(new Batter("Rickey", "Henderson", Hands.LEFT, "LEFT_FIELD"));
             batterList.add(new Batter("Ty", "Cobb", Hands.LEFT, "CENTER_FIELD"));
             batterList.add(new Batter("Babe", "Ruth", Hands.LEFT, "RIGHT_FIELD"));
             batterList.add(new Batter("Lou", "Gehrig", Hands.LEFT, "FIRST_BASE"));
@@ -129,9 +174,12 @@ public class Batter extends Player {
             batterList.add(new Batter("Mike", "Schmidt", Hands.RIGHT, "THIRD_BASE"));
             batterList.add(new Batter("Joe", "Jackson", Hands.LEFT, "SECOND_BASE"));
             batterList.add(new Batter("Yogi", "Berra", Hands.RIGHT, "CATCHER"));
-            batterList.add(new Batter("Honus", "Wagner", Hands.RIGHT, "PITCHER"));
+            batterList.add(new Batter("Honus", "Wagner", Hands.RIGHT, "PITCHER"));*/
         } else {
-            batterList.add(new Batter ("Tris", "Speaker", Hands.RIGHT, "CENTER_FIELD"));
+            int yearID=1927;
+            String teamID="PHA";
+            batterList = Database.selectBatters(teamID, yearID, batter);
+/*            batterList.add(new Batter ("Tris", "Speaker", Hands.RIGHT, "CENTER_FIELD"));
             batterList.add(new Batter ("Charlie", "Gehringer", Hands.LEFT, "SECOND_BASE"));
             batterList.add(new Batter ("Johnny", "Bench", Hands.RIGHT, "CATCHER"));
             batterList.add(new Batter ("Mel", "Ott", Hands.LEFT, "RIGHT_FIELD"));
@@ -139,10 +187,10 @@ public class Batter extends Player {
             batterList.add(new Batter ("Hank", "Greenberg", Hands.RIGHT, "FIRST_BASE"));
             batterList.add(new Batter ("Joe", "Cronin", Hands.RIGHT, "SHORTSTOP"));
             batterList.add(new Batter ("Brooks", "Robinson", Hands.RIGHT, "THIRD_BASE"));
-            batterList.add(new Batter ("Paul", "Waner", Hands.LEFT, "PITCHER"));
+            batterList.add(new Batter ("Paul", "Waner", Hands.LEFT, "PITCHER"));*/
         }
 
-        for (Batter batter : batterList) {
+/*        for (Batter batter : batterList) {
             batter.getBatterStats().setAtBats(482);
             batter.getBatterStats().setHits(147);
             batter.getBatterStats().setDoubles(20);
@@ -151,8 +199,7 @@ public class Batter extends Player {
             batter.getBatterStats().setWalks(41);
             batter.getBatterStats().setStrikeOuts(71);
             batter.getBatterStats().setSpeedRating(7);
-            batter.getBatterStats().calculateBatterProbabilities();
-        }
+            batter.getBatterStats().calculateBatterProbabilities();*/
         return batterList;
     }
 
