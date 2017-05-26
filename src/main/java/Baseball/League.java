@@ -8,15 +8,15 @@ class League {
         return lgID;
     }
 
-    public League() {
+    League() {
         setLeagueStats(new LeagueStats());
     }
 
-    public void setLgID(String lgID) {
+    void setLgID(String lgID) {
         this.lgID = lgID;
     }
 
-    public LeagueStats getLeagueStats() {
+    LeagueStats getLeagueStats() {
         return leagueStats;
     }
 

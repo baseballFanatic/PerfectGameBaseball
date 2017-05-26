@@ -4,12 +4,101 @@ package Baseball;
 import java.util.List;
 
 class FielderStats {
-    private int errors, gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful;
+    private int gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful,
+    gamesPlayed, gamesStarted, inningOuts, putOuts, assists, errors, doublePlays, passedBalls, stolenBases,
+    caughtStealing, zoneRating, wildPitches;
     private double fieldingPercentage;
 
     FielderStats() {
     }
 
+    public int getWildPitches() {
+        return wildPitches;
+    }
+
+    public void setWildPitches(int wildPitches) {
+        this.wildPitches = wildPitches;
+    }
+
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+    public int getGamesStarted() {
+        return gamesStarted;
+    }
+
+    public void setGamesStarted(int gamesStarted) {
+        this.gamesStarted = gamesStarted;
+    }
+
+    public int getInningOuts() {
+        return inningOuts;
+    }
+
+    public void setInningOuts(int inningOuts) {
+        this.inningOuts = inningOuts;
+    }
+
+    public int getPutOuts() {
+        return putOuts;
+    }
+
+    public void setPutOuts(int putOuts) {
+        this.putOuts = putOuts;
+    }
+
+    public int getAssists() {
+        return assists;
+    }
+
+    public void setAssists(int assists) {
+        this.assists = assists;
+    }
+
+    public int getDoublePlays() {
+        return doublePlays;
+    }
+
+    public void setDoublePlays(int doublePlays) {
+        this.doublePlays = doublePlays;
+    }
+
+    public int getPassedBalls() {
+        return passedBalls;
+    }
+
+    public void setPassedBalls(int passedBalls) {
+        this.passedBalls = passedBalls;
+    }
+
+    public int getStolenBases() {
+        return stolenBases;
+    }
+
+    public void setStolenBases(int stolenBases) {
+        this.stolenBases = stolenBases;
+    }
+
+    public int getCaughtStealing() {
+        return caughtStealing;
+    }
+
+    public void setCaughtStealing(int caughtStealing) {
+        this.caughtStealing = caughtStealing;
+    }
+
+    public int getZoneRating() {
+        return zoneRating;
+    }
+
+    public void setZoneRating(int zoneRating) {
+        this.zoneRating = zoneRating;
+    }
 
     int getGameRunnersThrownOut() {
         return gameRunnersThrownOut;

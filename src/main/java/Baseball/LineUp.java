@@ -1,5 +1,9 @@
 package Baseball;
 
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
 class LineUp {
     private int battingOrder;
     private int visitorBattingNumber;
@@ -30,6 +34,15 @@ class LineUp {
 
     void setHomeBattingNumber(int homeBattingNumber) {
         this.homeBattingNumber = homeBattingNumber;
+    }
+
+    Set<Batter> optimizeLineUp(List<Batter> lineUp)
+    {
+        Set<Batter> set = new TreeSet<Batter>();
+
+        set.addAll(lineUp);
+
+        return set;
     }
 }
 

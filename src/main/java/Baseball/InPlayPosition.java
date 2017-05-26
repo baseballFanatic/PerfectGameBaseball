@@ -1,16 +1,40 @@
 package Baseball;
 
-public enum InPlayPosition {
-    PITCHER, CATCHER, FIRST_BASE, SECOND_BASE, THIRD_BASE, SHORTSTOP, LEFT_FIELD, CENTER_FIELD, RIGHT_FIELD, OUTFIELD,
-    DESIGNATED_HITTER;
+import java.util.ArrayList;
+import java.util.List;
 
-    public InPlayPosition get(String value) {
+public enum InPlayPosition {
+    PITCHER("P"), CATCHER("C"), FIRST_BASE("1B"), SECOND_BASE("2B"), THIRD_BASE("3B"), SHORTSTOP("SS"),
+    LEFT_FIELD("LF"), CENTER_FIELD("CF"), RIGHT_FIELD("RF"), OUTFIELD("OF"),
+    DESIGNATED_HITTER("DH");
+
+    private String positionCode;
+
+    InPlayPosition(String positionCode) {
+        this.positionCode = positionCode;
+    }
+
+    public String getPositionCode() {
+        return positionCode;
+    }
+
+    public static InPlayPosition get(String value) {
         InPlayPosition result = null;
 
         for ( InPlayPosition fielderPosition : values()) {
-            if(fielderPosition.name().equals(value))
+            if(fielderPosition.name().equals(value) || fielderPosition.getPositionCode().equals(value)) {
                 result = fielderPosition;
-            break;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static List<InPlayPosition> getList()
+    {
+        List<InPlayPosition> result = new ArrayList<>();
+        for (InPlayPosition position : values()) {
+            result.add(position);
         }
         return result;
     }

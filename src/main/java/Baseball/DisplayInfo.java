@@ -1,6 +1,7 @@
 package Baseball;
 
 import java.util.List;
+import java.util.Set;
 
 class DisplayInfo {
 
@@ -64,6 +65,108 @@ class DisplayInfo {
         System.out.printf("End of Inning %s%n", inning.getInning() - 1);
     }
 
+    void displayLineUp(Set<Batter> visitorStartingLineup, List<Batter> homeStartingLineup, List<Pitcher> visitorPitchers,
+                       List<Pitcher> homePitchers, List<Fielder> visitorFielderStarters, List<Fielder> homeFielderStarters)
+    {
+        System.out.println();
+        System.out.printf("Starting LineUps:%n");
+        System.out.println();
+        System.out.println("---------------------------------------------------");
+        System.out.println();
+        System.out.println("Visitors:");
+        System.out.printf("");
+        System.out.printf("%10s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "AtBats", "Runs", "Hits",
+                "RBI", "2B", "3B", "HR", "BB", "K", "SacF", "SacH", "SB", "CS", "Position");
+        System.out.println();
+        for (Batter batter : visitorStartingLineup) {
+            System.out.format("%10s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
+                    batter.getNameLast(), batter.getBatterStats().getAtBats(),
+                    batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
+                    batter.getBatterStats().getRbi(),
+                    batter.getBatterStats().getDoubles(), batter.getBatterStats().getTriples(),
+                    batter.getBatterStats().getHomeRuns(), batter.getBatterStats().getWalks(),
+                    batter.getBatterStats().getStrikeOuts(), batter.getBatterStats().getSacrificeFlies(),
+                    batter.getBatterStats().getSacrificeHits(), batter.getBatterStats().getStolenBases(),
+                    batter.getBatterStats().getCaughtStealing(), batter.getPosition());
+            System.out.println();
+        }
+        System.out.println("---------------------------------------------------");
+        System.out.println();
+        System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K");
+        System.out.println();
+        for (Pitcher printedPitcher : visitorPitchers) {
+            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedPitcher.getNameLast(),
+                    printedPitcher.getPitcherStats().getBattersFaced(),
+                    printedPitcher.getPitcherStats().getiPouts(),
+                    printedPitcher.getPitcherStats().getHitsAllowed(),
+                    printedPitcher.getPitcherStats().getRuns(),
+                    printedPitcher.getPitcherStats().getEarnedRuns(),
+                    printedPitcher.getPitcherStats().getWalksAllowed(),
+                    printedPitcher.getPitcherStats().getStrikeOutsAllowed());
+            System.out.println();
+        }
+        System.out.println("---------------------------------------------------");
+        System.out.println();
+        System.out.printf("Visitor Fielding Stats%n");
+        System.out.printf("%10s %7s %2s %2s %2s %2s %2s", "Name", "Assists", "PO", "DP", "E", "SBA", "TO");
+        System.out.println();
+        for (Fielder fielder : visitorFielderStarters) {
+            System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
+                    fielder.getFielderStats().getAssists(),
+                    fielder.getFielderStats().getPutOuts(), fielder.getFielderStats().getDoublePlays(),
+                    fielder.getFielderStats().getErrors(), fielder.getFielderStats().getStolenBases(),
+                    fielder.getFielderStats().getCaughtStealing());
+            System.out.println();
+        }
+        System.out.println("---------------------------------------------------");
+        System.out.println("Home:");
+        System.out.printf("");
+        System.out.printf("%10s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "AtBats", "Runs", "Hits",
+                "RBI", "2B", "3B", "HR", "BB", "K", "SacF", "SacH", "SB", "CS", "Position");
+        System.out.println();
+        for (Batter batter : homeStartingLineup) {
+            System.out.format("%10s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
+                    batter.getNameLast(), batter.getBatterStats().getAtBats(),
+                    batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
+                    batter.getBatterStats().getRbi(),
+                    batter.getBatterStats().getDoubles(), batter.getBatterStats().getTriples(),
+                    batter.getBatterStats().getHomeRuns(), batter.getBatterStats().getWalks(),
+                    batter.getBatterStats().getStrikeOuts(), batter.getBatterStats().getSacrificeFlies(),
+                    batter.getBatterStats().getSacrificeHits(), batter.getBatterStats().getStolenBases(),
+                    batter.getBatterStats().getCaughtStealing(), batter.getPosition());
+            System.out.println();
+        }
+        System.out.println("---------------------------------------------------");
+        System.out.println();
+        System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K");
+        System.out.println();
+        for (Pitcher printedPitcher : homePitchers) {
+            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedPitcher.getNameLast(),
+                    printedPitcher.getPitcherStats().getBattersFaced(),
+                    printedPitcher.getPitcherStats().getiPouts(),
+                    printedPitcher.getPitcherStats().getHitsAllowed(),
+                    printedPitcher.getPitcherStats().getRuns(),
+                    printedPitcher.getPitcherStats().getEarnedRuns(),
+                    printedPitcher.getPitcherStats().getWalksAllowed(),
+                    printedPitcher.getPitcherStats().getStrikeOutsAllowed());
+            System.out.println();
+        }
+        System.out.println("---------------------------------------------------");
+        System.out.println();
+        System.out.printf("Home Fielding Stats%n");
+        System.out.printf("%10s %7s %2s %2s %2s %2s %2s", "Name", "Assists", "PO", "DP", "E", "SBA", "TO");
+        System.out.println();
+        for (Fielder fielder : homeFielderStarters) {
+            System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
+                    fielder.getFielderStats().getAssists(),
+                    fielder.getFielderStats().getPutOuts(), fielder.getFielderStats().getDoublePlays(),
+                    fielder.getFielderStats().getErrors(), fielder.getFielderStats().getStolenBases(),
+                    fielder.getFielderStats().getCaughtStealing());
+            System.out.println();
+        }
+        System.out.println("---------------------------------------------------");
+    }
+
     void endOfGame(List<Batter> visitorBatters, List<Batter> homeBatters, List<Fielder> visitorFielders,
                    List<Fielder> homeFielders, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers,
                    Team visitorTeam, Team homeTeam, Pitcher pitcher) {
@@ -99,36 +202,40 @@ class DisplayInfo {
                 "RISPGIDP", "RISPSAC");
         System.out.println();
         for (Batter batter : visitorBatters) {
-            System.out.format("%10s %6s %4s %4s %2s %2s %2s %2s %2s %2s %2s %4s %4s %2s %2s %6s %6s %6s %6s %6s %6s" +
-                            "%6s %6s %6s",
-                    batter.getNameLast(), batter.getBatterStats().getGameAtBats(),
-                    batter.getBatterStats().getGameRuns(), batter.getBatterStats().getGameHits(),
-                    batter.getBatterStats().getGameRbi(), batter.getBatterStats().getGameSingle(),
-                    batter.getBatterStats().getGameDouble(), batter.getBatterStats().getGameTriple(),
-                    batter.getBatterStats().getGameHomeRun(), batter.getBatterStats().getGameWalk(),
-                    batter.getBatterStats().getGameStrikeOut(), batter.getBatterStats().getGameSacrificeFly(),
-                    batter.getBatterStats().getGameSacrificeHit(), batter.getBatterStats().getGameStolenBases(),
-                    batter.getBatterStats().getGameCaughtStealing(), batter.getBatterStats().getGameRispAtBat(),
-                    batter.getBatterStats().getGameRispHit(), batter.getBatterStats().getGameRispSingle(),
-                    batter.getBatterStats().getGameRispDouble(), batter.getBatterStats().getGameRispTriple(),
-                    batter.getBatterStats().getGameRispHomeRun(), batter.getBatterStats().getGameRispRbi(),
-                    batter.getBatterStats().getGameRispGidp(), batter.getBatterStats().getGameRispSacrificeFly());
-            System.out.println();
+            if (batter.getBatterStats().getGameAtBats() > 0 || batter.getBatterStats().getGameWalk() > 0) {
+                System.out.format("%10s %6s %4s %4s %2s %2s %2s %2s %2s %2s %2s %4s %4s %2s %2s %6s %6s %6s %6s %6s %6s" +
+                                "%6s %6s %6s",
+                        batter.getNameLast(), batter.getBatterStats().getGameAtBats(),
+                        batter.getBatterStats().getGameRuns(), batter.getBatterStats().getGameHits(),
+                        batter.getBatterStats().getGameRbi(), batter.getBatterStats().getGameSingle(),
+                        batter.getBatterStats().getGameDouble(), batter.getBatterStats().getGameTriple(),
+                        batter.getBatterStats().getGameHomeRun(), batter.getBatterStats().getGameWalk(),
+                        batter.getBatterStats().getGameStrikeOut(), batter.getBatterStats().getGameSacrificeFly(),
+                        batter.getBatterStats().getGameSacrificeHit(), batter.getBatterStats().getGameStolenBases(),
+                        batter.getBatterStats().getGameCaughtStealing(), batter.getBatterStats().getGameRispAtBat(),
+                        batter.getBatterStats().getGameRispHit(), batter.getBatterStats().getGameRispSingle(),
+                        batter.getBatterStats().getGameRispDouble(), batter.getBatterStats().getGameRispTriple(),
+                        batter.getBatterStats().getGameRispHomeRun(), batter.getBatterStats().getGameRispRbi(),
+                        batter.getBatterStats().getGameRispGidp(), batter.getBatterStats().getGameRispSacrificeFly());
+                System.out.println();
+            }
         }
         System.out.println("---------------------------------------------------");
         System.out.println();
         System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K");
         System.out.println();
         for (Pitcher printedPitcher : visitorPitchers) {
-            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedPitcher.getNameLast(),
-                    printedPitcher.getPitcherStats().getGameBattersFaced(),
-                    printedPitcher.getPitcherStats().getGameInningsPitchedOuts(),
-                    printedPitcher.getPitcherStats().getGameHitsAllowed(),
-                    printedPitcher.getPitcherStats().getGameRunsAllowed(),
-                    printedPitcher.getPitcherStats().getGameEarnedRunsAllowed(),
-                    printedPitcher.getPitcherStats().getGameWalksAllowed(),
-                    printedPitcher.getPitcherStats().getGameStrikeOutsAllowed());
-            System.out.println();
+            if (printedPitcher.getPitcherStats().getGameBattersFaced() > 0) {
+                System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedPitcher.getNameLast(),
+                        printedPitcher.getPitcherStats().getGameBattersFaced(),
+                        printedPitcher.getPitcherStats().getGameInningsPitchedOuts(),
+                        printedPitcher.getPitcherStats().getGameHitsAllowed(),
+                        printedPitcher.getPitcherStats().getGameRunsAllowed(),
+                        printedPitcher.getPitcherStats().getGameEarnedRunsAllowed(),
+                        printedPitcher.getPitcherStats().getGameWalksAllowed(),
+                        printedPitcher.getPitcherStats().getGameStrikeOutsAllowed());
+                System.out.println();
+            }
         }
         System.out.println("---------------------------------------------------");
         System.out.println();
@@ -151,36 +258,40 @@ class DisplayInfo {
                 "RISPGIDP", "RISPSAC");
         System.out.println();
         for (Batter batter : homeBatters) {
-            System.out.format("%10s %6s %4s %4s %2s %2s %2s %2s %2s %2s %2s %4s %4s %2s %2s %6s %6s %6s %6s %6s %6s" +
-                            "%6s %6s %6s",
-                    batter.getNameLast(), batter.getBatterStats().getGameAtBats(),
-                    batter.getBatterStats().getGameRuns(), batter.getBatterStats().getGameHits(),
-                    batter.getBatterStats().getGameRbi(), batter.getBatterStats().getGameSingle(),
-                    batter.getBatterStats().getGameDouble(), batter.getBatterStats().getGameTriple(),
-                    batter.getBatterStats().getGameHomeRun(), batter.getBatterStats().getGameWalk(),
-                    batter.getBatterStats().getGameStrikeOut(), batter.getBatterStats().getGameSacrificeFly(),
-                    batter.getBatterStats().getGameSacrificeHit(), batter.getBatterStats().getGameStolenBases(),
-                    batter.getBatterStats().getGameCaughtStealing(), batter.getBatterStats().getGameRispAtBat(),
-                    batter.getBatterStats().getGameRispHit(), batter.getBatterStats().getGameRispSingle(),
-                    batter.getBatterStats().getGameRispDouble(), batter.getBatterStats().getGameRispTriple(),
-                    batter.getBatterStats().getGameRispHomeRun(), batter.getBatterStats().getGameRispRbi(),
-                    batter.getBatterStats().getGameRispGidp(), batter.getBatterStats().getGameRispSacrificeFly());
-            System.out.println();
+            if (batter.getBatterStats().getGameAtBats() > 0 || batter.getBatterStats().getGameWalk() > 0) {
+                System.out.format("%10s %6s %4s %4s %2s %2s %2s %2s %2s %2s %2s %4s %4s %2s %2s %6s %6s %6s %6s %6s %6s" +
+                                "%6s %6s %6s",
+                        batter.getNameLast(), batter.getBatterStats().getGameAtBats(),
+                        batter.getBatterStats().getGameRuns(), batter.getBatterStats().getGameHits(),
+                        batter.getBatterStats().getGameRbi(), batter.getBatterStats().getGameSingle(),
+                        batter.getBatterStats().getGameDouble(), batter.getBatterStats().getGameTriple(),
+                        batter.getBatterStats().getGameHomeRun(), batter.getBatterStats().getGameWalk(),
+                        batter.getBatterStats().getGameStrikeOut(), batter.getBatterStats().getGameSacrificeFly(),
+                        batter.getBatterStats().getGameSacrificeHit(), batter.getBatterStats().getGameStolenBases(),
+                        batter.getBatterStats().getGameCaughtStealing(), batter.getBatterStats().getGameRispAtBat(),
+                        batter.getBatterStats().getGameRispHit(), batter.getBatterStats().getGameRispSingle(),
+                        batter.getBatterStats().getGameRispDouble(), batter.getBatterStats().getGameRispTriple(),
+                        batter.getBatterStats().getGameRispHomeRun(), batter.getBatterStats().getGameRispRbi(),
+                        batter.getBatterStats().getGameRispGidp(), batter.getBatterStats().getGameRispSacrificeFly());
+                System.out.println();
+            }
         }
         System.out.println("---------------------------------------------------");
         System.out.println();
         System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K");
         System.out.println();
         for (Pitcher printedHomePitcher : homePitchers) {
-            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedHomePitcher.getNameLast(),
-                    printedHomePitcher.getPitcherStats().getGameBattersFaced(),
-                    printedHomePitcher.getPitcherStats().getGameInningsPitchedOuts(),
-                    printedHomePitcher.getPitcherStats().getGameHitsAllowed(),
-                    printedHomePitcher.getPitcherStats().getGameRunsAllowed(),
-                    printedHomePitcher.getPitcherStats().getGameEarnedRunsAllowed(),
-                    printedHomePitcher.getPitcherStats().getGameWalksAllowed(),
-                    printedHomePitcher.getPitcherStats().getGameStrikeOutsAllowed());
-            System.out.println();
+            if (printedHomePitcher.getPitcherStats().getGameBattersFaced() > 0) {
+                System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedHomePitcher.getNameLast(),
+                        printedHomePitcher.getPitcherStats().getGameBattersFaced(),
+                        printedHomePitcher.getPitcherStats().getGameInningsPitchedOuts(),
+                        printedHomePitcher.getPitcherStats().getGameHitsAllowed(),
+                        printedHomePitcher.getPitcherStats().getGameRunsAllowed(),
+                        printedHomePitcher.getPitcherStats().getGameEarnedRunsAllowed(),
+                        printedHomePitcher.getPitcherStats().getGameWalksAllowed(),
+                        printedHomePitcher.getPitcherStats().getGameStrikeOutsAllowed());
+                System.out.println();
+            }
         }
         System.out.println("---------------------------------------------------");
         System.out.println();

@@ -3,7 +3,8 @@ package Baseball;
 class BatterStats {
     private double atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, plateAppearances, probabilityWalk,
             probabilitySingle, probabilityDouble, probabilityTriple, probabilityHomeRun, probabilityStrikeOut,
-            stolenBaseAttempt = .1973, stolenBaseSuccess = .833, onBasePercentage = .359;
+            stolenBaseAttempt = .1973, stolenBaseSuccess = .833, onBasePercentage = .359,
+            battingAverage, sluggingAverage;
     private int gamesPlayed, runs, rbi, intentionalWalks, hitByPitch, sacrificeHits, speedRating, stolenBases,
             sacrificeFlies, groundedIntoDp, sGamesPlayed, sGamesStarted, sAtBats, sHits, sRuns, caughtStealing,
             sDoubles, sTriples, sHomeRuns, sRbi, sWalks, sStrikeOuts, sHitByPitch,
@@ -20,7 +21,23 @@ class BatterStats {
         return yearID;
     }
 
-    public void setYearID(int yearID) {
+    public double getBattingAverage() {
+        return battingAverage;
+    }
+
+    public void setBattingAverage(double battingAverage) {
+        this.battingAverage = battingAverage;
+    }
+
+    public double getSluggingAverage() {
+        return sluggingAverage;
+    }
+
+    public void setSluggingAverage(double sluggingAverage) {
+        this.sluggingAverage = sluggingAverage;
+    }
+
+    void setYearID(int yearID) {
         this.yearID = yearID;
     }
 
@@ -50,7 +67,7 @@ class BatterStats {
         this.gameRispGidp = gameRispGidp;
     }
 
-    private double getAtBats() {
+    double getAtBats() {
         return atBats;
     }
 
@@ -58,7 +75,7 @@ class BatterStats {
         this.atBats = atBats;
     }
 
-    private double getHits() {
+    double getHits() {
         return hits;
     }
 
@@ -66,7 +83,7 @@ class BatterStats {
         this.hits = hits;
     }
 
-    private double getDoubles() {
+   double getDoubles() {
         return doubles;
     }
 
@@ -74,7 +91,7 @@ class BatterStats {
         this.doubles = doubles;
     }
 
-    private double getTriples() {
+    double getTriples() {
         return triples;
     }
 
@@ -82,7 +99,7 @@ class BatterStats {
         this.triples = triples;
     }
 
-    private double getHomeRuns() {
+    double getHomeRuns() {
         return homeRuns;
     }
 
@@ -90,7 +107,7 @@ class BatterStats {
         this.homeRuns = homeRuns;
     }
 
-    private double getWalks() {
+   double getWalks() {
         return walks;
     }
 
@@ -98,7 +115,7 @@ class BatterStats {
         this.walks = walks;
     }
 
-    private double getStrikeOuts() {
+    double getStrikeOuts() {
         return strikeOuts;
     }
 
@@ -166,23 +183,23 @@ class BatterStats {
         return gamesPlayed;
     }
 
-    public void setGamesPlayed(int gamesPlayed) {
+    void setGamesPlayed(int gamesPlayed) {
         this.gamesPlayed = gamesPlayed;
     }
 
-    public int getRuns() {
+    int getRuns() {
         return runs;
     }
 
-    public void setRuns(int runs) {
+    void setRuns(int runs) {
         this.runs = runs;
     }
 
-    public int getRbi() {
+    int getRbi() {
         return rbi;
     }
 
-    public void setRbi(int rbi) {
+    void setRbi(int rbi) {
         this.rbi = rbi;
     }
 
@@ -202,7 +219,7 @@ class BatterStats {
         this.hitByPitch = hitByPitch;
     }
 
-    public int getSacrificeHits() {
+    int getSacrificeHits() {
         return sacrificeHits;
     }
 
@@ -210,7 +227,7 @@ class BatterStats {
         this.sacrificeHits = sacrificeHits;
     }
 
-    public int getSacrificeFlies() {
+    int getSacrificeFlies() {
         return sacrificeFlies;
     }
 
@@ -738,19 +755,19 @@ class BatterStats {
         this.speedRating = speedRating;
     }
 
-    public int getStolenBases() {
+    int getStolenBases() {
         return stolenBases;
     }
 
-    public void setStolenBases(int stolenBases) {
+    void setStolenBases(int stolenBases) {
         this.stolenBases = stolenBases;
     }
 
-    public int getCaughtStealing() {
+    int getCaughtStealing() {
         return caughtStealing;
     }
 
-    public void setCaughtStealing(int caughtStealing) {
+    void setCaughtStealing(int caughtStealing) {
         this.caughtStealing = caughtStealing;
     }
 
@@ -778,6 +795,11 @@ class BatterStats {
         setProbabilityDouble(getDoubles() / getPlateAppearances());
         setProbabilityTriple(getTriples()/ getPlateAppearances());
         setProbabilityHomeRun(getHomeRuns() / getPlateAppearances());
+        setBattingAverage(getHits() / getAtBats());
+        setOnBasePercentage((getHitByPitch() + getHits() + getWalks()) / getAtBats());
+        double singles = getHits() - getDoubles() - getTriples() - getHomeRuns();
+        setSluggingAverage((singles + (getDoubles() * 2) + (getTriples() * 3) + getHomeRuns() * 4) / getAtBats());
+
     }
 
     void updateBatterStats(Batter batter, AtBatResult atBatResult) {

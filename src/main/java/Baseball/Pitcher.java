@@ -1,18 +1,52 @@
 package Baseball;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.abs;
 
 public class Pitcher extends Player {
-    private String pitchingArm = "NA";
+    private String pitchingArm = "NA", teamID, lgID;
     private Pitcher visitorStarter, homeStarter, visitorPitcher, homePitcher,
             visitorWinningPitcher, visitorLosingPitcher, visitorSavePitcher, homeWinningPitcher, homeLosingPitcher,
             homeSavePitcher;
     private PitcherStats pitcherStats = new PitcherStats();
     private PitcherRole pitcherRole;
+    private int playerKey, yearID, stint;
     private boolean isAvailable = true;
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
+    }
+
+    public String getLgID() {
+        return lgID;
+    }
+
+    public void setLgID(String lgID) {
+        this.lgID = lgID;
+    }
+
+    public int getYearID() {
+        return yearID;
+    }
+
+    public void setYearID(int yearID) {
+        this.yearID = yearID;
+    }
+
+    public int getStint() {
+        return stint;
+    }
+
+    public void setStint(int stint) {
+        this.stint = stint;
+    }
 
     public Pitcher() {}
 
@@ -20,6 +54,14 @@ public class Pitcher extends Player {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.pitcherRole = pitcherRole;
+    }
+
+    public int getPlayerKey() {
+        return playerKey;
+    }
+
+    public void setPlayerKey(int playerKey) {
+        this.playerKey = playerKey;
     }
 
     String getPitchingArm() {
@@ -225,32 +267,50 @@ public class Pitcher extends Player {
         this.homeSavePitcher = homeSavePitcher;
     }
 
-    List<Pitcher> getPitcherList(boolean visitors) {
-        List<Pitcher> pitcherList = new ArrayList<>();
+    List<Pitcher> getPitcherList(boolean visitors) throws ClassNotFoundException, SQLException, InstantiationException {
+        List<Pitcher> pitcherList;
+        Pitcher pitcher = new Pitcher();
 
         if (visitors) {
-            pitcherList.add(new Pitcher ("Cy", "Young", PitcherRole.STARTER));
+            int yearID=1927;
+            String teamID="NYA";
+            pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
+/*            pitcherList.add(new Pitcher ("Cy", "Young", PitcherRole.STARTER));
             pitcherList.add(new Pitcher ("Pete", "Alexander", PitcherRole.STARTER));
             pitcherList.add(new Pitcher ("Jack", "Chesbro", PitcherRole.STARTER));
             pitcherList.add(new Pitcher ("Three-Finger", "Brown", PitcherRole.RELIEVER));
-            pitcherList.add(new Pitcher ("Dennis", "Eckersley", PitcherRole.CLOSER));
+            pitcherList.add(new Pitcher ("Dennis", "Eckersley", PitcherRole.CLOSER));*/
         } else {
-            pitcherList.add(new Pitcher ("Christy", "Mathewson", PitcherRole.STARTER));
+            String teamID="PHA";
+            int yearID=1927;
+            pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
+/*            pitcherList.add(new Pitcher ("Christy", "Mathewson", PitcherRole.STARTER));
             pitcherList.add(new Pitcher ("Greg", "Maddux", PitcherRole.STARTER));
             pitcherList.add(new Pitcher ("John", "Smoltz", PitcherRole.STARTER));
             pitcherList.add(new Pitcher ("Catfish", "Hunter", PitcherRole.RELIEVER));
-            pitcherList.add(new Pitcher ("Mariano", "Rivera", PitcherRole.CLOSER));
+            pitcherList.add(new Pitcher ("Mariano", "Rivera", PitcherRole.CLOSER));*/
         }
 
-        for (Pitcher pitcher : pitcherList) {
-            pitcher.getPitcherStats().setInningsPitched(200);
-            pitcher.getPitcherStats().setHitsAllowed(210);
-            pitcher.getPitcherStats().setHomeRunsAllowed(15);
-            pitcher.getPitcherStats().setWalksAllowed(50);
-            pitcher.getPitcherStats().setStrikeOutsAllowed(80);
-            pitcher.getPitcherStats().calculatePitcherProbabilities();
-        }
+/*        for (Pitcher hurler : pitcherList) {
+            hurler.getPitcherStats().setInningsPitched(200);
+            hurler.getPitcherStats().setHitsAllowed(210);
+            hurler.getPitcherStats().setHomeRunsAllowed(15);
+            hurler.getPitcherStats().setWalksAllowed(50);
+            hurler.getPitcherStats().setStrikeOutsAllowed(80);
+            hurler.getPitcherStats().calculatePitcherProbabilities();
+        }*/
         return pitcherList;
+    }
+
+    Pitcher findStartingPitcher(List<Pitcher> pitchingTeam)
+    {
+        for (Pitcher pitcher : pitchingTeam) {
+            if (pitcher.isAvailable) {
+                pitcher.setAvailable(false);
+                return pitcher;
+            }
+        }
+        return null;
     }
 }
 

@@ -4,6 +4,7 @@ import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Database {
     // JDBC driver name and database URL
@@ -34,6 +35,7 @@ public class Database {
             createPgbsTeams(stmt);
 
             int yearID = 1927;
+            String lgID="AL";
             insertPgbsBatters(conn, yearID);
             insertPgbsPitchers(conn, yearID);
             insertPgbsFielders(conn, yearID);
@@ -626,10 +628,13 @@ public class Database {
         statement.executeUpdate();
     }
 
-    public static List<Batter> selectBatters(String teamID, int yearID, Batter batter) {
+    static List<Batter> selectBatters(String teamID, int yearID, Batter batter) throws SQLException,
+            InstantiationException, ClassNotFoundException
+    {
         Connection conn = null;
 
         List<Batter> batters = new ArrayList<>();
+
         try {
             // Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -640,9 +645,9 @@ public class Database {
             PreparedStatement stmt;
             stmt = conn.prepareStatement("SELECT * from pgbs_batters " +
                     " where teamID=? " +
-                    " and yearID=?" +
-                    " order by AB desc" +
-                    " limit 9");
+                    " and yearID=? " +
+                    " and AB > 10" +
+                    " order by AB desc");
             stmt.setString(1, teamID);
             stmt.setInt(2, yearID);
 
@@ -682,6 +687,7 @@ public class Database {
                 batter.getBatterStats().setCaughtStealing(rs.getInt("CS"));
                 batter.getBatterStats().setWalks(rs.getInt("BB"));
                 batter.getBatterStats().setStrikeOuts(rs.getInt("SO"));
+                batter.setPlayerKey(rs.getInt("playerKey"));
 
 /*                batter.getBatterStats().setIntentionalWalks(Integer.parseInt(rs.getString("IBB")));
                 batter.getBatterStats().setHitByPitch(Integer.parseInt(rs.getString("HBP")));
@@ -700,29 +706,369 @@ public class Database {
 
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        String[] positions = new String[]
-                {
-                        "CATCHER", "FIRST_BASE", "SECOND_BASE", "THIRD_BASE", "SHORTSTOP",
-                        "LEFT_FIELD", "CENTER_FIELD", "RIGHT_FIELD", "DESIGNATED_HITTER"
-                };
-        for (String position : positions)
-        {
-            for (Batter hitter : batters)
-            {
-                if (hitter.getPosition() == null)
-                {
-                    hitter.setPosition(position);
-                    break;
-                }
-            }
         }
         return batters;
     }
+
+    static List<Pitcher> selectPitchers(String teamID, int yearID, Pitcher pitcher) throws InstantiationException,
+            SQLException, ClassNotFoundException
+    {
+        Connection conn = null;
+
+        List<Pitcher> pitchers = new ArrayList<>();
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT * from pgbs_pitchers " +
+                    " where teamID=? " +
+                    " and yearID=?" +
+                    " order by IPouts desc");
+            stmt.setString(1, teamID);
+            stmt.setInt(2, yearID);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                pitcher = new Pitcher();
+                // Retrieve by column name
+                pitcher.setNameFirst(rs.getString("nameFirst"));
+                pitcher.setNameLast(rs.getString("nameLast"));
+                // Sets Hands based on bats
+                if (rs.getString("throws") == "R")
+                {
+                    pitcher.setPitchingArm("R");
+                } else if (rs.getString("throws") == "L")
+                {
+                    pitcher.setPitchingArm("L");
+                }
+
+                pitcher.setPlayerId(rs.getString("playerID"));
+                pitcher.setYearID(rs.getInt("yearID"));
+                pitcher.setStint(rs.getInt("stint"));
+                pitcher.setTeamID(rs.getString("teamID"));
+                pitcher.getPitcherStats().setWins(rs.getInt("W"));
+                pitcher.getPitcherStats().setLosses(rs.getInt("L"));
+                pitcher.getPitcherStats().setGamesPlayed(rs.getInt("G"));
+                pitcher.getPitcherStats().setGamesStarted(rs.getInt("GS"));
+                pitcher.getPitcherStats().setCompleteGames(rs.getInt("CG"));
+                pitcher.getPitcherStats().setShutOuts(rs.getInt("SHO"));
+                pitcher.getPitcherStats().setSaves(rs.getInt("SV"));
+                pitcher.getPitcherStats().setiPouts(rs.getInt("IPouts"));
+                pitcher.getPitcherStats().setHitsAllowed(rs.getInt("H"));
+                pitcher.getPitcherStats().setEarnedRuns(rs.getInt("ER"));
+                pitcher.getPitcherStats().setHomeRunsAllowed(rs.getInt("HR"));
+                pitcher.getPitcherStats().setWalksAllowed(rs.getInt("BB"));
+                pitcher.getPitcherStats().setStrikeOutsAllowed(rs.getInt("SO"));
+                pitcher.getPitcherStats().setEra(rs.getInt("ERA"));
+                if (Objects.equals(rs.getString("IBB"), ""))
+                {
+                    pitcher.getPitcherStats().setIntentionalWalksAllowed(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setIntentionalWalksAllowed(Integer.parseInt(rs.getString("IBB")));
+                }
+                if (Objects.equals(rs.getString("WP"), ""))
+                {
+                    pitcher.getPitcherStats().setWildPitches(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setWildPitches(Integer.parseInt(rs.getString("WP")));
+                }
+                if (Objects.equals(rs.getString("HBP"), ""))
+                {
+                    pitcher.getPitcherStats().setHitBatters(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setHitBatters(Integer.parseInt(rs.getString("HBP")));
+                }
+                pitcher.getPitcherStats().setBalks(rs.getInt("BK"));
+                if (Objects.equals(rs.getString("BFP"), ""))
+                {
+                    pitcher.getPitcherStats().setBattersFaced(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setBattersFaced(Integer.parseInt(rs.getString("BFP")));
+                }
+                if (Objects.equals(rs.getString("GF"), ""))
+                {
+                    pitcher.getPitcherStats().setGamesFinished(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setGamesFinished(Integer.parseInt(rs.getString("GF")));
+                }
+                pitcher.getPitcherStats().setRuns(rs.getInt("R"));
+                if (Objects.equals(rs.getString("SH"), ""))
+                {
+                    pitcher.getPitcherStats().setSacrificeFlies(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setSacrificeFlies(Integer.parseInt(rs.getString("SF")));
+                }
+                if (Objects.equals(rs.getString("SF"), ""))
+                {
+                    pitcher.getPitcherStats().setSacrificeFlies(0);
+                } else
+                {
+                    pitcher.getPitcherStats().setSacrificeFlies(Integer.parseInt(rs.getString("SF")));
+                }
+                if (Objects.equals(rs.getString("GIDP"), ""))
+                {
+                    pitcher.getPitcherStats().setGroundedIntoDoublePlays(0);
+                } else {
+                    pitcher.getPitcherStats().setGroundedIntoDoublePlays(Integer.parseInt(rs.getString("GIDP")));
+                }
+
+                pitcher.setPlayerKey(rs.getInt("playerKey"));
+                pitcher.getPitcherStats().calculatePitcherProbabilities();
+                pitchers.add(pitcher);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return pitchers;
+    }
+
+    static List<Fielder> selectFielders(String teamID, int yearID, Fielder fielder) throws InstantiationException,
+            SQLException, ClassNotFoundException
+    {
+        Connection conn = null;
+
+        List<Fielder> fielders = new ArrayList<>();
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT * from pgbs_fielders " +
+                    " where teamID=? " +
+                    " and yearID=?" +
+                    " order by G desc");
+            stmt.setString(1, teamID);
+            stmt.setInt(2, yearID);
+
+            ResultSet rs = stmt.executeQuery();
+
+            // Extract data from result set
+            while (rs.next()) {
+                fielder = new Fielder();
+                // Retrieve by column name
+                fielder.setNameFirst(rs.getString("nameFirst"));
+                fielder.setNameLast(rs.getString("nameLast"));
+                fielder.setTeamID(rs.getString("teamID"));
+                fielder.setPlayerId(rs.getString("playerID"));
+                fielder.getFielderStats().setGamesPlayed(rs.getInt("G"));
+                if (Objects.equals(rs.getString("GS"), ""))
+                {
+                    fielder.getFielderStats().setGamesStarted(0);
+                } else
+                {
+                    fielder.getFielderStats().setGamesStarted(Integer.parseInt(rs.getString("GS")));
+
+                }
+                if (Objects.equals(rs.getString("innOuts"), ""))
+                {
+                    fielder.getFielderStats().setInningOuts(0);
+                } else
+                {
+                    fielder.getFielderStats().setInningOuts(Integer.parseInt(rs.getString("innOuts")));
+
+                }
+                fielder.getFielderStats().setPutOuts(rs.getInt("PO"));
+                fielder.getFielderStats().setAssists(rs.getInt("A"));
+                fielder.getFielderStats().setErrors(rs.getInt("E"));
+                fielder.getFielderStats().setDoublePlays(rs.getInt("DP"));
+                if (Objects.equals(rs.getString("PB"), ""))
+                {
+                    fielder.getFielderStats().setPassedBalls(0);
+                } else
+                {
+                    fielder.getFielderStats().setPassedBalls(Integer.parseInt(rs.getString("PB")));
+
+                }
+                if (Objects.equals(rs.getString("WP"), ""))
+                {
+                    fielder.getFielderStats().setWildPitches(0);
+                } else
+                {
+                    fielder.getFielderStats().setWildPitches(Integer.parseInt(rs.getString("WP")));
+
+                }
+                if (Objects.equals(rs.getString("SB"), ""))
+                {
+                    fielder.getFielderStats().setStolenBases(0);
+                } else
+                {
+                    fielder.getFielderStats().setStolenBases(Integer.parseInt(rs.getString("SB")));
+
+                }
+                if (Objects.equals(rs.getString("CS"), ""))
+                {
+                    fielder.getFielderStats().setCaughtStealing(0);
+                } else
+                {
+                    fielder.getFielderStats().setCaughtStealing(Integer.parseInt(rs.getString("CS")));
+
+                }
+                if (Objects.equals(rs.getString("ZR"), ""))
+                {
+                    fielder.getFielderStats().setZoneRating(0);
+                } else
+                {
+                    fielder.getFielderStats().setZoneRating(Integer.parseInt(rs.getString("ZR")));
+
+                }
+                fielder.setPlayerKey(rs.getInt("playerKey"));
+
+                fielder.setPosition(InPlayPosition.get(rs.getString("POS")));
+
+                fielders.add(fielder);
+
+            }
+            rs.close();
+            conn.close();
+            stmt.close();
+
+            } catch (IllegalAccessException e1) {
+            e1.printStackTrace();
+        }
+        return fielders;
+    }
+
+    static League selectTeamStats(int yearID, String lgID, League league) throws InstantiationException, SQLException,
+            ClassNotFoundException
+    {
+        Connection conn = null;
+       // String lgID="AL";
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT sum(AB) as abcnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamAb = rs.getInt("abcnt");
+                league.getLeagueStats().setAtBats(teamAb);
+            }
+
+            stmt = conn.prepareStatement("SELECT sum(H) as hcnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamHits = rs.getInt("hcnt");
+                league.getLeagueStats().setHits(teamHits);
+            }
+
+            stmt = conn.prepareStatement("SELECT sum(2B) as dbcnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamDoubles = rs.getInt("dbcnt");
+                league.getLeagueStats().setDoubles(teamDoubles);
+
+            }
+
+            stmt = conn.prepareStatement("SELECT sum(3B) as tcnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamTriples = rs.getInt("tcnt");
+
+                league.getLeagueStats().setTriples(teamTriples);
+            }
+
+            stmt = conn.prepareStatement("SELECT sum(HR) as hrcnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamHr = rs.getInt("hrcnt");
+
+                league.getLeagueStats().setHomeRuns(teamHr);
+            }
+
+            stmt = conn.prepareStatement("SELECT sum(BB) as bbcnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamBb = rs.getInt("bbcnt");
+
+                league.getLeagueStats().setWalks(teamBb);
+            }
+
+            stmt = conn.prepareStatement("SELECT sum(SO) as socnt from teams" +
+                    " where yearID=? and lgID=?");
+            stmt.setInt(1, yearID);
+            stmt.setString(2, lgID);
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                int teamSo = rs.getInt("socnt");
+
+                league.getLeagueStats().setStrikeOuts(teamSo);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            double leagueSingles = league.getLeagueStats().getHits() - league.getLeagueStats().getDoubles() -
+                    league.getLeagueStats().getTriples() - league.getLeagueStats().getHomeRuns();
+
+            league.getLeagueStats().setSingles(leagueSingles);
+            league.getLeagueStats().setSinglePercentage(league.getLeagueStats().getSingles() / league.getLeagueStats().getAtBats());
+            league.getLeagueStats().setDoublePercentage(league.getLeagueStats().getDoubles() / league.getLeagueStats().getAtBats());
+            league.getLeagueStats().setTriplePercentage(league.getLeagueStats().getTriples() / league.getLeagueStats().getAtBats());
+            league.getLeagueStats().setHomeRunPercentage(league.getLeagueStats().getHomeRuns() / league.getLeagueStats().getAtBats());
+            league.getLeagueStats().setWalkPercentage(league.getLeagueStats().getWalks() / league.getLeagueStats().getAtBats());
+            league.getLeagueStats().setStrikeOutPercentage(league.getLeagueStats().getStrikeOuts() / league.getLeagueStats().getAtBats());
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return league;
+    }
 }
+

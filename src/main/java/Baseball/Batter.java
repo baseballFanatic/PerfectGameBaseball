@@ -1,35 +1,70 @@
 package Baseball;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Batter extends Player {
-    private String round, battingOrder, position, teamID, lgID;
+public class Batter extends Player implements Comparable<Batter> {
+    private String round, battingOrder, teamID, lgID, pos;
     private Hands bats;
     private BatterStats batterStats = new BatterStats();
     private boolean availability;
-    private int awardPoints, stint;
+    private int awardPoints, stint, playerKey, fielderKey;
     private Base firstBase = new Base();
     private Base secondBase = new Base();
     private Base thirdBase = new Base();
     private Pitcher pitcherReachedOn;
+    private InPlayPosition position;
 
     public Batter() {
 
     }
 
-    private Batter(String nameFirst, String nameLast, Hands bats, String position) {
+    private Batter(String nameFirst, String nameLast, Hands bats, InPlayPosition position) {
         this.bats = bats;
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.position = position;
     }
 
+    public String getPos() {
+        return pos;
+    }
+
+    public void setPos(String pos) {
+        this.pos = pos;
+    }
+
+    public void setPosition(InPlayPosition position) {
+        this.position = position;
+    }
+
+    public InPlayPosition getPosition() {
+        return position;
+    }
+
+    public int getPlayerKey() {
+        return playerKey;
+    }
+
+    void setPlayerKey(int playerKey) {
+        this.playerKey = playerKey;
+    }
+
+    public int getFielderKey() {
+        return fielderKey;
+    }
+
+    public void setFielderKey(int fielderKey) {
+        this.fielderKey = fielderKey;
+    }
+
     public String getLgID() {
         return lgID;
     }
 
-    public void setLgID(String lgID) {
+    void setLgID(String lgID) {
         this.lgID = lgID;
     }
 
@@ -45,7 +80,7 @@ public class Batter extends Player {
         return teamID;
     }
 
-    public void setTeamID(String teamID) {
+    void setTeamID(String teamID) {
         this.teamID = teamID;
     }
 
@@ -61,7 +96,7 @@ public class Batter extends Player {
         return stint;
     }
 
-    public void setStint(int stint) {
+    void setStint(int stint) {
         this.stint = stint;
     }
 
@@ -69,7 +104,7 @@ public class Batter extends Player {
         return bats;
     }
 
-    public void setBats(Hands bats) {
+    void setBats(Hands bats) {
         this.bats = bats;
     }
 
@@ -95,14 +130,6 @@ public class Batter extends Player {
 
     public void setBattingOrder(String battingOrder) {
         this.battingOrder = battingOrder;
-    }
-
-    String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
     }
 
     public boolean getAvailability() {
@@ -157,8 +184,8 @@ public class Batter extends Player {
         this.thirdBase = thirdBase;
     }
 
-    List<Batter> getBatterList(boolean visitors) {
-        List<Batter> batterList = new ArrayList<>();
+    List<Batter> getBatterList(boolean visitors) throws ClassNotFoundException, SQLException, InstantiationException {
+        List<Batter> batterList;
         Batter batter = new Batter();
 
         if (visitors) {
@@ -203,11 +230,41 @@ public class Batter extends Player {
         return batterList;
     }
 
-    public Pitcher getPitcherReachedOn() {
+    Pitcher getPitcherReachedOn() {
         return pitcherReachedOn;
     }
 
     void setPitcherReachedOn(Pitcher pitcherReachedOn) {
         this.pitcherReachedOn = pitcherReachedOn;
+    }
+
+    public List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
+        for (Batter batter : batters) {
+            for (Fielder fielder : fielders) {
+                if (Objects.equals(batter.getPlayerId(), fielder.getPlayerId())) {
+                    batter.setPosition(fielder.getPosition());
+                    break;
+                }
+            }
+            if (batter.getPosition() == null) {
+                batter.setPosition(InPlayPosition.DESIGNATED_HITTER);
+            }
+        }
+        return batters;
+    }
+
+    @Override
+    public int compareTo(Batter o) {
+        if(getBatterStats().getBattingAverage() < o.getBatterStats().getBattingAverage())
+        {
+            return 1;
+        } else if (getBatterStats().getBattingAverage() > o.getBatterStats().getBattingAverage())
+        {
+            return -1;
+        } else
+        {
+            return 0;
+        }
+
     }
 }

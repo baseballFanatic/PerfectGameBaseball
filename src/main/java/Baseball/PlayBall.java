@@ -1,6 +1,8 @@
 package Baseball;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.System.out;
 
@@ -9,7 +11,7 @@ public class PlayBall {
     private boolean gameOver = false;
     private boolean visitors = true;
 
-    public PlayBall() {
+    public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException {
         Team visitorTeam = new Team();
         Team homeTeam = new Team();
         League league = new League();
@@ -19,33 +21,53 @@ public class PlayBall {
         Pitcher pitcher = new Pitcher();
 
         List<Batter> visitorBatters = batter.getBatterList(visitors);
-        List<Fielder> visitorFielders = fielder.getFielderList(visitors);
+        List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors);
+        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorFieldersReserves);
         List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors);
+        List<Batter> visitorStartingLineup = batter.matchPositions(visitorBatters, visitorFieldersStarters);
+
 
         setVisitors(false);
 
         List<Batter> homeBatters = batter.getBatterList(visitors);
-        List<Fielder> homeFielders = fielder.getFielderList(visitors);
+        List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors);
+        List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeFieldersReserves);
         List<Pitcher> homePitchers = pitcher.getPitcherList(visitors);
+        List<Batter> homeStartingLineup = batter.matchPositions(homeBatters, homeFieldersStarters);
 
-        pitcher.setVisitorPitcher(visitorPitchers.get(0));
-        pitcher.getVisitorPitcher().setAvailable(false);
-        pitcher.setHomePitcher(homePitchers.get(0));
-        pitcher.getHomePitcher().setAvailable(false);
+        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers));
+        List<Fielder> visitorCompleteStarters = fielder.addPitcherToFielders(visitorFieldersReserves,
+                pitcher.getVisitorPitcher(), visitorFieldersStarters);
+        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers));
+        List<Fielder> homeCompleteStarters = fielder.addPitcherToFielders(homeFieldersReserves,
+                pitcher.getHomePitcher(), homeFieldersStarters);
 
-        league.setLgID("NL");
+        // TODO: Changed this to a Set.  Need to see if this will work everywhere.
+        // TODO: Need to add battingOrder to the lineups.
+        Set<Batter> visitorOptimizedLineUp = lineUp.optimizeLineUp(visitorStartingLineup);
 
-        visitorTeam.setTeamName("AL All-Stars");
-        homeTeam.setTeamName("NL All-Stars");
+        int yearID=1927;
+        String lgID="AL";
+
+        league = Database.selectTeamStats(yearID, lgID, league);
+
+        league.setLgID("AL");
+
+        visitorTeam.setTeamName("1927 NY Yankees");
+        homeTeam.setTeamName("1927 Philadelphia Athletics");
 
         out.printf("%s vs %s%n", visitorTeam.getTeamName(), homeTeam.getTeamName());
+        System.out.println();
+        //TODO: Changed first parameter to Set
+        new DisplayInfo().displayLineUp(visitorOptimizedLineUp, homeStartingLineup, visitorPitchers, homePitchers,
+                visitorFieldersStarters, homeFieldersStarters);
 
         Inning inning = new Inning();
         inning.setInning(1);
 
         while (!isGameOver()) {
-            inning.startInning(league, visitorBatters, homeBatters, visitorTeam, homeTeam, inning, visitorFielders,
-                    homeFielders, lineUp, visitorPitchers, homePitchers, gameOver, pitcher);
+            inning.startInning(league, visitorStartingLineup, homeStartingLineup, visitorTeam, homeTeam, inning, visitorCompleteStarters,
+                    homeCompleteStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher);
             checkGameOver(visitorTeam, homeTeam, gameOver, inning);
             if (inning.isTop()){
                 inning.setTop(false);
@@ -57,7 +79,7 @@ public class PlayBall {
 
         }
 
-        new DisplayInfo().endOfGame(visitorBatters, homeBatters, visitorFielders, homeFielders, visitorPitchers,
+        new DisplayInfo().endOfGame(visitorStartingLineup, homeStartingLineup, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
                 homePitchers, visitorTeam, homeTeam, pitcher);
     }
 
