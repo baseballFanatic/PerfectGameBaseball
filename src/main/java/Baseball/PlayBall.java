@@ -1,6 +1,7 @@
 package Baseball;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -20,31 +21,8 @@ public class PlayBall {
         Fielder fielder = new Fielder();
         Pitcher pitcher = new Pitcher();
 
-        List<Batter> visitorBatters = batter.getBatterList(visitors);
-        List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors);
-        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorFieldersReserves);
-        List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors);
-        List<Batter> visitorStartingLineup = batter.matchPositions(visitorBatters, visitorFieldersStarters);
-
-
-        setVisitors(false);
-
-        List<Batter> homeBatters = batter.getBatterList(visitors);
-        List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors);
-        List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeFieldersReserves);
-        List<Pitcher> homePitchers = pitcher.getPitcherList(visitors);
-        List<Batter> homeStartingLineup = batter.matchPositions(homeBatters, homeFieldersStarters);
-
-        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers));
-        List<Fielder> visitorCompleteStarters = fielder.addPitcherToFielders(visitorFieldersReserves,
-                pitcher.getVisitorPitcher(), visitorFieldersStarters);
-        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers));
-        List<Fielder> homeCompleteStarters = fielder.addPitcherToFielders(homeFieldersReserves,
-                pitcher.getHomePitcher(), homeFieldersStarters);
-
-        // TODO: Changed this to a Set.  Need to see if this will work everywhere.
-        // TODO: Need to add battingOrder to the lineups.
-        Set<Batter> visitorOptimizedLineUp = lineUp.optimizeLineUp(visitorStartingLineup);
+        List<Integer> visitorLineScore = new ArrayList<>();
+        List<Integer> homeLineScore = new ArrayList<>();
 
         int yearID=1927;
         String lgID="AL";
@@ -53,21 +31,59 @@ public class PlayBall {
 
         league.setLgID("AL");
 
+        List<Batter> visitorBatters = batter.getBatterList(visitors);
+        // Selects all fielders available for the team
+        List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors);
+        // Selects starters for all 8 regular positions from the list of fielders available
+        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorFieldersReserves);
+        // Selects all pitchers for the team
+        List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors);
+        // Matches batter to fielder on playerID and assigns the batter to the starting lineup
+        List<Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
+        // Adds a designated hitter to the batter file if home team is AL otherwise adds pitcher
+        //TODO: Need to add in the actual logic to check league
+        List<Batter> visitorBatterFinal = batter.findDesignatedHitter(visitorBatterStarters, visitorBatters);
+
+        setVisitors(false);
+
+        List<Batter> homeBatters = batter.getBatterList(visitors);
+        List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors);
+        List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeFieldersReserves);
+        List<Pitcher> homePitchers = pitcher.getPitcherList(visitors);
+        List<Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
+        List<Batter> homeBatterFinal = batter.findDesignatedHitter(homeBatterStarters, homeBatters);
+
+        // Selects an available starting pitcher
+        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers));
+        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers));
+        // Adds the starting pitcher to the fielding file of starters
+        List<Fielder> visitorCompleteStarters = fielder.addPitcherToFielders(visitorFieldersReserves,
+                pitcher.getVisitorPitcher(), visitorFieldersStarters);
+        List<Fielder> homeCompleteStarters = fielder.addPitcherToFielders(homeFieldersReserves,
+                pitcher.getHomePitcher(), homeFieldersStarters);
+
+        // TODO: Need to see if this will work everywhere.
+        // TODO: Need to add battingOrder to the lineups.
+//       List<Batter> visitorOptimizedLineUp = lineUp.optimizeLineUp(visitorBatterStarters);
+
+
+
         visitorTeam.setTeamName("1927 NY Yankees");
         homeTeam.setTeamName("1927 Philadelphia Athletics");
 
         out.printf("%s vs %s%n", visitorTeam.getTeamName(), homeTeam.getTeamName());
         System.out.println();
         //TODO: Changed first parameter to Set
-        new DisplayInfo().displayLineUp(visitorOptimizedLineUp, homeStartingLineup, visitorPitchers, homePitchers,
+        new DisplayInfo().displayLineUp(visitorBatterFinal, homeBatterFinal, visitorPitchers, homePitchers,
                 visitorFieldersStarters, homeFieldersStarters);
 
         Inning inning = new Inning();
         inning.setInning(1);
 
         while (!isGameOver()) {
-            inning.startInning(league, visitorStartingLineup, homeStartingLineup, visitorTeam, homeTeam, inning, visitorCompleteStarters,
-                    homeCompleteStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher);
+            inning.startInning(league, visitorBatterFinal, homeBatterFinal, visitorTeam, homeTeam, inning, visitorCompleteStarters,
+                    homeCompleteStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
+                    homeLineScore);
             checkGameOver(visitorTeam, homeTeam, gameOver, inning);
             if (inning.isTop()){
                 inning.setTop(false);
@@ -76,11 +92,10 @@ public class PlayBall {
                 inning.setInning(inning.getInning() + 1);
                 new DisplayInfo().endOfInning(visitorTeam, homeTeam, inning);
             }
-
         }
 
-        new DisplayInfo().endOfGame(visitorStartingLineup, homeStartingLineup, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
-                homePitchers, visitorTeam, homeTeam, pitcher);
+        new DisplayInfo().endOfGame(visitorBatterStarters, homeBatterStarters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
+                homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore);
     }
 
     private boolean isGameOver() {

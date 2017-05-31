@@ -65,7 +65,7 @@ class DisplayInfo {
         System.out.printf("End of Inning %s%n", inning.getInning() - 1);
     }
 
-    void displayLineUp(Set<Batter> visitorStartingLineup, List<Batter> homeStartingLineup, List<Pitcher> visitorPitchers,
+    void displayLineUp(List<Batter> visitorStartingLineup, List<Batter> homeStartingLineup, List<Pitcher> visitorPitchers,
                        List<Pitcher> homePitchers, List<Fielder> visitorFielderStarters, List<Fielder> homeFielderStarters)
     {
         System.out.println();
@@ -92,17 +92,18 @@ class DisplayInfo {
         }
         System.out.println("---------------------------------------------------");
         System.out.println();
-        System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K");
+        System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s %10s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K", "Role");
         System.out.println();
         for (Pitcher printedPitcher : visitorPitchers) {
-            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedPitcher.getNameLast(),
+            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s %10s", printedPitcher.getNameLast(),
                     printedPitcher.getPitcherStats().getBattersFaced(),
                     printedPitcher.getPitcherStats().getiPouts(),
                     printedPitcher.getPitcherStats().getHitsAllowed(),
                     printedPitcher.getPitcherStats().getRuns(),
                     printedPitcher.getPitcherStats().getEarnedRuns(),
                     printedPitcher.getPitcherStats().getWalksAllowed(),
-                    printedPitcher.getPitcherStats().getStrikeOutsAllowed());
+                    printedPitcher.getPitcherStats().getStrikeOutsAllowed(),
+                    printedPitcher.getPitcherRole());
             System.out.println();
         }
         System.out.println("---------------------------------------------------");
@@ -138,17 +139,18 @@ class DisplayInfo {
         }
         System.out.println("---------------------------------------------------");
         System.out.println();
-        System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K");
+        System.out.printf("%10s %2s %2s %3s %2s %2s %2s %2s %10s", "Name", "BF", "IPO", "H", "R", "ER", "BB", "K", "Role");
         System.out.println();
         for (Pitcher printedPitcher : homePitchers) {
-            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedPitcher.getNameLast(),
+            System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s %10s", printedPitcher.getNameLast(),
                     printedPitcher.getPitcherStats().getBattersFaced(),
                     printedPitcher.getPitcherStats().getiPouts(),
                     printedPitcher.getPitcherStats().getHitsAllowed(),
                     printedPitcher.getPitcherStats().getRuns(),
                     printedPitcher.getPitcherStats().getEarnedRuns(),
                     printedPitcher.getPitcherStats().getWalksAllowed(),
-                    printedPitcher.getPitcherStats().getStrikeOutsAllowed());
+                    printedPitcher.getPitcherStats().getStrikeOutsAllowed(),
+                    printedPitcher.getPitcherRole());
             System.out.println();
         }
         System.out.println("---------------------------------------------------");
@@ -169,11 +171,34 @@ class DisplayInfo {
 
     void endOfGame(List<Batter> visitorBatters, List<Batter> homeBatters, List<Fielder> visitorFielders,
                    List<Fielder> homeFielders, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers,
-                   Team visitorTeam, Team homeTeam, Pitcher pitcher) {
+                   Team visitorTeam, Team homeTeam, Pitcher pitcher, List<Integer> visitorLineScore,
+                   List<Integer> homeLineScore) {
         System.out.println();
         System.out.printf("BALLGAME!%n");
         System.out.println();
         System.out.println("---------------------------------------------------");
+        System.out.println();
+        System.out.printf("%3s: %2s %2s %2s %2s %2s %2s %2s %2s %2s %2s     %2s %2s %2s",
+                "Team", "1", "2", "3", "4", "5", "6", "7", "8", "9", "X", "R", "H", "E");
+        System.out.println();
+        //TODO Fix this so it isn't hard coded
+        //TODO Need to add in what to do about displaying extra innings
+        System.out.printf("NYA   ");
+        for (Integer score : visitorLineScore)
+        {
+            System.out.printf("%2s ", score);
+        }
+        System.out.printf("       %2s %2s %2s", visitorTeam.getTeamStats().getGameRuns(),
+            visitorTeam.getTeamStats().getGameHits(), visitorTeam.getTeamStats().getGameErrors());
+        System.out.println();
+        System.out.printf("PHA   ");
+        for (Integer hScore : homeLineScore)
+        {
+            System.out.printf("%2s ", hScore);
+        }
+        System.out.printf("       %2s %2s %2s", homeTeam.getTeamStats().getGameRuns(),
+                homeTeam.getTeamStats().getGameHits(), homeTeam.getTeamStats().getGameErrors());
+        System.out.println();
         System.out.println();
         if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns()) {
             System.out.printf("Winning Pitcher: %s%n", pitcher.getHomeWinningPitcher().getNameLast());

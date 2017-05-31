@@ -171,31 +171,14 @@ public class Fielder extends Player {
         if (visitors) {
             int yearID=1927;
             String teamID="NYA";
+            // Selects all fielders for the visitor team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID, fielder);
-/*
-            fielderList.add(new Fielder("Ty", "Cobb", InPlayPosition.CENTER_FIELD));
-            fielderList.add(new Fielder("Rickey", "Henderson", InPlayPosition.LEFT_FIELD));
-            fielderList.add(new Fielder("Babe", "Ruth", InPlayPosition.RIGHT_FIELD));
-            fielderList.add(new Fielder("Lou", "Gehrig", InPlayPosition.FIRST_BASE));
-            fielderList.add(new Fielder("Ozzie", "Smith", InPlayPosition.SHORTSTOP));
-            fielderList.add(new Fielder("Mike", "Schmidt", InPlayPosition.THIRD_BASE));
-            fielderList.add(new Fielder("Napoleon", "Lajoie", InPlayPosition.SECOND_BASE));
-            fielderList.add(new Fielder("Yogi", "Berra", InPlayPosition.CATCHER));
-            fielderList.add(new Fielder("Christy", "Mathewson", InPlayPosition.PITCHER));*/
+
         } else {
             int yearID=1927;
             String teamID="PHA";
+            // Selects all fielders for the home team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID, fielder);
-
-/*            fielderList.add(new Fielder ("Tris", "Speaker", InPlayPosition.CENTER_FIELD));
-            fielderList.add(new Fielder ("Charlie", "Gehringer", InPlayPosition.SECOND_BASE));
-            fielderList.add(new Fielder ("Johnny", "Bench", InPlayPosition.CATCHER));
-            fielderList.add(new Fielder ("Mel", "Ott", InPlayPosition.RIGHT_FIELD));
-            fielderList.add(new Fielder ("Harry", "Heilman", InPlayPosition.LEFT_FIELD));
-            fielderList.add(new Fielder ("Hank", "Greenberg", InPlayPosition.FIRST_BASE));
-            fielderList.add(new Fielder ("Joe", "Cronin", InPlayPosition.SHORTSTOP));
-            fielderList.add(new Fielder ("Brooks", "Robinson", InPlayPosition.THIRD_BASE));
-            fielderList.add(new Fielder ("Cy", "Young", InPlayPosition.PITCHER));*/
         }
 
         for (Fielder player : fielderList) {

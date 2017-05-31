@@ -1,8 +1,6 @@
 package Baseball;
 
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 class LineUp {
     private int battingOrder;
@@ -36,13 +34,52 @@ class LineUp {
         this.homeBattingNumber = homeBattingNumber;
     }
 
-    Set<Batter> optimizeLineUp(List<Batter> lineUp)
+    List<Batter> optimizeLineUp(List<Batter> lineUp)
     {
-        Set<Batter> set = new TreeSet<Batter>();
+        List<Batter> optimizedLineUp = new ArrayList<>();
 
-        set.addAll(lineUp);
+        lineUp.sort(new BatterChainedComparator(
+                new BatterStolenBasesComparator()
+        ));
 
-        return set;
+        for (int o = 0; o < 1; o++)
+        {
+            optimizedLineUp.add(lineUp.get(o));
+            lineUp.get(o).setBattingOrder(1);
+            lineUp.remove(lineUp.get(o));
+        }
+
+        List<Batter> lineUpOba = lineUp;
+
+        lineUpOba.sort(new BatterChainedComparator(
+                new BatterOnBaseAverageComparator()
+        ));
+
+        for (Batter batter : lineUpOba)
+        {
+            if (batter.getBatterStats().getHomeRuns() < 25)
+            {
+                optimizedLineUp.add(batter);
+                batter.setBattingOrder(2);
+                lineUpOba.remove(batter);
+                break;
+            }
+        }
+
+        List<Batter> lineUpHr = lineUpOba;
+
+        lineUpHr.sort(new BatterChainedComparator(
+                new BatterHomeRunsComparator()
+        ));
+
+        for (int o = 3; o < 10; o++)
+        {
+            optimizedLineUp.add(lineUpHr.get(o));
+            lineUpHr.get(o).setBattingOrder(o);
+            lineUpHr.remove(lineUpHr.get(o));
+        }
+
+        return optimizedLineUp;
     }
 }
 

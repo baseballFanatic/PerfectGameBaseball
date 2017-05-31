@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Batter extends Player implements Comparable<Batter> {
-    private String round, battingOrder, teamID, lgID, pos;
+    private String round, teamID, lgID, pos;
+    private int battingOrder;
     private Hands bats;
     private BatterStats batterStats = new BatterStats();
     private boolean availability;
@@ -124,11 +125,11 @@ public class Batter extends Player implements Comparable<Batter> {
         this.round = round;
     }
 
-    public String getBattingOrder() {
+    public int getBattingOrder() {
         return battingOrder;
     }
 
-    public void setBattingOrder(String battingOrder) {
+    void setBattingOrder(int battingOrder) {
         this.battingOrder = battingOrder;
     }
 
@@ -193,40 +194,11 @@ public class Batter extends Player implements Comparable<Batter> {
             String teamID="NYA";
             batterList = Database.selectBatters(teamID, yearID, batter);
 
-/*            batterList.add(new Batter("Rickey", "Henderson", Hands.LEFT, "LEFT_FIELD"));
-            batterList.add(new Batter("Ty", "Cobb", Hands.LEFT, "CENTER_FIELD"));
-            batterList.add(new Batter("Babe", "Ruth", Hands.LEFT, "RIGHT_FIELD"));
-            batterList.add(new Batter("Lou", "Gehrig", Hands.LEFT, "FIRST_BASE"));
-            batterList.add(new Batter("Hank", "Aaron", Hands.RIGHT, "SHORTSTOP"));
-            batterList.add(new Batter("Mike", "Schmidt", Hands.RIGHT, "THIRD_BASE"));
-            batterList.add(new Batter("Joe", "Jackson", Hands.LEFT, "SECOND_BASE"));
-            batterList.add(new Batter("Yogi", "Berra", Hands.RIGHT, "CATCHER"));
-            batterList.add(new Batter("Honus", "Wagner", Hands.RIGHT, "PITCHER"));*/
         } else {
             int yearID=1927;
             String teamID="PHA";
             batterList = Database.selectBatters(teamID, yearID, batter);
-/*            batterList.add(new Batter ("Tris", "Speaker", Hands.RIGHT, "CENTER_FIELD"));
-            batterList.add(new Batter ("Charlie", "Gehringer", Hands.LEFT, "SECOND_BASE"));
-            batterList.add(new Batter ("Johnny", "Bench", Hands.RIGHT, "CATCHER"));
-            batterList.add(new Batter ("Mel", "Ott", Hands.LEFT, "RIGHT_FIELD"));
-            batterList.add(new Batter ("Harry", "Heilmann", Hands.LEFT, "LEFT_FIELD"));
-            batterList.add(new Batter ("Hank", "Greenberg", Hands.RIGHT, "FIRST_BASE"));
-            batterList.add(new Batter ("Joe", "Cronin", Hands.RIGHT, "SHORTSTOP"));
-            batterList.add(new Batter ("Brooks", "Robinson", Hands.RIGHT, "THIRD_BASE"));
-            batterList.add(new Batter ("Paul", "Waner", Hands.LEFT, "PITCHER"));*/
         }
-
-/*        for (Batter batter : batterList) {
-            batter.getBatterStats().setAtBats(482);
-            batter.getBatterStats().setHits(147);
-            batter.getBatterStats().setDoubles(20);
-            batter.getBatterStats().setTriples(4);
-            batter.getBatterStats().setHomeRuns(12);
-            batter.getBatterStats().setWalks(41);
-            batter.getBatterStats().setStrikeOuts(71);
-            batter.getBatterStats().setSpeedRating(7);
-            batter.getBatterStats().calculateBatterProbabilities();*/
         return batterList;
     }
 
@@ -239,18 +211,24 @@ public class Batter extends Player implements Comparable<Batter> {
     }
 
     public List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
+        //int b = 0;
+        List<Batter> matchedBatters = new ArrayList<>();
+
         for (Batter batter : batters) {
             for (Fielder fielder : fielders) {
                 if (Objects.equals(batter.getPlayerId(), fielder.getPlayerId())) {
                     batter.setPosition(fielder.getPosition());
-                    break;
+                    if (matchedBatters.size() < 10)
+                    //b++;
+                    {
+                        batter.getBatterStats().setGameGamePlayed(1);
+                        matchedBatters.add(batter);
+                        break;
+                    }
                 }
             }
-            if (batter.getPosition() == null) {
-                batter.setPosition(InPlayPosition.DESIGNATED_HITTER);
-            }
         }
-        return batters;
+        return matchedBatters;
     }
 
     @Override
@@ -266,5 +244,18 @@ public class Batter extends Player implements Comparable<Batter> {
             return 0;
         }
 
+    }
+
+    public List<Batter> findDesignatedHitter(List<Batter> batterStarters, List<Batter> teamBatters) {
+        for (Batter batter : teamBatters)
+        {
+            if (batter.getBatterStats().getGameGamePlayed() == 0 && batterStarters.size() < 9)
+            {
+                batter.setPosition(InPlayPosition.DESIGNATED_HITTER);
+                batterStarters.add(batter);
+                break;
+            }
+        }
+        return batterStarters;
     }
 }

@@ -20,7 +20,7 @@ public class Pitcher extends Player {
         return teamID;
     }
 
-    public void setTeamID(String teamID) {
+    void setTeamID(String teamID) {
         this.teamID = teamID;
     }
 
@@ -36,7 +36,7 @@ public class Pitcher extends Player {
         return yearID;
     }
 
-    public void setYearID(int yearID) {
+    void setYearID(int yearID) {
         this.yearID = yearID;
     }
 
@@ -44,7 +44,7 @@ public class Pitcher extends Player {
         return stint;
     }
 
-    public void setStint(int stint) {
+    void setStint(int stint) {
         this.stint = stint;
     }
 
@@ -60,7 +60,7 @@ public class Pitcher extends Player {
         return playerKey;
     }
 
-    public void setPlayerKey(int playerKey) {
+    void setPlayerKey(int playerKey) {
         this.playerKey = playerKey;
     }
 
@@ -68,7 +68,7 @@ public class Pitcher extends Player {
         return pitchingArm;
     }
 
-    public void setPitchingArm(String pitchingArm) {
+    void setPitchingArm(String pitchingArm) {
         this.pitchingArm = pitchingArm;
     }
 
@@ -105,16 +105,13 @@ public class Pitcher extends Player {
     }
 
     boolean needReliever(Pitcher pitcher, Inning inning, Team visitorTeam, Team homeTeam, List<Pitcher> pitchingTeam) {
-        if (pitcher.getPitcherStats().getGameRunsAllowed() > 4) {
-            System.out.println("Would bring in a reliever.");
-            return true;
-        }
-        return false;
+        //TODO: need to add more logic to this to take into account different situations.
+        return pitcher.getPitcherStats().getGameRunsAllowed() > 4;
     }
 
     Pitcher getReliever(List<Pitcher> pitchingTeam) {
         for (Pitcher pitcher : pitchingTeam) {
-            if (pitcher.isAvailable) {
+            if (pitcher.isAvailable && pitcher.getPitcherRole().equals(PitcherRole.RELIEVER)) {
                 pitcher.setAvailable(false);
                 System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
                 return pitcher;
@@ -187,11 +184,11 @@ public class Pitcher extends Player {
         }
     }
 
-    public PitcherRole getPitcherRole() {
+    PitcherRole getPitcherRole() {
         return pitcherRole;
     }
 
-    public void setPitcherRole(PitcherRole pitcherRole) {
+    void setPitcherRole(PitcherRole pitcherRole) {
         this.pitcherRole = pitcherRole;
     }
 
@@ -275,37 +272,18 @@ public class Pitcher extends Player {
             int yearID=1927;
             String teamID="NYA";
             pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
-/*            pitcherList.add(new Pitcher ("Cy", "Young", PitcherRole.STARTER));
-            pitcherList.add(new Pitcher ("Pete", "Alexander", PitcherRole.STARTER));
-            pitcherList.add(new Pitcher ("Jack", "Chesbro", PitcherRole.STARTER));
-            pitcherList.add(new Pitcher ("Three-Finger", "Brown", PitcherRole.RELIEVER));
-            pitcherList.add(new Pitcher ("Dennis", "Eckersley", PitcherRole.CLOSER));*/
         } else {
             String teamID="PHA";
             int yearID=1927;
             pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
-/*            pitcherList.add(new Pitcher ("Christy", "Mathewson", PitcherRole.STARTER));
-            pitcherList.add(new Pitcher ("Greg", "Maddux", PitcherRole.STARTER));
-            pitcherList.add(new Pitcher ("John", "Smoltz", PitcherRole.STARTER));
-            pitcherList.add(new Pitcher ("Catfish", "Hunter", PitcherRole.RELIEVER));
-            pitcherList.add(new Pitcher ("Mariano", "Rivera", PitcherRole.CLOSER));*/
         }
-
-/*        for (Pitcher hurler : pitcherList) {
-            hurler.getPitcherStats().setInningsPitched(200);
-            hurler.getPitcherStats().setHitsAllowed(210);
-            hurler.getPitcherStats().setHomeRunsAllowed(15);
-            hurler.getPitcherStats().setWalksAllowed(50);
-            hurler.getPitcherStats().setStrikeOutsAllowed(80);
-            hurler.getPitcherStats().calculatePitcherProbabilities();
-        }*/
         return pitcherList;
     }
 
     Pitcher findStartingPitcher(List<Pitcher> pitchingTeam)
     {
         for (Pitcher pitcher : pitchingTeam) {
-            if (pitcher.isAvailable) {
+            if (pitcher.isAvailable && pitcher.pitcherRole.equals(PitcherRole.STARTER)) {
                 pitcher.setAvailable(false);
                 return pitcher;
             }

@@ -11,10 +11,18 @@ public class TeamStats {
             sCaughtStealing, sHitByPitch, sAssists, sErrors, sPutOuts, sDoublePlays, sRunnersThrownOut, sPlateAppearances,
             sInningsPitched, sHitsAllowed, sHomeRunsAllowed, sWalksAllowed, sStrikeOutsPitcher, sSaves, sShutOuts, sCompleteGames,
             sHitBatters, sRunsAllowed, seasonWins, seasonLosses, seasonGames, homeWins, homeLosses, awayWins, awayLosses,
-            gameRuns, gameHits, gameErrors, gameDoublePlays, gameLeftOnBase;
+            gameRuns, gameHits, gameErrors, gameDoublePlays, gameLeftOnBase, inningRuns;
     private double fieldingPercentage, era;
 
     TeamStats() {
+    }
+
+    int getInningRuns() {
+        return inningRuns;
+    }
+
+    void setInningRuns(int inningRuns) {
+        this.inningRuns = inningRuns;
     }
 
     int getGameLeftOnBase() {
@@ -702,6 +710,16 @@ public class TeamStats {
             homeTeam.getTeamStats().setGameDoublePlays(homeTeam.getTeamStats().getGameDoublePlays() + 1);
         } else {
             visitorTeam.getTeamStats().setGameDoublePlays(visitorTeam.getTeamStats().getGameDoublePlays() + 1);
+        }
+    }
+
+    void updateTeamRuns(Inning inning, Team visitorTeam, Team homeTeam) {
+        if (inning.isTop()) {
+            visitorTeam.getTeamStats().setGameRuns((visitorTeam.getTeamStats().getGameRuns() + 1));
+            visitorTeam.getTeamStats().setInningRuns(visitorTeam.getTeamStats().getInningRuns() + 1);
+        } else {
+            homeTeam.getTeamStats().setGameRuns(homeTeam.getTeamStats().getGameRuns() + 1);
+            homeTeam.getTeamStats().setInningRuns(homeTeam.getTeamStats().getInningRuns() + 1);
         }
     }
 

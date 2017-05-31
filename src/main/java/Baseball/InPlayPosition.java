@@ -1,6 +1,7 @@
 package Baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public enum InPlayPosition {
@@ -33,9 +34,7 @@ public enum InPlayPosition {
     public static List<InPlayPosition> getList()
     {
         List<InPlayPosition> result = new ArrayList<>();
-        for (InPlayPosition position : values()) {
-            result.add(position);
-        }
+        Collections.addAll(result, values());
         return result;
     }
 }

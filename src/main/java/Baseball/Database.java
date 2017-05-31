@@ -728,7 +728,7 @@ public class Database {
             stmt = conn.prepareStatement("SELECT * from pgbs_pitchers " +
                     " where teamID=? " +
                     " and yearID=?" +
-                    " order by IPouts desc");
+                    " order by GS desc");
             stmt.setString(1, teamID);
             stmt.setInt(2, yearID);
 
@@ -831,6 +831,20 @@ public class Database {
             rs.close();
             stmt.close();
             conn.close();
+
+            for (Pitcher hurler : pitchers)
+            {
+                if (hurler.getPitcherStats().getSaves() > 10)
+                {
+                    hurler.setPitcherRole(PitcherRole.CLOSER);
+                } else if (hurler.getPitcherStats().getGamesStarted() > 5)
+                {
+                    hurler.setPitcherRole(PitcherRole.STARTER);
+                } else
+                {
+                    hurler.setPitcherRole(PitcherRole.RELIEVER);
+                }
+            }
 
         } catch (IllegalAccessException e) {
             e.printStackTrace();
