@@ -2,6 +2,8 @@ package Baseball;
 
 import org.thymeleaf.util.ArrayUtils;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -164,19 +166,19 @@ public class Fielder extends Player {
         infielderWithPutOut.getFielderStats().setGamePutOuts(infielderWithPutOut.getFielderStats().getGamePutOuts() + 1);
     }
 
-    List<Fielder> getFielderList(boolean visitors) throws ClassNotFoundException, SQLException, InstantiationException {
+    List<Fielder> getFielderList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
         List<Fielder> fielderList = new ArrayList<>();
         Fielder fielder = new Fielder();
 
         if (visitors) {
             int yearID=1927;
-            String teamID="NYA";
+            String teamID = schedule.getVisitingTeamId();
             // Selects all fielders for the visitor team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID, fielder);
 
         } else {
             int yearID=1927;
-            String teamID="PHA";
+            String teamID = schedule.getHomeTeamId();
             // Selects all fielders for the home team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID, fielder);
         }
@@ -188,12 +190,29 @@ public class Fielder extends Player {
     }
     List<Fielder> getFieldersStartersList(List<Fielder> team)
     {
+/*    List<Fielder> getFieldersStartersList(boolean visitors, Schedule schedule, List<Fielder> team)
+            throws NoSuchMethodException, SecurityException, InvocationTargetException, IllegalAccessException {*/
+        List<Fielder> starters = new ArrayList<>();
+
+/*        if (visitors)
+        {
+            for (int a = 1; a < 10; a++)
+            {
+                String batterId = "getVisitingBatter" + a + "Id";
+                try {
+                    Method method = schedule.getClass().getMethod(batterId, String.class);
+                    method.invoke(schedule, batterId);
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+ //               String retroID = schedule.
+            }
+        }*/
         List<InPlayPosition> positionsNeeded = InPlayPosition.getList();
         positionsNeeded.remove(InPlayPosition.DESIGNATED_HITTER);
         positionsNeeded.remove(InPlayPosition.OUTFIELD);
         positionsNeeded.remove(InPlayPosition.PITCHER);
 
-        List<Fielder> starters = new ArrayList<>();
         for (Fielder fielder : team)
         {
             if (fielder.position.equals(InPlayPosition.OUTFIELD))

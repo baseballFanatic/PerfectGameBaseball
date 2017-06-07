@@ -182,25 +182,49 @@ class DisplayInfo {
                 "Team", "1", "2", "3", "4", "5", "6", "7", "8", "9", "X", "R", "H", "E");
         System.out.println();
         //TODO Fix this so it isn't hard coded
-        //TODO Need to add in what to do about displaying extra innings
         System.out.printf("NYA   ");
-        for (Integer score : visitorLineScore)
-        {
+
+        for (Integer score : visitorLineScore) {
             System.out.printf("%2s ", score);
         }
-        System.out.printf("       %2s %2s %2s", visitorTeam.getTeamStats().getGameRuns(),
-            visitorTeam.getTeamStats().getGameHits(), visitorTeam.getTeamStats().getGameErrors());
+
+        if (visitorLineScore.size() == 9) {
+            System.out.printf("       %2s %2s %2s", visitorTeam.getTeamStats().getGameRuns(),
+                    visitorTeam.getTeamStats().getGameHits(), visitorTeam.getTeamStats().getGameErrors());
+        } else
+        {
+            int lastAtBat = visitorLineScore.get(visitorLineScore.size() - 1);
+            System.out.printf("%2s", lastAtBat);
+            System.out.printf("    %2s %2s %2s", visitorTeam.getTeamStats().getGameRuns(),
+                    visitorTeam.getTeamStats().getGameHits(), visitorTeam.getTeamStats().getGameErrors());
+
+        }
         System.out.println();
         System.out.printf("PHA   ");
         for (Integer hScore : homeLineScore)
         {
             System.out.printf("%2s ", hScore);
         }
-        System.out.printf("       %2s %2s %2s", homeTeam.getTeamStats().getGameRuns(),
-                homeTeam.getTeamStats().getGameHits(), homeTeam.getTeamStats().getGameErrors());
+        if (homeLineScore.size() == 8)
+        {
+            System.out.printf(" X");
+            System.out.printf("        %2s %2s %2s", homeTeam.getTeamStats().getGameRuns(),
+                    homeTeam.getTeamStats().getGameHits(), homeTeam.getTeamStats().getGameErrors());
+        } else if (homeLineScore.size() == 9)
+        {
+            System.out.printf("       %2s %2s %2s", homeTeam.getTeamStats().getGameRuns(),
+                    homeTeam.getTeamStats().getGameHits(), homeTeam.getTeamStats().getGameErrors());
+        } else
+        {
+            int lastAtBat = homeLineScore.get(visitorLineScore.size() - 1);
+            System.out.printf("%2s", lastAtBat);
+            System.out.printf("    %2s %2s %2s", homeTeam.getTeamStats().getGameRuns(),
+                    homeTeam.getTeamStats().getGameHits(), homeTeam.getTeamStats().getGameErrors());
+        }
         System.out.println();
         System.out.println();
         if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns()) {
+            //TODO: Fix winning pitcher when home team wins in bottom of 9th or extra innings.
             System.out.printf("Winning Pitcher: %s%n", pitcher.getHomeWinningPitcher().getNameLast());
             System.out.printf("Losing Pitcher: %s%n", pitcher.getVisitorLosingPitcher().getNameLast());
             if (pitcher.getHomeSavePitcher() != null) {

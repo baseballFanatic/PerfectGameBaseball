@@ -185,18 +185,25 @@ public class Batter extends Player implements Comparable<Batter> {
         this.thirdBase = thirdBase;
     }
 
-    List<Batter> getBatterList(boolean visitors) throws ClassNotFoundException, SQLException, InstantiationException {
+    public boolean needPinchHitter(Inning inning, Team visitorTeam, Team homeTeam, Batter currentBatter)
+    {
+        return inning.getInning() > 6 && (Math.abs(visitorTeam.getTeamStats().getGameRuns() -
+                homeTeam.getTeamStats().getGameRuns()) < 5 && currentBatter.getBattingOrder() > 7);
+    }
+
+    //List<Batter> getBatterList(boolean visitors, List<Schedule> scheduleList) throws ClassNotFoundException, SQLException, InstantiationException {
+    List<Batter> getBatterList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
         List<Batter> batterList;
         Batter batter = new Batter();
 
         if (visitors) {
             int yearID=1927;
-            String teamID="NYA";
+            String teamID = schedule.getVisitingTeamId();
             batterList = Database.selectBatters(teamID, yearID, batter);
 
         } else {
             int yearID=1927;
-            String teamID="PHA";
+            String teamID = schedule.getHomeTeamId();
             batterList = Database.selectBatters(teamID, yearID, batter);
         }
         return batterList;
@@ -210,7 +217,7 @@ public class Batter extends Player implements Comparable<Batter> {
         this.pitcherReachedOn = pitcherReachedOn;
     }
 
-    public List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
+    List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
         //int b = 0;
         List<Batter> matchedBatters = new ArrayList<>();
 
@@ -246,7 +253,7 @@ public class Batter extends Player implements Comparable<Batter> {
 
     }
 
-    public List<Batter> findDesignatedHitter(List<Batter> batterStarters, List<Batter> teamBatters) {
+    List<Batter> findDesignatedHitter(List<Batter> batterStarters, List<Batter> teamBatters) {
         for (Batter batter : teamBatters)
         {
             if (batter.getBatterStats().getGameGamePlayed() == 0 && batterStarters.size() < 9)

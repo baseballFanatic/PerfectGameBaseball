@@ -264,16 +264,16 @@ public class Pitcher extends Player {
         this.homeSavePitcher = homeSavePitcher;
     }
 
-    List<Pitcher> getPitcherList(boolean visitors) throws ClassNotFoundException, SQLException, InstantiationException {
+    List<Pitcher> getPitcherList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
         List<Pitcher> pitcherList;
         Pitcher pitcher = new Pitcher();
 
         if (visitors) {
             int yearID=1927;
-            String teamID="NYA";
+            String teamID = schedule.getVisitingTeamId();
             pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
         } else {
-            String teamID="PHA";
+            String teamID = schedule.getHomeTeamId();
             int yearID=1927;
             pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
         }

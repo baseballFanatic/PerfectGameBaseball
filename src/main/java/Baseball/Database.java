@@ -1,6 +1,8 @@
 package Baseball;
 
 import javax.xml.transform.Result;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -960,6 +962,185 @@ public class Database {
             e1.printStackTrace();
         }
         return fielders;
+    }
+
+    static Schedule selectSchedule(int yearID, String lgID) throws InstantiationException, SQLException,
+            ClassNotFoundException
+    {
+        Connection conn = null;
+        Schedule schedule = new Schedule();
+        List<Schedule> scheduleList = new ArrayList<>();
+
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
+                    " where gameCompleted!='N' and homeLgId='AL' limit 1");
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next())
+            {
+                schedule = new Schedule();
+                schedule.setGameNumber(rs.getString("gameNumber"));
+                schedule.setGameDay(rs.getString("gameDay"));
+                schedule.setVisitingTeamId(rs.getString("visitingTeamId"));
+                schedule.setVisitingLgId(rs.getString("visitingLgId"));
+                schedule.setVisitingGameNumber(rs.getInt("visitingGameNumber"));
+                schedule.setHomeTeamId(rs.getString("homeTeamId"));
+                schedule.setHomeLgId(rs.getString("homeLgId"));
+                schedule.setHomeGameNumber(rs.getInt("homeGameNumber"));
+                schedule.setVisitingScore(rs.getInt("visitingScore"));
+                schedule.setHomeScore(rs.getInt("homeScore"));
+                schedule.setLengthOuts(rs.getString("lengthOuts"));
+                schedule.setDayNight(rs.getString("dayNight"));
+                schedule.setCompletionInfo(rs.getString("completionInfo"));
+                schedule.setForfeitInfo(rs.getString("forfeitInfo"));
+                schedule.setProtestInfo(rs.getString("protestInfo"));
+                schedule.setParkId(rs.getString("parkId"));
+                schedule.setAttendance(rs.getInt("attendance"));
+                schedule.setTimeInMinutes(rs.getInt("timeInMinutes"));
+                schedule.setVisitingLineScore(rs.getString("visitingLineScore"));
+                schedule.setHomeLineScore(rs.getString("homeLineScore"));
+                schedule.setVisitingAtBats(rs.getInt("visitingAtBats"));
+                schedule.setVisitingHits(rs.getInt("visitingHits"));
+                schedule.setVisitingDoubles(rs.getInt("visitingDoubles"));
+                schedule.setVisitingTriples(rs.getInt("visitingTriples"));
+                schedule.setVisitingHomeRuns(rs.getInt("visitingHomeRuns"));
+                schedule.setVisitingRbi(rs.getInt("visitingRbi"));
+                schedule.setVisitingSacrificeHits(rs.getInt("visitingSacrificeHits"));
+                schedule.setVisitingSacrificeFlies(rs.getInt("visitingSacrificeFlies"));
+                schedule.setVisitingHitByPitch(rs.getInt("visitingHitByPitch"));
+                schedule.setVisitingWalks(rs.getInt("visitingWalks"));
+                schedule.setVisitingIntentionalWalks(rs.getInt("visitingIntentionalWalks"));
+                schedule.setVisitingStrikeOuts(rs.getInt("visitingStrikeOuts"));
+                schedule.setVisitingStolenBases(rs.getInt("visitingStolenBases"));
+                schedule.setVisitingCaughtStealing(rs.getInt("visitingCaughtStealing"));
+                schedule.setVisitingGroundedIntoDoublePlays(rs.getInt("visitingGroundedIntoDoublePlays"));
+                schedule.setVisitingAwardCatchersInterference(rs.getInt("visitingAwardCatchersInterference"));
+                schedule.setVisitingLeftOnBase(rs.getInt("visitingLeftOnBase"));
+                schedule.setVisitingPitchersUsed(rs.getInt("visitingPitchersUsed"));
+                schedule.setVisitingIndividualEarnedRuns(rs.getInt("visitingIndividualEarnedRuns"));
+                schedule.setVisitingTeamEarnedRuns(rs.getInt("visitingTeamEarnedRuns"));
+                schedule.setVisitingWildPitches(rs.getInt("visitingWildPitches"));
+                schedule.setVisitingBalks(rs.getInt("visitingBalks"));
+                schedule.setVisitingPutOuts(rs.getInt("visitingPutOuts"));
+                schedule.setVisitingAssists(rs.getInt("visitingAssists"));
+                schedule.setVisitingErrors(rs.getInt("visitingErrors"));
+                schedule.setVisitingPassedBalls(rs.getInt("visitingPassedBalls"));
+                schedule.setVisitingDoublePlays(rs.getInt("visitingDoublePlays"));
+                schedule.setVisitingTriplePlays(rs.getInt("visitingTriplePlays"));
+                schedule.setHomeAtBats(rs.getInt("homeAtBats"));
+                schedule.setHomeHits(rs.getInt("homeHits"));
+                schedule.setHomeDoubles(rs.getInt("homeDoubles"));
+                schedule.setHomeTriples(rs.getInt("homeTriples"));
+                schedule.setHomeHomeRuns(rs.getInt("homeHomeRuns"));
+                schedule.setHomeRbi(rs.getInt("homeRbi"));
+                schedule.setHomeSacrificeHits(rs.getInt("homeSacrificeHits"));
+                schedule.setHomeSacrificeFlies(rs.getInt("homeSacrificeFlies"));
+                schedule.setHomeHitByPitch(rs.getInt("homeHitByPitch"));
+                schedule.setHomeWalks(rs.getInt("homeWalks"));
+                schedule.setHomeIntentionalWalks(rs.getInt("homeIntentionalWalks"));
+                schedule.setHomeStrikeOuts(rs.getInt("homeStrikeOuts"));
+                schedule.setHomeStolenBases(rs.getInt("homeStolenBases"));
+                schedule.setHomeCaughtStealing(rs.getInt("homeCaughtStealing"));
+                schedule.setHomeGroundedIntoDoublePlays(rs.getInt("homeGroundedIntoDoublePlays"));
+                schedule.setHomeAwardCatchersInterference(rs.getInt("homeAwardCatchersInterference"));
+                schedule.setHomeLeftOnBase(rs.getInt("homeLeftOnBase"));
+                schedule.setHomePitchersUsed(rs.getInt("homePitchersUsed"));
+                schedule.setHomeIndividualEarnedRuns(rs.getInt("homeIndividualEarnedRuns"));
+                schedule.setHomeTeamEarnedRuns(rs.getInt("homeTeamEarnedRuns"));
+                schedule.setHomeWildPitches(rs.getInt("homeWildPitches"));
+                schedule.setHomeBalks(rs.getInt("homeBalks"));
+                schedule.setHomePutOuts(rs.getInt("homePutOuts"));
+                schedule.setHomeAssists(rs.getInt("homeAssists"));
+                schedule.setHomeErrors(rs.getInt("homeErrors"));
+                schedule.setHomePassedBalls(rs.getInt("homePassedBalls"));
+                schedule.setHomeDoublePlays(rs.getInt("homeDoublePlays"));
+                schedule.setHomeTriplePlays(rs.getInt("homeTriplePlays"));
+                schedule.setHomePlateUmpireId(rs.getString("homePlateUmpireId"));
+                schedule.setHomePlateUmpireName(rs.getString("homePlateUmpireName"));
+                schedule.setFirstBaseUmpireId(rs.getString("firstBaseUmpireId"));
+                schedule.setFirstBaseUmpireName(rs.getString("firstBaseUmpireName"));
+                schedule.setSecondBaseUmpireId(rs.getString("secondBaseUmpireId"));
+                schedule.setSecondBaseUmpireName(rs.getString("secondBaseUmpireName"));
+                schedule.setThirdBaseUmpireId(rs.getString("thirdBaseUmpireId"));
+                schedule.setThirdBaseUmpireName(rs.getString("thirdBaseUmpireName"));
+                schedule.setLeftFieldUmpireId(rs.getString("leftFieldUmpireId"));
+                schedule.setLeftFieldUmpireName(rs.getString("leftFieldUmpireName"));
+                schedule.setRightFieldUmpireId(rs.getString("rightFieldUmpireId"));
+                schedule.setRightFieldUmpireName(rs.getString("rightFieldUmpireName"));
+                schedule.setVisitingManagerId(rs.getString("visitingManagerId"));
+                schedule.setVisitingManagerName(rs.getString("visitingManagerName"));
+                schedule.setHomeManagerId(rs.getString("homeManagerId"));
+                schedule.setHomeManagerName(rs.getString("homeManagerName"));
+                schedule.setWinningPitcherId(rs.getString("winningPitcherId"));
+                schedule.setWinningPitcherName(rs.getString("winningPitcherName"));
+                schedule.setLosingPitcherId(rs.getString("losingPitcherId"));
+                schedule.setLosingPitcherName(rs.getString("losingPitcherName"));
+                schedule.setSavingPitcherId(rs.getString("savingPitcherId"));
+                schedule.setSavingPitcherName(rs.getString("savingPitcherName"));
+                schedule.setGameWinningRbiId(rs.getString("gameWinningRbiId"));
+                schedule.setGameWinningRbiName(rs.getString("gameWinningRbiName"));
+                schedule.setVisitingStartingPitcherId(rs.getString("visitingStartingPitcherId"));
+                schedule.setVisitingStartingPitcherName(rs.getString("visitingStartingPitcherName"));
+                schedule.setHomeStartingPitcherId(rs.getString("homeStartingPitcherId"));
+                schedule.setHomeStartingPitcherName(rs.getString("homeStartingPitcherName"));
+                for (int b = 1; b < 10; b++)
+                {
+                    String batterId = "setVisitingBatter" + b + "Id";
+                    String colBatterId = "visitingBatter" + b + "Id";
+                    String batterName = "setVisitingBatter" + b + "Name";
+                    String colBatterName = "visitingBatter" + b + "Name";
+                    String batterPosition = "setVisitingBatter" + b + "Position";
+                    String colBatterPosition = "visitingBatter" + b + "Position";
+
+                    String homeBatterId = "setHomeBatter" + b + "Id";
+                    String homeColBatterId = "homeBatter" + b + "Id";
+                    String homeBatterName = "setHomeBatter" + b + "Name";
+                    String homeColBatterName = "homeBatter" + b + "Name";
+                    String homeBatterPosition = "setHomeBatter" + b + "Position";
+                    String homeColBatterPosition = "homeBatter" + b + "Position";
+
+                    try {
+                        Method methodName = schedule.getClass().getMethod(batterName, String.class);
+                        methodName.invoke(schedule, rs.getString(colBatterName));
+                        Method method = schedule.getClass().getMethod(batterId, String.class);
+                        method.invoke(schedule, rs.getString(colBatterId));
+                        Method homeMethod = schedule.getClass().getMethod(homeBatterId, String.class);
+                        homeMethod.invoke(schedule, rs.getString(homeColBatterId));
+                        Method homeMethodName = schedule.getClass().getMethod(homeBatterName, String.class);
+                        homeMethodName.invoke(schedule, rs.getString(homeColBatterName));
+
+                        Method methodPosition = schedule.getClass().getMethod(batterPosition, String.class);
+                        methodPosition.invoke(schedule, rs.getString(colBatterPosition));
+                        Method homeMethodPosition = schedule.getClass().getMethod(homeBatterPosition, String.class);
+                        homeMethodPosition.invoke(schedule, rs.getString(homeColBatterPosition));
+
+
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                schedule.setAdditionalInfo(rs.getString("additionalInfo"));
+                schedule.setAcquisitionInfo(rs.getString("acquisitionInfo"));
+                schedule.setGameCompleted(rs.getString("gameCompleted"));
+                schedule.setGameKey(rs.getInt("gameKey"));
+                //return schedule;
+                //scheduleList.add(schedule);
+            }
+            rs.close();
+            conn.close();
+            stmt.close();
+
+        } catch (IllegalAccessException e1) {
+            e1.printStackTrace();
+        }
+        return schedule;
     }
 
     static League selectTeamStats(int yearID, String lgID, League league) throws InstantiationException, SQLException,

@@ -1,5 +1,7 @@
 package Baseball;
 
+import javax.xml.crypto.Data;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ public class PlayBall {
     private boolean gameOver = false;
     private boolean visitors = true;
 
-    public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException {
+    public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Team visitorTeam = new Team();
         Team homeTeam = new Team();
         League league = new League();
@@ -20,6 +22,7 @@ public class PlayBall {
         Batter batter = new Batter();
         Fielder fielder = new Fielder();
         Pitcher pitcher = new Pitcher();
+        //Schedule schedule = new Schedule();
 
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
@@ -31,13 +34,23 @@ public class PlayBall {
 
         league.setLgID("AL");
 
-        List<Batter> visitorBatters = batter.getBatterList(visitors);
+        Schedule schedule = Database.selectSchedule(yearID, lgID);
+
+/*        List<Schedule> scheduleList = Database.selectSchedule(yearID, lgID);
+        for (Schedule game : scheduleList)
+        {
+
+        }*/
+
+      //  List<Batter> visitorBatters = batter.getBatterList(visitors, scheduleList);
+        List<Batter> visitorBatters = batter.getBatterList(visitors,schedule);
         // Selects all fielders available for the team
-        List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors);
+        List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors, schedule);
         // Selects starters for all 8 regular positions from the list of fielders available
         List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorFieldersReserves);
+//        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, visitorFieldersReserves);
         // Selects all pitchers for the team
-        List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors);
+        List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule);
         // Matches batter to fielder on playerID and assigns the batter to the starting lineup
         List<Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
         // Adds a designated hitter to the batter file if home team is AL otherwise adds pitcher
@@ -46,10 +59,11 @@ public class PlayBall {
 
         setVisitors(false);
 
-        List<Batter> homeBatters = batter.getBatterList(visitors);
-        List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors);
+        List<Batter> homeBatters = batter.getBatterList(visitors, schedule);
+        List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors, schedule);
         List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeFieldersReserves);
-        List<Pitcher> homePitchers = pitcher.getPitcherList(visitors);
+       // List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, homeFieldersReserves);
+        List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule);
         List<Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
         List<Batter> homeBatterFinal = batter.findDesignatedHitter(homeBatterStarters, homeBatters);
 

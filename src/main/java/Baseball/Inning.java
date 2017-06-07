@@ -43,6 +43,10 @@ class Inning {
                         currentPitcher = pitcher.getHomePitcher();
                     }
                 }
+                if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter))
+                {
+                    System.out.println("Would pinch hit here.");
+                }
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);
                 lineUp.setVisitorBattingNumber(lineUp.getVisitorBattingNumber()+ 1);

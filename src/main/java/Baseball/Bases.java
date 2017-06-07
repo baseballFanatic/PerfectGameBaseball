@@ -21,7 +21,6 @@ class Bases {
                 pitcher.getNameLast());
         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
         pitcher.getPitcherStats().setGameHitsAllowed(pitcher.getPitcherStats().getGameHitsAllowed() + 1);
-        //TODO: This is not calculating correctly somewhere.  Need to find out where.  Might only be home team.
         team.getTeamStats().updateTeamHits(inning, visitorTeam, homeTeam);
         GameRbi gameRbi = null;
         // Check for RBI or other events from the hit and update stats.
@@ -748,6 +747,7 @@ class Bases {
                 bases.getThirdBase().occupy(batter);
                 bases.getSecondBase().setOccupied(false);
                 bases.getFirstBase().setOccupied(false);
+                team.getTeamStats().updateTeamRuns(inning, visitorTeam, homeTeam);
                 team.getTeamStats().updateTeamRuns(inning, visitorTeam, homeTeam);
                 /*if (inning.isTop()) {
                     visitorTeam.getTeamStats().setGameRuns(visitorTeam.getTeamStats().getGameRuns() + 1);
@@ -1598,7 +1598,9 @@ class Bases {
                                     batter.getBatterStats().setGameRispRbi(batter.getBatterStats().getGameRispRbi() + 1);
                                     new BatterStats().updateSacFlyRbi(batter);
                                     bases.getThirdBase().getBatter().getBatterStats().setGameRuns(bases.getThirdBase().getBatter().getBatterStats().getGameRuns() + 1);
-                                    System.out.printf("%s tags from third and scores.%n", bases.getThirdBase().getBatter().getNameLast());
+                                    System.out.printf("%s(%d) tags from third and scores.%n",
+                                            bases.getThirdBase().getBatter().getNameLast(),
+                                            bases.getThirdBase().getBatter().getBatterStats().getGameRuns());
                                     new BatterStats().checkIfRunnerEarned(bases.getThirdBase(), pitcher);
                                     team.getTeamStats().updateTeamRuns(inning, visitorTeam, homeTeam);
 /*                                    if (inning.isTop()) {
@@ -2362,14 +2364,7 @@ class Bases {
                                     batter.getBatterStats().setGameRispRbi(batter.getBatterStats().getGameRispRbi() + 1);
                                     pitcher.getPitcherStats().outRunScored(bases.getThirdBase(), pitcher);
                                     team.getTeamStats().updateTeamRuns(inning, visitorTeam, homeTeam);
-/*                                    if (inning.isTop()) {
-                                        visitorTeam.getTeamStats().setGameRuns(visitorTeam.getTeamStats().getGameRuns() + 1);
-                                    } else {
-                                        homeTeam.getTeamStats().setGameRuns(homeTeam.getTeamStats().getGameRuns() + 1);
-                                    }*/
-                                    Batter second = bases.getSecondBase().getBatter();
-                                    bases.getThirdBase().occupy(second);
-                                    bases.getSecondBase().setOccupied(false);
+                                    bases.getThirdBase().setOccupied(false);
                                 }
                                 break;
                             }
