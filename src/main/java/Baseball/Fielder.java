@@ -1,15 +1,8 @@
 package Baseball;
 
-import org.thymeleaf.util.ArrayUtils;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.lang.Math.random;
 
@@ -29,27 +22,27 @@ public class Fielder extends Player {
         this.position = position;
     }
 
-    public boolean isLeftField() {
+    private boolean isLeftField() {
         return leftField;
     }
 
-    public void setLeftField(boolean leftField) {
+    private void setLeftField(boolean leftField) {
         this.leftField = leftField;
     }
 
-    public boolean isCenterField() {
+    private boolean isCenterField() {
         return centerField;
     }
 
-    public void setCenterField(boolean centerField) {
+    private void setCenterField(boolean centerField) {
         this.centerField = centerField;
     }
 
-    public boolean isRightField() {
+    private boolean isRightField() {
         return rightField;
     }
 
-    public void setRightField(boolean rightField) {
+    private void setRightField(boolean rightField) {
         this.rightField = rightField;
     }
 
@@ -77,7 +70,7 @@ public class Fielder extends Player {
         this.playerKey = playerKey;
     }
 
-    InPlayPosition getFielderPosition() {
+    private InPlayPosition getFielderPosition() {
         return position;
     }
 
@@ -107,7 +100,7 @@ public class Fielder extends Player {
                 }
             }
         } else if (randomFielderPosition < .6) {
-            Fielder buntFielder = null;
+            Fielder buntFielder;
             for (Fielder fielder : fielderList) {
                 if (fielder.position == InPlayPosition.PITCHER) {
                     buntFielder = fielder;
@@ -115,7 +108,7 @@ public class Fielder extends Player {
                 }
             }
         } else if (randomFielderPosition < .9) {
-            Fielder buntFielder = null;
+            Fielder buntFielder;
             for (Fielder fielder : fielderList) {
                 if (fielder.position == InPlayPosition.CATCHER) {
                     buntFielder = fielder;
@@ -123,7 +116,7 @@ public class Fielder extends Player {
                 }
             }
         } else if (randomFielderPosition < 1) {
-            Fielder buntFielder = null;
+            Fielder buntFielder;
             for (Fielder fielder : fielderList) {
                 if (fielder.position == InPlayPosition.FIRST_BASE) {
                     buntFielder = fielder;
@@ -167,20 +160,20 @@ public class Fielder extends Player {
     }
 
     List<Fielder> getFielderList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
-        List<Fielder> fielderList = new ArrayList<>();
+        List<Fielder> fielderList;
         Fielder fielder = new Fielder();
 
         if (visitors) {
             int yearID=1927;
             String teamID = schedule.getVisitingTeamId();
             // Selects all fielders for the visitor team and orders by games played desc.
-            fielderList = Database.selectFielders(teamID, yearID, fielder);
+            fielderList = Database.selectFielders(teamID, yearID);
 
         } else {
             int yearID=1927;
             String teamID = schedule.getHomeTeamId();
             // Selects all fielders for the home team and orders by games played desc.
-            fielderList = Database.selectFielders(teamID, yearID, fielder);
+            fielderList = Database.selectFielders(teamID, yearID);
         }
 
         for (Fielder player : fielderList) {

@@ -1,6 +1,6 @@
 package Baseball;
 
-public class TeamStats {
+class TeamStats {
     private int games, gamesHome, wins, losses;
     private String divWin, wcWin, lgWin, WsWin;
     private int runs, atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, stolenBases, caughtStealing, hitByPitch,
@@ -661,7 +661,7 @@ public class TeamStats {
         return gameRuns;
     }
 
-    void setGameRuns(int gameRuns) {
+    private void setGameRuns(int gameRuns) {
         this.gameRuns = gameRuns;
     }
 

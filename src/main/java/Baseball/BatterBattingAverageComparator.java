@@ -2,7 +2,7 @@ package Baseball;
 
 import java.util.Comparator;
 
-public class BatterBattingAverageComparator implements Comparator<Batter>{
+class BatterBattingAverageComparator implements Comparator<Batter>{
     @Override
     public int compare(Batter batter1, Batter batter2)
     {

@@ -1,7 +1,6 @@
 package Baseball;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.abs;
@@ -196,7 +195,7 @@ public class Pitcher extends Player {
         return isAvailable;
     }
 
-    void setAvailable(boolean available) {
+    private void setAvailable(boolean available) {
         isAvailable = available;
     }
 
@@ -271,11 +270,11 @@ public class Pitcher extends Player {
         if (visitors) {
             int yearID=1927;
             String teamID = schedule.getVisitingTeamId();
-            pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
+            pitcherList = Database.selectPitchers(teamID, yearID);
         } else {
             String teamID = schedule.getHomeTeamId();
             int yearID=1927;
-            pitcherList = Database.selectPitchers(teamID, yearID, pitcher);
+            pitcherList = Database.selectPitchers(teamID, yearID);
         }
         return pitcherList;
     }

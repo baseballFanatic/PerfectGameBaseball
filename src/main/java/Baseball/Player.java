@@ -42,7 +42,7 @@ class Player {
         this.nameLast = nameLast;
     }
 
-    public String getPlayerId() {
+    String getPlayerId() {
         return playerId;
     }
 

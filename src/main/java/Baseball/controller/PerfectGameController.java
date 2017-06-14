@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 @Controller
-public class PerfectGameController {
+class PerfectGameController {
     @RequestMapping("/")
     public String perfectGameWebLaunch() {
         return "index";

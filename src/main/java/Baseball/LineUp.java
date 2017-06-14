@@ -1,13 +1,96 @@
 package Baseball;
 
+import java.time.LocalDate;
 import java.util.*;
 
 class LineUp {
     private int battingOrder;
     private int visitorBattingNumber;
-    private int homeBattingNumber;
+    private int homeBattingNumber, yearID, gameKey, playerOrder, gameNumber;
+    private LocalDate gameDate;
+    private String retroID, playerName, lgID, teamID, playerPosition;
 
     LineUp() {
+    }
+
+    public LocalDate getGameDate() {
+        return gameDate;
+    }
+
+    public void setGameDate(LocalDate gameDate) {
+        this.gameDate = gameDate;
+    }
+
+    public int getGameNumber() {
+        return gameNumber;
+    }
+
+    public void setGameNumber(int gameNumber) {
+        this.gameNumber = gameNumber;
+    }
+
+    public String getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(String playerPosition) {
+        this.playerPosition = playerPosition;
+    }
+
+    public int getYearID() {
+        return yearID;
+    }
+
+    public void setYearID(int yearID) {
+        this.yearID = yearID;
+    }
+
+    public int getGameKey() {
+        return gameKey;
+    }
+
+    public void setGameKey(int gameKey) {
+        this.gameKey = gameKey;
+    }
+
+    public int getPlayerOrder() {
+        return playerOrder;
+    }
+
+    public void setPlayerOrder(int playerOrder) {
+        this.playerOrder = playerOrder;
+    }
+
+    public String getRetroID() {
+        return retroID;
+    }
+
+    public void setRetroID(String retroID) {
+        this.retroID = retroID;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public String getLgID() {
+        return lgID;
+    }
+
+    public void setLgID(String lgID) {
+        this.lgID = lgID;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
     }
 
     public int getBattingOrder() {

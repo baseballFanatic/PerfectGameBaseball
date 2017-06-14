@@ -25,7 +25,7 @@ class BatterStats {
         return battingAverage;
     }
 
-    public void setBattingAverage(double battingAverage) {
+    private void setBattingAverage(double battingAverage) {
         this.battingAverage = battingAverage;
     }
 
@@ -33,7 +33,7 @@ class BatterStats {
         return sluggingAverage;
     }
 
-    public void setSluggingAverage(double sluggingAverage) {
+    private void setSluggingAverage(double sluggingAverage) {
         this.sluggingAverage = sluggingAverage;
     }
 
@@ -55,7 +55,7 @@ class BatterStats {
         return onBasePercentage;
     }
 
-    public void setOnBasePercentage(double onBasePercentage) {
+    private void setOnBasePercentage(double onBasePercentage) {
         this.onBasePercentage = onBasePercentage;
     }
 
@@ -211,7 +211,7 @@ class BatterStats {
         this.intentionalWalks = intentionalWalks;
     }
 
-    public int getHitByPitch() {
+    private int getHitByPitch() {
         return hitByPitch;
     }
 
@@ -527,8 +527,8 @@ class BatterStats {
         return gameGamePlayed;
     }
 
-    public void setGameGamePlayed(int gameGamePlayed) {
-        this.gameGamePlayed = gameGamePlayed;
+    public void setGameGamePlayed() {
+        this.gameGamePlayed = 1;
     }
 
     public int getGameGameStarted() {

@@ -92,18 +92,10 @@ class AtBat {
                         < 3) {
                     if (inning.isTop()) {
                         int order = lineUp.getVisitorBattingNumber() + 1;
-                        if (order > 7) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return order > 7;
                     } else {
                         int order = lineUp.getHomeBattingNumber() + 1;
-                        if (order > 7) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return order > 7;
                     }
                 } else {
                     return false;
@@ -502,8 +494,8 @@ class AtBat {
                 break;
             case TRIPLE:
                 batter.setPitcherReachedOn(pitcher);
-                bases.triple(batter, pitcher, pitchResult, visitorTeam, homeTeam, inning, baseState, currentFielder,
-                        fielderList, ab, bases);
+                bases.triple(batter, pitcher, pitchResult, visitorTeam, homeTeam, inning, baseState,
+                        ab, bases);
                 break;
             case HOME_RUN:
                 batter.setPitcherReachedOn(pitcher);
@@ -567,18 +559,10 @@ class AtBat {
                 } else {
                     if (pitcher.getPitchingArm().equals("L")) {
                         double randomStealPercentage = random();
-                        if ((bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttempt() * .6) < randomStealPercentage) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttempt() * .6) < randomStealPercentage;
                     } else {
                         double randomStealPercentage = random();
-                        if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealPercentage) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealPercentage;
                     }
                 }
             }
@@ -588,11 +572,7 @@ class AtBat {
                     return false;
                 } else {
                     double randomStealPercentage = random();
-                    if (bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealPercentage) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealPercentage;
                 }
             }
         }
@@ -607,11 +587,7 @@ class AtBat {
             return true;
         } else if (randomPitchOut < .25 && baseRunner.getBatterStats().getSpeedRating() >= 6) {
             return true;
-        } else if (randomPitchOut < .35 && baseRunner.getBatterStats().getSpeedRating() >= 5) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return randomPitchOut < .35 && baseRunner.getBatterStats().getSpeedRating() >= 5;
     }
 
     private boolean stealResult(BasesOccupied baseState, Bases bases, Pitcher pitcher) {
@@ -620,33 +596,17 @@ class AtBat {
             case FIRST_THIRD:
             case FIRST_BASE: {
                 if (pitcher.getPitchingArm().equals("L")) {
-                    if ((bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess;
                 } else {
-                    if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() > randomStealSuccess) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() > randomStealSuccess;
                 }
             }
             case SECOND_FIRST:
             case SECOND_BASE: {
                 if (pitcher.getPitchingArm().equals("L")) {
-                    if ((bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess;
                 } else {
-                    if (bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealSuccess) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealSuccess;
                 }
             }
         }

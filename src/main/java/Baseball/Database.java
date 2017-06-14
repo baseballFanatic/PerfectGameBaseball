@@ -1,14 +1,20 @@
 package Baseball;
 
-import javax.xml.transform.Result;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.Date;
 
-public class Database {
+class Database {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost/lahman2016";
@@ -17,7 +23,7 @@ public class Database {
     private static final String USER = "root";
     private static final String PASS = "password";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
@@ -30,18 +36,22 @@ public class Database {
 
             // Execute query
             stmt = conn.createStatement();
-            createPgbsBatters(stmt);
+/*            createPgbsBatters(stmt);
             createPgbsPitchers(stmt);
             createPgbsFielders(stmt);
             createPgbsSeasons(stmt);
-            createPgbsTeams(stmt);
+            createPgbsTeams(stmt);*/
+            //TODO: add createPgbsSchedule method
+            createPgbsLineUp(stmt);
 
             int yearID = 1927;
             String lgID="AL";
-            insertPgbsBatters(conn, yearID);
+/*            insertPgbsBatters(conn, yearID);
             insertPgbsPitchers(conn, yearID);
             insertPgbsFielders(conn, yearID);
-            insertPgbsTeams(conn, yearID);
+            insertPgbsTeams(conn, yearID);*/
+            Schedule schedule = new Schedule();
+            insertPgbsLineUp(conn, schedule);
 //            insertPgbsSeasons(conn, yearID);
 
             // Clean-up environment
@@ -50,8 +60,6 @@ public class Database {
             conn.close();
         } catch (SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             // Block used to close resources
             try {
@@ -59,8 +67,7 @@ public class Database {
                     stmt.close();
             } catch (SQLException se2) {
                 try {
-                    if (conn != null)
-                        conn.close();
+                    conn.close();
                 } catch (SQLException se) {
                     se.printStackTrace();
                 }
@@ -377,6 +384,21 @@ public class Database {
         stmt.executeUpdate(teams);
     }
 
+    private static void createPgbsLineUp(Statement stmt) throws SQLException
+    {
+        String games;
+        games = "CREATE TABLE pgbs_lineUps" +
+                " (gameDate date," +
+                " lgID varchar(255)," +
+                " teamID varchar(255)," +
+                " retroID varchar(255)," +
+                " playerName varchar(255), " +
+                " playerPosition varchar(255), " +
+                " playerOrder int(11), " +
+                " gameNumber int(11))";
+        stmt.executeUpdate(games);
+    }
+
     private static void insertPgbsBatters(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("insert into pgbs_batters (nameFirst," +
                 " nameLast," +
@@ -630,10 +652,140 @@ public class Database {
         statement.executeUpdate();
     }
 
-    static List<Batter> selectBatters(String teamID, int yearID, Batter batter) throws SQLException,
+    //TODO Revisit how this should work
+    private static void insertPgbsLineUp(Connection conn, Schedule schedule) throws SQLException, IOException, ParseException {
+        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1927.csv"));
+        String line = null;
+        Scanner scanner = null;
+        int playerOrder = 1;
+        List<LineUp> lineUpOrder = new ArrayList<>();
+        LineUp game = new LineUp();
+
+        line = reader.readLine();
+
+        String[] split = line.split( "," );
+        for ( int index = 0; index < split.length; index++ )
+        {
+
+            if (index == 105 || index == 108 || index == 111 || index == 114 || index == 117 || index == 120
+                    || index == 123 || index == 126 || index == 129 || index == 132 || index == 135
+                    || index == 138 || index == 141 || index == 144 || index == 147 || index == 150
+                    || index == 153 || index == 156) {
+                game.setRetroID(split[index]);
+            }
+
+            if (index == 106 || index == 109 || index == 112 || index == 115 || index == 118 || index == 121
+                    || index == 124 || index == 127 || index == 130 || index == 133 || index == 136
+                    || index == 139 || index == 142 || index == 145 || index == 148 || index == 151
+                    || index == 154 || index == 157) {
+                game.setPlayerName(split[index]);
+            }
+
+            if (index == 107 || index == 110 || index == 113 || index == 116 || index == 119 || index == 122
+                    || index == 125 || index == 128 || index == 131 || index == 134 || index == 137
+                    || index == 140 || index == 143 || index == 146 || index == 149 || index == 152
+                    || index == 155 || index == 158) {
+
+                if (playerOrder < 10)
+                {
+                    game.setPlayerOrder(playerOrder);
+                    playerOrder++;
+                }
+                if (playerOrder == 10)
+                {
+                    playerOrder = 1;
+                }
+                //TODO take out the hardcode for this.
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+                LocalDate localDate = LocalDate.parse(split[0], formatter);
+                game.setGameDate(localDate);
+
+                game.setPlayerPosition(split[index]);
+                switch (game.getPlayerPosition()) {
+                    case "1":
+                        game.setPlayerPosition("P");
+                        break;
+                    case "2":
+                        game.setPlayerPosition("C");
+                        break;
+                    case "3":
+                        game.setPlayerPosition("1B");
+                        break;
+                    case "4":
+                        game.setPlayerPosition("2B");
+                        break;
+                    case "5":
+                        game.setPlayerPosition("3B");
+                        break;
+                    case "6":
+                        game.setPlayerPosition("SS");
+                        break;
+                    case "7":
+                        game.setPlayerPosition("LF");
+                        break;
+                    case "*":
+                        game.setPlayerPosition("CF");
+                        break;
+                    default:
+                        game.setPlayerPosition("RF");
+                        break;
+                }
+
+                if (index > 105 && index < 132)
+                {
+                    game.setTeamID(split[3]);
+                    game.setGameNumber(Integer.parseInt(split[5]));
+                } else if (index > 131 && index < 159)
+                {
+                    game.setTeamID(split[6]);
+                    game.setGameNumber(Integer.parseInt(split[8]));
+                }
+                game.setLgID(split[7]);
+                lineUpOrder.add(game);
+                game = new LineUp();
+            }
+        }
+        //TODO: Now add rows to lineup database
+        String query = " insert into pgbs_lineups (gameDate, lgID, teamID, retroID, playerName," +
+                " playerPosition, playerOrder, gameNumber) values (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement preparedStmt = null;
+
+        try
+        {
+            preparedStmt = conn.prepareStatement(query);
+
+            for (LineUp gameRow : lineUpOrder)
+            {
+                preparedStmt.setDate(1, java.sql.Date.valueOf(gameRow.getGameDate()));
+                preparedStmt.setString(2, gameRow.getLgID());
+                preparedStmt.setString(3, gameRow.getTeamID());
+                preparedStmt.setString(4, gameRow.getRetroID());
+                preparedStmt.setString(5, gameRow.getPlayerName());
+                preparedStmt.setString(6, gameRow.getPlayerPosition());
+                preparedStmt.setInt(7, gameRow.getPlayerOrder());
+                preparedStmt.setInt(8, gameRow.getGameNumber());
+                preparedStmt.executeUpdate();
+            }
+        }
+        catch (SQLException se)
+        {
+            se.printStackTrace();
+            throw se;
+        }
+        finally
+        {
+            preparedStmt.close();
+        }
+
+        System.out.println("stop");
+
+    }
+
+    static List<Batter> selectBatters(String teamID, int yearID) throws SQLException,
             InstantiationException, ClassNotFoundException
     {
-        Connection conn = null;
+        Connection conn;
 
         List<Batter> batters = new ArrayList<>();
 
@@ -657,15 +809,15 @@ public class Database {
 
             // Extract data from result set
             while (rs.next()) {
-                batter = new Batter();
+                Batter batter = new Batter();
                 // Retrieve by column name
                 batter.setNameFirst(rs.getString("nameFirst"));
                 batter.setNameLast(rs.getString("nameLast"));
                 // Sets Hands based on bats
-                if (rs.getString("bats") == "R")
+                if (Objects.equals(rs.getString("bats"), "R"))
                 {
                     batter.setBats(Hands.RIGHT);
-                } else if (rs.getString("bats") == "L")
+                } else if (Objects.equals(rs.getString("bats"), "L"))
                 {
                     batter.setBats(Hands.LEFT);
                 } else
@@ -712,10 +864,10 @@ public class Database {
         return batters;
     }
 
-    static List<Pitcher> selectPitchers(String teamID, int yearID, Pitcher pitcher) throws InstantiationException,
+    static List<Pitcher> selectPitchers(String teamID, int yearID) throws InstantiationException,
             SQLException, ClassNotFoundException
     {
-        Connection conn = null;
+        Connection conn;
 
         List<Pitcher> pitchers = new ArrayList<>();
 
@@ -737,15 +889,15 @@ public class Database {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                pitcher = new Pitcher();
+                Pitcher pitcher = new Pitcher();
                 // Retrieve by column name
                 pitcher.setNameFirst(rs.getString("nameFirst"));
                 pitcher.setNameLast(rs.getString("nameLast"));
                 // Sets Hands based on bats
-                if (rs.getString("throws") == "R")
+                if (Objects.equals(rs.getString("throws"), "R"))
                 {
                     pitcher.setPitchingArm("R");
-                } else if (rs.getString("throws") == "L")
+                } else if (Objects.equals(rs.getString("throws"), "L"))
                 {
                     pitcher.setPitchingArm("L");
                 }
@@ -854,10 +1006,10 @@ public class Database {
         return pitchers;
     }
 
-    static List<Fielder> selectFielders(String teamID, int yearID, Fielder fielder) throws InstantiationException,
+    static List<Fielder> selectFielders(String teamID, int yearID) throws InstantiationException,
             SQLException, ClassNotFoundException
     {
-        Connection conn = null;
+        Connection conn;
 
         List<Fielder> fielders = new ArrayList<>();
 
@@ -880,7 +1032,7 @@ public class Database {
 
             // Extract data from result set
             while (rs.next()) {
-                fielder = new Fielder();
+                Fielder fielder = new Fielder();
                 // Retrieve by column name
                 fielder.setNameFirst(rs.getString("nameFirst"));
                 fielder.setNameLast(rs.getString("nameLast"));
@@ -967,7 +1119,7 @@ public class Database {
     static Schedule selectSchedule(int yearID, String lgID) throws InstantiationException, SQLException,
             ClassNotFoundException
     {
-        Connection conn = null;
+        Connection conn;
         Schedule schedule = new Schedule();
         List<Schedule> scheduleList = new ArrayList<>();
 
@@ -1146,7 +1298,7 @@ public class Database {
     static League selectTeamStats(int yearID, String lgID, League league) throws InstantiationException, SQLException,
             ClassNotFoundException
     {
-        Connection conn = null;
+        Connection conn;
        // String lgID="AL";
 
         try {
@@ -1265,5 +1417,7 @@ public class Database {
         }
         return league;
     }
+
+
 }
 

@@ -37,7 +37,7 @@ public class Batter extends Player implements Comparable<Batter> {
         this.pos = pos;
     }
 
-    public void setPosition(InPlayPosition position) {
+    private void setPosition(InPlayPosition position) {
         this.position = position;
     }
 
@@ -125,7 +125,7 @@ public class Batter extends Player implements Comparable<Batter> {
         this.round = round;
     }
 
-    public int getBattingOrder() {
+    private int getBattingOrder() {
         return battingOrder;
     }
 
@@ -199,12 +199,12 @@ public class Batter extends Player implements Comparable<Batter> {
         if (visitors) {
             int yearID=1927;
             String teamID = schedule.getVisitingTeamId();
-            batterList = Database.selectBatters(teamID, yearID, batter);
+            batterList = Database.selectBatters(teamID, yearID);
 
         } else {
             int yearID=1927;
             String teamID = schedule.getHomeTeamId();
-            batterList = Database.selectBatters(teamID, yearID, batter);
+            batterList = Database.selectBatters(teamID, yearID);
         }
         return batterList;
     }
@@ -228,7 +228,7 @@ public class Batter extends Player implements Comparable<Batter> {
                     if (matchedBatters.size() < 10)
                     //b++;
                     {
-                        batter.getBatterStats().setGameGamePlayed(1);
+                        batter.getBatterStats().setGameGamePlayed();
                         matchedBatters.add(batter);
                         break;
                     }

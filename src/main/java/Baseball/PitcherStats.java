@@ -172,7 +172,7 @@ class PitcherStats {
         this.hitsAllowed = hitsAllowed;
     }
 
-    int getHomeRunsAllowed() {
+    private int getHomeRunsAllowed() {
         return homeRunsAllowed;
     }
 

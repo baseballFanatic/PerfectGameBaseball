@@ -22,7 +22,7 @@ class Bases {
         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
         pitcher.getPitcherStats().setGameHitsAllowed(pitcher.getPitcherStats().getGameHitsAllowed() + 1);
         team.getTeamStats().updateTeamHits(inning, visitorTeam, homeTeam);
-        GameRbi gameRbi = null;
+        GameRbi gameRbi;
         // Check for RBI or other events from the hit and update stats.
         switch (baseState) {
             case BASES_LOADED: {
@@ -490,7 +490,7 @@ class Bases {
         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
         pitcher.getPitcherStats().setGameHitsAllowed(pitcher.getPitcherStats().getGameHitsAllowed() + 1);
         team.getTeamStats().updateTeamHits(inning, visitorTeam, homeTeam);
-        GameRbi gameRbi = null;
+        GameRbi gameRbi;
         switch (baseState) {
             case BASES_LOADED: {
                 gameRbi = GameRbi.TWO;
@@ -628,14 +628,14 @@ class Bases {
     }
 
     void triple(Batter batter, Pitcher pitcher, PitchResult outs, Team visitorTeam, Team homeTeam, Inning inning,
-                BasesOccupied baseState, Fielder currentFielder, List<Fielder> fielderList, AtBatResult atBatResult,
+                BasesOccupied baseState, AtBatResult atBatResult,
                 Bases bases) {
         batter.getBatterStats().updateBatterStats(batter, atBatResult);
         batter.setPitcherReachedOn(pitcher);
         pitcher.getPitcherStats().setGameHitsAllowed(pitcher.getPitcherStats().getGameHitsAllowed() + 1);
         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
         team.getTeamStats().updateTeamHits(inning, visitorTeam, homeTeam);
-        GameRbi gameRbi = null;
+        GameRbi gameRbi;
         switch (baseState) {
             case BASES_LOADED: {
                 gameRbi = GameRbi.TWO;
@@ -815,7 +815,7 @@ class Bases {
         pitcher.getPitcherStats().setGameEarnedRunsAllowed(pitcher.getPitcherStats().getGameEarnedRunsAllowed() + 1);
         pitcher.getPitcherStats().setGameRunsAllowed(pitcher.getPitcherStats().getGameRunsAllowed() + 1);
         team.getTeamStats().updateTeamHits(inning, visitorTeam, homeTeam);
-        GameRbi gameRbi = null;
+        GameRbi gameRbi;
         switch (baseState) {
             case BASES_LOADED: {
                 gameRbi = GameRbi.TWO;

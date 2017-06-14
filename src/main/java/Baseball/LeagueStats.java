@@ -1,6 +1,6 @@
 package Baseball;
 
-public class LeagueStats {
+class LeagueStats {
 /*    private double walkPercentage = .0536;
     private double singlePercentage = .2428;
     private double doublePercentage = .0465;
