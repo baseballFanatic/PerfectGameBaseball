@@ -1,7 +1,10 @@
 package Baseball;
 
+import javax.sound.sampled.Line;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.Date;
 
 class LineUp {
     private int battingOrder;
@@ -163,6 +166,33 @@ class LineUp {
         }
 
         return optimizedLineUp;
+    }
+
+    public void setGameDate(Date date) {
+    }
+
+    public List<LineUp> getStartingLineup(Schedule schedule, boolean visitors) throws ClassNotFoundException,
+            SQLException, InstantiationException {
+        List<LineUp> lineUpList = new ArrayList<>();
+
+        if (visitors)
+        {
+            String teamID = schedule.getVisitingTeamId();
+            LocalDate gameDate = schedule.getGameDate();
+            int gameNumber = schedule.getVisitingGameNumber();
+
+            lineUpList = Database.selectStartingFielders(teamID, gameDate, gameNumber);
+
+        } else
+        {
+            String teamID = schedule.getHomeTeamId();
+            LocalDate gameDate = schedule.getGameDate();
+            int gameNumber = schedule.getHomeGameNumber();
+
+            lineUpList = Database.selectStartingFielders(teamID, gameDate, gameNumber);
+        }
+
+        return lineUpList;
     }
 }
 

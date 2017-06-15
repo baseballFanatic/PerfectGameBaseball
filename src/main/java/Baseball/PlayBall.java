@@ -1,5 +1,6 @@
 package Baseball;
 
+import javax.sound.sampled.Line;
 import javax.xml.crypto.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
@@ -47,7 +48,8 @@ public class PlayBall {
         // Selects all fielders available for the team
         List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors, schedule);
         // Selects starters for all 8 regular positions from the list of fielders available
-        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorFieldersReserves);
+        List<LineUp> visitorStarters = lineUp.getStartingLineup(schedule, visitors);
+        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
 //        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, visitorFieldersReserves);
         // Selects all pitchers for the team
         List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule);
@@ -61,7 +63,8 @@ public class PlayBall {
 
         List<Batter> homeBatters = batter.getBatterList(visitors, schedule);
         List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors, schedule);
-        List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeFieldersReserves);
+        List<LineUp> homeStarters = lineUp.getStartingLineup(schedule, visitors);
+        List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeStarters, homeFieldersReserves);
        // List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, homeFieldersReserves);
         List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule);
         List<Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);

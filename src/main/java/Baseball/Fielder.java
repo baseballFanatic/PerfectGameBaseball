@@ -1,5 +1,6 @@
 package Baseball;
 
+import javax.sound.sampled.Line;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -181,27 +182,26 @@ public class Fielder extends Player {
         }
         return fielderList;
     }
-    List<Fielder> getFieldersStartersList(List<Fielder> team)
+
+    List<Fielder> getFieldersStartersList(List<LineUp> team, List<Fielder> fielderList)
     {
-/*    List<Fielder> getFieldersStartersList(boolean visitors, Schedule schedule, List<Fielder> team)
-            throws NoSuchMethodException, SecurityException, InvocationTargetException, IllegalAccessException {*/
         List<Fielder> starters = new ArrayList<>();
 
-/*        if (visitors)
+        for (LineUp player : team)
         {
-            for (int a = 1; a < 10; a++)
+            for (Fielder fielder : fielderList)
             {
-                String batterId = "getVisitingBatter" + a + "Id";
-                try {
-                    Method method = schedule.getClass().getMethod(batterId, String.class);
-                    method.invoke(schedule, batterId);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
+                if (player.getRetroID() == fielder.getRetroId() && player.getPlayerPosition() == fielder.position.toString())
+                //TODO: Add some kind of check for OF
+                {
+                    fielderList.add(fielder);
+                    break;
                 }
- //               String retroID = schedule.
             }
-        }*/
-        List<InPlayPosition> positionsNeeded = InPlayPosition.getList();
+        return fielderList;
+        }
+
+/*        List<InPlayPosition> positionsNeeded = InPlayPosition.getList();
         positionsNeeded.remove(InPlayPosition.DESIGNATED_HITTER);
         positionsNeeded.remove(InPlayPosition.OUTFIELD);
         positionsNeeded.remove(InPlayPosition.PITCHER);
@@ -232,7 +232,7 @@ public class Fielder extends Player {
         }
         setLeftField(false);
         setCenterField(false);
-        setRightField(false);
+        setRightField(false);*/
         return starters;
     }
 

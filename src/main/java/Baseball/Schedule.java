@@ -1,6 +1,8 @@
 package Baseball;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -21,7 +23,7 @@ class Schedule {
         homeBatter3Name, homeBatter4Id, homeBatter4Name, homeBatter5Id, homeBatter5Name,
         homeBatter6Id, homeBatter6Name, homeBatter7Id, homeBatter7Name,
         homeBatter8Id, homeBatter8Name, homeBatter9Id, homeBatter9Name, acquisitionInfo,
-        additionalInfo, gameCompleted, gameNumber, visitingBatter1Position, visitingBatter2Position,
+        additionalInfo, gameCompleted, visitingBatter1Position, visitingBatter2Position,
         visitingBatter3Position, visitingBatter4Position, visitingBatter5Position, visitingBatter6Position,
         visitingBatter7Position, visitingBatter8Position, visitingBatter9Position, homeBatter1Position,
         homeBatter2Position, homeBatter3Position, homeBatter4Position, homeBatter5Position,
@@ -36,16 +38,25 @@ class Schedule {
         homeSacrificeFlies, homeHitByPitch, homeWalks, homeIntentionalWalks, homeStrikeOuts, homeStolenBases,
         homeCaughtStealing, homeGroundedIntoDoublePlays, homeAwardCatchersInterference, homeLeftOnBase, homePitchersUsed,
         homeIndividualEarnedRuns, homeTeamEarnedRuns, homeWildPitches, homeBalks, homePutOuts, homeAssists, homeErrors,
-        homePassedBalls, homeDoublePlays, homeTriplePlays,gameKey;
+        homePassedBalls, homeDoublePlays, homeTriplePlays, gameKey, gameNumber;
+    private LocalDate gameDate;
 
     public Schedule() {
     }
 
-    public String getGameNumber() {
+    public LocalDate getGameDate() {
+        return gameDate;
+    }
+
+    public void setGameDate(LocalDate gameDate) {
+        this.gameDate = gameDate;
+    }
+
+    public int getGameNumber() {
         return gameNumber;
     }
 
-    void setGameNumber(String gameNumber) {
+    void setGameNumber(int gameNumber) {
         this.gameNumber = gameNumber;
     }
 

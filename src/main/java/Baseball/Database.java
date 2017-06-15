@@ -1,6 +1,9 @@
 package Baseball;
 
+import org.apache.tomcat.jni.Local;
+
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -36,22 +39,24 @@ class Database {
 
             // Execute query
             stmt = conn.createStatement();
-/*            createPgbsBatters(stmt);
-            createPgbsPitchers(stmt);
-            createPgbsFielders(stmt);
-            createPgbsSeasons(stmt);
-            createPgbsTeams(stmt);*/
+            //createPgbsBatters(stmt);
+            //createPgbsPitchers(stmt);
+            //createPgbsFielders(stmt);
+            //createPgbsSeasons(stmt);
+            //createPgbsTeams(stmt);
             //TODO: add createPgbsSchedule method
-            createPgbsLineUp(stmt);
+            createPgbsSchedule(stmt);
+            //createPgbsLineUp(stmt);
 
             int yearID = 1927;
             String lgID="AL";
-/*            insertPgbsBatters(conn, yearID);
-            insertPgbsPitchers(conn, yearID);
-            insertPgbsFielders(conn, yearID);
-            insertPgbsTeams(conn, yearID);*/
-            Schedule schedule = new Schedule();
-            insertPgbsLineUp(conn, schedule);
+            //insertPgbsBatters(conn, yearID);
+            //insertPgbsPitchers(conn, yearID);
+           // insertPgbsFielders(conn, yearID);
+            //insertPgbsTeams(conn, yearID);
+            insertPgbsSchedule(conn, yearID);
+            //Schedule schedule = new Schedule();
+            //insertPgbsLineUp(conn, schedule);
 //            insertPgbsSeasons(conn, yearID);
 
             // Clean-up environment
@@ -202,6 +207,7 @@ class Database {
         fielders = "CREATE TABLE pgbs_fielders" +
                 "( nameFirst varchar(255), " +
                 " nameLast varchar(255), " +
+                " retroID varchar(255), " +
                 " playerID varchar(255)," +
                 " yearID int(11)," +
                 " stint int(11)," +
@@ -230,6 +236,64 @@ class Database {
                 " playerKey int(11) not null auto_increment primary key)";
 
         stmt.executeUpdate(fielders);
+    }
+
+    private static void createPgbsSchedule (Statement stmt) throws SQLException
+    {
+        String games;
+        games = "CREATE TABLE pgbs_schedule " +
+                " (gameDate date, " +
+                " gameNumber int(11), " +
+                " gameDay varchar(255), " +
+                " visitingTeamId varchar(255), " +
+                " visitingLgId varchar(255), " +
+                " visitingGameNumber int(11), " +
+                " homeTeamId varchar(255), " +
+                " homeLgId varchar(255), " +
+                " homeGameNumber int(11), " +
+                " visitingScore int (11), " +
+                " homeScore int(11), " +
+                " lengthOuts varchar(255), " +
+                " dayNight varchar(255), " +
+                " completionInfo varchar(255), " +
+                " forfeitInfo varchar(255), " +
+                " parkId varchar(255), " +
+                " attendance int(11), " +
+                " timeInMinutes int(11), " +
+                " visitingLineScore varchar(255), " +
+                " homeLineScore varchar(255), " +
+                " homePlateUmpireId varchar(255), " +
+                " homePlateUmpireName varchar(255), " +
+                " firstBaseUmpireId varchar(255), " +
+                " firstBaseUmpireName varchar(255), " +
+                " secondBaseUmpireId varchar(255), " +
+                " secondBaseUmpireName varchar(255), " +
+                " thirdBaseUmpireId varchar(255), " +
+                " thirdBaseUmpireName varchar(255), " +
+                " leftFieldUmpireId varchar(255), " +
+                " leftFieldUmpireName varchar(255), " +
+                " rightFieldUmpireId varchar(255), " +
+                " rightFieldUmpireName varchar(255), " +
+                " visitingManagerId varchar(255), " +
+                " visitingManagerName varchar(255), " +
+                " homeManagerId varchar(255), " +
+                " homeManagerName varchar(255), " +
+                " winningPitcherId varchar(255), " +
+                " winningPitcherName varchar(255), " +
+                " losingPitcherId varchar(255), " +
+                " losingPitcherName varchar(255), " +
+                " savingPitcherId varchar(255), " +
+                " savingPitcherName varchar(255), " +
+                " visitingStartingPitcherId varchar(255), " +
+                " visitingStartingPitcherName varchar(255), " +
+                " homeStartingPitcherId varchar(255), " +
+                " homeStartingPitcherName varchar(255), " +
+                " additionalInfo varchar(255), " +
+                " acquisitionInfo varchar(255), " +
+                " gameCompleted varchar(255), " +
+                " gameKey int(11) not null auto_increment primary key)";
+
+        stmt.executeUpdate(games);
     }
 
     private static void createPgbsSeasons(Statement stmt) throws SQLException {
@@ -399,6 +463,179 @@ class Database {
         stmt.executeUpdate(games);
     }
 
+
+    private static void insertPgbsSchedule(Connection conn, int yearID) throws IOException, SQLException {
+        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1927.csv"));
+        //String line = null;
+        String line = reader.readLine();
+
+        List<Schedule> scheduleList = new ArrayList<>();
+
+        while (line != null)
+        {
+            Schedule game = new Schedule();
+            String[] split = line.split(",");
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+            LocalDate localDate = LocalDate.parse(split[0], formatter);
+            game.setGameDate(localDate);
+            game.setGameNumber(Integer.parseInt(split[1]));
+            game.setGameDay(split[2]);
+            game.setVisitingTeamId(split[3]);
+            game.setVisitingLgId(split[4]);
+            game.setVisitingGameNumber(Integer.parseInt(split[5]));
+            game.setHomeTeamId(split[6]);
+            game.setHomeLgId(split[7]);
+            game.setHomeGameNumber(Integer.parseInt(split[8]));
+            game.setVisitingScore(Integer.parseInt(split[9]));
+            game.setHomeScore(Integer.parseInt(split[10]));
+            game.setLengthOuts(split[11]);
+            game.setDayNight(split[12]);
+            game.setCompletionInfo(split[13]);
+            game.setForfeitInfo(split[14]);
+            game.setParkId(split[16]);
+            if (split[17].isEmpty())
+            {
+                game.setAttendance(0);
+            } else
+            {
+                game.setAttendance(Integer.parseInt(split[17]));
+            }
+            if (split[18].isEmpty())
+            {
+                game.setAttendance(0);
+            } else
+            {
+                game.setTimeInMinutes(Integer.parseInt(split[18]));
+            }
+            game.setVisitingLineScore(split[19]);
+            game.setHomeLineScore(split[20]);
+            game.setHomePlateUmpireId(split[77]);
+            game.setHomePlateUmpireName(split[78]);
+            game.setFirstBaseUmpireId(split[79]);
+            game.setFirstBaseUmpireName(split[80]);
+            game.setSecondBaseUmpireId(split[81]);
+            game.setSecondBaseUmpireName(split[82]);
+            game.setThirdBaseUmpireId(split[83]);
+            game.setThirdBaseUmpireName(split[84]);
+            game.setLeftFieldUmpireId(split[85]);
+            game.setLeftFieldUmpireName(split[86]);
+            game.setRightFieldUmpireId(split[87]);
+            game.setRightFieldUmpireName(split[88]);
+            game.setVisitingManagerId(split[89]);
+            game.setVisitingManagerName(split[90]);
+            game.setHomeManagerId(split[91]);
+            game.setHomeManagerName(split[92]);
+            game.setWinningPitcherId(split[93]);
+            game.setWinningPitcherName(split[94]);
+            game.setLosingPitcherId(split[95]);
+            game.setLosingPitcherName(split[96]);
+            game.setSavingPitcherId(split[97]);
+            game.setSavingPitcherName(split[98]);
+            game.setVisitingStartingPitcherId(split[101]);
+            game.setVisitingStartingPitcherName(split[102]);
+            game.setHomeStartingPitcherId(split[103]);
+            game.setHomeStartingPitcherName(split[104]);
+            game.setAdditionalInfo(split[159]);
+            game.setAcquisitionInfo(split[160]);
+            game.setGameCompleted(split[161]);
+
+            scheduleList.add(game);
+            split = null;
+
+            line = reader.readLine();
+
+            }
+
+        String query = " insert into pgbs_schedule (gameDate, gameNumber, gameDay, visitingTeamId, visitingLgId, " +
+                " visitingGameNumber, homeTeamId, homeLgId, homeGameNumber, visitingScore, homeScore, lengthOuts, " +
+                " dayNight, completionInfo, forfeitInfo, parkId, attendance, timeInMinutes, visitingLineScore, " +
+                " homeLineScore, homePlateUmpireId, homePlateUmpireName, firstBaseUmpireId, firstBaseUmpireName, " +
+                " secondBaseUmpireId, secondBaseUmpireName, thirdBaseUmpireId, thirdBaseUmpireName, leftFieldUmpireId, " +
+                " leftFieldUmpireName, rightFieldUmpireId, rightFieldUmpireName, visitingManagerId, visitingManagerName, " +
+                " homeManagerId, homeManagerName, winningPitcherId, winningPitcherName, losingPitcherId, losingPitcherName, " +
+                " savingPitcherId, savingPitcherName, visitingStartingPitcherId, visitingStartingPitcherName, " +
+                " homeStartingPitcherId, homeStartingPitcherName, additionalInfo, acquisitionInfo, gameCompleted) " +
+                " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement preparedStmt = null;
+
+        try
+        {
+            preparedStmt = conn.prepareStatement(query);
+
+            for (Schedule gameRow : scheduleList)
+            {
+                preparedStmt.setDate(1, java.sql.Date.valueOf(gameRow.getGameDate()));
+                preparedStmt.setInt(2, gameRow.getGameNumber());
+                preparedStmt.setString(3, gameRow.getGameDay());
+                preparedStmt.setString(4, gameRow.getVisitingTeamId());
+                preparedStmt.setString(5, gameRow.getVisitingLgId());
+                preparedStmt.setInt(6, gameRow.getVisitingGameNumber());
+                preparedStmt.setString(7, gameRow.getHomeTeamId());
+                preparedStmt.setString(8, gameRow.getHomeLgId());
+                preparedStmt.setInt(9, gameRow.getHomeGameNumber());
+                preparedStmt.setInt(10, gameRow.getVisitingScore());
+                preparedStmt.setInt(11, gameRow.getHomeScore());
+                preparedStmt.setString(12, gameRow.getLengthOuts());
+                preparedStmt.setString(13, gameRow.getDayNight());
+                preparedStmt.setString(14, gameRow.getCompletionInfo());
+                preparedStmt.setString(15, gameRow.getForfeitInfo());
+                preparedStmt.setString(16, gameRow.getParkId());
+                preparedStmt.setInt(17, gameRow.getAttendance());
+                preparedStmt.setInt(18, gameRow.getTimeInMinutes());
+                preparedStmt.setString(19, gameRow.getVisitingLineScore());
+                preparedStmt.setString(20, gameRow.getHomeLineScore());
+                preparedStmt.setString(21, gameRow.getHomePlateUmpireId());
+                preparedStmt.setString(22, gameRow.getHomePlateUmpireName());
+                preparedStmt.setString(23, gameRow.getFirstBaseUmpireId());
+                preparedStmt.setString(24, gameRow.getFirstBaseUmpireName());
+                preparedStmt.setString(25, gameRow.getSecondBaseUmpireId());
+                preparedStmt.setString(26, gameRow.getSecondBaseUmpireName());
+                preparedStmt.setString(27, gameRow.getThirdBaseUmpireId());
+                preparedStmt.setString(28, gameRow.getThirdBaseUmpireName());
+                preparedStmt.setString(29, gameRow.getLeftFieldUmpireId());
+                preparedStmt.setString(30, gameRow.getLeftFieldUmpireName());
+                preparedStmt.setString(31, gameRow.getRightFieldUmpireId());
+                preparedStmt.setString(32, gameRow.getRightFieldUmpireName());
+                preparedStmt.setString(33, gameRow.getVisitingManagerId());
+                preparedStmt.setString(34, gameRow.getVisitingManagerName());
+                preparedStmt.setString(35, gameRow.getHomeManagerId());
+                preparedStmt.setString(36, gameRow.getHomeManagerName());
+                preparedStmt.setString(37, gameRow.getWinningPitcherId());
+                preparedStmt.setString(38, gameRow.getWinningPitcherName());
+                preparedStmt.setString(39, gameRow.getLosingPitcherId());
+                preparedStmt.setString(40, gameRow.getLosingPitcherName());
+                preparedStmt.setString(41, gameRow.getSavingPitcherId());
+                preparedStmt.setString(42, gameRow.getSavingPitcherName());
+                preparedStmt.setString(43, gameRow.getVisitingStartingPitcherId());
+                preparedStmt.setString(44, gameRow.getVisitingStartingPitcherName());
+                preparedStmt.setString(45, gameRow.getHomeStartingPitcherId());
+                preparedStmt.setString(46, gameRow.getHomeStartingPitcherName());
+                preparedStmt.setString(47, gameRow.getAdditionalInfo());
+                preparedStmt.setString(48, gameRow.getAcquisitionInfo());
+                preparedStmt.setString(49, gameRow.getGameCompleted());
+                preparedStmt.executeUpdate();
+            }
+        }
+        catch (SQLException se)
+        {
+            se.printStackTrace();
+            throw se;
+        }
+        finally
+        {
+            preparedStmt.close();
+        }
+        System.out.println("stop");
+        }
+
+
+/*        for ( int index = 0; index < split.length; index++ )
+        {
+    }*/
+
     private static void insertPgbsBatters(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("insert into pgbs_batters (nameFirst," +
                 " nameLast," +
@@ -483,6 +720,7 @@ class Database {
         PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_fielders (" +
                 " nameFirst, " +
                 " nameLast, " +
+                " retroID, " +
                 " playerID, " +
                 " yearID, " +
                 " stint, " +
@@ -503,6 +741,7 @@ class Database {
                 " ZR) " +
                 " SELECT m.nameFirst, " +
                 " m.nameLast, " +
+                " m.retroID, " +
                 " f.* " +
                 " FROM fielding as f " +
                 " JOIN master as m on f.playerID = m.playerID " +
@@ -655,13 +894,10 @@ class Database {
     //TODO Revisit how this should work
     private static void insertPgbsLineUp(Connection conn, Schedule schedule) throws SQLException, IOException, ParseException {
         BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1927.csv"));
-        String line = null;
-        Scanner scanner = null;
+        String line = reader.readLine();
         int playerOrder = 1;
         List<LineUp> lineUpOrder = new ArrayList<>();
         LineUp game = new LineUp();
-
-        line = reader.readLine();
 
         String[] split = line.split( "," );
         for ( int index = 0; index < split.length; index++ )
@@ -695,7 +931,6 @@ class Database {
                 {
                     playerOrder = 1;
                 }
-                //TODO take out the hardcode for this.
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
                 LocalDate localDate = LocalDate.parse(split[0], formatter);
                 game.setGameDate(localDate);
@@ -1036,6 +1271,7 @@ class Database {
                 // Retrieve by column name
                 fielder.setNameFirst(rs.getString("nameFirst"));
                 fielder.setNameLast(rs.getString("nameLast"));
+                fielder.setRetroId(rs.getString("retroID"));
                 fielder.setTeamID(rs.getString("teamID"));
                 fielder.setPlayerId(rs.getString("playerID"));
                 fielder.getFielderStats().setGamesPlayed(rs.getInt("G"));
@@ -1135,7 +1371,12 @@ class Database {
             while(rs.next())
             {
                 schedule = new Schedule();
-                schedule.setGameNumber(rs.getString("gameNumber"));
+                Date date = rs.getDate("gameDate");
+                DateFormat df = new SimpleDateFormat("yyyyMMdd");
+                String text = df.format(date);
+                LocalDate gameDate = LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyyMMdd"));
+                schedule.setGameDate(gameDate);
+                schedule.setGameNumber(Integer.parseInt(rs.getString("gameNumber")));
                 schedule.setGameDay(rs.getString("gameDay"));
                 schedule.setVisitingTeamId(rs.getString("visitingTeamId"));
                 schedule.setVisitingLgId(rs.getString("visitingLgId"));
@@ -1299,7 +1540,6 @@ class Database {
             ClassNotFoundException
     {
         Connection conn;
-       // String lgID="AL";
 
         try {
             // Register JDBC driver
@@ -1418,6 +1658,56 @@ class Database {
         return league;
     }
 
+    static List<LineUp> selectStartingFielders (String teamID, LocalDate gameDate, int gameNumber) throws SQLException,
+            InstantiationException, ClassNotFoundException
+    {
+        Connection conn;
 
+        List<LineUp> lineUp = new ArrayList<>();
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT * from pgbs_lineups " +
+                    " where teamID=? " +
+                    " and gameDate=? " +
+                    " and gameNumber=?");
+            stmt.setString(1, teamID);
+            stmt.setDate(2, java.sql.Date.valueOf(gameDate));
+            stmt.setInt(3, gameNumber);
+
+            ResultSet rs = stmt.executeQuery();
+
+            // Extract data from result set
+            while (rs.next()) {
+                LineUp starter = new LineUp();
+                // Retrieve by column name
+                starter.setGameDate(rs.getDate("gameDate"));
+                starter.setLgID(rs.getString("lgID"));
+                starter.setTeamID(rs.getString("teamID"));
+                starter.setRetroID(rs.getString("retroID"));
+                starter.setPlayerName(rs.getString("playerName"));
+                starter.setPlayerPosition(rs.getString("playerPosition"));
+                starter.setPlayerOrder(rs.getInt("playerOrder"));
+                starter.setGameNumber(rs.getInt("gameNumber"));
+                lineUp.add(starter);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return lineUp;
+    }
 }
+
+
+
 
