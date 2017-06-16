@@ -57,7 +57,7 @@ public class PlayBall {
         List<Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
         // Adds a designated hitter to the batter file if home team is AL otherwise adds pitcher
         //TODO: Need to add in the actual logic to check league
-        List<Batter> visitorBatterFinal = batter.findDesignatedHitter(visitorBatterStarters, visitorBatters);
+        //List<Batter> visitorBatterFinal = batter.findDesignatedHitter(visitorBatterStarters, visitorBatters);
 
         setVisitors(false);
 
@@ -68,16 +68,18 @@ public class PlayBall {
        // List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, homeFieldersReserves);
         List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule);
         List<Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
-        List<Batter> homeBatterFinal = batter.findDesignatedHitter(homeBatterStarters, homeBatters);
+       // List<Batter> homeBatterFinal = batter.findDesignatedHitter(homeBatterStarters, homeBatters);
 
         // Selects an available starting pitcher
-        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers));
-        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers));
+        setVisitors(true);
+        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
+        setVisitors(false);
+        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule, visitors));
         // Adds the starting pitcher to the fielding file of starters
-        List<Fielder> visitorCompleteStarters = fielder.addPitcherToFielders(visitorFieldersReserves,
+/*        List<Fielder> visitorCompleteStarters = fielder.addPitcherToFielders(visitorFieldersReserves,
                 pitcher.getVisitorPitcher(), visitorFieldersStarters);
         List<Fielder> homeCompleteStarters = fielder.addPitcherToFielders(homeFieldersReserves,
-                pitcher.getHomePitcher(), homeFieldersStarters);
+                pitcher.getHomePitcher(), homeFieldersStarters);*/
 
         // TODO: Need to see if this will work everywhere.
         // TODO: Need to add battingOrder to the lineups.
@@ -85,21 +87,26 @@ public class PlayBall {
 
 
 
-        visitorTeam.setTeamName("1927 NY Yankees");
-        homeTeam.setTeamName("1927 Philadelphia Athletics");
+        visitorTeam.setTeamName(schedule.getVisitingTeamId());
+        homeTeam.setTeamName(schedule.getHomeTeamId());
 
         out.printf("%s vs %s%n", visitorTeam.getTeamName(), homeTeam.getTeamName());
         System.out.println();
         //TODO: Changed first parameter to Set
-        new DisplayInfo().displayLineUp(visitorBatterFinal, homeBatterFinal, visitorPitchers, homePitchers,
+        /*new DisplayInfo().displayLineUp(visitorBatterFinal, homeBatterFinal, visitorPitchers, homePitchers,
+                visitorFieldersStarters, homeFieldersStarters);*/
+        new DisplayInfo().displayLineUp(visitorBatterStarters, homeBatterStarters, visitorPitchers, homePitchers,
                 visitorFieldersStarters, homeFieldersStarters);
 
         Inning inning = new Inning();
         inning.setInning(1);
 
         while (!isGameOver()) {
-            inning.startInning(league, visitorBatterFinal, homeBatterFinal, visitorTeam, homeTeam, inning, visitorCompleteStarters,
+            /*inning.startInning(league, visitorBatterFinal, homeBatterFinal, visitorTeam, homeTeam, inning, visitorCompleteStarters,
                     homeCompleteStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
+                    homeLineScore);*/
+            inning.startInning(league, visitorBatterStarters, homeBatterStarters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
+                    homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
                     homeLineScore);
             checkGameOver(visitorTeam, homeTeam, gameOver, inning);
             if (inning.isTop()){

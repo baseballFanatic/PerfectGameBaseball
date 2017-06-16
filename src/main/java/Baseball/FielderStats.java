@@ -6,10 +6,18 @@ import java.util.List;
 class FielderStats {
     private int gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful,
     gamesPlayed, gamesStarted, inningOuts, putOuts, assists, errors, doublePlays, passedBalls, stolenBases,
-    caughtStealing, zoneRating, wildPitches;
+    caughtStealing, zoneRating, wildPitches, gameGamePlayed;
     private double fieldingPercentage;
 
     FielderStats() {
+    }
+
+    public int getGameGamePlayed() {
+        return gameGamePlayed;
+    }
+
+    public void setGameGamePlayed(int gameGamePlayed) {
+        this.gameGamePlayed = gameGamePlayed;
     }
 
     public int getWildPitches() {

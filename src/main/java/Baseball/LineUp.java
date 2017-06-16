@@ -9,11 +9,19 @@ import java.util.Date;
 class LineUp {
     private int battingOrder;
     private int visitorBattingNumber;
-    private int homeBattingNumber, yearID, gameKey, playerOrder, gameNumber;
+    private int homeBattingNumber, yearID, gameKey, playerOrder, gameNumber, gamePlayed;
     private LocalDate gameDate;
     private String retroID, playerName, lgID, teamID, playerPosition;
 
     LineUp() {
+    }
+
+    public int getGamePlayed() {
+        return gamePlayed;
+    }
+
+    public void setGamePlayed(int gamePlayed) {
+        this.gamePlayed = gamePlayed;
     }
 
     public LocalDate getGameDate() {

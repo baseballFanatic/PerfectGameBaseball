@@ -4,6 +4,7 @@ import javax.sound.sampled.Line;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.lang.Math.random;
 
@@ -186,21 +187,139 @@ public class Fielder extends Player {
     List<Fielder> getFieldersStartersList(List<LineUp> team, List<Fielder> fielderList)
     {
         List<Fielder> starters = new ArrayList<>();
-
+        //TODO: Somehow team has 2 RF's
         for (LineUp player : team)
         {
             for (Fielder fielder : fielderList)
             {
-                if (player.getRetroID() == fielder.getRetroId() && player.getPlayerPosition() == fielder.position.toString())
+                if (Objects.equals(player.getRetroID(), fielder.getRetroId()))
+                {
+                    switch(player.getPlayerPosition())
+                    {
+                        case("RF"):
+                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
+                            {
+                                fielder.setPosition(InPlayPosition.RIGHT_FIELD);
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        case ("LF"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
+                            {
+                                fielder.setPosition(InPlayPosition.LEFT_FIELD);
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("CF"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
+                            {
+                                fielder.setPosition(InPlayPosition.CENTER_FIELD);
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("1B"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.FIRST_BASE))
+                            {
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("2B"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.SECOND_BASE))
+                            {
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("3B"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.THIRD_BASE))
+                            {
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("SS"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.SHORTSTOP))
+                            {
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("P"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.PITCHER))
+                            {
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                        case ("C"):
+                        {
+                            if (fielder.getPosition().equals(InPlayPosition.CATCHER))
+                            {
+                                if (player.getGamePlayed() != 1)
+                                {
+                                    player.setGamePlayed(1);
+                                    starters.add(fielder);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return starters;
+    }
+/*
+
+                        player.getPlayerPosition() == fielder.position.toString())
                 //TODO: Add some kind of check for OF
                 {
                     fielderList.add(fielder);
                     break;
                 }
-            }
-        return fielderList;
-        }
-
+            }*/
 /*        List<InPlayPosition> positionsNeeded = InPlayPosition.getList();
         positionsNeeded.remove(InPlayPosition.DESIGNATED_HITTER);
         positionsNeeded.remove(InPlayPosition.OUTFIELD);
@@ -233,8 +352,8 @@ public class Fielder extends Player {
         setLeftField(false);
         setCenterField(false);
         setRightField(false);*/
-        return starters;
-    }
+        //return starters;
+
 
     List<Fielder> addPitcherToFielders(List<Fielder> fielderReserves, Pitcher pitcher, List<Fielder> starters)
     {

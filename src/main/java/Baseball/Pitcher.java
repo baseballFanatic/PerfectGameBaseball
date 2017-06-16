@@ -279,12 +279,30 @@ public class Pitcher extends Player {
         return pitcherList;
     }
 
-    Pitcher findStartingPitcher(List<Pitcher> pitchingTeam)
+    Pitcher findStartingPitcher(List<Pitcher> pitchingTeam, Schedule schedule, boolean visitors)
     {
-        for (Pitcher pitcher : pitchingTeam) {
+        /*for (Pitcher pitcher : pitchingTeam) {
             if (pitcher.isAvailable && pitcher.pitcherRole.equals(PitcherRole.STARTER)) {
                 pitcher.setAvailable(false);
                 return pitcher;
+            }
+        }*/
+        for (Pitcher pitcher : pitchingTeam)
+        {
+            if (visitors)
+            {
+                if (pitcher.getRetroId().equals(schedule.getVisitingStartingPitcherId()))
+                {
+                    pitcher.setAvailable(false);
+                    return pitcher;
+                }
+            } else
+            {
+                if (pitcher.getRetroId().equals(schedule.getHomeStartingPitcherId()))
+                {
+                    pitcher.setAvailable(false);
+                    return pitcher;
+                }
             }
         }
         return null;

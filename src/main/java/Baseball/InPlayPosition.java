@@ -19,6 +19,10 @@ public enum InPlayPosition {
         return positionCode;
     }
 
+    public void setPositionCode(String positionCode) {
+        this.positionCode = positionCode;
+    }
+
     public static InPlayPosition get(String value) {
         InPlayPosition result = null;
 
