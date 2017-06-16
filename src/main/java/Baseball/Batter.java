@@ -125,7 +125,7 @@ public class Batter extends Player implements Comparable<Batter> {
         this.round = round;
     }
 
-    private int getBattingOrder() {
+    int getBattingOrder() {
         return battingOrder;
     }
 
@@ -191,6 +191,30 @@ public class Batter extends Player implements Comparable<Batter> {
                 homeTeam.getTeamStats().getGameRuns()) < 5 && currentBatter.getBattingOrder() > 7);
     }
 
+    Batter getBatter(Inning inning, LineUp lineUp, List<Batter> batters)
+    {
+        if (inning.isTop())
+        {
+            for (Batter batter : batters)
+            {
+                if (batter.getBattingOrder() == lineUp.getVisitorBattingNumber())
+                {
+                    return batter;
+                }
+            }
+        } else
+        {
+            for (Batter batter : batters)
+            {
+                if (batter.getBattingOrder() == lineUp.getHomeBattingNumber())
+                {
+                    return batter;
+                }
+            }
+        }
+        return null;
+    }
+
     //List<Batter> getBatterList(boolean visitors, List<Schedule> scheduleList) throws ClassNotFoundException, SQLException, InstantiationException {
     List<Batter> getBatterList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
         List<Batter> batterList;
@@ -225,6 +249,7 @@ public class Batter extends Player implements Comparable<Batter> {
             for (Fielder fielder : fielders) {
                 if (Objects.equals(batter.getPlayerId(), fielder.getPlayerId())) {
                     batter.setPosition(fielder.getPosition());
+                    batter.setBattingOrder(fielder.getBattingOrder());
                     if (matchedBatters.size() < 10)
                     //b++;
                     {

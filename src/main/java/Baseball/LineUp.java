@@ -8,8 +8,8 @@ import java.util.Date;
 
 class LineUp {
     private int battingOrder;
-    private int visitorBattingNumber;
-    private int homeBattingNumber, yearID, gameKey, playerOrder, gameNumber, gamePlayed;
+    private int visitorBattingNumber=1;
+    private int homeBattingNumber=1, yearID, gameKey, playerOrder, gameNumber, gamePlayed;
     private LocalDate gameDate;
     private String retroID, playerName, lgID, teamID, playerPosition;
 

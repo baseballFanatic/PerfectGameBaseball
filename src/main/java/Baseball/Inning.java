@@ -14,6 +14,7 @@ class Inning {
                      List<Fielder> homeFielders, LineUp lineUp,
                      List<Pitcher> visitorPitchers, List<Pitcher> homePitchers, boolean gameOver,
                      Pitcher pitcher, List<Integer> visitorLineScore, List<Integer> homeLineScore) {
+        Batter batter = new Batter();
         Batter currentBatter;
         Pitcher currentPitcher;
         PitchResult pitchResult = new PitchResult();
@@ -30,11 +31,11 @@ class Inning {
         do {
             if (inning.isTop()) {
                 pitcher.determineWinnerAndLoser(pitcher, inning, visitorTeam, homeTeam);
-                //TODO: Lineup needs to be changed to actually read from the batting Order and not just
-                //TODO: pulling the index value
-                currentBatter = visitorBatters.get(lineUp.getVisitorBattingNumber());
+                currentBatter = batter.getBatter(inning, lineUp, visitorBatters);
+                //currentBatter = visitorBatters.get(lineUp.getVisitorBattingNumber());
                 // Check to see if home pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, homePitchers)) {
+                    //TODO Need to add in logic to add new pitcher to batting file
                     currentPitcher = currentPitcher.getReliever(homePitchers);
                     if (currentPitcher != null) {
                         pitcher.setHomePitcher(currentPitcher);
@@ -50,11 +51,12 @@ class Inning {
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);
                 lineUp.setVisitorBattingNumber(lineUp.getVisitorBattingNumber()+ 1);
-                if (lineUp.getVisitorBattingNumber() == 9) {
-                    lineUp.setVisitorBattingNumber(0);
+                if (lineUp.getVisitorBattingNumber() == 10) {
+                    lineUp.setVisitorBattingNumber(1);
                 }
             } else {
-                currentBatter = homeBatters.get(lineUp.getHomeBattingNumber());
+                currentBatter = batter.getBatter(inning, lineUp, homeBatters);
+                //currentBatter = homeBatters.get(lineUp.getHomeBattingNumber());
                 // Check to see if visitor pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, visitorPitchers)) {
                     currentPitcher = currentPitcher.getReliever(visitorPitchers);
@@ -71,8 +73,8 @@ class Inning {
                 if (checkWalkOffWin(inning, homeTeam, visitorTeam, gameOver)) {
                     break;
                 }
-                if (lineUp.getHomeBattingNumber() == 9) {
-                    lineUp.setHomeBattingNumber(0);
+                if (lineUp.getHomeBattingNumber() == 10) {
+                    lineUp.setHomeBattingNumber(1);
                 }
             }
 

@@ -23,7 +23,6 @@ public class PlayBall {
         Batter batter = new Batter();
         Fielder fielder = new Fielder();
         Pitcher pitcher = new Pitcher();
-        //Schedule schedule = new Schedule();
 
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
@@ -37,27 +36,17 @@ public class PlayBall {
 
         Schedule schedule = Database.selectSchedule(yearID, lgID);
 
-/*        List<Schedule> scheduleList = Database.selectSchedule(yearID, lgID);
-        for (Schedule game : scheduleList)
-        {
-
-        }*/
-
-      //  List<Batter> visitorBatters = batter.getBatterList(visitors, scheduleList);
+        // Selects batters based on schedule file
         List<Batter> visitorBatters = batter.getBatterList(visitors,schedule);
         // Selects all fielders available for the team
         List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors, schedule);
         // Selects starters for all 8 regular positions from the list of fielders available
         List<LineUp> visitorStarters = lineUp.getStartingLineup(schedule, visitors);
         List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
-//        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, visitorFieldersReserves);
         // Selects all pitchers for the team
         List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule);
-        // Matches batter to fielder on playerID and assigns the batter to the starting lineup
+        // Matches batter to fielder on retroID and assigns the batter to the starting lineup
         List<Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
-        // Adds a designated hitter to the batter file if home team is AL otherwise adds pitcher
-        //TODO: Need to add in the actual logic to check league
-        //List<Batter> visitorBatterFinal = batter.findDesignatedHitter(visitorBatterStarters, visitorBatters);
 
         setVisitors(false);
 
@@ -65,36 +54,20 @@ public class PlayBall {
         List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors, schedule);
         List<LineUp> homeStarters = lineUp.getStartingLineup(schedule, visitors);
         List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeStarters, homeFieldersReserves);
-       // List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(visitors, schedule, homeFieldersReserves);
         List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule);
         List<Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
-       // List<Batter> homeBatterFinal = batter.findDesignatedHitter(homeBatterStarters, homeBatters);
 
         // Selects an available starting pitcher
         setVisitors(true);
         pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
         setVisitors(false);
         pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule, visitors));
-        // Adds the starting pitcher to the fielding file of starters
-/*        List<Fielder> visitorCompleteStarters = fielder.addPitcherToFielders(visitorFieldersReserves,
-                pitcher.getVisitorPitcher(), visitorFieldersStarters);
-        List<Fielder> homeCompleteStarters = fielder.addPitcherToFielders(homeFieldersReserves,
-                pitcher.getHomePitcher(), homeFieldersStarters);*/
-
-        // TODO: Need to see if this will work everywhere.
-        // TODO: Need to add battingOrder to the lineups.
-//       List<Batter> visitorOptimizedLineUp = lineUp.optimizeLineUp(visitorBatterStarters);
-
-
 
         visitorTeam.setTeamName(schedule.getVisitingTeamId());
         homeTeam.setTeamName(schedule.getHomeTeamId());
 
         out.printf("%s vs %s%n", visitorTeam.getTeamName(), homeTeam.getTeamName());
         System.out.println();
-        //TODO: Changed first parameter to Set
-        /*new DisplayInfo().displayLineUp(visitorBatterFinal, homeBatterFinal, visitorPitchers, homePitchers,
-                visitorFieldersStarters, homeFieldersStarters);*/
         new DisplayInfo().displayLineUp(visitorBatterStarters, homeBatterStarters, visitorPitchers, homePitchers,
                 visitorFieldersStarters, homeFieldersStarters);
 
@@ -102,9 +75,6 @@ public class PlayBall {
         inning.setInning(1);
 
         while (!isGameOver()) {
-            /*inning.startInning(league, visitorBatterFinal, homeBatterFinal, visitorTeam, homeTeam, inning, visitorCompleteStarters,
-                    homeCompleteStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
-                    homeLineScore);*/
             inning.startInning(league, visitorBatterStarters, homeBatterStarters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
                     homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
                     homeLineScore);
@@ -139,11 +109,9 @@ public class PlayBall {
         } else if (!inning.isTop() && !gameOver && inning.getInning() >= 9 && homeTeam.getTeamStats().getGameRuns() <
                 visitorTeam.getTeamStats().getGameRuns()) {
             setGameOver(true);
-            // new DisplayInfo().endOfInning(visitorTeam, homeTeam, inning);
         } else if (!inning.isTop() && !gameOver && inning.getInning() >= 9 && homeTeam.getTeamStats().getGameRuns() >
                 visitorTeam.getTeamStats().getGameRuns()) {
             setGameOver(true);
-            //   new DisplayInfo().endOfInning(visitorTeam, homeTeam, inning);
         }
     }
 

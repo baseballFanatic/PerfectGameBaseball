@@ -75,12 +75,12 @@ class DisplayInfo {
         System.out.println();
         System.out.println("Visitors:");
         System.out.printf("");
-        System.out.printf("%10s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "AtBats", "Runs", "Hits",
+        System.out.printf("%10s %3s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "Ord", "AtBats", "Runs", "Hits",
                 "RBI", "2B", "3B", "HR", "BB", "K", "SacF", "SacH", "SB", "CS", "Position");
         System.out.println();
         for (Batter batter : visitorStartingLineup) {
-            System.out.format("%10s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
-                    batter.getNameLast(), batter.getBatterStats().getAtBats(),
+            System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
+                    batter.getNameLast(), batter.getBattingOrder(), batter.getBatterStats().getAtBats(),
                     batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
                     batter.getBatterStats().getRbi(),
                     batter.getBatterStats().getDoubles(), batter.getBatterStats().getTriples(),
@@ -122,12 +122,12 @@ class DisplayInfo {
         System.out.println("---------------------------------------------------");
         System.out.println("Home:");
         System.out.printf("");
-        System.out.printf("%10s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "AtBats", "Runs", "Hits",
+        System.out.printf("%10s %3s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "Ord", "AtBats", "Runs", "Hits",
                 "RBI", "2B", "3B", "HR", "BB", "K", "SacF", "SacH", "SB", "CS", "Position");
         System.out.println();
         for (Batter batter : homeStartingLineup) {
-            System.out.format("%10s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
-                    batter.getNameLast(), batter.getBatterStats().getAtBats(),
+            System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
+                    batter.getNameLast(), batter.getBattingOrder(), batter.getBatterStats().getAtBats(),
                     batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
                     batter.getBatterStats().getRbi(),
                     batter.getBatterStats().getDoubles(), batter.getBatterStats().getTriples(),

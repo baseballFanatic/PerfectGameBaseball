@@ -12,7 +12,7 @@ public class Fielder extends Player {
     private final FielderStats fielderStats = new FielderStats();
     private InPlayPosition position;
     private String teamID, pos;
-    private int playerKey;
+    private int playerKey, battingOrder;
     private boolean leftField, centerField, rightField;
 
     Fielder() {
@@ -22,6 +22,14 @@ public class Fielder extends Player {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.position = position;
+    }
+
+    public int getBattingOrder() {
+        return battingOrder;
+    }
+
+    public void setBattingOrder(int battingOrder) {
+        this.battingOrder = battingOrder;
     }
 
     private boolean isLeftField() {
@@ -187,7 +195,6 @@ public class Fielder extends Player {
     List<Fielder> getFieldersStartersList(List<LineUp> team, List<Fielder> fielderList)
     {
         List<Fielder> starters = new ArrayList<>();
-        //TODO: Somehow team has 2 RF's
         for (LineUp player : team)
         {
             for (Fielder fielder : fielderList)
@@ -200,6 +207,7 @@ public class Fielder extends Player {
                             if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
                             {
                                 fielder.setPosition(InPlayPosition.RIGHT_FIELD);
+                                fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1)
                                 {
                                     player.setGamePlayed(1);
@@ -212,6 +220,7 @@ public class Fielder extends Player {
                             if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
                             {
                                 fielder.setPosition(InPlayPosition.LEFT_FIELD);
+                                fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1)
                                 {
                                     player.setGamePlayed(1);
@@ -225,6 +234,7 @@ public class Fielder extends Player {
                             if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
                             {
                                 fielder.setPosition(InPlayPosition.CENTER_FIELD);
+                                fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1)
                                 {
                                     player.setGamePlayed(1);
@@ -239,6 +249,7 @@ public class Fielder extends Player {
                             {
                                 if (player.getGamePlayed() != 1)
                                 {
+                                    fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
                                     starters.add(fielder);
                                 }
@@ -251,6 +262,7 @@ public class Fielder extends Player {
                             {
                                 if (player.getGamePlayed() != 1)
                                 {
+                                    fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
                                     starters.add(fielder);
                                 }
@@ -263,6 +275,7 @@ public class Fielder extends Player {
                             {
                                 if (player.getGamePlayed() != 1)
                                 {
+                                    fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
                                     starters.add(fielder);
                                 }
@@ -275,6 +288,7 @@ public class Fielder extends Player {
                             {
                                 if (player.getGamePlayed() != 1)
                                 {
+                                    fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
                                     starters.add(fielder);
                                 }
@@ -287,6 +301,7 @@ public class Fielder extends Player {
                             {
                                 if (player.getGamePlayed() != 1)
                                 {
+                                    fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
                                     starters.add(fielder);
                                 }
@@ -299,6 +314,7 @@ public class Fielder extends Player {
                             {
                                 if (player.getGamePlayed() != 1)
                                 {
+                                    fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
                                     starters.add(fielder);
                                 }
@@ -311,49 +327,6 @@ public class Fielder extends Player {
         }
         return starters;
     }
-/*
-
-                        player.getPlayerPosition() == fielder.position.toString())
-                //TODO: Add some kind of check for OF
-                {
-                    fielderList.add(fielder);
-                    break;
-                }
-            }*/
-/*        List<InPlayPosition> positionsNeeded = InPlayPosition.getList();
-        positionsNeeded.remove(InPlayPosition.DESIGNATED_HITTER);
-        positionsNeeded.remove(InPlayPosition.OUTFIELD);
-        positionsNeeded.remove(InPlayPosition.PITCHER);
-
-        for (Fielder fielder : team)
-        {
-            if (fielder.position.equals(InPlayPosition.OUTFIELD))
-            {
-                if (!isLeftField())
-                {
-                    fielder.setPosition(InPlayPosition.LEFT_FIELD);
-                    setLeftField(true);
-                } else if (!isCenterField())
-                {
-                    fielder.setPosition(InPlayPosition.CENTER_FIELD);
-                    setCenterField(true);
-                } else if (!isRightField())
-                {
-                    fielder.setPosition(InPlayPosition.RIGHT_FIELD);
-                    setRightField(true);
-                }
-            }
-            if (positionsNeeded.contains(fielder.getFielderPosition()))
-            {
-                starters.add(fielder);
-                positionsNeeded.remove(fielder.getFielderPosition());
-            }
-        }
-        setLeftField(false);
-        setCenterField(false);
-        setRightField(false);*/
-        //return starters;
-
 
     List<Fielder> addPitcherToFielders(List<Fielder> fielderReserves, Pitcher pitcher, List<Fielder> starters)
     {
