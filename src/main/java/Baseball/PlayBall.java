@@ -5,6 +5,7 @@ import javax.xml.crypto.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -42,32 +43,37 @@ public class PlayBall {
         List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors, schedule);
         // Selects starters for all 8 regular positions from the list of fielders available
         List<LineUp> visitorStarters = lineUp.getStartingLineup(schedule, visitors);
-        List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
+        HashMap<Integer, Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
+        //List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
         // Selects all pitchers for the team
         List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule);
         // Matches batter to fielder on retroID and assigns the batter to the starting lineup
-        List<Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
+        HashMap<Integer, Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
 
         setVisitors(false);
 
         List<Batter> homeBatters = batter.getBatterList(visitors, schedule);
         List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors, schedule);
         List<LineUp> homeStarters = lineUp.getStartingLineup(schedule, visitors);
-        List<Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeStarters, homeFieldersReserves);
+        HashMap<Integer, Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeStarters, homeFieldersReserves);
         List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule);
-        List<Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
+        HashMap<Integer, Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
 
         // Selects an available starting pitcher
         setVisitors(true);
         pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
+        pitcher.setVisitorStarter(pitcher.getVisitorPitcher());
         setVisitors(false);
         pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule, visitors));
+        pitcher.setHomeStarter(pitcher.getHomePitcher());
 
         visitorTeam.setTeamName(schedule.getVisitingTeamId());
         homeTeam.setTeamName(schedule.getHomeTeamId());
 
         out.printf("%s vs %s%n", visitorTeam.getTeamName(), homeTeam.getTeamName());
         System.out.println();
+        /*new DisplayInfo().displayLineUp(visitorBatterStarters, homeBatterStarters, visitorPitchers, homePitchers,
+                visitorFieldersStarters, homeFieldersStarters);*/
         new DisplayInfo().displayLineUp(visitorBatterStarters, homeBatterStarters, visitorPitchers, homePitchers,
                 visitorFieldersStarters, homeFieldersStarters);
 
@@ -77,7 +83,10 @@ public class PlayBall {
         while (!isGameOver()) {
             inning.startInning(league, visitorBatterStarters, homeBatterStarters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
                     homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
-                    homeLineScore);
+                    homeLineScore, visitorBatters, homeBatters, visitorFieldersReserves, homeFieldersReserves);
+/*            inning.startInning(league, visitorBatters, homeBatters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
+                    homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
+                    homeLineScore, visitorBatters, homeBatters, visitorFieldersReserves, homeFieldersReserves);*/
             checkGameOver(visitorTeam, homeTeam, gameOver, inning);
             if (inning.isTop()){
                 inning.setTop(false);
@@ -88,8 +97,11 @@ public class PlayBall {
             }
         }
 
-        new DisplayInfo().endOfGame(visitorBatterStarters, homeBatterStarters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
-                homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore);
+        /*new DisplayInfo().endOfGame(visitorBatterStarters, homeBatterStarters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
+                homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore);*/
+        new DisplayInfo().endOfGame(visitorBatters, homeBatters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
+                homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore, visitorFieldersReserves,
+                homeFieldersReserves);
     }
 
     private boolean isGameOver() {

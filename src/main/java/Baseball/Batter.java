@@ -1,7 +1,7 @@
 package Baseball;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -191,9 +191,26 @@ public class Batter extends Player implements Comparable<Batter> {
                 homeTeam.getTeamStats().getGameRuns()) < 5 && currentBatter.getBattingOrder() > 7);
     }
 
-    Batter getBatter(Inning inning, LineUp lineUp, List<Batter> batters)
+    public void removePitcherFromBatters(HashMap<Integer, Batter> batterStarters, Pitcher pitcher)
     {
-        if (inning.isTop())
+        Integer indexToDelete = null;
+        for (Integer integer : batterStarters.keySet()) {
+            if(Objects.equals(batterStarters.get(integer).getPlayerId(), pitcher.getPlayerId()) )
+            {
+                pitcher.setBattingOrder(batterStarters.get(integer).getBattingOrder());
+                indexToDelete = integer;
+                break;
+            }
+        }
+
+        batterStarters.remove(indexToDelete);
+    }
+
+
+
+    Batter getBatter(Inning inning, LineUp lineUp, HashMap<Integer, Batter> batters)
+    {
+/*        if (inning.isTop())
         {
             for (Batter batter : batters)
             {
@@ -211,11 +228,16 @@ public class Batter extends Player implements Comparable<Batter> {
                     return batter;
                 }
             }
+        }*/
+        if (inning.isTop())
+        {
+            return batters.get(lineUp.getVisitorBattingNumber());
+        } else
+        {
+            return batters.get(lineUp.getHomeBattingNumber());
         }
-        return null;
     }
 
-    //List<Batter> getBatterList(boolean visitors, List<Schedule> scheduleList) throws ClassNotFoundException, SQLException, InstantiationException {
     List<Batter> getBatterList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
         List<Batter> batterList;
         Batter batter = new Batter();
@@ -241,22 +263,20 @@ public class Batter extends Player implements Comparable<Batter> {
         this.pitcherReachedOn = pitcherReachedOn;
     }
 
-    List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
+   // List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
+    HashMap<Integer, Batter> matchPositions(List<Batter> batters, HashMap<Integer, Fielder> fielders){
         //int b = 0;
-        List<Batter> matchedBatters = new ArrayList<>();
+        HashMap<Integer, Batter> matchedBatters = new HashMap<>();
 
-        for (Batter batter : batters) {
-            for (Fielder fielder : fielders) {
-                if (Objects.equals(batter.getPlayerId(), fielder.getPlayerId())) {
-                    batter.setPosition(fielder.getPosition());
-                    batter.setBattingOrder(fielder.getBattingOrder());
-                    if (matchedBatters.size() < 10)
-                    //b++;
-                    {
-                        batter.getBatterStats().setGameGamePlayed();
-                        matchedBatters.add(batter);
-                        break;
-                    }
+        for (Batter batter : batters)
+        {
+            for (Integer fielder : fielders.keySet())
+            {
+                if (Objects.equals(batter.getPlayerId(), fielders.get(fielder).getPlayerId()))
+                {
+                    batter.setPosition(fielders.get(fielder).getPosition());
+                    batter.setBattingOrder(fielders.get(fielder).getBattingOrder());
+                    matchedBatters.put(batter.getBattingOrder(), batter);
                 }
             }
         }
@@ -289,5 +309,21 @@ public class Batter extends Player implements Comparable<Batter> {
             }
         }
         return batterStarters;
+    }
+
+    public void addNewPitcherToBatters(List<Batter> batterReserves, Pitcher currentPitcher,
+                                       HashMap<Integer, Batter> batterStarters) {
+        Batter batter = new Batter();
+
+        for (Batter batter1 : batterReserves)
+        {
+            if (batter1.getPlayerId().equals(currentPitcher.getPlayerId()))
+            {
+                batter1.setBattingOrder(currentPitcher.getBattingOrder());
+                batter = batter1;
+            }
+        }
+
+        batterStarters.put(batter.getBattingOrder(), batter);
     }
 }

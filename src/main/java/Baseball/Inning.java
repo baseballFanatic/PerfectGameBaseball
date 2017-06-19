@@ -1,5 +1,6 @@
 package Baseball;
 
+import java.util.HashMap;
 import java.util.List;
 
 class Inning {
@@ -9,12 +10,15 @@ class Inning {
     Inning() {
     }
 
-    void startInning(League league, List<Batter> visitorBatters, List<Batter> homeBatters,
-                     Team visitorTeam, Team homeTeam, Inning inning, List<Fielder> visitorFielders,
-                     List<Fielder> homeFielders, LineUp lineUp,
+    void startInning(League league, HashMap<Integer, Batter> visitorBatters, HashMap<Integer, Batter> homeBatters,
+                     Team visitorTeam, Team homeTeam, Inning inning, HashMap<Integer, Fielder> visitorFielders,
+                     HashMap<Integer, Fielder> homeFielders, LineUp lineUp,
                      List<Pitcher> visitorPitchers, List<Pitcher> homePitchers, boolean gameOver,
-                     Pitcher pitcher, List<Integer> visitorLineScore, List<Integer> homeLineScore) {
+                     Pitcher pitcher, List<Integer> visitorLineScore, List<Integer> homeLineScore,
+                     List<Batter> visitorBattersReserves, List<Batter> homeBattersReserves,
+                     List<Fielder> visitorFielderReserves, List<Fielder> homeFielderReserves) {
         Batter batter = new Batter();
+        Fielder fielder = new Fielder();
         Batter currentBatter;
         Pitcher currentPitcher;
         PitchResult pitchResult = new PitchResult();
@@ -32,12 +36,16 @@ class Inning {
             if (inning.isTop()) {
                 pitcher.determineWinnerAndLoser(pitcher, inning, visitorTeam, homeTeam);
                 currentBatter = batter.getBatter(inning, lineUp, visitorBatters);
-                //currentBatter = visitorBatters.get(lineUp.getVisitorBattingNumber());
-                // Check to see if home pitcher needs to be relieved
+                  // Check to see if home pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, homePitchers)) {
                     //TODO Need to add in logic to add new pitcher to batting file
                     currentPitcher = currentPitcher.getReliever(homePitchers);
                     if (currentPitcher != null) {
+                        //TODO All the below needs to be fixed
+                        batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
+                        batter.addNewPitcherToBatters(homeBattersReserves, pitcher.getHomePitcher(), homeBatters);
+                        fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
+                        fielder.addPitcherToFielders(homeFielderReserves, currentPitcher, homeFielders);
                         pitcher.setHomePitcher(currentPitcher);
                         pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam);
                     } else {
@@ -48,6 +56,8 @@ class Inning {
                 {
                     System.out.println("Would pinch hit here.");
                 }
+/*                atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
+                        visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);*/
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);
                 lineUp.setVisitorBattingNumber(lineUp.getVisitorBattingNumber()+ 1);
@@ -56,11 +66,14 @@ class Inning {
                 }
             } else {
                 currentBatter = batter.getBatter(inning, lineUp, homeBatters);
-                //currentBatter = homeBatters.get(lineUp.getHomeBattingNumber());
                 // Check to see if visitor pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, visitorPitchers)) {
                     currentPitcher = currentPitcher.getReliever(visitorPitchers);
                     if (currentPitcher != null) {
+                        batter.removePitcherFromBatters(visitorBatters, pitcher.getVisitorPitcher());
+                        batter.addNewPitcherToBatters(visitorBattersReserves, pitcher.getVisitorPitcher(), visitorBatters);
+                        fielder.removePitcherFromFielders(visitorFielders, pitcher.getVisitorPitcher());
+                        fielder.addPitcherToFielders(visitorFielderReserves, currentPitcher, visitorFielders);
                         pitcher.setVisitorPitcher(currentPitcher);
                         pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam);
                     } else {

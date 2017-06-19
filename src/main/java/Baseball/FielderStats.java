@@ -1,7 +1,7 @@
 package Baseball;
 
 
-import java.util.List;
+import java.util.HashMap;
 
 class FielderStats {
     private int gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful,
@@ -172,7 +172,7 @@ class FielderStats {
         this.gameDoublePlay = gameDoublePlay;
     }
 
-    void updateStandardDoublePlay(Fielder currentFielder, List<Fielder> fielderList, InPlayPosition positionStart,
+    void updateStandardDoublePlay(Fielder currentFielder, HashMap<Integer, Fielder> fielderList, InPlayPosition positionStart,
                                   InPlayPosition positionMiddle, InPlayPosition positionEnd) {
         Fielder infielderDoublePlayStart = currentFielder.getCurrentFielder(positionStart, fielderList);
         infielderDoublePlayStart.getFielderStats().setGameDoublePlay(infielderDoublePlayStart.getFielderStats().getGameDoublePlay() + 1);
@@ -193,7 +193,7 @@ class FielderStats {
                 infielderDoublePlayEnd.getFielderStats().getGamePutOuts());
     }
 
-    void updateUnassistedDoublePlay(Fielder currentFielder, List<Fielder> fielderList, InPlayPosition positionStart,
+    void updateUnassistedDoublePlay(Fielder currentFielder, HashMap<Integer, Fielder> fielderList, InPlayPosition positionStart,
                                     InPlayPosition positionEnd) {
         Fielder infielderDoublePlayStart = currentFielder.getCurrentFielder(positionStart, fielderList);
         infielderDoublePlayStart.getFielderStats().setGameDoublePlay(infielderDoublePlayStart.getFielderStats().getGameDoublePlay() + 1);
@@ -209,7 +209,7 @@ class FielderStats {
                 infielderDoublePlayEnd.getNameLast(),infielderDoublePlayEnd.getFielderStats().getGamePutOuts());
     }
 
-    void updateOutfieldAssist(Fielder currentFielder, InPlayPosition tagPosition, List<Fielder> fielderList) {
+    void updateOutfieldAssist(Fielder currentFielder, InPlayPosition tagPosition, HashMap<Integer, Fielder> fielderList) {
         Fielder infielderWithPutOut = currentFielder.getCurrentFielder(tagPosition, fielderList);
         infielderWithPutOut.getFielderStats().setGamePutOuts(infielderWithPutOut.getFielderStats().getGamePutOuts() + 1);
         currentFielder.getFielderStats().setGameAssists(currentFielder.getFielderStats().getGameAssists() + 1);

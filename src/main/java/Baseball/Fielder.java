@@ -1,8 +1,7 @@
 package Baseball;
 
-import javax.sound.sampled.Line;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -84,52 +83,52 @@ public class Fielder extends Player {
         return position;
     }
 
-    public void setFielderPosition (InPlayPosition position) {
+    public void setFielderPosition(InPlayPosition position) {
         this.position = position;
     }
 
-    Fielder getCurrentFielder(InPlayPosition fielderPosition, List<Fielder> fielderList) {
+    Fielder getCurrentFielder(InPlayPosition fielderPosition, HashMap<Integer, Fielder> fielderList) {
         Fielder currentFielder = null;
-        for (Fielder fielder : fielderList) {
-            if (fielderPosition == fielder.getPosition()) {
-                currentFielder = fielder;
+        for (Integer integer : fielderList.keySet()) {
+            if(Objects.equals(fielderList.get(integer).getPosition(), fielderPosition) ) {
+                currentFielder = fielderList.get(integer);
                 break;
             }
         }
         return currentFielder;
     }
 
-    Fielder getBuntFielder(List<Fielder> fielderList) {
+    Fielder getBuntFielder(HashMap<Integer, Fielder> fielderList) {
         double randomFielderPosition = random();
         if (randomFielderPosition < .30) {
             Fielder buntFielder;
-            for (Fielder fielder : fielderList) {
-                if (fielder.position == InPlayPosition.THIRD_BASE) {
-                    buntFielder = fielder;
+            for (Integer integer : fielderList.keySet()) {
+                if (fielderList.get(integer).getPosition().equals(InPlayPosition.THIRD_BASE)) {
+                    buntFielder = fielderList.get(integer);
                     return buntFielder;
                 }
             }
         } else if (randomFielderPosition < .6) {
             Fielder buntFielder;
-            for (Fielder fielder : fielderList) {
-                if (fielder.position == InPlayPosition.PITCHER) {
-                    buntFielder = fielder;
+            for (Integer integer : fielderList.keySet()) {
+                if (fielderList.get(integer).getPosition().equals(InPlayPosition.PITCHER)) {
+                    buntFielder = fielderList.get(integer);
                     return buntFielder;
                 }
             }
         } else if (randomFielderPosition < .9) {
             Fielder buntFielder;
-            for (Fielder fielder : fielderList) {
-                if (fielder.position == InPlayPosition.CATCHER) {
-                    buntFielder = fielder;
+            for (Integer integer : fielderList.keySet()) {
+                if (fielderList.get(integer).getPosition().equals(InPlayPosition.CATCHER)) {
+                    buntFielder = fielderList.get(integer);
                     return buntFielder;
                 }
             }
         } else if (randomFielderPosition < 1) {
             Fielder buntFielder;
-            for (Fielder fielder : fielderList) {
-                if (fielder.position == InPlayPosition.FIRST_BASE) {
-                    buntFielder = fielder;
+            for (Integer integer : fielderList.keySet()) {
+                if (fielderList.get(integer).getPosition().equals(InPlayPosition.FIRST_BASE)) {
+                    buntFielder = fielderList.get(integer);
                     return buntFielder;
                 }
             }
@@ -161,7 +160,7 @@ public class Fielder extends Player {
         this.position = position;
     }
 
-    void updateOutfielderAssist(Fielder currentFielder, List<Fielder> fielderList, InPlayPosition position) {
+    void updateOutfielderAssist(Fielder currentFielder, HashMap<Integer, Fielder> fielderList, InPlayPosition position) {
         Bases bases = new Bases();
         Fielder outfielderWithAssist = bases.determineOutfieldPosition(currentFielder, fielderList);
         outfielderWithAssist.getFielderStats().setGameAssists(outfielderWithAssist.getFielderStats().getGameAssists() + 1);
@@ -174,13 +173,13 @@ public class Fielder extends Player {
         Fielder fielder = new Fielder();
 
         if (visitors) {
-            int yearID=1927;
+            int yearID = 1927;
             String teamID = schedule.getVisitingTeamId();
             // Selects all fielders for the visitor team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID);
 
         } else {
-            int yearID=1927;
+            int yearID = 1927;
             String teamID = schedule.getHomeTeamId();
             // Selects all fielders for the home team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID);
@@ -192,131 +191,110 @@ public class Fielder extends Player {
         return fielderList;
     }
 
-    List<Fielder> getFieldersStartersList(List<LineUp> team, List<Fielder> fielderList)
-    {
-        List<Fielder> starters = new ArrayList<>();
-        for (LineUp player : team)
-        {
-            for (Fielder fielder : fielderList)
-            {
-                if (Objects.equals(player.getRetroID(), fielder.getRetroId()))
-                {
-                    switch(player.getPlayerPosition())
-                    {
-                        case("RF"):
-                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
-                            {
+    HashMap<Integer, Fielder> getFieldersStartersList(List<LineUp> team, List<Fielder> fielderList) {
+        HashMap<Integer, Fielder> starters = new HashMap<>();
+
+        for (LineUp player : team) {
+            for (Fielder fielder : fielderList) {
+                if (Objects.equals(player.getRetroID(), fielder.getRetroId())) {
+                    switch (player.getPlayerPosition()) {
+                        case ("RF"):
+                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD)) {
                                 fielder.setPosition(InPlayPosition.RIGHT_FIELD);
                                 fielder.setBattingOrder(player.getPlayerOrder());
-                                if (player.getGamePlayed() != 1)
-                                {
+                                if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
-                        case ("LF"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
-                            {
+                        case ("LF"): {
+                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD)) {
                                 fielder.setPosition(InPlayPosition.LEFT_FIELD);
                                 fielder.setBattingOrder(player.getPlayerOrder());
-                                if (player.getGamePlayed() != 1)
-                                {
+                                if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("CF"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD))
-                            {
+                        case ("CF"): {
+                            if (fielder.getPosition().equals(InPlayPosition.OUTFIELD)) {
                                 fielder.setPosition(InPlayPosition.CENTER_FIELD);
                                 fielder.setBattingOrder(player.getPlayerOrder());
-                                if (player.getGamePlayed() != 1)
-                                {
+                                if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("1B"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.FIRST_BASE))
-                            {
-                                if (player.getGamePlayed() != 1)
-                                {
+                        case ("1B"): {
+                            if (fielder.getPosition().equals(InPlayPosition.FIRST_BASE)) {
+                                if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("2B"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.SECOND_BASE))
-                            {
-                                if (player.getGamePlayed() != 1)
-                                {
+                        case ("2B"): {
+                            if (fielder.getPosition().equals(InPlayPosition.SECOND_BASE)) {
+                                if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("3B"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.THIRD_BASE))
-                            {
-                                if (player.getGamePlayed() != 1)
-                                {
+                        case ("3B"): {
+                            if (fielder.getPosition().equals(InPlayPosition.THIRD_BASE)) {
+                                if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("SS"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.SHORTSTOP))
-                            {
-                                if (player.getGamePlayed() != 1)
-                                {
+                        case ("SS"): {
+                            if (fielder.getPosition().equals(InPlayPosition.SHORTSTOP)) {
+                                if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("P"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.PITCHER))
-                            {
-                                if (player.getGamePlayed() != 1)
-                                {
+                        case ("P"): {
+                            if (fielder.getPosition().equals(InPlayPosition.PITCHER)) {
+                                if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
                         }
-                        case ("C"):
-                        {
-                            if (fielder.getPosition().equals(InPlayPosition.CATCHER))
-                            {
-                                if (player.getGamePlayed() != 1)
-                                {
+                        case ("C"): {
+                            if (fielder.getPosition().equals(InPlayPosition.CATCHER)) {
+                                if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
-                                    starters.add(fielder);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    starters.put(player.getPlayerOrder(), fielder);
                                 }
                                 break;
                             }
@@ -328,16 +306,50 @@ public class Fielder extends Player {
         return starters;
     }
 
-    List<Fielder> addPitcherToFielders(List<Fielder> fielderReserves, Pitcher pitcher, List<Fielder> starters)
-    {
-        for (Fielder fielder : fielderReserves) {
-            if (fielder.getPlayerId().equals(pitcher.getPlayerId()))
-            {
+    public void addPitcherToFielders(List<Fielder> fielderReserves, Pitcher pitcher, HashMap<Integer, Fielder> starters) {
+/*        for (Fielder fielder : fielderReserves) {
+            if (fielder.getPlayerId().equals(pitcher.getPlayerId())) {
                 starters.add(fielder);
                 break;
             }
         }
-        return starters;
+        return starters;*/
+
+        Fielder fielder = new Fielder();
+
+        for (Fielder fielder1 : fielderReserves)
+        {
+            if (fielder1.getPlayerId().equals(pitcher.getPlayerId()))
+            {
+                fielder1.setBattingOrder(pitcher.getBattingOrder());
+                fielder = fielder1;
+            }
+        }
+
+        starters.put(fielder.getBattingOrder(), fielder);
     }
 
+    public void removePitcherFromFielders(HashMap<Integer, Fielder> fielderList, Pitcher pitcher) {
+        /*for (Fielder fielder : fielderList)
+        {
+            if (fielder.getPlayerId().equals(pitcher.getPlayerId()))
+            {
+                fielderList.remove(fielder);
+            }
+        }*/
+
+        Integer indexToDelete = null;
+
+        for (Integer integer : fielderList.keySet()) {
+            if(Objects.equals(fielderList.get(integer).getPlayerId(), pitcher.getPlayerId()) )
+            {
+                pitcher.setBattingOrder(fielderList.get(integer).getBattingOrder());
+                indexToDelete = integer;
+                break;
+            }
+        }
+
+        fielderList.remove(indexToDelete);
+    }
 }
+

@@ -12,8 +12,16 @@ public class Pitcher extends Player {
             homeSavePitcher;
     private PitcherStats pitcherStats = new PitcherStats();
     private PitcherRole pitcherRole;
-    private int playerKey, yearID, stint;
+    private int playerKey, yearID, stint, battingOrder;
     private boolean isAvailable = true;
+
+    public int getBattingOrder() {
+        return battingOrder;
+    }
+
+    public void setBattingOrder(int battingOrder) {
+        this.battingOrder = battingOrder;
+    }
 
     public String getTeamID() {
         return teamID;
@@ -105,7 +113,12 @@ public class Pitcher extends Player {
 
     boolean needReliever(Pitcher pitcher, Inning inning, Team visitorTeam, Team homeTeam, List<Pitcher> pitchingTeam) {
         //TODO: need to add more logic to this to take into account different situations.
-        return pitcher.getPitcherStats().getGameRunsAllowed() > 4;
+        if ((pitcher.getPitcherStats().getGameRunsAllowed() > 4) && (Math.abs(visitorTeam.getTeamStats().getGameRuns() -
+                homeTeam.getTeamStats().getGameRuns()) > 3))
+        {
+            return true;
+        }
+        return false;
     }
 
     Pitcher getReliever(List<Pitcher> pitchingTeam) {

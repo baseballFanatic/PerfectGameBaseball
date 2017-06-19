@@ -1,5 +1,6 @@
 package Baseball;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static java.lang.Math.random;
@@ -12,7 +13,7 @@ class Bases {
     private BasesOccupied basesOccupied;
 
     void single(Batter batter, Pitcher pitcher, PitchResult outs, Team visitorTeam, Team homeTeam, Inning inning,
-                BasesOccupied baseState, Fielder currentFielder, List<Fielder> fielderList, AtBatResult atBatResult,
+                BasesOccupied baseState, Fielder currentFielder, HashMap<Integer, Fielder> fielderList, AtBatResult atBatResult,
                 Bases bases) {
         // Update batter and pitcher stats for hit.
         batter.getBatterStats().updateBatterStats(batter, atBatResult);
@@ -483,7 +484,7 @@ class Bases {
     }
 
     void doubleHit(Batter batter, Pitcher pitcher, PitchResult outs, Team visitorTeam, Team homeTeam, Inning inning,
-                   BasesOccupied baseState, Fielder currentFielder, List<Fielder> fielderList, AtBatResult atBatResult,
+                   BasesOccupied baseState, Fielder currentFielder, HashMap<Integer, Fielder> fielderList, AtBatResult atBatResult,
                    Bases bases) {
         batter.getBatterStats().updateBatterStats(batter, atBatResult);
         batter.setPitcherReachedOn(pitcher);
@@ -1128,7 +1129,7 @@ class Bases {
     }
 
     void strikeOut(Batter batter, Pitcher pitcher, PitchResult outs, Team visitorTeam, Team homeTeam,
-                   Inning inning, BasesOccupied baseState, Fielder currentFielder, List<Fielder> fielderList) {
+                   Inning inning, BasesOccupied baseState, Fielder currentFielder, HashMap<Integer, Fielder> fielderList) {
         batter.getBatterStats().setGameStrikeOut(batter.getBatterStats().getGameStrikeOut() + 1);
         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -1146,7 +1147,7 @@ class Bases {
     }
 
     void out(Batter batter, Pitcher pitcher, PitchResult outs, Team visitorTeam, Team homeTeam, Inning inning,
-             BasesOccupied baseState, Fielder currentFielder, List<Fielder> fielderList, InPlayPosition checkFielder,
+             BasesOccupied baseState, Fielder currentFielder, HashMap<Integer, Fielder> fielderList, InPlayPosition checkFielder,
              Bases bases) {
         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -1218,7 +1219,7 @@ class Bases {
     }
 
     void outError(Batter batter, Pitcher pitcher, PitchResult outs, Team visitorTeam, Team homeTeam,
-                  Inning inning, BasesOccupied baseState, Fielder currentFielder, List<Fielder> fielderList,
+                  Inning inning, BasesOccupied baseState, Fielder currentFielder, HashMap<Integer, Fielder> fielderList,
                   Bases bases) {
         /*
         Scoring rules for errors:  Any batter that reaches base on an error and scores is not an earned run (although
@@ -1361,7 +1362,7 @@ class Bases {
         new DisplayInfo().atBatInfo(bases.getFirstBase(), bases.getSecondBase(), bases.getThirdBase(), outs);
     }
 
-    Fielder determineOutfieldPosition(Fielder currentFielder, List<Fielder> fielderList) {
+    Fielder determineOutfieldPosition(Fielder currentFielder, HashMap<Integer, Fielder> fielderList) {
         double outfieldPosition = random();
         if (outfieldPosition < .33) {
             currentFielder = currentFielder.getCurrentFielder(InPlayPosition.LEFT_FIELD, fielderList);
@@ -1376,7 +1377,7 @@ class Bases {
     }
 
     private void runnerScoringOnDouble(Bases bases, Fielder currentFielder,
-                                       List<Fielder> fielderList, PitchResult outs, Batter batter, Pitcher pitcher,
+                                       HashMap<Integer, Fielder> fielderList, PitchResult outs, Batter batter, Pitcher pitcher,
                                        Inning inning, Team visitorTeam, Team homeTeam) {
         double doesRunnerAdvance = random();
         if (doesRunnerAdvance < .031) {
@@ -1478,7 +1479,7 @@ class Bases {
     }
 
     private void flyOut(Fielder currentFielder, PitchResult outs, BasesOccupied baseState, Batter batter,
-                        Pitcher pitcher, List<Fielder> fielderList, Inning inning, Team visitorTeam,
+                        Pitcher pitcher, HashMap<Integer, Fielder> fielderList, Inning inning, Team visitorTeam,
                         Team homeTeam, Bases bases) {
         OutfieldDepth currentDepth = determineOutfieldDepth();
         currentFielder.getFielderStats().setGamePutOuts(currentFielder.getFielderStats().getGamePutOuts() + 1);
@@ -1698,7 +1699,7 @@ class Bases {
     }
 
     private void infieldOut(Fielder currentFielder, PitchResult outs, BasesOccupied baseState, Batter batter,
-                            Pitcher pitcher, List<Fielder> fielderList, InPlayPosition checkFielder, Inning inning,
+                            Pitcher pitcher, HashMap<Integer, Fielder> fielderList, InPlayPosition checkFielder, Inning inning,
                             Team visitorTeam, Team homeTeam, Bases bases) {
         double popOrGrounder = random();
         if (popOrGrounder < .464) {

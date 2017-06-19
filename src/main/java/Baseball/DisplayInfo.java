@@ -1,7 +1,7 @@
 package Baseball;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 class DisplayInfo {
 
@@ -65,8 +65,8 @@ class DisplayInfo {
         System.out.printf("End of Inning %s%n", inning.getInning() - 1);
     }
 
-    void displayLineUp(List<Batter> visitorStartingLineup, List<Batter> homeStartingLineup, List<Pitcher> visitorPitchers,
-                       List<Pitcher> homePitchers, List<Fielder> visitorFielderStarters, List<Fielder> homeFielderStarters)
+    void displayLineUp(HashMap<Integer, Batter> visitorStartingLineup, HashMap<Integer, Batter> homeStartingLineup, List<Pitcher> visitorPitchers,
+                       List<Pitcher> homePitchers, HashMap<Integer, Fielder> visitorFielderStarters, HashMap<Integer, Fielder> homeFielderStarters)
     {
         System.out.println();
         System.out.printf("Starting LineUps:%n");
@@ -78,7 +78,10 @@ class DisplayInfo {
         System.out.printf("%10s %3s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "Ord", "AtBats", "Runs", "Hits",
                 "RBI", "2B", "3B", "HR", "BB", "K", "SacF", "SacH", "SB", "CS", "Position");
         System.out.println();
-        for (Batter batter : visitorStartingLineup) {
+   //     for (Batter batter : visitorStartingLineup) {
+        for (int i = 1; i < 10; i++)
+        {
+            Batter batter = visitorStartingLineup.get(i);
             System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
                     batter.getNameLast(), batter.getBattingOrder(), batter.getBatterStats().getAtBats(),
                     batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
@@ -111,7 +114,9 @@ class DisplayInfo {
         System.out.printf("Visitor Fielding Stats%n");
         System.out.printf("%10s %7s %2s %2s %2s %2s %2s", "Name", "Assists", "PO", "DP", "E", "SBA", "TO");
         System.out.println();
-        for (Fielder fielder : visitorFielderStarters) {
+        //for (Fielder fielder : visitorFielderStarters) {
+        for (int i = 1; i < 10; i++) {
+            Fielder fielder = visitorFielderStarters.get(i);
             System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
                     fielder.getFielderStats().getAssists(),
                     fielder.getFielderStats().getPutOuts(), fielder.getFielderStats().getDoublePlays(),
@@ -125,7 +130,10 @@ class DisplayInfo {
         System.out.printf("%10s %3s %6s %4s %4s %5s %5s %5s %5s %5s %5s %5s %4s %4s %3s %16s", "Name", "Ord", "AtBats", "Runs", "Hits",
                 "RBI", "2B", "3B", "HR", "BB", "K", "SacF", "SacH", "SB", "CS", "Position");
         System.out.println();
-        for (Batter batter : homeStartingLineup) {
+       // for (Batter batter : homeStartingLineup) {
+        for (int i = 1; i < 10; i++)
+        {
+            Batter batter = homeStartingLineup.get(i);
             System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s",
                     batter.getNameLast(), batter.getBattingOrder(), batter.getBatterStats().getAtBats(),
                     batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
@@ -158,7 +166,8 @@ class DisplayInfo {
         System.out.printf("Home Fielding Stats%n");
         System.out.printf("%10s %7s %2s %2s %2s %2s %2s", "Name", "Assists", "PO", "DP", "E", "SBA", "TO");
         System.out.println();
-        for (Fielder fielder : homeFielderStarters) {
+        for (int i = 1; i < 10; i++) {
+            Fielder fielder = homeFielderStarters.get(i);
             System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
                     fielder.getFielderStats().getAssists(),
                     fielder.getFielderStats().getPutOuts(), fielder.getFielderStats().getDoublePlays(),
@@ -169,10 +178,10 @@ class DisplayInfo {
         System.out.println("---------------------------------------------------");
     }
 
-    void endOfGame(List<Batter> visitorBatters, List<Batter> homeBatters, List<Fielder> visitorFielders,
-                   List<Fielder> homeFielders, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers,
+    void endOfGame(List<Batter> visitorBatters, List<Batter> homeBatters, HashMap<Integer, Fielder> visitorFielders,
+                   HashMap<Integer, Fielder> homeFielders, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers,
                    Team visitorTeam, Team homeTeam, Pitcher pitcher, List<Integer> visitorLineScore,
-                   List<Integer> homeLineScore) {
+                   List<Integer> homeLineScore, List<Fielder> visitorFieldersReserves, List<Fielder> homeFieldersReserves) {
         System.out.println();
         System.out.printf("BALLGAME!%n");
         System.out.println();
@@ -182,7 +191,7 @@ class DisplayInfo {
                 "Team", "1", "2", "3", "4", "5", "6", "7", "8", "9", "X", "R", "H", "E");
         System.out.println();
         //TODO Fix this so it isn't hard coded
-        System.out.printf("NYA   ");
+        System.out.printf("%s   ", visitorTeam.getTeamName());
 
         for (Integer score : visitorLineScore) {
             System.out.printf("%2s ", score);
@@ -200,7 +209,7 @@ class DisplayInfo {
 
         }
         System.out.println();
-        System.out.printf("PHA   ");
+        System.out.printf("%s   ", homeTeam.getTeamName());
         for (Integer hScore : homeLineScore)
         {
             System.out.printf("%2s ", hScore);
@@ -291,13 +300,15 @@ class DisplayInfo {
         System.out.printf("Visitor Fielding Stats%n");
         System.out.printf("%10s %7s %2s %2s %2s %2s %2s", "Name", "Assists", "PO", "DP", "E", "SBA", "TO");
         System.out.println();
-        for (Fielder fielder : visitorFielders) {
-            System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
-                    fielder.getFielderStats().getGameAssists(),
-                    fielder.getFielderStats().getGamePutOuts(), fielder.getFielderStats().getGameDoublePlay(),
-                    fielder.getFielderStats().getGameErrors(), fielder.getFielderStats().getGameRunnersSuccessful(),
-                    fielder.getFielderStats().getGameRunnersThrownOut());
-            System.out.println();
+        for (Fielder fielder : visitorFieldersReserves) {
+            if (fielder.getFielderStats().getGameGamePlayed() > 0) {
+                System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
+                        fielder.getFielderStats().getGameAssists(),
+                        fielder.getFielderStats().getGamePutOuts(), fielder.getFielderStats().getGameDoublePlay(),
+                        fielder.getFielderStats().getGameErrors(), fielder.getFielderStats().getGameRunnersSuccessful(),
+                        fielder.getFielderStats().getGameRunnersThrownOut());
+                System.out.println();
+            }
         }
         System.out.println("---------------------------------------------------");
         System.out.printf("Home Batting Stats:%n");
@@ -347,13 +358,15 @@ class DisplayInfo {
         System.out.printf("Home Fielding Stats%n");
         System.out.printf("%10s %7s %2s %2s %2s %2s %2s", "Name", "Assists", "PO", "DP", "E", "SBA", "TO");
         System.out.println();
-        for (Fielder fielder : homeFielders) {
-            System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
-                    fielder.getFielderStats().getGameAssists(),
-                    fielder.getFielderStats().getGamePutOuts(), fielder.getFielderStats().getGameDoublePlay(),
-                    fielder.getFielderStats().getGameErrors(), fielder.getFielderStats().getGameRunnersSuccessful(),
-                    fielder.getFielderStats().getGameRunnersThrownOut());
-            System.out.println();
+        for (Fielder fielder : homeFieldersReserves) {
+            if (fielder.getFielderStats().getGameGamePlayed() > 0) {
+                System.out.printf("%10s %7s %2s %2s %2s %3s %2s", fielder.getNameLast(),
+                        fielder.getFielderStats().getGameAssists(),
+                        fielder.getFielderStats().getGamePutOuts(), fielder.getFielderStats().getGameDoublePlay(),
+                        fielder.getFielderStats().getGameErrors(), fielder.getFielderStats().getGameRunnersSuccessful(),
+                        fielder.getFielderStats().getGameRunnersThrownOut());
+                System.out.println();
+            }
         }
         System.out.println("---------------------------------------------------");
     }

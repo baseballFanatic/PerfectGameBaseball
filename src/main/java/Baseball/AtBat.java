@@ -1,5 +1,6 @@
 package Baseball;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static Baseball.InPlayPosition.*;
@@ -14,7 +15,7 @@ class AtBat {
 
     void batterUp(Batter batter, Pitcher pitcher, League league, PitchResult pitchResult, Bases bases,
                   LineUp lineUp, Team visitorTeam, Team homeTeam,
-                  List<Fielder> fielderList, Inning inning, List<Batter> visitorBatters, List<Batter> homeBatters) {
+                  HashMap<Integer, Fielder> fielderList, Inning inning, HashMap<Integer, Batter> visitorBatters, HashMap<Integer, Batter> homeBatters) {
 
         Team team = new Team();
 
@@ -39,14 +40,14 @@ class AtBat {
                 buntResult(batter, pitcher, fielderList, pitchResult, bases, baseState);
                 if (inning.isTop()) {
                     lineUp.setVisitorBattingNumber(lineUp.getVisitorBattingNumber() + 1);
-                    if (lineUp.getVisitorBattingNumber() == 9) {
-                        lineUp.setVisitorBattingNumber(0);
+                    if (lineUp.getVisitorBattingNumber() == 10) {
+                        lineUp.setVisitorBattingNumber(1);
                     }
                     batter = visitorBatters.get(lineUp.getVisitorBattingNumber());
                 } else {
                     lineUp.setHomeBattingNumber(lineUp.getHomeBattingNumber() + 1);
-                    if (lineUp.getHomeBattingNumber() == 9) {
-                        lineUp.setHomeBattingNumber(0);
+                    if (lineUp.getHomeBattingNumber() == 10) {
+                        lineUp.setHomeBattingNumber(1);
                     }
                     batter = homeBatters.get(lineUp.getHomeBattingNumber());
                 }
@@ -105,7 +106,7 @@ class AtBat {
         return false;
     }
 
-    private void buntResult(Batter batter, Pitcher pitcher, List<Fielder> fielderList,
+    private void buntResult(Batter batter, Pitcher pitcher, HashMap<Integer, Fielder> fielderList,
                             PitchResult outs, Bases bases, BasesOccupied baseState) {
         double randomBuntResult = random();
         Fielder currentFielder = new Fielder();
@@ -392,7 +393,7 @@ class AtBat {
         }
     }
 
-    private void safeSteal(BasesOccupied baseState, Bases bases, List<Fielder> fielderList, Fielder fielder,
+    private void safeSteal(BasesOccupied baseState, Bases bases, HashMap<Integer, Fielder> fielderList, Fielder fielder,
                            PitchResult outs) {
         switch (baseState) {
             case FIRST_BASE:
@@ -423,7 +424,7 @@ class AtBat {
         new DisplayInfo().atBatInfo(bases.getFirstBase(), bases.getSecondBase(), bases.getThirdBase(), outs);
     }
 
-    private void outSteal(BasesOccupied baseState, Bases bases, List<Fielder> fielderList, Fielder fielder, PitchResult outs,
+    private void outSteal(BasesOccupied baseState, Bases bases, HashMap<Integer, Fielder> fielderList, Fielder fielder, PitchResult outs,
                           Inning inning, Team visitorTeam, Team homeTeam, Pitcher pitcher) {
         outs.setOuts(outs.getOuts() + 1);
         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -471,7 +472,7 @@ class AtBat {
 
     private void checkResult(AtBatResult ab, Batter batter, Bases bases, Pitcher pitcher, PitchResult pitchResult,
                              Team visitorTeam, Team homeTeam, Inning inning, Team team, BasesOccupied baseState,
-                             Fielder currentFielder, List<Fielder> fielderList, InPlayPosition checkFielder) {
+                             Fielder currentFielder, HashMap<Integer, Fielder> fielderList, InPlayPosition checkFielder) {
         switch (ab) {
             case OUT:
                 if (bases.checkError(inning, visitorTeam, homeTeam, currentFielder)) {
