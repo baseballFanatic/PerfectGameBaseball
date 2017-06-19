@@ -307,14 +307,6 @@ public class Fielder extends Player {
     }
 
     public void addPitcherToFielders(List<Fielder> fielderReserves, Pitcher pitcher, HashMap<Integer, Fielder> starters) {
-/*        for (Fielder fielder : fielderReserves) {
-            if (fielder.getPlayerId().equals(pitcher.getPlayerId())) {
-                starters.add(fielder);
-                break;
-            }
-        }
-        return starters;*/
-
         Fielder fielder = new Fielder();
 
         for (Fielder fielder1 : fielderReserves)
@@ -322,6 +314,7 @@ public class Fielder extends Player {
             if (fielder1.getPlayerId().equals(pitcher.getPlayerId()))
             {
                 fielder1.setBattingOrder(pitcher.getBattingOrder());
+                fielder1.getFielderStats().setGameGamePlayed(1);
                 fielder = fielder1;
             }
         }
@@ -330,14 +323,6 @@ public class Fielder extends Player {
     }
 
     public void removePitcherFromFielders(HashMap<Integer, Fielder> fielderList, Pitcher pitcher) {
-        /*for (Fielder fielder : fielderList)
-        {
-            if (fielder.getPlayerId().equals(pitcher.getPlayerId()))
-            {
-                fielderList.remove(fielder);
-            }
-        }*/
-
         Integer indexToDelete = null;
 
         for (Integer integer : fielderList.keySet()) {

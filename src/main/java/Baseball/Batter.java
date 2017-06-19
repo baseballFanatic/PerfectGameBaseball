@@ -276,6 +276,8 @@ public class Batter extends Player implements Comparable<Batter> {
                 {
                     batter.setPosition(fielders.get(fielder).getPosition());
                     batter.setBattingOrder(fielders.get(fielder).getBattingOrder());
+                    batter.getBatterStats().setGameGamePlayed();
+                    batter.getBatterStats().setGameGameStarted(1);
                     matchedBatters.put(batter.getBattingOrder(), batter);
                 }
             }
@@ -319,8 +321,11 @@ public class Batter extends Player implements Comparable<Batter> {
         {
             if (batter1.getPlayerId().equals(currentPitcher.getPlayerId()))
             {
+                //TODO currentPitcher doesn't have a batting order
                 batter1.setBattingOrder(currentPitcher.getBattingOrder());
+                batter1.getBatterStats().setGameGamePlayed();
                 batter = batter1;
+                break;
             }
         }
 

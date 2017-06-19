@@ -38,15 +38,15 @@ class Inning {
                 currentBatter = batter.getBatter(inning, lineUp, visitorBatters);
                   // Check to see if home pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, homePitchers)) {
-                    //TODO Need to add in logic to add new pitcher to batting file
                     currentPitcher = currentPitcher.getReliever(homePitchers);
                     if (currentPitcher != null) {
-                        //TODO All the below needs to be fixed
+                        //TODO The below functions are not removing the pitcher from the batting file
                         batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
-                        batter.addNewPitcherToBatters(homeBattersReserves, pitcher.getHomePitcher(), homeBatters);
                         fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
-                        fielder.addPitcherToFielders(homeFielderReserves, currentPitcher, homeFielders);
+                        currentPitcher.setBattingOrder(pitcher.getHomePitcher().getBattingOrder());
                         pitcher.setHomePitcher(currentPitcher);
+                        batter.addNewPitcherToBatters(homeBattersReserves, pitcher.getHomePitcher(), homeBatters);
+                        fielder.addPitcherToFielders(homeFielderReserves, currentPitcher, homeFielders);
                         pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam);
                     } else {
                         currentPitcher = pitcher.getHomePitcher();
@@ -71,10 +71,11 @@ class Inning {
                     currentPitcher = currentPitcher.getReliever(visitorPitchers);
                     if (currentPitcher != null) {
                         batter.removePitcherFromBatters(visitorBatters, pitcher.getVisitorPitcher());
-                        batter.addNewPitcherToBatters(visitorBattersReserves, pitcher.getVisitorPitcher(), visitorBatters);
                         fielder.removePitcherFromFielders(visitorFielders, pitcher.getVisitorPitcher());
-                        fielder.addPitcherToFielders(visitorFielderReserves, currentPitcher, visitorFielders);
+                        currentPitcher.setBattingOrder(pitcher.getVisitorPitcher().getBattingOrder());
                         pitcher.setVisitorPitcher(currentPitcher);
+                        batter.addNewPitcherToBatters(visitorBattersReserves, pitcher.getVisitorPitcher(), visitorBatters);
+                        fielder.addPitcherToFielders(visitorFielderReserves, currentPitcher, visitorFielders);
                         pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam);
                     } else {
                         currentPitcher = pitcher.getVisitorPitcher();

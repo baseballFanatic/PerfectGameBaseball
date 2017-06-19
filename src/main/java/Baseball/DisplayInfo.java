@@ -260,7 +260,8 @@ class DisplayInfo {
                 "RISPGIDP", "RISPSAC");
         System.out.println();
         for (Batter batter : visitorBatters) {
-            if (batter.getBatterStats().getGameAtBats() > 0 || batter.getBatterStats().getGameWalk() > 0) {
+           // if (batter.getBatterStats().getGameAtBats() > 0 || batter.getBatterStats().getGameWalk() > 0) {
+            if (batter.getBatterStats().getGameGamePlayed() > 0) {
                 System.out.format("%10s %6s %4s %4s %2s %2s %2s %2s %2s %2s %2s %4s %4s %2s %2s %6s %6s %6s %6s %6s %6s" +
                                 "%6s %6s %6s",
                         batter.getNameLast(), batter.getBatterStats().getGameAtBats(),
@@ -318,7 +319,8 @@ class DisplayInfo {
                 "RISPGIDP", "RISPSAC");
         System.out.println();
         for (Batter batter : homeBatters) {
-            if (batter.getBatterStats().getGameAtBats() > 0 || batter.getBatterStats().getGameWalk() > 0) {
+            if (batter.getBatterStats().getGameGamePlayed() > 0) {
+            //if (batter.getBatterStats().getGameAtBats() > 0 || batter.getBatterStats().getGameWalk() > 0) {
                 System.out.format("%10s %6s %4s %4s %2s %2s %2s %2s %2s %2s %2s %4s %4s %2s %2s %6s %6s %6s %6s %6s %6s" +
                                 "%6s %6s %6s",
                         batter.getNameLast(), batter.getBatterStats().getGameAtBats(),
