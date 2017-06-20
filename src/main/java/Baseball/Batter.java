@@ -324,6 +324,7 @@ public class Batter extends Player implements Comparable<Batter> {
                 //TODO currentPitcher doesn't have a batting order
                 batter1.setBattingOrder(currentPitcher.getBattingOrder());
                 batter1.getBatterStats().setGameGamePlayed();
+                batter1.setPosition(InPlayPosition.PITCHER);
                 batter = batter1;
                 break;
             }

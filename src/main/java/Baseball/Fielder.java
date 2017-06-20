@@ -315,6 +315,7 @@ public class Fielder extends Player {
             {
                 fielder1.setBattingOrder(pitcher.getBattingOrder());
                 fielder1.getFielderStats().setGameGamePlayed(1);
+                fielder1.setPosition(InPlayPosition.PITCHER);
                 fielder = fielder1;
             }
         }

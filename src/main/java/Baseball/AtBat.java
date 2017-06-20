@@ -607,7 +607,7 @@ class AtBat {
                 if (pitcher.getPitchingArm().equals("L")) {
                     return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess;
                 } else {
-                    return bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealSuccess;
+                    return bases.getSecondBase().getBatter().getBatterStats().getStolenBaseSuccess() > randomStealSuccess;
                 }
             }
         }
