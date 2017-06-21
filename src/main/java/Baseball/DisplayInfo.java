@@ -193,6 +193,8 @@ class DisplayInfo {
         //TODO Fix this so it isn't hard coded
         System.out.printf("%s   ", visitorTeam.getTeamName());
 
+        //TODO Need to fix the line score display when home team wins in bottom of 9th.
+        //TODO currently displays the final inning twice, once in the X slot and once to the right.
         for (Integer score : visitorLineScore) {
             System.out.printf("%2s ", score);
         }
@@ -233,7 +235,6 @@ class DisplayInfo {
         System.out.println();
         System.out.println();
         if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns()) {
-            //TODO: Fix winning pitcher when home team wins in bottom of 9th or extra innings.
             System.out.printf("Winning Pitcher: %s%n", pitcher.getHomeWinningPitcher().getNameLast());
             System.out.printf("Losing Pitcher: %s%n", pitcher.getVisitorLosingPitcher().getNameLast());
             if (pitcher.getHomeSavePitcher() != null) {

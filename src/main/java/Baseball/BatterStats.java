@@ -915,7 +915,7 @@ class BatterStats {
             setSpeedRating(((getStolenBaseSuccess() * 10) + (getStolenBaseAttempt() * 10) + (getTriplesFactor() * 6)) / 26);
         }
         setStolenBaseAttemptPercentage((getStolenBases() + getCaughtStealing()) / (singles + getWalks()));
-        setStolenBaseAttemptSuccessPercentage((getsStolenBases() / (getStolenBases() + getCaughtStealing())));
+        setStolenBaseAttemptSuccessPercentage((getStolenBases() / (getStolenBases() + getCaughtStealing())));
 
     }
 

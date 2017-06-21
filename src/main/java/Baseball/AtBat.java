@@ -660,7 +660,7 @@ class AtBat {
         return pitchOut;
     }
 
-    public void setPitchOut(boolean pitchOut) {
+    private void setPitchOut(boolean pitchOut) {
         this.pitchOut = pitchOut;
     }
 }

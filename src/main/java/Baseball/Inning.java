@@ -81,7 +81,7 @@ class Inning {
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, visitorFielders, inning, visitorBatters, homeBatters);
                 lineUp.setHomeBattingNumber(lineUp.getHomeBattingNumber() + 1);
-                if (checkWalkOffWin(inning, homeTeam, visitorTeam, gameOver)) {
+                if (checkWalkOffWin(inning, homeTeam, visitorTeam, gameOver, pitcher)) {
                     break;
                 }
                 if (lineUp.getHomeBattingNumber() == 10) {
@@ -120,10 +120,12 @@ class Inning {
         this.top = top;
     }
 
-    private boolean checkWalkOffWin(Inning inning, Team homeTeam, Team visitorTeam, boolean gameOver) {
+    private boolean checkWalkOffWin(Inning inning, Team homeTeam, Team visitorTeam, boolean gameOver, Pitcher pitcher) {
         if (inning.getInning() >= 9 && homeTeam.getTeamStats().getGameRuns() >
                 visitorTeam.getTeamStats().getGameRuns()) {
             System.out.println("Ballgame!");
+            pitcher.setHomeWinningPitcher(pitcher.getHomePitcher());
+            pitcher.setVisitorLosingPitcher(pitcher.getVisitorPitcher());
             return true;
         }
         return false;

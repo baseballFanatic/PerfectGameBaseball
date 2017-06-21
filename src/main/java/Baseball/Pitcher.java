@@ -87,14 +87,6 @@ public class Pitcher extends Player {
         this.pitcherStats = pitcherStats;
     }
 
-/*    public void recordOutNoRuns() {
-        getPitcherStats().outNoRuns();
-    }
-
-    public void recordOutRunScored(Base baseRunner, Pitcher pitcher) {
-        getPitcherStats().outRunScored(baseRunner, pitcher);
-    }*/
-
     public Pitcher getVisitorStarter() {
         return visitorStarter;
     }
@@ -115,6 +107,10 @@ public class Pitcher extends Player {
         //TODO: need to add more logic to this to take into account different situations.
         if ((pitcher.getPitcherStats().getGameRunsAllowed() > 4) && (Math.abs(visitorTeam.getTeamStats().getGameRuns() -
                 homeTeam.getTeamStats().getGameRuns()) > 3))
+        {
+            return true;
+            //Don't allow a pitcher to pitch longer than 9 innings unless he's pitching a no-hitter.
+        } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() > 27 && pitcher.getPitcherStats().getGameHitsAllowed() > 0)
         {
             return true;
         }
@@ -232,7 +228,7 @@ public class Pitcher extends Player {
         return visitorWinningPitcher;
     }
 
-    private void setVisitorWinningPitcher(Pitcher visitorWinningPitcher) {
+    void setVisitorWinningPitcher(Pitcher visitorWinningPitcher) {
         this.visitorWinningPitcher = visitorWinningPitcher;
     }
 
@@ -240,7 +236,7 @@ public class Pitcher extends Player {
         return visitorLosingPitcher;
     }
 
-    private void setVisitorLosingPitcher(Pitcher visitorLosingPitcher) {
+    void setVisitorLosingPitcher(Pitcher visitorLosingPitcher) {
         this.visitorLosingPitcher = visitorLosingPitcher;
     }
 
@@ -248,7 +244,7 @@ public class Pitcher extends Player {
         return visitorSavePitcher;
     }
 
-    private void setVisitorSavePitcher(Pitcher visitorSavePitcher) {
+    void setVisitorSavePitcher(Pitcher visitorSavePitcher) {
         this.visitorSavePitcher = visitorSavePitcher;
     }
 
@@ -256,7 +252,7 @@ public class Pitcher extends Player {
         return homeWinningPitcher;
     }
 
-    private void setHomeWinningPitcher(Pitcher homeWinningPitcher) {
+    void setHomeWinningPitcher(Pitcher homeWinningPitcher) {
         this.homeWinningPitcher = homeWinningPitcher;
     }
 
@@ -264,7 +260,7 @@ public class Pitcher extends Player {
         return homeLosingPitcher;
     }
 
-    private void setHomeLosingPitcher(Pitcher homeLosingPitcher) {
+    void setHomeLosingPitcher(Pitcher homeLosingPitcher) {
         this.homeLosingPitcher = homeLosingPitcher;
     }
 
@@ -272,7 +268,7 @@ public class Pitcher extends Player {
         return homeSavePitcher;
     }
 
-    private void setHomeSavePitcher(Pitcher homeSavePitcher) {
+    void setHomeSavePitcher(Pitcher homeSavePitcher) {
         this.homeSavePitcher = homeSavePitcher;
     }
 
@@ -294,12 +290,6 @@ public class Pitcher extends Player {
 
     Pitcher findStartingPitcher(List<Pitcher> pitchingTeam, Schedule schedule, boolean visitors)
     {
-        /*for (Pitcher pitcher : pitchingTeam) {
-            if (pitcher.isAvailable && pitcher.pitcherRole.equals(PitcherRole.STARTER)) {
-                pitcher.setAvailable(false);
-                return pitcher;
-            }
-        }*/
         for (Pitcher pitcher : pitchingTeam)
         {
             if (visitors)
