@@ -1,24 +1,123 @@
 package Baseball;
 
+import java.util.Objects;
+
 class BatterStats {
     private double atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, plateAppearances, probabilityWalk,
             probabilitySingle, probabilityDouble, probabilityTriple, probabilityHomeRun, probabilityStrikeOut,
-            stolenBaseAttempt = .1973, stolenBaseSuccess = .833, onBasePercentage = .359,
-            battingAverage, sluggingAverage;
-    private int gamesPlayed, runs, rbi, intentionalWalks, hitByPitch, sacrificeHits, speedRating, stolenBases,
-            sacrificeFlies, groundedIntoDp, sGamesPlayed, sGamesStarted, sAtBats, sHits, sRuns, caughtStealing,
-            sDoubles, sTriples, sHomeRuns, sRbi, sWalks, sStrikeOuts, sHitByPitch,
-            sPlateAppearances, sSacrificeHits, sSacrificeFlies, gameDate, histPercentPlayed, actualPlayPercent,
-            awardPoints, pinchAtBat, pinchHit, pinchRbi, rispAtBat, rispHit, rispRbi, rispSingle, rispDouble, rispTriple,
-            rispHomeRun, rispWalk, rispStrikeOut, rispGroundedIntoDp, rispHitByPitch, leftOnBase, gameGamePlayed,
-            gameGameStarted, gameAtBats, gameHits, gameRuns, gameRbi, gameSingle, gameDouble, gameTriple, gameHomeRun,
-            gameWalk, gameStrikeOut, gameHitByPitch, gameGidp, gameLeftOnBase, gameRispAtBat, gameRispHit, gameRispSingle,
-            gameRispDouble, gameRispTriple, gameRispHomeRun, gameRispRbi, gameRispStrikeOut, gameRispWalk,
-            gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases,
-            gameCaughtStealing, sStolenBases, sCaughtStealing, gameRispGidp, yearID;
+            //stolenBaseAttempt = .1973, stolenBaseSuccess = .833, onBasePercentage = .359,
+            stolenBaseAttempt, stolenBaseSuccess, onBasePercentage,
+            battingAverage, sluggingAverage, triplesFactor, speedRating, stolenBases,
+            stolenBaseAttemptPercentage, stolenBaseAttemptSuccessPercentage;
+    private int gamesPlayed;
+    private int runs;
+    private int rbi;
+    private int intentionalWalks;
+    private int hitByPitch;
+    private int sacrificeHits;
+   // private int stolenBases;
+    private int sacrificeFlies;
+    private int groundedIntoDp;
+    private int sGamesPlayed;
+    private int sGamesStarted;
+    private int sAtBats;
+    private int sHits;
+    private int sRuns;
+    private int caughtStealing;
+    private int sDoubles;
+    private int sTriples;
+    private int sHomeRuns;
+    private int sRbi;
+    private int sWalks;
+    private int sStrikeOuts;
+    private int sHitByPitch;
+    private int sPlateAppearances;
+    private int sSacrificeHits;
+    private int sSacrificeFlies;
+    private int gameDate;
+    private int histPercentPlayed;
+    private int actualPlayPercent;
+    private int awardPoints;
+    private int pinchAtBat;
+    private int pinchHit;
+    private int pinchRbi;
+    private int rispAtBat;
+    private int rispHit;
+    private int rispRbi;
+    private int rispSingle;
+    private int rispDouble;
+    private int rispTriple;
+    private int rispHomeRun;
+    private int rispWalk;
+    private int rispStrikeOut;
+    private int rispGroundedIntoDp;
+    private int rispHitByPitch;
+    private int leftOnBase;
+    private int gameGamePlayed;
+    private int gameGameStarted;
+    private int gameAtBats;
+    private int gameHits;
+    private int gameRuns;
+    private int gameRbi;
+    private int gameSingle;
+    private int gameDouble;
+    private int gameTriple;
+    private int gameHomeRun;
+    private int gameWalk;
+    private int gameStrikeOut;
+    private int gameHitByPitch;
+    private int gameGidp;
+    private int gameLeftOnBase;
+    private int gameRispAtBat;
+    private int gameRispHit;
+    private int gameRispSingle;
+    private int gameRispDouble;
+    private int gameRispTriple;
+    private int gameRispHomeRun;
+    private int gameRispRbi;
+    private int gameRispStrikeOut;
+    private int gameRispWalk;
+    private int gameSacrificeFly;
+    private int gameSacrificeHit;
+    private int gameRispSacrificeFly;
+    private int gamePlateAppearance;
+    private int gameStolenBases;
+    private int gameCaughtStealing;
+    private int sStolenBases;
+    private int sCaughtStealing;
+    private int gameRispGidp;
+    private int yearID;
 
     public int getYearID() {
         return yearID;
+    }
+
+    public double getStolenBaseAttemptPercentage() {
+        return stolenBaseAttemptPercentage;
+    }
+
+    public void setStolenBaseAttemptPercentage(double stolenBaseAttemptPercentage) {
+        this.stolenBaseAttemptPercentage = stolenBaseAttemptPercentage;
+    }
+
+    public double getStolenBaseAttemptSuccessPercentage() {
+        return stolenBaseAttemptSuccessPercentage;
+    }
+
+    public void setStolenBaseAttemptSuccessPercentage(double stolenBaseAttemptSuccessPercentage) {
+        this.stolenBaseAttemptSuccessPercentage = stolenBaseAttemptSuccessPercentage;
+    }
+
+    public double getTriplesFactor() {
+        return triplesFactor;
+    }
+
+    public void setTriplesFactor(double triplesFactor) {
+        this.triplesFactor = triplesFactor;
+    }
+
+    public void setGameGamePlayed(int gameGamePlayed) {
+        this.gameGamePlayed = gameGamePlayed;
     }
 
     public double getBattingAverage() {
@@ -747,19 +846,19 @@ class BatterStats {
         this.gamePlateAppearance = gamePlateAppearance;
     }
 
-    int getSpeedRating() {
+    double getSpeedRating() {
         return speedRating;
     }
 
-    void setSpeedRating(int speedRating) {
+    void setSpeedRating(double speedRating) {
         this.speedRating = speedRating;
     }
 
-    int getStolenBases() {
+    double getStolenBases() {
         return stolenBases;
     }
 
-    void setStolenBases(int stolenBases) {
+    void setStolenBases(double stolenBases) {
         this.stolenBases = stolenBases;
     }
 
@@ -799,6 +898,24 @@ class BatterStats {
         setOnBasePercentage((getHitByPitch() + getHits() + getWalks()) / getAtBats());
         double singles = getHits() - getDoubles() - getTriples() - getHomeRuns();
         setSluggingAverage((singles + (getDoubles() * 2) + (getTriples() * 3) + getHomeRuns() * 4) / getAtBats());
+        if (Objects.isNull(getSpeedRating()) || getSpeedRating() == 0)
+        {
+            if (getStolenBases() + getCaughtStealing() < 10)
+            {
+                setStolenBaseAttemptPercentage(.2);
+                setStolenBaseAttemptSuccessPercentage(.7);
+            }
+            setStolenBaseSuccess((((getStolenBases() + 3) / (getStolenBases() + getCaughtStealing() + 7)) - 0.4 ) * 20);
+            setStolenBaseAttempt(Math.sqrt(((getStolenBases() + getCaughtStealing()) / (singles + getWalks()))) / .07);
+            if (Double.isNaN(getStolenBaseAttempt()))
+            {
+                setStolenBaseAttempt(.1973);
+            }
+            setTriplesFactor(((getTriples() / (getAtBats() - getHomeRuns() - getStrikeOuts())) / .02) * 10);
+            setSpeedRating(((getStolenBaseSuccess() * 10) + (getStolenBaseAttempt() * 10) + (getTriplesFactor() * 6)) / 26);
+        }
+        setStolenBaseAttemptPercentage((getStolenBases() + getCaughtStealing()) / (singles + getWalks()));
+        setStolenBaseAttemptSuccessPercentage((getsStolenBases() / (getStolenBases() + getCaughtStealing())));
 
     }
 

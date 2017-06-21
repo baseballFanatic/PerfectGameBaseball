@@ -1,13 +1,14 @@
 package Baseball;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static Baseball.InPlayPosition.*;
 import static java.lang.Math.abs;
 import static java.lang.Math.random;
 
 class AtBat {
+
+    private boolean pitchOut;
 
 
     AtBat() {
@@ -25,8 +26,13 @@ class AtBat {
 
         // pitcher.determineWinner(visitorTeam, homeTeam, pitcher, Inning);
 
+        if (checkPitchOut(bases, baseState))
+        {
+            setPitchOut(true);
+        }
+
         if (checkSteal(baseState, bases, pitcher)) {
-            if (stealResult(baseState, bases, pitcher)) {
+            if (stealResult(baseState, bases, pitchOut)) {
                 safeSteal(baseState, bases, fielderList, fielder, pitchResult);
             } else {
                 outSteal(baseState, bases, fielderList, fielder, pitchResult, inning, visitorTeam, homeTeam, pitcher);
@@ -58,7 +64,7 @@ class AtBat {
 
         if (pitchResult.getOuts() < 3) {
 
-            pitchResult.swing(batter, pitcher, league);
+            pitchResult.swing(batter, pitcher, league, pitchOut);
 
             AtBatResult ab = pitchResult.getPitchResult();
 
@@ -558,12 +564,13 @@ class AtBat {
                 if (bases.getFirstBase().getBatter().getPosition().equals(InPlayPosition.PITCHER)) {
                     return false;
                 } else {
+                    // Runners steal 2nd 60% less on lefties than righties
                     if (pitcher.getPitchingArm().equals("L")) {
                         double randomStealPercentage = random();
-                        return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttempt() * .6) < randomStealPercentage;
+                        return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() * .6) < randomStealPercentage;
                     } else {
                         double randomStealPercentage = random();
-                        return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealPercentage;
+                        return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() > randomStealPercentage;
                     }
                 }
             }
@@ -572,46 +579,89 @@ class AtBat {
                 if (bases.getSecondBase().getBatter().getPosition().equals(InPlayPosition.PITCHER)) {
                     return false;
                 } else {
+                    // Runners steal 3rd 60% less than 2nd base.
                     double randomStealPercentage = random();
-                    return bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttempt() > randomStealPercentage;
+                    return (bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() * .6) > randomStealPercentage;
                 }
             }
         }
         return false;
     }
 
-    public boolean checkPitchOut(Batter baseRunner) {
+    private boolean checkPitchOut(Bases bases, BasesOccupied baseState) {
         double randomPitchOut = random();
-        if (randomPitchOut < .35 && baseRunner.getBatterStats().getSpeedRating() >= 9) {
-            return true;
-        } else if (randomPitchOut < .30 && baseRunner.getBatterStats().getSpeedRating() >= 8) {
-            return true;
-        } else if (randomPitchOut < .25 && baseRunner.getBatterStats().getSpeedRating() >= 6) {
-            return true;
-        } else return randomPitchOut < .35 && baseRunner.getBatterStats().getSpeedRating() >= 5;
+        switch (baseState)
+        {
+            case EMPTY:
+            case BASES_LOADED:
+            case SECOND_THIRD:
+            case FIRST_THIRD:
+            case SECOND_FIRST:
+            case THIRD_BASE:
+            case SECOND_BASE:
+                return false;
+            case FIRST_BASE:
+            {
+                if (randomPitchOut < .35 && bases.getFirstBase().getBatter().getBatterStats().getSpeedRating() >= 9) {
+                    System.out.println("Pitch out!");
+                    return true;
+                } else if (randomPitchOut < .30 && bases.getFirstBase().getBatter().getBatterStats().getSpeedRating() >= 8) {
+                    System.out.println("Pitch out!");
+                    return true;
+                } else if (randomPitchOut < .25 && bases.getFirstBase().getBatter().getBatterStats().getSpeedRating() >= 6 )
+                {
+                    System.out.println("Pitch out!");
+                    return true;
+                } else if (randomPitchOut < .15 && bases.getFirstBase().getBatter().getBatterStats().getSpeedRating() >= 5)
+                {
+                    System.out.println("Pitch out!");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    private boolean stealResult(BasesOccupied baseState, Bases bases, Pitcher pitcher) {
+    private boolean stealResult(BasesOccupied baseState, Bases bases, boolean pitchOut) {
         double randomStealSuccess = random();
         switch (baseState) {
             case FIRST_THIRD:
             case FIRST_BASE: {
-                if (pitcher.getPitchingArm().equals("L")) {
-                    return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess;
-                } else {
-                    return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() > randomStealSuccess;
+                if (pitchOut)
+                {
+                    if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() < .5)
+                    {
+                        return .16 > randomStealSuccess;
+                    } else if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() < .6)
+                    {
+                        return .22 > randomStealSuccess;
+                    } else if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() < .7)
+                    {
+                        return .32 > randomStealSuccess;
+                    } else if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() < .8)
+                    {
+                        return .46 > randomStealSuccess;
+                    } else if (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() < .9)
+                    {
+                        return .70 > randomStealSuccess;
+                    } else return .90 > randomStealSuccess;
                 }
+                    return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptSuccessPercentage() > randomStealSuccess;
             }
             case SECOND_FIRST:
             case SECOND_BASE: {
-                if (pitcher.getPitchingArm().equals("L")) {
-                    return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseSuccess() * .6) > randomStealSuccess;
-                } else {
-                    return bases.getSecondBase().getBatter().getBatterStats().getStolenBaseSuccess() > randomStealSuccess;
-                }
+                return (bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttemptSuccessPercentage()) > randomStealSuccess;
             }
         }
         return false;
+    }
+
+    public boolean isPitchOut() {
+        return pitchOut;
+    }
+
+    public void setPitchOut(boolean pitchOut) {
+        this.pitchOut = pitchOut;
     }
 }
 

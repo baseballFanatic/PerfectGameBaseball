@@ -128,7 +128,7 @@ class LineUp {
         this.homeBattingNumber = homeBattingNumber;
     }
 
-    List<Batter> optimizeLineUp(List<Batter> lineUp)
+/*    List<Batter> optimizeLineUp(List<Batter> lineUp)
     {
         List<Batter> optimizedLineUp = new ArrayList<>();
 
@@ -174,7 +174,7 @@ class LineUp {
         }
 
         return optimizedLineUp;
-    }
+    }*/
 
     public void setGameDate(Date date) {
     }

@@ -12,7 +12,8 @@ class PitchResult {
     public PitchResult() {
     }
 
-    public void swing(Batter batter, Pitcher pitcher, League league) {
+    public void swing(Batter batter, Pitcher pitcher, League league, boolean pitchOut) {
+        double xw = 0;
         double x1 = (batter.getBatterStats().getProbabilitySingle() * pitcher.getPitcherStats().getProbabilitySingle())
                 / league.getLeagueStats().getSinglePercentage();
         double y1 = x1 / (x1 + (1 - batter.getBatterStats().getProbabilitySingle()) * (1 -
@@ -33,8 +34,14 @@ class PitchResult {
         double y4 = x4 / (x4 + (1 - batter.getBatterStats().getProbabilityHomeRun()) *
                 (1 - pitcher.getPitcherStats().getProbabilityHomeRun())) /
                 (1 - league.getLeagueStats().getHomeRunPercentage());
-        double xw = (batter.getBatterStats().getProbabilityWalk() * pitcher.getPitcherStats().getProbabilityWalk())
-                / league.getLeagueStats().getWalkPercentage();
+        if (pitchOut)
+        {
+            xw = ((batter.getBatterStats().getProbabilityWalk() * 1.67) * pitcher.getPitcherStats().getProbabilityWalk())
+                    / league.getLeagueStats().getWalkPercentage();
+        } else {
+            xw = (batter.getBatterStats().getProbabilityWalk() * pitcher.getPitcherStats().getProbabilityWalk())
+                    / league.getLeagueStats().getWalkPercentage();
+        }
 
         double yw = xw / (xw + ((1 - batter.getBatterStats().getProbabilityWalk() *
                 (1 - pitcher.getPitcherStats().getProbabilityWalk())) /

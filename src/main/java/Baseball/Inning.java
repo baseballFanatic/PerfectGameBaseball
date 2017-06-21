@@ -40,7 +40,6 @@ class Inning {
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, homePitchers)) {
                     currentPitcher = currentPitcher.getReliever(homePitchers);
                     if (currentPitcher != null) {
-                        //TODO The below functions are not removing the pitcher from the batting file
                         batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
                         fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
                         currentPitcher.setBattingOrder(pitcher.getHomePitcher().getBattingOrder());
@@ -56,8 +55,6 @@ class Inning {
                 {
                     System.out.println("Would pinch hit here.");
                 }
-/*                atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
-                        visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);*/
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);
                 lineUp.setVisitorBattingNumber(lineUp.getVisitorBattingNumber()+ 1);

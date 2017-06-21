@@ -1089,7 +1089,7 @@ class Database {
                 batter.getBatterStats().setSacrificeFlies(Integer.parseInt(rs.getString("RS")));
                 batter.getBatterStats().setGroundedIntoDp(Integer.parseInt(rs.getString("GIDP")));*/
 
-                batter.getBatterStats().setSpeedRating(7);
+                batter.getBatterStats().setSpeedRating(rs.getInt("speedRating"));
                 batter.getBatterStats().calculateBatterProbabilities();
 
                 batters.add(batter);

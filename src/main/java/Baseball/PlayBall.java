@@ -41,10 +41,9 @@ public class PlayBall {
         List<Batter> visitorBatters = batter.getBatterList(visitors,schedule);
         // Selects all fielders available for the team
         List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors, schedule);
-        // Selects starters for all 8 regular positions from the list of fielders available
+        // Selects starters for all 8 regular positions from the schedule list based on game
         List<LineUp> visitorStarters = lineUp.getStartingLineup(schedule, visitors);
         HashMap<Integer, Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
-        //List<Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
         // Selects all pitchers for the team
         List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule);
         // Matches batter to fielder on retroID and assigns the batter to the starting lineup
@@ -72,8 +71,6 @@ public class PlayBall {
 
         out.printf("%s vs %s%n", visitorTeam.getTeamName(), homeTeam.getTeamName());
         System.out.println();
-        /*new DisplayInfo().displayLineUp(visitorBatterStarters, homeBatterStarters, visitorPitchers, homePitchers,
-                visitorFieldersStarters, homeFieldersStarters);*/
         new DisplayInfo().displayLineUp(visitorBatterStarters, homeBatterStarters, visitorPitchers, homePitchers,
                 visitorFieldersStarters, homeFieldersStarters);
 
@@ -84,9 +81,6 @@ public class PlayBall {
             inning.startInning(league, visitorBatterStarters, homeBatterStarters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
                     homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
                     homeLineScore, visitorBatters, homeBatters, visitorFieldersReserves, homeFieldersReserves);
-/*            inning.startInning(league, visitorBatters, homeBatters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
-                    homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
-                    homeLineScore, visitorBatters, homeBatters, visitorFieldersReserves, homeFieldersReserves);*/
             checkGameOver(visitorTeam, homeTeam, gameOver, inning);
             if (inning.isTop()){
                 inning.setTop(false);
@@ -97,8 +91,6 @@ public class PlayBall {
             }
         }
 
-        /*new DisplayInfo().endOfGame(visitorBatterStarters, homeBatterStarters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
-                homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore);*/
         new DisplayInfo().endOfGame(visitorBatters, homeBatters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
                 homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore, visitorFieldersReserves,
                 homeFieldersReserves);
