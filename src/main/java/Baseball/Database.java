@@ -1344,6 +1344,7 @@ class Database {
                 fielder.setPlayerKey(rs.getInt("playerKey"));
 
                 fielder.setPosition(InPlayPosition.get(rs.getString("POS")));
+                fielder.setAvailable(true);
 
                 fielders.add(fielder);
 

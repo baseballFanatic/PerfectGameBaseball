@@ -12,7 +12,7 @@ public class Fielder extends Player {
     private InPlayPosition position;
     private String teamID, pos;
     private int playerKey, battingOrder;
-    private boolean leftField, centerField, rightField;
+    private boolean leftField, centerField, rightField, available;
 
     Fielder() {
     }
@@ -21,6 +21,14 @@ public class Fielder extends Player {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.position = position;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public int getBattingOrder() {
@@ -204,6 +212,7 @@ public class Fielder extends Player {
                                 fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -215,6 +224,7 @@ public class Fielder extends Player {
                                 fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -227,6 +237,7 @@ public class Fielder extends Player {
                                 fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -238,6 +249,7 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -249,6 +261,7 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -260,6 +273,7 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -271,6 +285,7 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -282,6 +297,7 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -293,6 +309,7 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
                                 }
@@ -300,6 +317,16 @@ public class Fielder extends Player {
                             }
                         }
                     }
+                }
+            }
+        }
+        for (Integer integer : starters.keySet())
+        {
+            for (Fielder fielder : fielderList)
+            {
+                if (Objects.equals(starters.get(integer).getPlayerId(), fielder.getPlayerId()))
+                {
+                    fielder.setAvailable(false);
                 }
             }
         }
@@ -336,6 +363,48 @@ public class Fielder extends Player {
         }
 
         fielderList.remove(indexToDelete);
+    }
+
+    public boolean isFielderAvailable(List<Fielder> fielderReserves, Batter batter) {
+        for (Fielder fielder : fielderReserves)
+        {
+            if (fielder.isAvailable() && fielder.getPosition().equals(batter.getPosition()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeFielderFromFielders(HashMap<Integer, Fielder> fielderList, Batter currentBatter) {
+        Integer indexToDelete = null;
+
+        for (Integer integer : fielderList.keySet())
+            if (Objects.equals(fielderList.get(integer).getPlayerId(), currentBatter.getPlayerId())) {
+                indexToDelete = integer;
+                break;
+            }
+        fielderList.remove(indexToDelete);
+    }
+
+    Fielder getPinchHitterFielder(List<Fielder> fielderReserves, Batter currentBatter) {
+        for (Fielder fielder : fielderReserves)
+        {
+            if (fielder.isAvailable() && fielder.getPosition().equals(currentBatter.getPosition()))
+            {
+                return fielder;
+            }
+        }
+        return null;
+    }
+
+    void addFielderToFielderStarters(HashMap<Integer, Fielder> fielderList, Fielder fielder,
+                                     Batter batter, Inning inning) {
+        batter.setBattingOrder(batter.getBattingOrder() - inning.getInning());
+        fielder.setBattingOrder(batter.getBattingOrder());
+        fielder.getFielderStats().setGameGamePlayed(1);
+        fielderList.put(batter.getBattingOrder(), fielder);
+        System.out.printf("%s comes in to pinch hit for %s%n", fielder.getNameLast(), batter.getNameLast());
     }
 }
 

@@ -51,9 +51,33 @@ class Inning {
                         currentPitcher = pitcher.getHomePitcher();
                     }
                 }
-                if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter))
+                //TODO Add in actually removing batter and adding pinch hitter
+                if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter, visitorPitchers,
+                        homePitchers))
                 {
-                    System.out.println("Would pinch hit here.");
+
+                    if (currentBatter.getPosition().equals(InPlayPosition.PITCHER))
+                    {
+                        System.out.println("Need to look for a reliever");
+                        if (pitcher.isRelieverAvailable(visitorTeam, visitorPitchers))
+                        {
+                            System.out.println("Would pinch hit for the pitcher and a reliever is available.");
+                        }
+
+                    } else
+                    {
+                        if (fielder.isFielderAvailable(visitorFielderReserves, currentBatter))
+                        {
+                            System.out.println("There is a fielder available to pinch hit.");
+                            fielder.removeFielderFromFielders(visitorFielders, currentBatter);
+                            batter.removeBatterFromBatter(visitorBatters, currentBatter, inning);
+                            Fielder pinchHitFielder = fielder.getPinchHitterFielder(visitorFielderReserves, currentBatter);
+                            fielder.addFielderToFielderStarters(visitorFielders, pinchHitFielder, currentBatter, inning);
+                            Batter pinchHitter = batter.getPinchHitterBatter(pinchHitFielder, visitorBattersReserves);
+                            batter.addBatterToBatterStarters(visitorBatters, pinchHitter);
+                            currentBatter = batter.getBatter(inning, lineUp, visitorBatters);
+                        }
+                    }
                 }
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, homeFielders, inning, visitorBatters, homeBatters);
@@ -78,10 +102,36 @@ class Inning {
                         currentPitcher = pitcher.getVisitorPitcher();
                     }
                 }
+                if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter, visitorPitchers,
+                        homePitchers))
+                {
+                    if (currentBatter.getPosition().equals(InPlayPosition.PITCHER))
+                    {
+                        System.out.println("Need to look for a reliever");
+                        if (pitcher.isRelieverAvailable(homeTeam, homePitchers))
+                        {
+                            System.out.println("Would pinch hit for the pitcher and a reliever is available.");
+                        }
+
+                    } else
+                    {
+                        if (fielder.isFielderAvailable(homeFielderReserves, currentBatter))
+                        {
+                            System.out.println("There is a fielder available to pinch hit.");
+                            fielder.removeFielderFromFielders(homeFielders, currentBatter);
+                            batter.removeBatterFromBatter(homeBatters, currentBatter, inning);
+                            Fielder pinchHitFielder = fielder.getPinchHitterFielder(homeFielderReserves, currentBatter);
+                            fielder.addFielderToFielderStarters(homeFielders, pinchHitFielder, currentBatter, inning);
+                            Batter pinchHitter = batter.getPinchHitterBatter(pinchHitFielder, homeBattersReserves);
+                            batter.addBatterToBatterStarters(homeBatters, pinchHitter);
+                            currentBatter = batter.getBatter(inning, lineUp, homeBatters);
+                        }
+                    }
+                }
                 atBat.batterUp(currentBatter, currentPitcher, league, pitchResult, bases, lineUp,
                         visitorTeam, homeTeam, visitorFielders, inning, visitorBatters, homeBatters);
                 lineUp.setHomeBattingNumber(lineUp.getHomeBattingNumber() + 1);
-                if (checkWalkOffWin(inning, homeTeam, visitorTeam, gameOver, pitcher)) {
+                if (checkWalkOffWin(inning, homeTeam, visitorTeam, pitcher)) {
                     break;
                 }
                 if (lineUp.getHomeBattingNumber() == 10) {
@@ -120,7 +170,7 @@ class Inning {
         this.top = top;
     }
 
-    private boolean checkWalkOffWin(Inning inning, Team homeTeam, Team visitorTeam, boolean gameOver, Pitcher pitcher) {
+    private boolean checkWalkOffWin(Inning inning, Team homeTeam, Team visitorTeam, Pitcher pitcher) {
         if (inning.getInning() >= 9 && homeTeam.getTeamStats().getGameRuns() >
                 visitorTeam.getTeamStats().getGameRuns()) {
             System.out.println("Ballgame!");

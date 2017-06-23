@@ -185,13 +185,13 @@ public class Batter extends Player implements Comparable<Batter> {
         this.thirdBase = thirdBase;
     }
 
-    public boolean needPinchHitter(Inning inning, Team visitorTeam, Team homeTeam, Batter currentBatter)
+    boolean needPinchHitter(Inning inning, Team visitorTeam, Team homeTeam, Batter currentBatter, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers)
     {
         return inning.getInning() > 6 && (Math.abs(visitorTeam.getTeamStats().getGameRuns() -
                 homeTeam.getTeamStats().getGameRuns()) < 5 && currentBatter.getBattingOrder() > 7);
     }
 
-    public void removePitcherFromBatters(HashMap<Integer, Batter> batterStarters, Pitcher pitcher)
+    void removePitcherFromBatters(HashMap<Integer, Batter> batterStarters, Pitcher pitcher)
     {
         Integer indexToDelete = null;
         for (Integer integer : batterStarters.keySet()) {
@@ -313,8 +313,8 @@ public class Batter extends Player implements Comparable<Batter> {
         return batterStarters;
     }
 
-    public void addNewPitcherToBatters(List<Batter> batterReserves, Pitcher currentPitcher,
-                                       HashMap<Integer, Batter> batterStarters) {
+    void addNewPitcherToBatters(List<Batter> batterReserves, Pitcher currentPitcher,
+                                HashMap<Integer, Batter> batterStarters) {
         Batter batter = new Batter();
 
         for (Batter batter1 : batterReserves)
@@ -331,5 +331,40 @@ public class Batter extends Player implements Comparable<Batter> {
         }
 
         batterStarters.put(batter.getBattingOrder(), batter);
+    }
+
+    void removeBatterFromBatter(HashMap<Integer, Batter> batterStarters, Batter currentBatter,
+                                Inning inning) {
+        Integer indexToDelete = null;
+
+        for (Integer integer : batterStarters.keySet()) {
+            if(Objects.equals(batterStarters.get(integer).getPlayerId(), currentBatter.getPlayerId()) )
+            {
+                currentBatter.setBattingOrder(batterStarters.get(integer).getBattingOrder() + inning.getInning());
+                indexToDelete = integer;
+                break;
+            }
+        }
+
+        batterStarters.remove(indexToDelete);
+    }
+
+    Batter getPinchHitterBatter(Fielder fielder, List<Batter> batterList) {
+        for (Batter batter : batterList)
+        {
+            if (batter.getPlayerId().equals(fielder.getPlayerId()))
+            {
+                batter.setPosition(fielder.getPosition());
+                batter.setBattingOrder(fielder.getBattingOrder());
+                return batter;
+            }
+        }
+        return null;
+    }
+
+    void addBatterToBatterStarters(HashMap<Integer, Batter> batterStarters, Batter batter) {
+        batter.getBatterStats().setGameGamePlayed();
+        batterStarters.put(batter.getBattingOrder(), batter);
+
     }
 }

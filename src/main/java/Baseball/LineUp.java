@@ -16,35 +16,35 @@ class LineUp {
     LineUp() {
     }
 
-    public int getGamePlayed() {
+    int getGamePlayed() {
         return gamePlayed;
     }
 
-    public void setGamePlayed(int gamePlayed) {
+    void setGamePlayed(int gamePlayed) {
         this.gamePlayed = gamePlayed;
     }
 
-    public LocalDate getGameDate() {
+    LocalDate getGameDate() {
         return gameDate;
     }
 
-    public void setGameDate(LocalDate gameDate) {
+    void setGameDate(LocalDate gameDate) {
         this.gameDate = gameDate;
     }
 
-    public int getGameNumber() {
+    int getGameNumber() {
         return gameNumber;
     }
 
-    public void setGameNumber(int gameNumber) {
+    void setGameNumber(int gameNumber) {
         this.gameNumber = gameNumber;
     }
 
-    public String getPlayerPosition() {
+    String getPlayerPosition() {
         return playerPosition;
     }
 
-    public void setPlayerPosition(String playerPosition) {
+    void setPlayerPosition(String playerPosition) {
         this.playerPosition = playerPosition;
     }
 
@@ -64,43 +64,43 @@ class LineUp {
         this.gameKey = gameKey;
     }
 
-    public int getPlayerOrder() {
+    int getPlayerOrder() {
         return playerOrder;
     }
 
-    public void setPlayerOrder(int playerOrder) {
+    void setPlayerOrder(int playerOrder) {
         this.playerOrder = playerOrder;
     }
 
-    public String getRetroID() {
+    String getRetroID() {
         return retroID;
     }
 
-    public void setRetroID(String retroID) {
+    void setRetroID(String retroID) {
         this.retroID = retroID;
     }
 
-    public String getPlayerName() {
+    String getPlayerName() {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
+    void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
 
-    public String getLgID() {
+    String getLgID() {
         return lgID;
     }
 
-    public void setLgID(String lgID) {
+    void setLgID(String lgID) {
         this.lgID = lgID;
     }
 
-    public String getTeamID() {
+    String getTeamID() {
         return teamID;
     }
 
-    public void setTeamID(String teamID) {
+    void setTeamID(String teamID) {
         this.teamID = teamID;
     }
 
@@ -176,10 +176,10 @@ class LineUp {
         return optimizedLineUp;
     }*/
 
-    public void setGameDate(Date date) {
+    void setGameDate(Date date) {
     }
 
-    public List<LineUp> getStartingLineup(Schedule schedule, boolean visitors) throws ClassNotFoundException,
+    List<LineUp> getStartingLineup(Schedule schedule, boolean visitors) throws ClassNotFoundException,
             SQLException, InstantiationException {
         List<LineUp> lineUpList = new ArrayList<>();
 

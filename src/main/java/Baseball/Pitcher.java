@@ -310,6 +310,18 @@ public class Pitcher extends Player {
         }
         return null;
     }
+
+    boolean isRelieverAvailable(Team team, List<Pitcher> teamPitchers) {
+        for (Pitcher reliever : teamPitchers)
+        {
+            if (reliever.isAvailable && reliever.getPitcherRole().equals(PitcherRole.RELIEVER))
+            {
+                return true;
+            }
+        }
+        System.out.println("No reliever available to come in.");
+        return false;
+    }
 }
 
 
