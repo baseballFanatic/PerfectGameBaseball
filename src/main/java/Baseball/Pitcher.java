@@ -1,7 +1,9 @@
 package Baseball;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static java.lang.Math.abs;
 
@@ -15,11 +17,11 @@ public class Pitcher extends Player {
     private int playerKey, yearID, stint, battingOrder;
     private boolean isAvailable = true;
 
-    public int getBattingOrder() {
+    int getBattingOrder() {
         return battingOrder;
     }
 
-    public void setBattingOrder(int battingOrder) {
+    void setBattingOrder(int battingOrder) {
         this.battingOrder = battingOrder;
     }
 
@@ -91,7 +93,7 @@ public class Pitcher extends Player {
         return visitorStarter;
     }
 
-    public void setVisitorStarter(Pitcher visitorStarter) {
+    void setVisitorStarter(Pitcher visitorStarter) {
         this.visitorStarter = visitorStarter;
     }
 
@@ -99,18 +101,28 @@ public class Pitcher extends Player {
         return homeStarter;
     }
 
-    public void setHomeStarter(Pitcher homeStarter) {
+    void setHomeStarter(Pitcher homeStarter) {
         this.homeStarter = homeStarter;
     }
 
-    boolean needReliever(Pitcher pitcher, Inning inning, Team visitorTeam, Team homeTeam, List<Pitcher> pitchingTeam) {
+    boolean needReliever(Pitcher currentPitcher, Inning inning, Team pitchTeam, Team battingTeam, List<Pitcher> pitchingTeam,
+                         Bases bases) {
+        BasesOccupied baseState = bases.checkBases(bases);
+
         //TODO: need to add more logic to this to take into account different situations.
-        if ((pitcher.getPitcherStats().getGameRunsAllowed() > 4) && (Math.abs(visitorTeam.getTeamStats().getGameRuns() -
-                homeTeam.getTeamStats().getGameRuns()) > 3))
+        if ((currentPitcher.getPitcherStats().getGameRunsAllowed() > 4) && (Math.abs(pitchTeam.getTeamStats().getGameRuns() -
+                battingTeam.getTeamStats().getGameRuns()) > 3))
         {
             return true;
             //Don't allow a pitcher to pitch longer than 9 innings unless he's pitching a no-hitter.
-        } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() > 27 && pitcher.getPitcherStats().getGameHitsAllowed() > 0)
+        } else if (currentPitcher.getPitcherStats().getGameInningsPitchedOuts() > 27 && currentPitcher.getPitcherStats().getGameHitsAllowed() > 0)
+        {
+            return true;
+        } else if (inning.getInning() > 8 && pitchTeam.getTeamStats().getGameRuns() > battingTeam.getTeamStats().getGameRuns()
+                && pitchTeam.getTeamStats().getGameRuns() > battingTeam.getTeamStats().getGameRuns() &&
+                pitchTeam.getTeamStats().getGameRuns() - battingTeam.getTeamStats().getGameRuns() < 5 &&
+                (baseState.toString().equals("SECOND_THIRD") || baseState.toString().equals("FIRST_THIRD") ||
+                baseState.toString().equals("BASES_LOADED")) && currentPitcher.getPitcherStats().getGameRunsAllowed() > 0)
         {
             return true;
         }
@@ -180,16 +192,22 @@ public class Pitcher extends Player {
         }
     }
 
-    void setPitcherSave(Pitcher pitcher, Inning inning, Team visitorTeam, Team homeTeam) {
-        if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns() &&
-                homeTeam.getTeamStats().getGameRuns() - visitorTeam.getTeamStats().getGameRuns() < 5) {
-            pitcher.setHomeSavePitcher(pitcher);
-            pitcher.setVisitorSavePitcher(null);
-        } else if (visitorTeam.getTeamStats().getGameRuns() > homeTeam.getTeamStats().getGameRuns() &&
-                visitorTeam.getTeamStats().getGameRuns() - homeTeam.getTeamStats().getGameRuns() < 5) {
-            pitcher.setVisitorSavePitcher(pitcher);
-            pitcher.setHomeSavePitcher(null);
+    void setPitcherSave(Pitcher pitcher, Inning inning, Team visitorTeam, Team homeTeam, Pitcher currentPitcher) {
+        if (inning.getInning() > 6)
+        {
+            if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns() &&
+                    homeTeam.getTeamStats().getGameRuns() - visitorTeam.getTeamStats().getGameRuns() < 5
+                    && pitcher.getHomeSavePitcher() == null) {
+                pitcher.setHomeSavePitcher(currentPitcher);
+                pitcher.setVisitorSavePitcher(null);
+            } else if (visitorTeam.getTeamStats().getGameRuns() > homeTeam.getTeamStats().getGameRuns() &&
+                    visitorTeam.getTeamStats().getGameRuns() - homeTeam.getTeamStats().getGameRuns() < 5
+                    && pitcher.getVisitorSavePitcher() == null) {
+                pitcher.setVisitorSavePitcher(currentPitcher);
+                pitcher.setHomeSavePitcher(null);
+            }
         }
+
     }
 
     PitcherRole getPitcherRole() {
@@ -228,7 +246,7 @@ public class Pitcher extends Player {
         return visitorWinningPitcher;
     }
 
-    void setVisitorWinningPitcher(Pitcher visitorWinningPitcher) {
+    private void setVisitorWinningPitcher(Pitcher visitorWinningPitcher) {
         this.visitorWinningPitcher = visitorWinningPitcher;
     }
 
@@ -244,7 +262,7 @@ public class Pitcher extends Player {
         return visitorSavePitcher;
     }
 
-    void setVisitorSavePitcher(Pitcher visitorSavePitcher) {
+    private void setVisitorSavePitcher(Pitcher visitorSavePitcher) {
         this.visitorSavePitcher = visitorSavePitcher;
     }
 
@@ -260,7 +278,7 @@ public class Pitcher extends Player {
         return homeLosingPitcher;
     }
 
-    void setHomeLosingPitcher(Pitcher homeLosingPitcher) {
+    private void setHomeLosingPitcher(Pitcher homeLosingPitcher) {
         this.homeLosingPitcher = homeLosingPitcher;
     }
 
@@ -268,7 +286,7 @@ public class Pitcher extends Player {
         return homeSavePitcher;
     }
 
-    void setHomeSavePitcher(Pitcher homeSavePitcher) {
+    private void setHomeSavePitcher(Pitcher homeSavePitcher) {
         this.homeSavePitcher = homeSavePitcher;
     }
 
@@ -277,12 +295,12 @@ public class Pitcher extends Player {
         Pitcher pitcher = new Pitcher();
 
         if (visitors) {
-            int yearID=1927;
+            int yearID=1913;
             String teamID = schedule.getVisitingTeamId();
             pitcherList = Database.selectPitchers(teamID, yearID);
         } else {
             String teamID = schedule.getHomeTeamId();
-            int yearID=1927;
+            int yearID=1913;
             pitcherList = Database.selectPitchers(teamID, yearID);
         }
         return pitcherList;
@@ -321,6 +339,18 @@ public class Pitcher extends Player {
         }
         System.out.println("No reliever available to come in.");
         return false;
+    }
+
+    void setStartingPitcherBattingOrder(Pitcher startingPitcher, HashMap<Integer, Batter> pitcherBattersList) {
+        for (Integer integer : pitcherBattersList.keySet()) {
+            if(Objects.equals(pitcherBattersList.get(integer).getPlayerId(), startingPitcher.getPlayerId()) )
+            {
+                startingPitcher.setBattingOrder(pitcherBattersList.get(integer).getBattingOrder());
+                System.out.printf("set %s batting order to %s.%n",
+                        startingPitcher.getNameLast(), startingPitcher.getBattingOrder());
+                break;
+            }
+        }
     }
 }
 

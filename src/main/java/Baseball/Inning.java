@@ -37,31 +37,51 @@ class Inning {
                 pitcher.determineWinnerAndLoser(pitcher, inning, visitorTeam, homeTeam);
                 currentBatter = batter.getBatter(inning, lineUp, visitorBatters);
                   // Check to see if home pitcher needs to be relieved
-                if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, homePitchers)) {
+                if (currentPitcher.needReliever(currentPitcher, inning, homeTeam, visitorTeam, homePitchers, bases)) {
                     currentPitcher = currentPitcher.getReliever(homePitchers);
                     if (currentPitcher != null) {
                         batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
                         fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
                         currentPitcher.setBattingOrder(pitcher.getHomePitcher().getBattingOrder());
                         pitcher.setHomePitcher(currentPitcher);
+                        pitcher.getHomePitcher().getPitcherStats().setGameGamePlayed(1);
                         batter.addNewPitcherToBatters(homeBattersReserves, pitcher.getHomePitcher(), homeBatters);
                         fielder.addPitcherToFielders(homeFielderReserves, currentPitcher, homeFielders);
-                        pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam);
+                        pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam, currentPitcher);
                     } else {
                         currentPitcher = pitcher.getHomePitcher();
                     }
                 }
                 //TODO Add in actually removing batter and adding pinch hitter
+                // Looking for Pinch Hitter for visiting team
                 if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter, visitorPitchers,
-                        homePitchers))
+                        homePitchers, pitcher.getVisitorPitcher()))
                 {
-
+                    // Pinch Hitting for the visiting pitcher.
                     if (currentBatter.getPosition().equals(InPlayPosition.PITCHER))
                     {
                         System.out.println("Need to look for a reliever");
+                        //Looking for visitor reliever
                         if (pitcher.isRelieverAvailable(visitorTeam, visitorPitchers))
                         {
-                            System.out.println("Would pinch hit for the pitcher and a reliever is available.");
+                            currentBatter = currentBatter.getPinchHitterForPitcher(visitorBattersReserves);
+                            if (currentBatter != null)
+                            {
+                                batter.removePitcherFromBatters(visitorBatters, pitcher.getVisitorPitcher());
+                                fielder.removePitcherFromFielders(visitorFielders, pitcher.getVisitorPitcher());
+                                Pitcher reliefPitcher = currentPitcher.getReliever(visitorPitchers);
+                                reliefPitcher.setBattingOrder(currentPitcher.getBattingOrder());
+                                pitcher.setVisitorPitcher(reliefPitcher);
+                                pitcher.getVisitorPitcher().getPitcherStats().setGameGamePlayed(1);
+                                System.out.printf("Set visitor pitcher to %s%n", pitcher.getVisitorPitcher().getNameLast());
+                                batter.addNewPitcherToBatters(visitorBattersReserves, pitcher.getVisitorPitcher(), visitorBatters);
+                                fielder.addPitcherToFielders(visitorFielderReserves, reliefPitcher, visitorFielders);
+                                System.out.println("Pinch hitting for the pitcher");
+                            } else
+                            {
+                                System.out.println("Had reliever available but no pinch hitter");
+                            }
+
                         }
 
                     } else
@@ -88,29 +108,53 @@ class Inning {
             } else {
                 currentBatter = batter.getBatter(inning, lineUp, homeBatters);
                 // Check to see if visitor pitcher needs to be relieved
-                if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, visitorPitchers)) {
+                if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, visitorPitchers, bases)) {
                     currentPitcher = currentPitcher.getReliever(visitorPitchers);
                     if (currentPitcher != null) {
                         batter.removePitcherFromBatters(visitorBatters, pitcher.getVisitorPitcher());
                         fielder.removePitcherFromFielders(visitorFielders, pitcher.getVisitorPitcher());
                         currentPitcher.setBattingOrder(pitcher.getVisitorPitcher().getBattingOrder());
                         pitcher.setVisitorPitcher(currentPitcher);
+                        pitcher.getVisitorPitcher().getPitcherStats().setGameGamePlayed(1);
+                        System.out.printf("Set visitor pitcher to %s%n", pitcher.getVisitorPitcher().getNameLast());
                         batter.addNewPitcherToBatters(visitorBattersReserves, pitcher.getVisitorPitcher(), visitorBatters);
-                        fielder.addPitcherToFielders(visitorFielderReserves, currentPitcher, visitorFielders);
-                        pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam);
+                        fielder.addPitcherToFielders(visitorFielderReserves, pitcher.getVisitorPitcher(), visitorFielders);
+                        pitcher.setPitcherSave(pitcher, inning, visitorTeam, homeTeam, currentPitcher);
                     } else {
                         currentPitcher = pitcher.getVisitorPitcher();
                     }
                 }
+                // Check to see if need a pinch hitter.
                 if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter, visitorPitchers,
-                        homePitchers))
+                        homePitchers, pitcher.getHomePitcher()))
                 {
+                    // Looking at pinch hitter for pitcher.
                     if (currentBatter.getPosition().equals(InPlayPosition.PITCHER))
                     {
                         System.out.println("Need to look for a reliever");
+                        //Verify there is a home reliever to come in.
                         if (pitcher.isRelieverAvailable(homeTeam, homePitchers))
                         {
-                            System.out.println("Would pinch hit for the pitcher and a reliever is available.");
+                            // Checking to get a valid pinch hitter for the pitcher.
+                            currentBatter = currentBatter.getPinchHitterForPitcher(homeBattersReserves);
+                            if (currentBatter != null)
+                            {
+                                //Removing home pitcher from files.
+                                batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
+                                fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
+                                Pitcher reliefPitcher = currentPitcher.getReliever(homePitchers);
+                                reliefPitcher.setBattingOrder(currentPitcher.getBattingOrder());
+                                pitcher.setHomePitcher(reliefPitcher);
+                                pitcher.getHomePitcher().getPitcherStats().setGameGamePlayed(1);
+                                System.out.printf("Set home pitcher to %s%n", pitcher.getHomePitcher().getNameLast());
+                                batter.addNewPitcherToBatters(homeBattersReserves, pitcher.getHomePitcher(), homeBatters);
+                                fielder.addPitcherToFielders(homeFielderReserves, pitcher.getHomePitcher(), homeFielders);
+                                System.out.println("Pinch hitting for the pitcher");
+                            } else
+                            {
+                                System.out.println("Had reliever available but no pinch hitter");
+                            }
+
                         }
 
                     } else

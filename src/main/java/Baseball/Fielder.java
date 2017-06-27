@@ -181,13 +181,13 @@ public class Fielder extends Player {
         Fielder fielder = new Fielder();
 
         if (visitors) {
-            int yearID = 1927;
+            int yearID = 1913;
             String teamID = schedule.getVisitingTeamId();
             // Selects all fielders for the visitor team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID);
 
         } else {
-            int yearID = 1927;
+            int yearID = 1913;
             String teamID = schedule.getHomeTeamId();
             // Selects all fielders for the home team and orders by games played desc.
             fielderList = Database.selectFielders(teamID, yearID);
@@ -218,7 +218,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        case ("LF"): {
+                            break;
+                        case ("LF"):
                             if (fielder.getPosition().equals(InPlayPosition.OUTFIELD)) {
                                 fielder.setPosition(InPlayPosition.LEFT_FIELD);
                                 fielder.setBattingOrder(player.getPlayerOrder());
@@ -230,8 +231,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("CF"): {
+                            break;
+                        case ("CF"):
                             if (fielder.getPosition().equals(InPlayPosition.OUTFIELD)) {
                                 fielder.setPosition(InPlayPosition.CENTER_FIELD);
                                 fielder.setBattingOrder(player.getPlayerOrder());
@@ -243,8 +244,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("1B"): {
+                            break;
+                        case ("1B"):
                             if (fielder.getPosition().equals(InPlayPosition.FIRST_BASE)) {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
@@ -255,8 +256,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("2B"): {
+                            break;
+                        case ("2B"):
                             if (fielder.getPosition().equals(InPlayPosition.SECOND_BASE)) {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
@@ -267,8 +268,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("3B"): {
+                            break;
+                        case ("3B"):
                             if (fielder.getPosition().equals(InPlayPosition.THIRD_BASE)) {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
@@ -279,8 +280,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("SS"): {
+                            break;
+                        case ("SS"):
                             if (fielder.getPosition().equals(InPlayPosition.SHORTSTOP)) {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
@@ -291,8 +292,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("P"): {
+                            break;
+                        case ("P"):
                             if (fielder.getPosition().equals(InPlayPosition.PITCHER)) {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
@@ -303,8 +304,8 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
-                        case ("C"): {
+                            break;
+                        case ("C"):
                             if (fielder.getPosition().equals(InPlayPosition.CATCHER)) {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
@@ -315,7 +316,7 @@ public class Fielder extends Player {
                                 }
                                 break;
                             }
-                        }
+                            break;
                     }
                 }
             }
@@ -343,6 +344,8 @@ public class Fielder extends Player {
                 fielder1.setBattingOrder(pitcher.getBattingOrder());
                 fielder1.getFielderStats().setGameGamePlayed(1);
                 fielder1.setPosition(InPlayPosition.PITCHER);
+                System.out.printf("Set %s batting order to %s and position to %s%n",
+                        fielder1.getNameLast(), fielder1.getBattingOrder(), fielder1.getPosition());
                 fielder = fielder1;
             }
         }
@@ -357,6 +360,8 @@ public class Fielder extends Player {
             if(Objects.equals(fielderList.get(integer).getPlayerId(), pitcher.getPlayerId()) )
             {
                 pitcher.setBattingOrder(fielderList.get(integer).getBattingOrder());
+                System.out.printf("Set %s fielder batting order to %s and removed from fielder starter list.%n",
+                        pitcher.getNameLast(), pitcher.getBattingOrder());
                 indexToDelete = integer;
                 break;
             }

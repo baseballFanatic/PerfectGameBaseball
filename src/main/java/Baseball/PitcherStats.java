@@ -6,11 +6,28 @@ class PitcherStats {
 
     private int earnedRuns, gameBattersFaced, gameHitsAllowed, hitBatters,
             gameRunsAllowed, gameStrikeOutsAllowed, gameWalksAllowed, gameHomeRunsAllowed, gameEarnedRunsAllowed,
-            gameUnearnedRunsAllowed, unearnedRunsAllowed, gameHitByPitch, gameInningsPitchedOuts, wins,
+            gameUnearnedRunsAllowed, unearnedRunsAllowed, gameHitByPitch, gameInningsPitchedOuts, gameGameStarted,
+            gameGamePlayed, wins,
             losses, saves, gamesPlayed, gamesStarted, shutOuts, completeGames, iPouts,
             inningsPitched, hitsAllowed, homeRunsAllowed, walksAllowed, strikeOutsAllowed,
             intentionalWalksAllowed, wildPitches, balks, battersFaced, gamesFinished, sacrificeHits, sacrificeFlies,
             groundedIntoDoublePlays, runs;
+
+    public int getGameGameStarted() {
+        return gameGameStarted;
+    }
+
+    public void setGameGameStarted(int gameGameStarted) {
+        this.gameGameStarted = gameGameStarted;
+    }
+
+    public int getGameGamePlayed() {
+        return gameGamePlayed;
+    }
+
+    public void setGameGamePlayed(int gameGamePlayed) {
+        this.gameGamePlayed = gameGamePlayed;
+    }
 
     private int getInningsPitched() {
         return inningsPitched;

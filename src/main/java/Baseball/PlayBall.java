@@ -28,7 +28,7 @@ public class PlayBall {
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
 
-        int yearID=1927;
+        int yearID=1913;
         String lgID="AL";
 
         league = Database.selectTeamStats(yearID, lgID, league);
@@ -62,9 +62,15 @@ public class PlayBall {
         setVisitors(true);
         pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
         pitcher.setVisitorStarter(pitcher.getVisitorPitcher());
+        pitcher.setStartingPitcherBattingOrder(pitcher.getVisitorPitcher(), visitorBatterStarters);
+        pitcher.getVisitorStarter().getPitcherStats().setGameGamePlayed(1);
+        pitcher.getVisitorStarter().getPitcherStats().setGameGameStarted(1);
         setVisitors(false);
         pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule, visitors));
         pitcher.setHomeStarter(pitcher.getHomePitcher());
+        pitcher.setStartingPitcherBattingOrder(pitcher.getHomePitcher(), homeBatterStarters);
+        pitcher.getHomeStarter().getPitcherStats().setGameGameStarted(1);
+        pitcher.getHomeStarter().getPitcherStats().setGameGamePlayed(1);
 
         visitorTeam.setTeamName(schedule.getVisitingTeamId());
         homeTeam.setTeamName(schedule.getHomeTeamId());

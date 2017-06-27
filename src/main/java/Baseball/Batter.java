@@ -10,7 +10,8 @@ public class Batter extends Player implements Comparable<Batter> {
     private int battingOrder;
     private Hands bats;
     private BatterStats batterStats = new BatterStats();
-    private boolean availability;
+    //private boolean availability = true;
+    private boolean isAvailable = true;
     private int awardPoints, stint, playerKey, fielderKey;
     private Base firstBase = new Base();
     private Base secondBase = new Base();
@@ -27,6 +28,14 @@ public class Batter extends Player implements Comparable<Batter> {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.position = position;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public String getPos() {
@@ -69,13 +78,13 @@ public class Batter extends Player implements Comparable<Batter> {
         this.lgID = lgID;
     }
 
-    public boolean isAvailability() {
+/*    boolean isAvailability() {
         return availability;
     }
 
-    public void setAvailability(boolean availability) {
+    void setAvailability(boolean availability) {
         this.availability = availability;
-    }
+    }*/
 
     public String getTeamID() {
         return teamID;
@@ -133,14 +142,6 @@ public class Batter extends Player implements Comparable<Batter> {
         this.battingOrder = battingOrder;
     }
 
-    public boolean getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(Boolean availability) {
-        this.availability = availability;
-    }
-
     public String getSimName() {
         return simName;
     }
@@ -185,10 +186,13 @@ public class Batter extends Player implements Comparable<Batter> {
         this.thirdBase = thirdBase;
     }
 
-    boolean needPinchHitter(Inning inning, Team visitorTeam, Team homeTeam, Batter currentBatter, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers)
+    boolean needPinchHitter(Inning inning, Team visitorTeam, Team homeTeam, Batter currentBatter,
+                            List<Pitcher> visitorPitchers, List<Pitcher> homePitchers,
+                            Pitcher battingPitcher)
     {
         return inning.getInning() > 6 && (Math.abs(visitorTeam.getTeamStats().getGameRuns() -
-                homeTeam.getTeamStats().getGameRuns()) < 5 && currentBatter.getBattingOrder() > 7);
+                homeTeam.getTeamStats().getGameRuns()) < 5 && currentBatter.getBattingOrder() > 7
+        && battingPitcher.getPitcherStats().getGameRunsAllowed() != 0);
     }
 
     void removePitcherFromBatters(HashMap<Integer, Batter> batterStarters, Pitcher pitcher)
@@ -198,6 +202,8 @@ public class Batter extends Player implements Comparable<Batter> {
             if(Objects.equals(batterStarters.get(integer).getPlayerId(), pitcher.getPlayerId()) )
             {
                 pitcher.setBattingOrder(batterStarters.get(integer).getBattingOrder());
+                System.out.printf("set %s batting order to %s and removed him from the batterStarters file.%n",
+                        pitcher.getNameLast(), pitcher.getBattingOrder());
                 indexToDelete = integer;
                 break;
             }
@@ -243,12 +249,12 @@ public class Batter extends Player implements Comparable<Batter> {
         Batter batter = new Batter();
 
         if (visitors) {
-            int yearID=1927;
+            int yearID=1913;
             String teamID = schedule.getVisitingTeamId();
             batterList = Database.selectBatters(teamID, yearID);
 
         } else {
-            int yearID=1927;
+            int yearID=1913;
             String teamID = schedule.getHomeTeamId();
             batterList = Database.selectBatters(teamID, yearID);
         }
@@ -278,6 +284,7 @@ public class Batter extends Player implements Comparable<Batter> {
                     batter.setBattingOrder(fielders.get(fielder).getBattingOrder());
                     batter.getBatterStats().setGameGamePlayed();
                     batter.getBatterStats().setGameGameStarted(1);
+                    batter.setAvailable(false);
                     matchedBatters.put(batter.getBattingOrder(), batter);
                 }
             }
@@ -325,6 +332,8 @@ public class Batter extends Player implements Comparable<Batter> {
                 batter1.setBattingOrder(currentPitcher.getBattingOrder());
                 batter1.getBatterStats().setGameGamePlayed();
                 batter1.setPosition(InPlayPosition.PITCHER);
+                System.out.printf("Set currentPitcher batting order to %s and position to %s%n",
+                        batter1.getBattingOrder(), batter1.getPosition());
                 batter = batter1;
                 break;
             }
@@ -366,5 +375,17 @@ public class Batter extends Player implements Comparable<Batter> {
         batter.getBatterStats().setGameGamePlayed();
         batterStarters.put(batter.getBattingOrder(), batter);
 
+    }
+
+    Batter getPinchHitterForPitcher(List<Batter> batterList) {
+        for (Batter batter : batterList)
+        {
+            if (batter.isAvailable)
+            {
+                batter.setPosition(InPlayPosition.PINCH_HITTER);
+                return batter;
+            }
+        }
+        return null;
     }
 }

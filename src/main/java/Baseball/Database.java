@@ -38,25 +38,25 @@ class Database {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // Execute query
-            stmt = conn.createStatement();
-            //createPgbsBatters(stmt);
-            //createPgbsPitchers(stmt);
-            //createPgbsFielders(stmt);
-            //createPgbsSeasons(stmt);
-            //createPgbsTeams(stmt);
-            //createPgbsSchedule(stmt);
-            //createPgbsLineUp(stmt);
+/*            stmt = conn.createStatement();
+            createPgbsBatters(stmt);
+            createPgbsPitchers(stmt);
+            createPgbsFielders(stmt);
+            createPgbsSeasons(stmt);
+            createPgbsTeams(stmt);
+            createPgbsSchedule(stmt);
+            createPgbsLineUp(stmt);*/
 
-            int yearID = 1927;
+            int yearID = 1913;
             String lgID="AL";
-            //insertPgbsBatters(conn, yearID);
-            //insertPgbsPitchers(conn, yearID);
-           // insertPgbsFielders(conn, yearID);
-            //insertPgbsTeams(conn, yearID);
-            //insertPgbsSchedule(conn, yearID);
-            //Schedule schedule = new Schedule();
+            insertPgbsBatters(conn, yearID);
+            insertPgbsPitchers(conn, yearID);
+            insertPgbsFielders(conn, yearID);
+            insertPgbsTeams(conn, yearID);
+/*            insertPgbsSchedule(conn, yearID);
+            Schedule schedule = new Schedule();
             insertPgbsLineUp(conn);
-//            insertPgbsSeasons(conn, yearID);
+            insertPgbsSeasons(conn, yearID);*/
 
             // Clean-up environment
             //rs.close();
@@ -466,7 +466,7 @@ class Database {
 
 
     private static void insertPgbsSchedule(Connection conn, int yearID) throws IOException, SQLException {
-        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1927.csv"));
+        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1913.csv"));
         //String line = null;
         String line = reader.readLine();
 
@@ -750,7 +750,7 @@ class Database {
     }
 
     private static void insertPgbsSeasons(Connection conn, int yearID) throws SQLException {
-        PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_seasons " +
+        PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_season_reference " +
                 " (yearID=?, " +
                 " alEastChamp=?, " +
                 " alCentralChamp=?, " +
@@ -891,7 +891,7 @@ class Database {
     }
 
     private static void insertPgbsLineUp(Connection conn) throws SQLException, IOException, ParseException {
-        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1927.csv"));
+        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/ClintR/PerfectGameBaseball/src/main/resources/schedules/GL1913.csv"));
         String line = reader.readLine();
         int playerOrder = 1;
         List<LineUp> lineUpOrder = new ArrayList<>();
@@ -1040,7 +1040,7 @@ class Database {
             stmt = conn.prepareStatement("SELECT * from pgbs_batters " +
                     " where teamID=? " +
                     " and yearID=? " +
-                    " and AB > 10" +
+                   // " and AB > 10 " +
                     " order by AB desc");
             stmt.setString(1, teamID);
             stmt.setInt(2, yearID);

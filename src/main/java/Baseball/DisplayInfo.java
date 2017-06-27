@@ -190,7 +190,6 @@ class DisplayInfo {
         System.out.printf("%3s: %2s %2s %2s %2s %2s %2s %2s %2s %2s %2s     %2s %2s %2s",
                 "Team", "1", "2", "3", "4", "5", "6", "7", "8", "9", "X", "R", "H", "E");
         System.out.println();
-        //TODO Fix this so it isn't hard coded
         System.out.printf("%s   ", visitorTeam.getTeamName());
 
         //TODO Need to fix the line score display when home team wins in bottom of 9th.
