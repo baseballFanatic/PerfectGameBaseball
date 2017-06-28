@@ -1,13 +1,11 @@
 package Baseball;
 
-import javax.sound.sampled.Line;
-import javax.xml.crypto.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import static java.lang.System.out;
 
@@ -16,7 +14,8 @@ public class PlayBall {
     private boolean gameOver = false;
     private boolean visitors = true;
 
-    public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException {
         Team visitorTeam = new Team();
         Team homeTeam = new Team();
         League league = new League();
@@ -28,6 +27,7 @@ public class PlayBall {
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
 
+        //TODO Find way to take out this hard coded year
         int yearID=1913;
         String lgID="AL";
 
@@ -100,6 +100,20 @@ public class PlayBall {
         new DisplayInfo().endOfGame(visitorBatters, homeBatters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
                 homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore, visitorFieldersReserves,
                 homeFieldersReserves);
+
+        batter.getBatterStats().updateBatterGameStats(visitorBatters);
+        batter.getBatterStats().updateBatterGameStats(homeBatters);
+        new Database().updateBatters(visitorBatters);
+        new Database().updateBatters(homeBatters);
+        //TODO Add in updates for fielders, pitchers, and team stats.
+        pitcher.getPitcherStats().updatePitcherGameStats(visitorPitchers);
+        pitcher.getPitcherStats().updatePitcherGameStats(homePitchers);
+        fielder.getFielderStats().updateFielderGameStats(visitorFieldersReserves);
+        fielder.getFielderStats().updateFielderGameStats(homeFieldersReserves);
+        new Database().updatePitchers(visitorPitchers);
+        new Database().updatePitchers(homePitchers);
+        new Database().updateFielders(visitorFieldersReserves);
+        new Database().updateFielders(homeFieldersReserves);
     }
 
     private boolean isGameOver() {

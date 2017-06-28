@@ -2,14 +2,80 @@ package Baseball;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 class FielderStats {
     private int gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful,
     gamesPlayed, gamesStarted, inningOuts, putOuts, assists, errors, doublePlays, passedBalls, stolenBases,
-    caughtStealing, zoneRating, wildPitches, gameGamePlayed;
+    caughtStealing, zoneRating, wildPitches, gameGamePlayed, gameGameStarted, sErrors, sAssists, sPutOuts, sRunnersThrownOut,
+    sRunnersSuccessful, sGamesStarted, sGamesPlayed;
     private double fieldingPercentage;
 
     FielderStats() {
+    }
+
+    public int getGameGameStarted() {
+        return gameGameStarted;
+    }
+
+    public void setGameGameStarted(int gameGameStarted) {
+        this.gameGameStarted = gameGameStarted;
+    }
+
+    public int getsErrors() {
+        return sErrors;
+    }
+
+    public void setsErrors(int sErrors) {
+        this.sErrors = sErrors;
+    }
+
+    public int getsAssists() {
+        return sAssists;
+    }
+
+    public void setsAssists(int sAssists) {
+        this.sAssists = sAssists;
+    }
+
+    public int getsPutOuts() {
+        return sPutOuts;
+    }
+
+    public void setsPutOuts(int sPutOuts) {
+        this.sPutOuts = sPutOuts;
+    }
+
+    public int getsRunnersThrownOut() {
+        return sRunnersThrownOut;
+    }
+
+    public void setsRunnersThrownOut(int sRunnersThrownOut) {
+        this.sRunnersThrownOut = sRunnersThrownOut;
+    }
+
+    public int getsRunnersSuccessful() {
+        return sRunnersSuccessful;
+    }
+
+    public void setsRunnersSuccessful(int sRunnersSuccessful) {
+        this.sRunnersSuccessful = sRunnersSuccessful;
+    }
+
+    public int getsGamesStarted() {
+        return sGamesStarted;
+    }
+
+    public void setsGamesStarted(int sGamesStarted) {
+        this.sGamesStarted = sGamesStarted;
+    }
+
+    public int getsGamesPlayed() {
+        return sGamesPlayed;
+    }
+
+    public void setsGamesPlayed(int sGamesPlayed) {
+        this.sGamesPlayed = sGamesPlayed;
     }
 
     public int getGameGamePlayed() {
@@ -215,5 +281,19 @@ class FielderStats {
         currentFielder.getFielderStats().setGameAssists(currentFielder.getFielderStats().getGameAssists() + 1);
         System.out.printf("Assist: %s(%d)%nPut out: %s(%d)%n", currentFielder.getNameLast(), currentFielder.getFielderStats().getGameAssists(),
                 infielderWithPutOut.getNameLast(), infielderWithPutOut.getFielderStats().getGamePutOuts());
+    }
+
+    void updateFielderGameStats(List<Fielder> fielderList)
+    {
+        for (Fielder fielder : fielderList)
+        {
+            fielder.getFielderStats().setsGamesPlayed(fielder.getFielderStats().getsGamesPlayed() + fielder.getFielderStats().getGameGamePlayed());
+            fielder.getFielderStats().setsGamesStarted(fielder.getFielderStats().getsGamesStarted() + fielder.getFielderStats().getGameGameStarted());
+            fielder.getFielderStats().setsErrors(fielder.getFielderStats().getsErrors() + fielder.getFielderStats().getGameErrors());
+            fielder.getFielderStats().setsAssists(fielder.getFielderStats().getsAssists() + fielder.getFielderStats().getGameAssists());
+            fielder.getFielderStats().setsPutOuts(fielder.getFielderStats().getsPutOuts() + fielder.getFielderStats().getGamePutOuts());
+            fielder.getFielderStats().setsRunnersThrownOut(fielder.getFielderStats().getsRunnersThrownOut() + fielder.getFielderStats().getGameRunnersThrownOut());
+            fielder.getFielderStats().setsRunnersSuccessful(fielder.getFielderStats().getsRunnersSuccessful() + fielder.getFielderStats().getGameRunnersThrownOut());
+        }
     }
 }

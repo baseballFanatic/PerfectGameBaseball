@@ -1,5 +1,7 @@
 package Baseball;
 
+import java.util.List;
+
 class PitcherStats {
     private double probabilityHomeRun, probabilityTriple, probabilityDouble, probabilitySingle, probabilityWalk,
             probabilityStrikeOut, probabilityHitBatter, era ;
@@ -11,7 +13,10 @@ class PitcherStats {
             losses, saves, gamesPlayed, gamesStarted, shutOuts, completeGames, iPouts,
             inningsPitched, hitsAllowed, homeRunsAllowed, walksAllowed, strikeOutsAllowed,
             intentionalWalksAllowed, wildPitches, balks, battersFaced, gamesFinished, sacrificeHits, sacrificeFlies,
-            groundedIntoDoublePlays, runs;
+            groundedIntoDoublePlays, runs, gameShutOuts, gameCompleteGame, gameWin, gameLoss, gameSave,
+            sGamesPlayed, sGamesStarted, sBattersFaced, sHitsAllowed, sHitBatters, sEarnedRuns, sRunsAllowed,
+            sStrikeOutAllowed, sWalksAllowed, sHomeRunsAllowed, sInningsPitchedOuts, sShutOuts, sCompleteGames,
+            sWins, sLosses, sSaves;
 
     public int getGameGameStarted() {
         return gameGameStarted;
@@ -27,6 +32,174 @@ class PitcherStats {
 
     public void setGameGamePlayed(int gameGamePlayed) {
         this.gameGamePlayed = gameGamePlayed;
+    }
+
+    public int getsGamesPlayed() {
+        return sGamesPlayed;
+    }
+
+    public void setsGamesPlayed(int sGamesPlayed) {
+        this.sGamesPlayed = sGamesPlayed;
+    }
+
+    public int getsGamesStarted() {
+        return sGamesStarted;
+    }
+
+    public void setsGamesStarted(int sGamesStarted) {
+        this.sGamesStarted = sGamesStarted;
+    }
+
+    public int getsBattersFaced() {
+        return sBattersFaced;
+    }
+
+    public void setsBattersFaced(int sBattersFaced) {
+        this.sBattersFaced = sBattersFaced;
+    }
+
+    public int getsHitsAllowed() {
+        return sHitsAllowed;
+    }
+
+    public void setsHitsAllowed(int sHitsAllowed) {
+        this.sHitsAllowed = sHitsAllowed;
+    }
+
+    public int getsHitBatters() {
+        return sHitBatters;
+    }
+
+    public void setsHitBatters(int sHitBatters) {
+        this.sHitBatters = sHitBatters;
+    }
+
+    public int getsEarnedRuns() {
+        return sEarnedRuns;
+    }
+
+    public void setsEarnedRuns(int sEarnedRuns) {
+        this.sEarnedRuns = sEarnedRuns;
+    }
+
+    public int getsRunsAllowed() {
+        return sRunsAllowed;
+    }
+
+    public void setsRunsAllowed(int sRunsAllowed) {
+        this.sRunsAllowed = sRunsAllowed;
+    }
+
+    public int getsStrikeOutAllowed() {
+        return sStrikeOutAllowed;
+    }
+
+    public void setsStrikeOutAllowed(int sStrikeOutAllowed) {
+        this.sStrikeOutAllowed = sStrikeOutAllowed;
+    }
+
+    public int getsWalksAllowed() {
+        return sWalksAllowed;
+    }
+
+    public void setsWalksAllowed(int sWalksAllowed) {
+        this.sWalksAllowed = sWalksAllowed;
+    }
+
+    public int getsHomeRunsAllowed() {
+        return sHomeRunsAllowed;
+    }
+
+    public void setsHomeRunsAllowed(int sHomeRunsAllowed) {
+        this.sHomeRunsAllowed = sHomeRunsAllowed;
+    }
+
+    public int getsInningsPitchedOuts() {
+        return sInningsPitchedOuts;
+    }
+
+    public void setsInningsPitchedOuts(int sInningsPitchedOuts) {
+        this.sInningsPitchedOuts = sInningsPitchedOuts;
+    }
+
+    public int getsShutOuts() {
+        return sShutOuts;
+    }
+
+    public void setsShutOuts(int sShutOuts) {
+        this.sShutOuts = sShutOuts;
+    }
+
+    public int getsCompleteGames() {
+        return sCompleteGames;
+    }
+
+    public void setsCompleteGames(int sCompleteGames) {
+        this.sCompleteGames = sCompleteGames;
+    }
+
+    public int getsWins() {
+        return sWins;
+    }
+
+    public void setsWins(int sWins) {
+        this.sWins = sWins;
+    }
+
+    public int getsLosses() {
+        return sLosses;
+    }
+
+    public void setsLosses(int sLosses) {
+        this.sLosses = sLosses;
+    }
+
+    public int getsSaves() {
+        return sSaves;
+    }
+
+    public void setsSaves(int sSaves) {
+        this.sSaves = sSaves;
+    }
+
+    public int getGameShutOuts() {
+        return gameShutOuts;
+    }
+
+    public void setGameShutOuts(int gameShutOuts) {
+        this.gameShutOuts = gameShutOuts;
+    }
+
+    public int getGameCompleteGame() {
+        return gameCompleteGame;
+    }
+
+    public void setGameCompleteGame(int gameCompleteGame) {
+        this.gameCompleteGame = gameCompleteGame;
+    }
+
+    public int getGameWin() {
+        return gameWin;
+    }
+
+    public void setGameWin(int gameWin) {
+        this.gameWin = gameWin;
+    }
+
+    public int getGameLoss() {
+        return gameLoss;
+    }
+
+    public void setGameLoss(int gameLoss) {
+        this.gameLoss = gameLoss;
+    }
+
+    public int getGameSave() {
+        return gameSave;
+    }
+
+    public void setGameSave(int gameSave) {
+        this.gameSave = gameSave;
     }
 
     private int getInningsPitched() {
@@ -435,6 +608,29 @@ class PitcherStats {
             baseRunner.getBatter().getPitcherReachedOn().getPitcherStats().setGameRunsAllowed(baseRunner.getBatter()
                     .getPitcherReachedOn().getPitcherStats().getGameRunsAllowed() + 1);
             baseRunner.getBatter().getBatterStats().setRunEarned(true);
+        }
+    }
+
+    void updatePitcherGameStats(List<Pitcher> pitcherList)
+    {
+        for (Pitcher pitcher : pitcherList)
+        {
+            pitcher.getPitcherStats().setsGamesPlayed(pitcher.getPitcherStats().getsGamesPlayed() + pitcher.getPitcherStats().getGameGamePlayed());
+            pitcher.getPitcherStats().setsGamesStarted(pitcher.getPitcherStats().getsGamesStarted() + pitcher.getPitcherStats().getGameGameStarted());
+            pitcher.getPitcherStats().setsBattersFaced(pitcher.getPitcherStats().getsBattersFaced() + pitcher.getPitcherStats().getGameBattersFaced());
+            pitcher.getPitcherStats().setsHitsAllowed(pitcher.getPitcherStats().getsHitsAllowed() + pitcher.getPitcherStats().getGameHitsAllowed());
+            pitcher.getPitcherStats().setsHitBatters(pitcher.getPitcherStats().getsHitBatters() + pitcher.getPitcherStats().getGameHitByPitch());
+            pitcher.getPitcherStats().setsEarnedRuns(pitcher.getPitcherStats().getsEarnedRuns() + pitcher.getPitcherStats().getGameEarnedRunsAllowed());
+            pitcher.getPitcherStats().setsRunsAllowed(pitcher.getPitcherStats().getsRunsAllowed() + pitcher.getPitcherStats().getGameRunsAllowed());
+            pitcher.getPitcherStats().setsStrikeOutAllowed(pitcher.getPitcherStats().getsStrikeOutAllowed() + pitcher.getPitcherStats().getGameStrikeOutsAllowed());
+            pitcher.getPitcherStats().setsWalksAllowed(pitcher.getPitcherStats().getsWalksAllowed() + pitcher.getPitcherStats().getGameWalksAllowed());
+            pitcher.getPitcherStats().setsHomeRunsAllowed(pitcher.getPitcherStats().getsHomeRunsAllowed() + pitcher.getPitcherStats().getGameHomeRunsAllowed());
+            pitcher.getPitcherStats().setsInningsPitchedOuts(pitcher.getPitcherStats().getsInningsPitchedOuts() + pitcher.getPitcherStats().getGameInningsPitchedOuts());
+            pitcher.getPitcherStats().setsShutOuts(pitcher.getPitcherStats().getsShutOuts() + pitcher.getPitcherStats().getGameShutOuts());
+            pitcher.getPitcherStats().setsCompleteGames(pitcher.getPitcherStats().getsCompleteGames() + pitcher.getPitcherStats().getGameCompleteGame());
+            pitcher.getPitcherStats().setsWins(pitcher.getPitcherStats().getsWins() + pitcher.getPitcherStats().getGameWin());
+            pitcher.getPitcherStats().setsLosses(pitcher.getPitcherStats().getsLosses() + pitcher.getPitcherStats().getGameLoss());
+            pitcher.getPitcherStats().setsSaves(pitcher.getPitcherStats().getsSaves() + pitcher.getPitcherStats().getGameSave());
         }
     }
 

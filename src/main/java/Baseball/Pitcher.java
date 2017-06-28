@@ -295,6 +295,7 @@ public class Pitcher extends Player {
         Pitcher pitcher = new Pitcher();
 
         if (visitors) {
+            //TODO Take out this hard coded year
             int yearID=1913;
             String teamID = schedule.getVisitingTeamId();
             pitcherList = Database.selectPitchers(teamID, yearID);

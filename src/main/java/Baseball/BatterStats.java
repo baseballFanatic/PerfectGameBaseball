@@ -1,5 +1,6 @@
 package Baseball;
 
+import java.util.List;
 import java.util.Objects;
 
 class BatterStats {
@@ -77,6 +78,7 @@ class BatterStats {
     private int gameRispRbi;
     private int gameRispStrikeOut;
     private int gameRispWalk;
+    private int gameRispHitByPitch;
     private int gameSacrificeFly;
     private int gameSacrificeHit;
     private int gameRispSacrificeFly;
@@ -90,6 +92,14 @@ class BatterStats {
 
     public int getYearID() {
         return yearID;
+    }
+
+    public int getGameRispHitByPitch() {
+        return gameRispHitByPitch;
+    }
+
+    public void setGameRispHitByPitch(int gameRispHitByPitch) {
+        this.gameRispHitByPitch = gameRispHitByPitch;
     }
 
     public double getStolenBaseAttemptPercentage() {
@@ -1032,6 +1042,43 @@ class BatterStats {
 
     public void setStolenBaseSuccess(double stolenBaseSuccess) {
         this.stolenBaseSuccess = stolenBaseSuccess;
+    }
+
+    void updateBatterGameStats(List<Batter> batterList)
+    {
+        for (Batter batter: batterList)
+        {
+            batter.getBatterStats().setsGamesPlayed(batter.getBatterStats().getsGamesPlayed() + batter.getBatterStats().getGameGamePlayed());
+            batter.getBatterStats().setsGamesStarted(batter.getBatterStats().getsGamesStarted() + batter.getBatterStats().getGameGameStarted());
+            batter.getBatterStats().setsAtBats(batter.getBatterStats().getsAtBats() + batter.getBatterStats().getGameAtBats());
+            batter.getBatterStats().setsHits(batter.getBatterStats().getsHits() + batter.getBatterStats().getGameHits());
+            batter.getBatterStats().setsRuns(batter.getBatterStats().getsRuns() + batter.getBatterStats().getGameRuns());
+            batter.getBatterStats().setsDoubles(batter.getBatterStats().getsDoubles() + batter.getBatterStats().getGameDouble());
+            batter.getBatterStats().setsTriples(batter.getBatterStats().getsTriples() + batter.getBatterStats().getGameTriple());
+            batter.getBatterStats().setsHomeRuns(batter.getBatterStats().getsHomeRuns() + batter.getBatterStats().getGameHomeRun());
+            batter.getBatterStats().setsRbi(batter.getBatterStats().getsRbi() + batter.getBatterStats().getGameRbi());
+            batter.getBatterStats().setsWalks(batter.getBatterStats().getsWalks() + batter.getBatterStats().getGameWalk());
+            batter.getBatterStats().setsStrikeOuts(batter.getBatterStats().getsStrikeOuts() + batter.getBatterStats().getGameStrikeOut());
+            batter.getBatterStats().setsHitByPitch(batter.getBatterStats().getsHitByPitch() + batter.getBatterStats().getGameHitByPitch());
+            batter.getBatterStats().setsPlateAppearances(batter.getBatterStats().getsPlateAppearances() + batter.getBatterStats().getGamePlateAppearance());
+            batter.getBatterStats().setsSacrificeHits(batter.getBatterStats().getsSacrificeHits() + batter.getBatterStats().getGameSacrificeHit());
+            batter.getBatterStats().setsSacrificeFlies(batter.getBatterStats().getsSacrificeFlies() + batter.getBatterStats().getGameRispSacrificeFly());
+            batter.getBatterStats().setsStolenBases(batter.getBatterStats().getsStolenBases() + batter.getBatterStats().getGameStolenBases());
+            batter.getBatterStats().setsCaughtStealing(batter.getBatterStats().getsCaughtStealing() + batter.getBatterStats().getGameCaughtStealing());
+            //TODO Add in pinch at bat stats
+            batter.getBatterStats().setRispAtBat(batter.getBatterStats().getRispAtBat() + batter.getBatterStats().getGameRispAtBat());
+            batter.getBatterStats().setRispHit(batter.getBatterStats().getRispHit() + batter.getBatterStats().getGameRispHit());
+            batter.getBatterStats().setRispRbi(batter.getBatterStats().getRispRbi() + batter.getBatterStats().getGameRispRbi());
+            batter.getBatterStats().setRispSingle(batter.getBatterStats().getRispSingle() + batter.getBatterStats().getGameRispSingle());
+            batter.getBatterStats().setRispDouble(batter.getBatterStats().getRispDouble() + batter.getBatterStats().getGameRispDouble());
+            batter.getBatterStats().setRispTriple(batter.getBatterStats().getRispTriple() + batter.getBatterStats().getGameRispTriple());
+            batter.getBatterStats().setRispHomeRun(batter.getBatterStats().getRispHomeRun() + batter.getBatterStats().getGameRispHomeRun());
+            batter.getBatterStats().setRispWalk(batter.getBatterStats().getRispWalk() + batter.getBatterStats().getGameRispWalk());
+            batter.getBatterStats().setRispStrikeOut(batter.getBatterStats().getRispStrikeOut() + batter.getBatterStats().getGameRispStrikeOut());
+            batter.getBatterStats().setRispGroundedIntoDp(batter.getBatterStats().getRispGroundedIntoDp() + batter.getBatterStats().getGameRispGidp());
+            batter.getBatterStats().setRispHitByPitch(batter.getBatterStats().getRispHitByPitch() + batter.getBatterStats().getGameRispHitByPitch());
+            batter.getBatterStats().setLeftOnBase(batter.getBatterStats().getLeftOnBase() + batter.getBatterStats().getGameLeftOnBase());
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 package Baseball;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -249,6 +250,7 @@ public class Batter extends Player implements Comparable<Batter> {
         Batter batter = new Batter();
 
         if (visitors) {
+            //TODO Take out this hard coded year
             int yearID=1913;
             String teamID = schedule.getVisitingTeamId();
             batterList = Database.selectBatters(teamID, yearID);

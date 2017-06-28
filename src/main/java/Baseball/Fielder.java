@@ -11,7 +11,7 @@ public class Fielder extends Player {
     private final FielderStats fielderStats = new FielderStats();
     private InPlayPosition position;
     private String teamID, pos;
-    private int playerKey, battingOrder;
+    private int playerKey, battingOrder, yearID;
     private boolean leftField, centerField, rightField, available;
 
     Fielder() {
@@ -21,6 +21,14 @@ public class Fielder extends Player {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.position = position;
+    }
+
+    public int getYearID() {
+        return yearID;
+    }
+
+    public void setYearID(int yearID) {
+        this.yearID = yearID;
     }
 
     public boolean isAvailable() {
@@ -181,6 +189,7 @@ public class Fielder extends Player {
         Fielder fielder = new Fielder();
 
         if (visitors) {
+            //TODO Take out the hard coded year
             int yearID = 1913;
             String teamID = schedule.getVisitingTeamId();
             // Selects all fielders for the visitor team and orders by games played desc.
@@ -212,6 +221,8 @@ public class Fielder extends Player {
                                 fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -225,6 +236,8 @@ public class Fielder extends Player {
                                 fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -238,6 +251,8 @@ public class Fielder extends Player {
                                 fielder.setBattingOrder(player.getPlayerOrder());
                                 if (player.getGamePlayed() != 1) {
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -250,6 +265,8 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -262,6 +279,8 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -274,6 +293,8 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -286,6 +307,8 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -298,6 +321,8 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);
@@ -310,6 +335,8 @@ public class Fielder extends Player {
                                 if (player.getGamePlayed() != 1) {
                                     fielder.setBattingOrder(player.getPlayerOrder());
                                     player.setGamePlayed(1);
+                                    fielder.getFielderStats().setGameGamePlayed(1);
+                                    fielder.getFielderStats().setGameGameStarted(1);
                                     fielder.setAvailable(false);
                                     fielder.getFielderStats().setGameGamePlayed(1);
                                     starters.put(player.getPlayerOrder(), fielder);

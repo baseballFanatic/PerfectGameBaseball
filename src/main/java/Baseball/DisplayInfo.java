@@ -235,17 +235,23 @@ class DisplayInfo {
         System.out.println();
         if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns()) {
             System.out.printf("Winning Pitcher: %s%n", pitcher.getHomeWinningPitcher().getNameLast());
+            pitcher.getHomeWinningPitcher().getPitcherStats().setsWins(pitcher.getHomeWinningPitcher().getPitcherStats().getsWins() + 1);
+            pitcher.getVisitorLosingPitcher().getPitcherStats().setsLosses(pitcher.getVisitorLosingPitcher().getPitcherStats().getsLosses() + 1);
             System.out.printf("Losing Pitcher: %s%n", pitcher.getVisitorLosingPitcher().getNameLast());
             if (pitcher.getHomeSavePitcher() != null) {
                 System.out.printf("Save: %s%n", pitcher.getHomeSavePitcher().getNameLast());
+                pitcher.getHomeSavePitcher().getPitcherStats().setsSaves(pitcher.getHomeSavePitcher().getPitcherStats().getsSaves() + 1);
             } else {
                 System.out.println("Save: None");
             }
         } else {
             System.out.printf("Winning Pitcher: %s%n", pitcher.getVisitorWinningPitcher().getNameLast());
             System.out.printf("Losing Pitcher: %s%n", pitcher.getHomeLosingPitcher().getNameLast());
+            pitcher.getVisitorWinningPitcher().getPitcherStats().setsWins(pitcher.getVisitorWinningPitcher().getPitcherStats().getsWins() + 1);
+            pitcher.getHomeLosingPitcher().getPitcherStats().setsLosses(pitcher.getHomeLosingPitcher().getPitcherStats().getsLosses() + 1);
             if (pitcher.getVisitorSavePitcher() != null) {
                 System.out.printf("Save: %s%n", pitcher.getVisitorSavePitcher().getNameLast());
+                pitcher.getVisitorSavePitcher().getPitcherStats().setsSaves(pitcher.getVisitorSavePitcher().getPitcherStats().getsSaves() + 1);
             } else {
                 System.out.println("Save: None");
             }

@@ -38,22 +38,22 @@ class Database {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // Execute query
-/*            stmt = conn.createStatement();
-            createPgbsBatters(stmt);
-            createPgbsPitchers(stmt);
+            stmt = conn.createStatement();
+            //createPgbsBatters(stmt);
+            //createPgbsPitchers(stmt);
             createPgbsFielders(stmt);
-            createPgbsSeasons(stmt);
-            createPgbsTeams(stmt);
-            createPgbsSchedule(stmt);
-            createPgbsLineUp(stmt);*/
+            //createPgbsSeasons(stmt);
+            //createPgbsTeams(stmt);
+            //createPgbsSchedule(stmt);
+            //createPgbsLineUp(stmt);
 
             int yearID = 1913;
             String lgID="AL";
-            insertPgbsBatters(conn, yearID);
-            insertPgbsPitchers(conn, yearID);
+            //insertPgbsBatters(conn, yearID);
+            //insertPgbsPitchers(conn, yearID);
             insertPgbsFielders(conn, yearID);
-            insertPgbsTeams(conn, yearID);
-/*            insertPgbsSchedule(conn, yearID);
+            /*insertPgbsTeams(conn, yearID);
+            insertPgbsSchedule(conn, yearID);
             Schedule schedule = new Schedule();
             insertPgbsLineUp(conn);
             insertPgbsSeasons(conn, yearID);*/
@@ -113,6 +113,7 @@ class Database {
                 "awardPoints int(11), " +
                 "speedRating int(11), " +
                 "sGamesPlayed int(11), " +
+                "sGamesStarted int(11), " +
                 "sAtBats int(11), " +
                 "sHits int(11)," +
                 "sRuns int(11), " +
@@ -187,7 +188,9 @@ class Database {
                 " R int(11)," +
                 " SH varchar(255)," +
                 " SF varchar(255)," +
-                " GIDP varchar(255)," +
+                " GIDP varchar(255), " +
+                " sGamesPlayed int(11), " +
+                " sGamesStarted int(11), " +
                 " sBattersFaced int(11)," +
                 " sHitsAllowed int(11)," +
                 " sHitBatters int(11)," +
@@ -197,7 +200,12 @@ class Database {
                 " sWalksAllowed int(11)," +
                 " sHomeRunsAllowed int(11)," +
                 " sInningsPitchedOuts int(11)," +
-                " simName varchar(255)," +
+                " sShutOuts int(11), " +
+                " sCompleteGames int(11), " +
+                " sWins int(11), " +
+                " sLosses int(11), " +
+                " sSaves int(11), " +
+                " simName varchar(255), " +
                 " playerKey int(11) not null auto_increment primary key)";
 
         stmt.executeUpdate(pitchers);
@@ -227,6 +235,8 @@ class Database {
                 " SB varchar(255)," +
                 " CS varchar(255)," +
                 " ZR varchar(255)," +
+                " sGamesStarted int(11), " +
+                " sGamesPlayed int(11), " +
                 " sErrors int(11)," +
                 " sAssists int(11)," +
                 " sPutOuts int(11)," +
@@ -329,7 +339,7 @@ class Database {
                 "alLfSilver varchar(255)," +
                 "alCfSilver varchar(255)," +
                 "alRfSilver varchar(255)," +
-                "nl1Silver varchar(255)," +
+                "nl1bSilver varchar(255)," +
                 "nl2bSilver varchar(255)," +
                 "nl3bSilver varchar(255)," +
                 "nlSsSilver varchar(255)," +
@@ -750,86 +760,57 @@ class Database {
     }
 
     private static void insertPgbsSeasons(Connection conn, int yearID) throws SQLException {
-        PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_season_reference " +
-                " (yearID=?, " +
-                " alEastChamp=?, " +
-                " alCentralChamp=?, " +
-                " alWestChamp=?, " +
-                " alWildCard=?, " +
-                " alDivisionSeries1=?, " +
-                " alDivisionSeries2=?, " +
-                " alChampion=?, " +
-                " alMvp=?, " +
-                " alCyYoung=?, " +
-                " nlEastChamp=?, " +
-                " nlCentralChamp=?, " +
-                " nlWestChamp=?, " +
-                " nlWildCard=?, " +
-                " nlDivisionSeries1=?, " +
-                " nlDivisionsSeries2=?, " +
-                " nlChampion=?, " +
-                " nlMvp=?, " +
-                " nlCyYoung=?, " +
-                " worldSeriesChamp=?, " +
-                " al1bSilver=?, " +
-                " al2bSilver=?, " +
-                " al3bSilver=?," +
-                " alSsSilver=?, " +
-                " alCsilver=?, " +
-                " alDhSilver=?, " +
-                " alLfSilver=?," +
-                " alCfSilver=?, " +
-                " alRfSilver=?," +
-                " nl1bSilver=?, " +
-                " nl2bSilver=?, " +
-                " nl3bSilver=?, " +
-                " nlSsSilver=?, " +
-                " nlCsilver=?, " +
-                " nlPsilver=?, " +
-                " nlLfSilver=?, " +
-                " nlCfSilver=?, " +
-                " nlRfSilver=?, " +
-                " simName=?')");
+        String query = "INSERT INTO pgbs_season_reference (" +
+                " yearID, " +
+                " alEastChamp, " +
+                " alCentralChamp, " +
+                " alWestChamp, " +
+                " alWildCard, " +
+                " alDivisionSeries1, " +
+                " alDivisionSeries2, " +
+                " alChampion, " +
+                " alMvp, " +
+                " alCyYoung, " +
+                " nlEastChamp, " +
+                " nlCentralChamp, " +
+                " nlWestChamp, " +
+                " nlWildCard, " +
+                " nlDivisionSeries1, " +
+                " nlDivisionSeries2, " +
+                " nlChampion, " +
+                " nlMvp, " +
+                " nlCyYoung, " +
+                " worldSeriesChamp, " +
+                " al1bSilver, " +
+                " al2bSilver, " +
+                " al3bSilver," +
+                " alSsSilver, " +
+                " alCsilver, " +
+                " alDhSilver, " +
+                " alLfSilver," +
+                " alCfSilver, " +
+                " alRfSilver," +
+                " nl1bSilver, " +
+                " nl2bSilver, " +
+                " nl3bSilver, " +
+                " nlSsSilver, " +
+                " nlCsilver, " +
+                " nlPsilver, " +
+                " nlLfSilver, " +
+                " nlCfSilver, " +
+                " nlRfSilver, " +
+                " simName ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
+                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = conn.prepareStatement(query);
+
         statement.setInt(1, yearID);
-        statement.setString(2, "NONE");
-        statement.setString(3, "NONE");
-        statement.setString(4, "NONE");
-        statement.setString(5, "NONE");
-        statement.setString(6, "NONE");
-        statement.setString(7, "NONE");
-        statement.setString(8, "NONE");
-        statement.setString(9, "NONE");
-        statement.setString(10, "NONE");
-        statement.setString(11, "NONE");
-        statement.setString(12, "NONE");
-        statement.setString(13, "NONE");
-        statement.setString(14, "NONE");
-        statement.setString(15, "NONE");
-        statement.setString(16, "NONE");
-        statement.setString(17, "NONE");
-        statement.setString(18, "NONE");
-        statement.setString(19, "NONE");
-        statement.setString(20, "NONE");
-        statement.setString(21, "NONE");
-        statement.setString(22, "NONE");
-        statement.setString(23, "NONE");
-        statement.setString(24, "NONE");
-        statement.setString(25, "NONE");
-        statement.setString(26, "NONE");
-        statement.setString(27, "NONE");
-        statement.setString(28, "NONE");
-        statement.setString(29, "NONE");
-        statement.setString(30, "NONE");
-        statement.setString(31, "NONE");
-        statement.setString(32, "NONE");
-        statement.setString(33, "NONE");
-        statement.setString(34, "NONE");
-        statement.setString(35, "NONE");
-        statement.setString(36, "NONE");
-        statement.setString(37, "NONE");
-        statement.setString(38, "NONE");
+        for (int i = 2; i < 39; i++)
+        {
+            statement.setString(i, "NONE");
+        }
+
         statement.setString(39, "clint");
-        statement.executeUpdate();
+        statement.execute();
     }
 
     private static void insertPgbsTeams(Connection conn, int yearID) throws SQLException {
@@ -1081,6 +1062,38 @@ class Database {
                 batter.getBatterStats().setCaughtStealing(rs.getInt("CS"));
                 batter.getBatterStats().setWalks(rs.getInt("BB"));
                 batter.getBatterStats().setStrikeOuts(rs.getInt("SO"));
+                batter.getBatterStats().setsGamesPlayed(rs.getInt("sGamesPlayed"));
+                batter.getBatterStats().setsGamesStarted(rs.getInt("sGamesStarted"));
+                batter.getBatterStats().setsAtBats(rs.getInt("sAtBats"));
+                batter.getBatterStats().setsHits(rs.getInt("sHits"));
+                batter.getBatterStats().setsRuns(rs.getInt("sRuns"));
+                batter.getBatterStats().setsDoubles(rs.getInt("sDoubles"));
+                batter.getBatterStats().setsTriples(rs.getInt("sTriples"));
+                batter.getBatterStats().setsHomeRuns(rs.getInt("sHomeRuns"));
+                batter.getBatterStats().setsRbi(rs.getInt("sRbi"));
+                batter.getBatterStats().setsWalks(rs.getInt("sWalks"));
+                batter.getBatterStats().setsStrikeOuts(rs.getInt("sStrikeOuts"));
+                batter.getBatterStats().setsHitByPitch(rs.getInt("sHitByPitch"));
+                batter.getBatterStats().setsPlateAppearances(rs.getInt("sPlateAppearances"));
+                batter.getBatterStats().setSacrificeHits(rs.getInt("sSacrificeHits"));
+                batter.getBatterStats().setSacrificeFlies(rs.getInt("sSacrificeFlies"));
+                batter.getBatterStats().setsStolenBases(rs.getInt("sStolenBases"));
+                batter.getBatterStats().setsCaughtStealing(rs.getInt("sCaughtStealing"));
+                batter.getBatterStats().setPinchAtBat(rs.getInt("pinchAtBat"));
+                batter.getBatterStats().setPinchHit(rs.getInt("pinchHit"));
+                batter.getBatterStats().setPinchRbi(rs.getInt("pinchRbi"));
+                batter.getBatterStats().setRispAtBat(rs.getInt("rispAtBat"));
+                batter.getBatterStats().setRispHit(rs.getInt("rispHit"));
+                batter.getBatterStats().setRispRbi(rs.getInt("rispRbi"));
+                batter.getBatterStats().setRispSingle(rs.getInt("rispSingle"));
+                batter.getBatterStats().setRispDouble(rs.getInt("rispDouble"));
+                batter.getBatterStats().setRispTriple(rs.getInt("rispTriple"));
+                batter.getBatterStats().setRispHomeRun(rs.getInt("rispHomeRun"));
+                batter.getBatterStats().setRispWalk(rs.getInt("rispWalk"));
+                batter.getBatterStats().setRispStrikeOut(rs.getInt("rispStrikeOut"));
+                batter.getBatterStats().setRispGroundedIntoDp(rs.getInt("rispGroundedIntoDp"));
+                batter.getBatterStats().setRispHitByPitch(rs.getInt("rispHitByPitch"));
+                batter.getBatterStats().setLeftOnBase(rs.getInt("leftOnBase"));
                 batter.setPlayerKey(rs.getInt("playerKey"));
 
 /*                batter.getBatterStats().setIntentionalWalks(Integer.parseInt(rs.getString("IBB")));
@@ -1161,6 +1174,23 @@ class Database {
                 pitcher.getPitcherStats().setWalksAllowed(rs.getInt("BB"));
                 pitcher.getPitcherStats().setStrikeOutsAllowed(rs.getInt("SO"));
                 pitcher.getPitcherStats().setEra(rs.getInt("ERA"));
+                pitcher.getPitcherStats().setsGamesPlayed(rs.getInt("sGamesPlayed"));
+                pitcher.getPitcherStats().setsGamesStarted(rs.getInt("sGamesStarted"));
+                pitcher.getPitcherStats().setsBattersFaced(rs.getInt("sBattersFaced"));
+                pitcher.getPitcherStats().setsHitsAllowed(rs.getInt("sHitsAllowed"));
+                pitcher.getPitcherStats().setsHitBatters(rs.getInt("sHitBatters"));
+                pitcher.getPitcherStats().setsHitsAllowed(rs.getInt("sHitsAllowed"));
+                pitcher.getPitcherStats().setsEarnedRuns(rs.getInt("sEarnedRuns"));
+                pitcher.getPitcherStats().setsRunsAllowed(rs.getInt("sRunsAllowed"));
+                pitcher.getPitcherStats().setsStrikeOutAllowed(rs.getInt("sStrikeOutsAllowed"));
+                pitcher.getPitcherStats().setsWalksAllowed(rs.getInt("sWalksAllowed"));
+                pitcher.getPitcherStats().setsHomeRunsAllowed(rs.getInt("sHomeRunsAllowed"));
+                pitcher.getPitcherStats().setsInningsPitchedOuts(rs.getInt("sInningsPitchedOuts"));
+                pitcher.getPitcherStats().setsShutOuts(rs.getInt("sShutOuts"));
+                pitcher.getPitcherStats().setsCompleteGames(rs.getInt("sCompleteGames"));
+                pitcher.getPitcherStats().setsWins(rs.getInt("sWins"));
+                pitcher.getPitcherStats().setsLosses(rs.getInt("sLosses"));
+                pitcher.getPitcherStats().setsSaves(rs.getInt("sSaves"));
                 if (Objects.equals(rs.getString("IBB"), ""))
                 {
                     pitcher.getPitcherStats().setIntentionalWalksAllowed(0);
@@ -1280,6 +1310,7 @@ class Database {
                 fielder.setRetroId(rs.getString("retroID"));
                 fielder.setTeamID(rs.getString("teamID"));
                 fielder.setPlayerId(rs.getString("playerID"));
+                fielder.setYearID(rs.getInt("yearID"));
                 fielder.getFielderStats().setGamesPlayed(rs.getInt("G"));
                 if (Objects.equals(rs.getString("GS"), ""))
                 {
@@ -1301,6 +1332,13 @@ class Database {
                 fielder.getFielderStats().setAssists(rs.getInt("A"));
                 fielder.getFielderStats().setErrors(rs.getInt("E"));
                 fielder.getFielderStats().setDoublePlays(rs.getInt("DP"));
+                fielder.getFielderStats().setsGamesPlayed(rs.getInt("sGamesPlayed"));
+                fielder.getFielderStats().setsGamesStarted(rs.getInt("sGamesStarted"));
+                fielder.getFielderStats().setsErrors(rs.getInt("sErrors"));
+                fielder.getFielderStats().setsAssists(rs.getInt("sAssists"));
+                fielder.getFielderStats().setsPutOuts(rs.getInt("sPutOuts"));
+                fielder.getFielderStats().setsRunnersSuccessful(rs.getInt("sRunnersSuccessful"));
+                fielder.getFielderStats().setsRunnersThrownOut(rs.getInt("sRunnersThrownOut"));
                 if (Objects.equals(rs.getString("PB"), ""))
                 {
                     fielder.getFielderStats().setPassedBalls(0);
@@ -1616,6 +1654,218 @@ class Database {
             e.printStackTrace();
         }
         return lineUp;
+    }
+
+    void updateBatters(List<Batter> batterList) throws SQLException, InstantiationException, ClassNotFoundException,
+            IllegalAccessException {
+        // JDBC driver name and database URL
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/lahman2016";
+
+        // Database credentials
+        String USER = "root";
+        String PASS = "password";
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            // Execute query
+            //TODO need to add in a sGamesStarted - also in create
+            String query = "UPDATE pgbs_batters set sGamesPlayed = ?,  sAtBats = ?, sHits = ?, sRuns = ?, sDoubles = ?," +
+                    " sTriples = ?, sHomeRuns = ?, sRbi = ?, sWalks = ?, sStrikeOuts = ?, sHitByPitch = ?, " +
+                    " sPlateAppearances = ?, sSacrificeHits = ?, sSacrificeFlies = ?, sStolenBases = ?, sCaughtStealing = ?, " +
+                    " rispAtBat = ?, rispHit = ?, rispRbi = ?, " +
+                    " rispSingle = ?, rispDouble = ?, rispTriple = ?, rispHomeRun = ?, rispWalk = ?, rispStrikeOut = ?, " +
+                    " rispGroundedIntoDp = ?, leftOnBase = ? where yearID = ? and playerID = ?";
+
+            for (Batter batter : batterList)
+            {
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, batter.getBatterStats().getsGamesPlayed());
+                statement.setInt(2, batter.getBatterStats().getsAtBats());
+                statement.setInt(3, batter.getBatterStats().getsHits());
+                statement.setInt(4, batter.getBatterStats().getsRuns());
+                statement.setInt(5, batter.getBatterStats().getsDoubles());
+                statement.setInt(6, batter.getBatterStats().getsTriples());
+                statement.setInt(7, batter.getBatterStats().getsHomeRuns());
+                statement.setInt(8, batter.getBatterStats().getsRbi());
+                statement.setInt(9, batter.getBatterStats().getsWalks());
+                statement.setInt(10, batter.getBatterStats().getsStrikeOuts());
+                statement.setInt(11, batter.getBatterStats().getsHitByPitch());
+                statement.setInt(12, batter.getBatterStats().getsPlateAppearances());
+                statement.setInt(13, batter.getBatterStats().getsSacrificeHits());
+                statement.setInt(14, batter.getBatterStats().getsSacrificeFlies());
+                statement.setInt(15, batter.getBatterStats().getsStolenBases());
+                statement.setInt(16, batter.getBatterStats().getsCaughtStealing());
+                //TODO Need to add in pinch hit stats
+                statement.setInt(17, batter.getBatterStats().getRispAtBat());
+                statement.setInt(18, batter.getBatterStats().getRispHit());
+                statement.setInt(19, batter.getBatterStats().getRispRbi());
+                statement.setInt(20, batter.getBatterStats().getRispSingle());
+                statement.setInt(21, batter.getBatterStats().getRispDouble());
+                statement.setInt(22, batter.getBatterStats().getRispTriple());
+                statement.setInt(23, batter.getBatterStats().getRispHomeRun());
+                statement.setInt(24, batter.getBatterStats().getRispWalk());
+                statement.setInt(25, batter.getBatterStats().getRispStrikeOut());
+                statement.setInt(26, batter.getBatterStats().getRispGroundedIntoDp());
+                //TODO Need to add in risp HBP
+                statement.setInt(27, batter.getBatterStats().getLeftOnBase());
+                statement.setInt(28, batter.getBatterStats().getYearID());
+                statement.setString(29, batter.getPlayerId());
+
+                statement.executeUpdate();
+            }
+
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            // Block used to close resources
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                try {
+                    conn.close();
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }
+        }
+    }
+
+    void updatePitchers(List<Pitcher> pitcherList) throws ClassNotFoundException, IllegalAccessException,
+            InstantiationException {
+        // JDBC driver name and database URL
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/lahman2016";
+
+        // Database credentials
+        String USER = "root";
+        String PASS = "password";
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            // Execute query
+            String query = "UPDATE pgbs_pitchers set sGamesPlayed = ?,  sGamesStarted = ?, sBattersFaced = ?, " +
+                    " sHitsAllowed = ?, sHitBatters = ?, sEarnedRuns = ?, sRunsAllowed = ?, sStrikeOutsAllowed = ?, " +
+                    " sWalksAllowed = ?, sHomeRunsAllowed = ?, sInningsPitchedOuts = ?, sShutOuts = ?, sCompleteGames = ?," +
+                    " sWins = ?, " +
+                    " sLosses = ?, sSaves = ? where yearID = ? and playerID = ?";
+
+            for (Pitcher pitcher : pitcherList)
+            {
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, pitcher.getPitcherStats().getsGamesPlayed());
+                statement.setInt(2, pitcher.getPitcherStats().getsGamesStarted());
+                statement.setInt(3, pitcher.getPitcherStats().getsBattersFaced());
+                statement.setInt(4, pitcher.getPitcherStats().getsHitsAllowed());
+                statement.setInt(5, pitcher.getPitcherStats().getsHitBatters());
+                statement.setInt(6, pitcher.getPitcherStats().getsEarnedRuns());
+                statement.setInt(7, pitcher.getPitcherStats().getsRunsAllowed());
+                statement.setInt(8, pitcher.getPitcherStats().getsStrikeOutAllowed());
+                statement.setInt(9, pitcher.getPitcherStats().getsWalksAllowed());
+                statement.setInt(10, pitcher.getPitcherStats().getsHomeRunsAllowed());
+                statement.setInt(11, pitcher.getPitcherStats().getsInningsPitchedOuts());
+                statement.setInt(12, pitcher.getPitcherStats().getsShutOuts());
+                statement.setInt(13, pitcher.getPitcherStats().getsCompleteGames());
+                statement.setInt(14, pitcher.getPitcherStats().getsWins());
+                statement.setInt(15, pitcher.getPitcherStats().getsLosses());
+                statement.setInt(16, pitcher.getPitcherStats().getsSaves());
+                statement.setInt(17, pitcher.getYearID());
+                statement.setString(18, pitcher.getPlayerId());
+
+                statement.executeUpdate();
+            }
+
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            // Block used to close resources
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                try {
+                    conn.close();
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }
+        }
+    }
+
+    void updateFielders(List<Fielder> fielderList) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        // JDBC driver name and database URL
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/lahman2016";
+
+        // Database credentials
+        String USER = "root";
+        String PASS = "password";
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            // Execute query
+            String query = "UPDATE pgbs_fielders set sGamesPlayed = ?, sGamesStarted = ?, sErrors = ?,  sAssists = ?, sPutOuts = ?, " +
+                    " sRunnersThrownOut = ?, sRunnersSuccessful = ? where yearID = ? and playerID = ?";
+
+            for (Fielder fielder : fielderList)
+            {
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, fielder.getFielderStats().getsGamesPlayed());
+                statement.setInt(2, fielder.getFielderStats().getsGamesStarted());
+                statement.setInt(3, fielder.getFielderStats().getsErrors());
+                statement.setInt(4, fielder.getFielderStats().getsAssists());
+                statement.setInt(5, fielder.getFielderStats().getsPutOuts());
+                statement.setInt(6, fielder.getFielderStats().getsRunnersThrownOut());
+                statement.setInt(7, fielder.getFielderStats().getsRunnersSuccessful());
+                statement.setInt(8, fielder.getYearID());
+                statement.setString(9, fielder.getPlayerId());
+
+                statement.executeUpdate();
+            }
+
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            // Block used to close resources
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                try {
+                    conn.close();
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }
+        }
     }
 }
 
