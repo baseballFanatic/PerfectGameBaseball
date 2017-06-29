@@ -3,7 +3,6 @@ package Baseball;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class PlayBall {
 
     public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException {
-        Team visitorTeam = new Team();
-        Team homeTeam = new Team();
+        Team visitorTeam;
+        Team homeTeam;
         League league = new League();
         LineUp lineUp = new LineUp();
         Batter batter = new Batter();
@@ -32,10 +31,14 @@ public class PlayBall {
         String lgID="AL";
 
         league = Database.selectTeamStats(yearID, lgID, league);
-
         league.setLgID("AL");
 
         Schedule schedule = Database.selectSchedule(yearID, lgID);
+
+        homeTeam = Database.getTeamInfo(schedule.getHomeTeamId(), yearID);
+        visitorTeam = Database.getTeamInfo(schedule.getVisitingTeamId(), yearID);
+        homeTeam.setTeamId(schedule.getHomeTeamId());
+        visitorTeam.setTeamId(schedule.getVisitingTeamId());
 
         // Selects batters based on schedule file
         List<Batter> visitorBatters = batter.getBatterList(visitors,schedule);
@@ -62,12 +65,16 @@ public class PlayBall {
         setVisitors(true);
         pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
         pitcher.setVisitorStarter(pitcher.getVisitorPitcher());
+        schedule.setVisitingStartingPitcherName(pitcher.getVisitorStarter().getNameLast());
+        schedule.setVisitingStartingPitcherId(pitcher.getVisitorStarter().getPlayerId());
         pitcher.setStartingPitcherBattingOrder(pitcher.getVisitorPitcher(), visitorBatterStarters);
         pitcher.getVisitorStarter().getPitcherStats().setGameGamePlayed(1);
         pitcher.getVisitorStarter().getPitcherStats().setGameGameStarted(1);
         setVisitors(false);
         pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule, visitors));
         pitcher.setHomeStarter(pitcher.getHomePitcher());
+        schedule.setHomeStartingPitcherName(pitcher.getHomeStarter().getNameLast());
+        schedule.setHomeStartingPitcherId(pitcher.getHomeStarter().getPlayerId());
         pitcher.setStartingPitcherBattingOrder(pitcher.getHomePitcher(), homeBatterStarters);
         pitcher.getHomeStarter().getPitcherStats().setGameGameStarted(1);
         pitcher.getHomeStarter().getPitcherStats().setGameGamePlayed(1);
@@ -99,10 +106,12 @@ public class PlayBall {
 
         new DisplayInfo().endOfGame(visitorBatters, homeBatters, visitorFieldersStarters, homeFieldersStarters, visitorPitchers,
                 homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore, visitorFieldersReserves,
-                homeFieldersReserves);
+                homeFieldersReserves, schedule);
 
         batter.getBatterStats().updateBatterGameStats(visitorBatters);
         batter.getBatterStats().updateBatterGameStats(homeBatters);
+        homeTeam.updateTeamGameStats(homeTeam, homeBatters, homeFieldersReserves, homePitchers);
+        visitorTeam.updateTeamGameStats(visitorTeam, visitorBatters, visitorFieldersReserves, visitorPitchers);
         new Database().updateBatters(visitorBatters);
         new Database().updateBatters(homeBatters);
         //TODO Add in updates for fielders, pitchers, and team stats.
@@ -114,6 +123,9 @@ public class PlayBall {
         new Database().updatePitchers(homePitchers);
         new Database().updateFielders(visitorFieldersReserves);
         new Database().updateFielders(homeFieldersReserves);
+        new Database().updateScheduleGame(schedule);
+        new Database().updateTeamGameStats(homeTeam);
+        new Database().updateTeamGameStats(visitorTeam);
     }
 
     private boolean isGameOver() {

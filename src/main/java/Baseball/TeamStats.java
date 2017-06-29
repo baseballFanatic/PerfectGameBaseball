@@ -11,10 +11,173 @@ class TeamStats {
             sCaughtStealing, sHitByPitch, sAssists, sErrors, sPutOuts, sDoublePlays, sRunnersThrownOut, sPlateAppearances,
             sInningsPitched, sHitsAllowed, sHomeRunsAllowed, sWalksAllowed, sStrikeOutsPitcher, sSaves, sShutOuts, sCompleteGames,
             sHitBatters, sRunsAllowed, seasonWins, seasonLosses, seasonGames, homeWins, homeLosses, awayWins, awayLosses,
-            gameRuns, gameHits, gameErrors, gameDoublePlays, gameLeftOnBase, inningRuns;
+            gameRuns, gameHits, gameErrors, gameDoublePlays, gameLeftOnBase, inningRuns, gameAtBats, gameRbi,
+            gameDoubles, gameTriples, gameHomeRuns, gameStrikeOuts, gameWalks, gameStolenBases, gameCaughtStealing,
+            gameHitByPitch, gameAssists, gamePutOuts, gameRunnersThrownOut, gamePlateAppearances,
+            gameInningsPitched, gameRunsAllowed, gameHitsAllowed, gameHomeRunsAllowed, gameWalksAllowed, gameHitBatters;
     private double fieldingPercentage, era;
 
     TeamStats() {
+    }
+
+    public int getGameInningsPitched() {
+        return gameInningsPitched;
+    }
+
+    public void setGameInningsPitched(int gameInningsPitched) {
+        this.gameInningsPitched = gameInningsPitched;
+    }
+
+    public int getGameRunsAllowed() {
+        return gameRunsAllowed;
+    }
+
+    public void setGameRunsAllowed(int gameRunsAllowed) {
+        this.gameRunsAllowed = gameRunsAllowed;
+    }
+
+    public int getGameHitsAllowed() {
+        return gameHitsAllowed;
+    }
+
+    public void setGameHitsAllowed(int gameHitsAllowed) {
+        this.gameHitsAllowed = gameHitsAllowed;
+    }
+
+    public int getGameHomeRunsAllowed() {
+        return gameHomeRunsAllowed;
+    }
+
+    public void setGameHomeRunsAllowed(int gameHomeRunsAllowed) {
+        this.gameHomeRunsAllowed = gameHomeRunsAllowed;
+    }
+
+    public int getGameWalksAllowed() {
+        return gameWalksAllowed;
+    }
+
+    public void setGameWalksAllowed(int gameWalksAllowed) {
+        this.gameWalksAllowed = gameWalksAllowed;
+    }
+
+    public int getGameHitBatters() {
+        return gameHitBatters;
+    }
+
+    public void setGameHitBatters(int gameHitBatters) {
+        this.gameHitBatters = gameHitBatters;
+    }
+
+    public int getGameAssists() {
+        return gameAssists;
+    }
+
+    public void setGameAssists(int gameAssists) {
+        this.gameAssists = gameAssists;
+    }
+
+    public int getGamePutOuts() {
+        return gamePutOuts;
+    }
+
+    public void setGamePutOuts(int gamePutOuts) {
+        this.gamePutOuts = gamePutOuts;
+    }
+
+    public int getGameRunnersThrownOut() {
+        return gameRunnersThrownOut;
+    }
+
+    public void setGameRunnersThrownOut(int gameRunnersThrownOut) {
+        this.gameRunnersThrownOut = gameRunnersThrownOut;
+    }
+
+    public int getGamePlateAppearances() {
+        return gamePlateAppearances;
+    }
+
+    public void setGamePlateAppearances(int gamePlateAppearances) {
+        this.gamePlateAppearances = gamePlateAppearances;
+    }
+
+    public int getGameHitByPitch() {
+        return gameHitByPitch;
+    }
+
+    public void setGameHitByPitch(int gameHitByPitch) {
+        this.gameHitByPitch = gameHitByPitch;
+    }
+
+    public int getGameStolenBases() {
+        return gameStolenBases;
+    }
+
+    public void setGameStolenBases(int gameStolenBases) {
+        this.gameStolenBases = gameStolenBases;
+    }
+
+    public int getGameCaughtStealing() {
+        return gameCaughtStealing;
+    }
+
+    public void setGameCaughtStealing(int gameCaughtStealing) {
+        this.gameCaughtStealing = gameCaughtStealing;
+    }
+
+    public int getGameStrikeOuts() {
+        return gameStrikeOuts;
+    }
+
+    public void setGameStrikeOuts(int gameStrikeOuts) {
+        this.gameStrikeOuts = gameStrikeOuts;
+    }
+
+    public int getGameWalks() {
+        return gameWalks;
+    }
+
+    public void setGameWalks(int gameWalks) {
+        this.gameWalks = gameWalks;
+    }
+
+    public int getGameAtBats() {
+        return gameAtBats;
+    }
+
+    public void setGameAtBats(int gameAtBats) {
+        this.gameAtBats = gameAtBats;
+    }
+
+    public int getGameRbi() {
+        return gameRbi;
+    }
+
+    public void setGameRbi(int gameRbi) {
+        this.gameRbi = gameRbi;
+    }
+
+    public int getGameDoubles() {
+        return gameDoubles;
+    }
+
+    public void setGameDoubles(int gameDoubles) {
+        this.gameDoubles = gameDoubles;
+    }
+
+    public int getGameTriples() {
+        return gameTriples;
+    }
+
+    public void setGameTriples(int gameTriples) {
+        this.gameTriples = gameTriples;
+    }
+
+    public int getGameHomeRuns() {
+        return gameHomeRuns;
+    }
+
+    public void setGameHomeRuns(int gameHomeRuns) {
+        this.gameHomeRuns = gameHomeRuns;
     }
 
     int getInningRuns() {

@@ -181,7 +181,8 @@ class DisplayInfo {
     void endOfGame(List<Batter> visitorBatters, List<Batter> homeBatters, HashMap<Integer, Fielder> visitorFielders,
                    HashMap<Integer, Fielder> homeFielders, List<Pitcher> visitorPitchers, List<Pitcher> homePitchers,
                    Team visitorTeam, Team homeTeam, Pitcher pitcher, List<Integer> visitorLineScore,
-                   List<Integer> homeLineScore, List<Fielder> visitorFieldersReserves, List<Fielder> homeFieldersReserves) {
+                   List<Integer> homeLineScore, List<Fielder> visitorFieldersReserves, List<Fielder> homeFieldersReserves,
+                   Schedule schedule) {
         System.out.println();
         System.out.printf("BALLGAME!%n");
         System.out.println();
@@ -192,9 +193,13 @@ class DisplayInfo {
         System.out.println();
         System.out.printf("%s   ", visitorTeam.getTeamName());
 
+        String visitingScore = "";
+        String homeScore = "";
+
         //TODO Need to fix the line score display when home team wins in bottom of 9th.
         //TODO currently displays the final inning twice, once in the X slot and once to the right.
         for (Integer score : visitorLineScore) {
+            visitingScore = visitingScore + score;
             System.out.printf("%2s ", score);
         }
 
@@ -213,6 +218,7 @@ class DisplayInfo {
         System.out.printf("%s   ", homeTeam.getTeamName());
         for (Integer hScore : homeLineScore)
         {
+            homeScore = homeScore + hScore;
             System.out.printf("%2s ", hScore);
         }
         if (homeLineScore.size() == 8)
@@ -233,14 +239,42 @@ class DisplayInfo {
         }
         System.out.println();
         System.out.println();
+        schedule.setVisitingLineScore(visitingScore);
+        schedule.setHomeLineScore(homeScore);
+        schedule.setVisitingScore(visitorTeam.getTeamStats().getGameRuns());
+        schedule.setHomeScore(homeTeam.getTeamStats().getGameRuns());
+        schedule.setGameCompleted("Y");
         if (homeTeam.getTeamStats().getGameRuns() > visitorTeam.getTeamStats().getGameRuns()) {
             System.out.printf("Winning Pitcher: %s%n", pitcher.getHomeWinningPitcher().getNameLast());
             pitcher.getHomeWinningPitcher().getPitcherStats().setsWins(pitcher.getHomeWinningPitcher().getPitcherStats().getsWins() + 1);
             pitcher.getVisitorLosingPitcher().getPitcherStats().setsLosses(pitcher.getVisitorLosingPitcher().getPitcherStats().getsLosses() + 1);
+            if (homeTeam.getTeamStats().getCurrentWinStreak() == homeTeam.getTeamStats().getLongestWinStreak())
+            {
+                homeTeam.getTeamStats().setLongestWinStreak(homeTeam.getTeamStats().getLongestWinStreak() + 1);
+            }
+            if (visitorTeam.getTeamStats().getCurrentLossStreak() == visitorTeam.getTeamStats().getLongestLossStreak())
+            {
+                visitorTeam.getTeamStats().setLongestLossStreak(visitorTeam.getTeamStats().getLongestLossStreak() + 1);
+            }
+            schedule.setWinningPitcherName(pitcher.getHomeWinningPitcher().getNameLast());
+            schedule.setWinningPitcherId(pitcher.getHomeWinningPitcher().getPlayerId());
+            homeTeam.getTeamStats().setSeasonGames(homeTeam.getTeamStats().getSeasonGames() + 1);
+            homeTeam.getTeamStats().setSeasonWins(homeTeam.getTeamStats().getSeasonWins() + 1);
+            visitorTeam.getTeamStats().setSeasonGames(visitorTeam.getTeamStats().getSeasonGames() + 1);
+            visitorTeam.getTeamStats().setSeasonLosses(visitorTeam.getTeamStats().getSeasonLosses() + 1);
+            homeTeam.getTeamStats().setCurrentWinStreak(homeTeam.getTeamStats().getCurrentWinStreak() + 1);
+            homeTeam.getTeamStats().setCurrentLossStreak(0);
+            visitorTeam.getTeamStats().setCurrentWinStreak(0);
+            visitorTeam.getTeamStats().setCurrentLossStreak(visitorTeam.getTeamStats().getCurrentLossStreak() + 1);
             System.out.printf("Losing Pitcher: %s%n", pitcher.getVisitorLosingPitcher().getNameLast());
+            schedule.setLosingPitcherName(pitcher.getVisitorLosingPitcher().getNameLast());
+            schedule.setLosingPitcherId(pitcher.getVisitorLosingPitcher().getPlayerId());
             if (pitcher.getHomeSavePitcher() != null) {
                 System.out.printf("Save: %s%n", pitcher.getHomeSavePitcher().getNameLast());
                 pitcher.getHomeSavePitcher().getPitcherStats().setsSaves(pitcher.getHomeSavePitcher().getPitcherStats().getsSaves() + 1);
+                schedule.setSavingPitcherName(pitcher.getHomeSavePitcher().getNameLast());
+                schedule.setSavingPitcherId(pitcher.getHomeSavePitcher().getPlayerId());
+                homeTeam.getTeamStats().setsSaves(homeTeam.getTeamStats().getsSaves() + 1);
             } else {
                 System.out.println("Save: None");
             }
@@ -249,9 +283,32 @@ class DisplayInfo {
             System.out.printf("Losing Pitcher: %s%n", pitcher.getHomeLosingPitcher().getNameLast());
             pitcher.getVisitorWinningPitcher().getPitcherStats().setsWins(pitcher.getVisitorWinningPitcher().getPitcherStats().getsWins() + 1);
             pitcher.getHomeLosingPitcher().getPitcherStats().setsLosses(pitcher.getHomeLosingPitcher().getPitcherStats().getsLosses() + 1);
+            if (homeTeam.getTeamStats().getCurrentLossStreak() == homeTeam.getTeamStats().getLongestLossStreak())
+            {
+                homeTeam.getTeamStats().setLongestLossStreak(homeTeam.getTeamStats().getLongestLossStreak() + 1);
+            }
+            if (visitorTeam.getTeamStats().getCurrentWinStreak() == visitorTeam.getTeamStats().getLongestWinStreak())
+            {
+                visitorTeam.getTeamStats().setLongestWinStreak(visitorTeam.getTeamStats().getLongestWinStreak() + 1);
+            }
+            schedule.setWinningPitcherName(pitcher.getVisitorWinningPitcher().getNameLast());
+            schedule.setWinningPitcherId(pitcher.getVisitorWinningPitcher().getPlayerId());
+            schedule.setLosingPitcherName(pitcher.getHomeLosingPitcher().getNameLast());
+            schedule.setLosingPitcherId(pitcher.getHomeLosingPitcher().getPlayerId());
+            visitorTeam.getTeamStats().setSeasonGames(visitorTeam.getTeamStats().getSeasonGames() + 1);
+            visitorTeam.getTeamStats().setSeasonWins(visitorTeam.getTeamStats().getSeasonWins() + 1);
+            homeTeam.getTeamStats().setSeasonGames(homeTeam.getTeamStats().getSeasonGames() + 1);
+            homeTeam.getTeamStats().setSeasonLosses(homeTeam.getTeamStats().getSeasonLosses() + 1);
+            homeTeam.getTeamStats().setCurrentLossStreak(homeTeam.getTeamStats().getCurrentLossStreak() + 1);
+            homeTeam.getTeamStats().setCurrentWinStreak(0);
+            visitorTeam.getTeamStats().setCurrentWinStreak(visitorTeam.getTeamStats().getCurrentWinStreak() + 1);
+            visitorTeam.getTeamStats().setCurrentLossStreak(0);
             if (pitcher.getVisitorSavePitcher() != null) {
                 System.out.printf("Save: %s%n", pitcher.getVisitorSavePitcher().getNameLast());
                 pitcher.getVisitorSavePitcher().getPitcherStats().setsSaves(pitcher.getVisitorSavePitcher().getPitcherStats().getsSaves() + 1);
+                schedule.setSavingPitcherName(pitcher.getVisitorSavePitcher().getNameLast());
+                schedule.setSavingPitcherId(pitcher.getVisitorSavePitcher().getPlayerId());
+                visitorTeam.getTeamStats().setsSaves(visitorTeam.getTeamStats().getsSaves() + 1);
             } else {
                 System.out.println("Save: None");
             }

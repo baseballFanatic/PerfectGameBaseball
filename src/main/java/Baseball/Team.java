@@ -1,8 +1,10 @@
 package Baseball;
 
+import java.util.List;
+
 class Team {
     private String teamId, lgId, franchId, divId, simName, park, teamIdBr, teamIdLahman45, teamIdRetro, teamName;
-    private int yearId, simNumber, rank;
+    private int yearId, simNumber, rank, teamKey;
     private TeamStats teamStats = new TeamStats();
 
     Team() {
@@ -18,6 +20,14 @@ class Team {
         this.yearId = yearId;
         this.simNumber = simNumber;
         this.rank = rank;
+    }
+
+    public int getTeamKey() {
+        return teamKey;
+    }
+
+    public void setTeamKey(int teamKey) {
+        this.teamKey = teamKey;
     }
 
     public String getPark() {
@@ -130,6 +140,46 @@ class Team {
 
     public void setTeamStats(TeamStats teamStats) {
         this.teamStats = teamStats;
+    }
+
+    public void updateTeamGameStats(Team team, List<Batter> batterList, List<Fielder> fielderList,
+                                    List<Pitcher> pitcherList) {
+
+        for (Batter batter : batterList) {
+            team.getTeamStats().setTeamLeftOnBase(team.getTeamStats().getTeamLeftOnBase() + batter.getBatterStats().getGameLeftOnBase());
+            team.getTeamStats().setsAtBats(team.getTeamStats().getsAtBats() + batter.getBatterStats().getGameAtBats());
+            team.getTeamStats().setsRunsScored(team.getTeamStats().getsRunsScored() + batter.getBatterStats().getGameRuns());
+            team.getTeamStats().setsHits(team.getTeamStats().getsHits() + batter.getBatterStats().getGameHits());
+            team.getTeamStats().setsRbi(team.getTeamStats().getsRbi() + batter.getBatterStats().getGameRbi());
+            team.getTeamStats().setsDoubles(team.getTeamStats().getsDoubles() + batter.getBatterStats().getGameDouble());
+            team.getTeamStats().setsTriples(team.getTeamStats().getsTriples() + batter.getBatterStats().getGameTriple());
+            team.getTeamStats().setsHomeRuns(team.getTeamStats().getsHomeRuns() + batter.getBatterStats().getGameHomeRun());
+            team.getTeamStats().setsStrikeOuts(team.getTeamStats().getsStrikeOuts() + batter.getBatterStats().getGameStrikeOut());
+            team.getTeamStats().setsWalks(team.getTeamStats().getsWalks() + batter.getBatterStats().getGameWalk());
+            team.getTeamStats().setsStolenBases(team.getTeamStats().getsStolenBases() + batter.getBatterStats().getGameStolenBases());
+            team.getTeamStats().setsCaughtStealing(team.getTeamStats().getsCaughtStealing() + batter.getBatterStats().getGameCaughtStealing());
+            team.getTeamStats().setsHitByPitch(team.getTeamStats().getsHitByPitch() + batter.getBatterStats().getGameHitByPitch());
+            team.getTeamStats().setsPlateAppearances(team.getTeamStats().getsPlateAppearances() + batter.getBatterStats().getGamePlateAppearance());
+        }
+
+        for (Fielder fielder : fielderList)
+        {
+            team.getTeamStats().setsAssists(team.getTeamStats().getsAssists() + fielder.getFielderStats().getGameAssists());
+            team.getTeamStats().setsErrors(team.getTeamStats().getsErrors() + fielder.getFielderStats().getGameErrors());
+            team.getTeamStats().setsPutOuts(team.getTeamStats().getsPutOuts() + fielder.getFielderStats().getGamePutOuts());
+            team.getTeamStats().setsDoublePlays(team.getTeamStats().getsDoublePlays() + fielder.getFielderStats().getGameDoublePlay());
+            team.getTeamStats().setsRunnersThrownOut(team.getTeamStats().getsRunnersThrownOut() + fielder.getFielderStats().getGameRunnersThrownOut());
+        }
+
+        for (Pitcher pitcher : pitcherList)
+        {
+            team.getTeamStats().setsInningsPitched(team.getTeamStats().getsInningsPitched() + pitcher.getPitcherStats().getGameInningsPitchedOuts());
+            team.getTeamStats().setsHitsAllowed(team.getTeamStats().getsHitsAllowed() + pitcher.getPitcherStats().getGameHitsAllowed());
+            team.getTeamStats().setsHomeRunsAllowed(team.getTeamStats().getsHomeRunsAllowed() + pitcher.getPitcherStats().getGameHomeRunsAllowed());
+            team.getTeamStats().setsWalksAllowed(team.getTeamStats().getsWalksAllowed() + pitcher.getPitcherStats().getGameWalksAllowed());
+            team.getTeamStats().setsHitBatters(team.getTeamStats().getsHitBatters() + pitcher.getPitcherStats().getGameHitByPitch());
+            team.getTeamStats().setsRunsAllowed(team.getTeamStats().getsRunsAllowed() + pitcher.getPitcherStats().getGameRunsAllowed());
+        }
     }
 }
 
