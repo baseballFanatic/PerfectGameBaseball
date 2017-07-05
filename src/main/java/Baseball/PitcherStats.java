@@ -1,10 +1,11 @@
 package Baseball;
 
+import java.time.LocalDate;
 import java.util.List;
 
 class PitcherStats {
     private double probabilityHomeRun, probabilityTriple, probabilityDouble, probabilitySingle, probabilityWalk,
-            probabilityStrikeOut, probabilityHitBatter, era ;
+            probabilityStrikeOut, probabilityHitBatter, era, actualPlayPercent, histPercentPlayed ;
 
     private int earnedRuns, gameBattersFaced, gameHitsAllowed, hitBatters,
             gameRunsAllowed, gameStrikeOutsAllowed, gameWalksAllowed, gameHomeRunsAllowed, gameEarnedRunsAllowed,
@@ -16,7 +17,41 @@ class PitcherStats {
             groundedIntoDoublePlays, runs, gameShutOuts, gameCompleteGame, gameWin, gameLoss, gameSave,
             sGamesPlayed, sGamesStarted, sBattersFaced, sHitsAllowed, sHitBatters, sEarnedRuns, sRunsAllowed,
             sStrikeOutAllowed, sWalksAllowed, sHomeRunsAllowed, sInningsPitchedOuts, sShutOuts, sCompleteGames,
-            sWins, sLosses, sSaves;
+            sWins, sLosses, sSaves, daysRest;
+
+    private LocalDate lastGameDatePitched;
+
+    public LocalDate getLastGameDatePitched() {
+        return lastGameDatePitched;
+    }
+
+    public void setLastGameDatePitched(LocalDate lastGameDatePitched) {
+        this.lastGameDatePitched = lastGameDatePitched;
+    }
+
+    public int getDaysRest() {
+        return daysRest;
+    }
+
+    public void setDaysRest(int daysRest) {
+        this.daysRest = daysRest;
+    }
+
+    public double getActualPlayPercent() {
+        return actualPlayPercent;
+    }
+
+    public void setActualPlayPercent(double actualPlayPercent) {
+        this.actualPlayPercent = actualPlayPercent;
+    }
+
+    public double getHistPercentPlayed() {
+        return histPercentPlayed;
+    }
+
+    public void setHistPercentPlayed(double histPercentPlayed) {
+        this.histPercentPlayed = histPercentPlayed;
+    }
 
     public int getGameGameStarted() {
         return gameGameStarted;

@@ -42,24 +42,85 @@
             </li>
           </ul>
         </div>
+
       </div>
     </div>
     <!-- End Navbar-->
 
     <!-- Carousel -->
+    <div id="myCarousel" class="carousel slide jumbotron">
+      <div class="container">
+        <ol class="carousel-indicators">
+          <li class="active" data-target="#myCarousel" data-slide-to="0"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+            <h1>Perfect Game Baseball Simulator</h1>
+            <p class="lead">Simulate baseball seasons from the past!  Relieve the glory days of baseball.</p>
+            <p class="btn-group">
+              <a class="btn btn-success btn-lg" href="/simulate">Simulate a Game</a>
+              <a class="btn btn-default btn-lg" data-toggle="modal" href="#playerList" >See Player List</a>
+            </p>
+          </div>
+          <div class="item">
+            <h1>Schedules and Box Scores</h1>
+            <p class="lead">View schedule and box scores for completed games.</p>
+            <p class="btn-group">
+              <a class="btn btn-success btn-lg" href="/simulate">View Schedule</a>
+            </p>
+          </div>
+          <div class="item">
+            <h1>Player and Team Statistics</h1>
+            <p class="lead">View statistics from seasons on-going or completed.</p>
+            <p class="btn-group">
+              <a class="btn btn-success btn-lg" href="/simulate">View Player Stats</a>
+              <a class="btn btn-default btn-lg" href="#" >View Team Stats</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+
+      </a>
+    </div>
 
     <!-- End Carousel -->
 
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Perfect Game Baseball Simulator</h1>
-        <p class="lead">Simulate baseball seasons from the past!  Relieve the glory days of baseball.</p>
-        <p class="btn-group">
-          <a class="btn btn-success btn-lg" href="/simulate">Simulate a Game</a>
-          <a class="btn btn-default btn-lg" href="#" >See Player List</a>
-        </p> 
+    <!-- Modal -->
+    <div class="modal fade" id="playerList">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">See Player List!</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-inline">
+              <div class="form-group">
+                <label class="sr-only" for="yearID">Enter Year</label>
+                <input type="number" class="form-control" id="yearID" placeholder="Year">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option>1913</option>
+                    <option>1914</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal">Show me the players.</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
+    </div>
+    <!-- End Modal -->
 
+    <div class="container">
       <div class="row">
         <div class="col-sm-3">
           <h2>Simulate</h2>

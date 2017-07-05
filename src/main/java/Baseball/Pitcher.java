@@ -131,6 +131,10 @@ public class Pitcher extends Player {
 
     Pitcher getReliever(List<Pitcher> pitchingTeam) {
         for (Pitcher pitcher : pitchingTeam) {
+            if (pitcher.getPitcherStats().getDaysRest() > 0)
+            {
+                pitcher.setAvailable(false);
+            }
             if (pitcher.isAvailable && pitcher.getPitcherRole().equals(PitcherRole.RELIEVER)) {
                 pitcher.setAvailable(false);
                 System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
@@ -350,6 +354,43 @@ public class Pitcher extends Player {
                 System.out.printf("set %s batting order to %s.%n",
                         startingPitcher.getNameLast(), startingPitcher.getBattingOrder());
                 break;
+            }
+        }
+    }
+
+    public void checkCompleteGame(Pitcher pitcher, List<Integer> lineScore) {
+        if ((pitcher.getPitcherStats().getGameInningsPitchedOuts() >= (lineScore.size() * 3) )
+                && pitcher.getPitcherStats().getGameRunsAllowed() == 0
+                && pitcher.getPitcherStats().getGameGameStarted() == 1)
+        {
+            System.out.printf("%s pitched a complete game shut-out. %n", pitcher.getNameLast());
+            pitcher.getPitcherStats().setGameShutOuts(1);
+            pitcher.getPitcherStats().setGameCompleteGame(1);
+        } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() >=
+                (lineScore.size() * 3)
+                && pitcher.getPitcherStats().getGameGameStarted() == 1)
+        {
+            System.out.printf("%s pitched a complete game.%n", pitcher.getNameLast());
+            pitcher.getPitcherStats().setGameCompleteGame(1);
+        }
+    }
+
+    public void updateDaysRest(Pitcher pitcher, Schedule schedule) {
+        pitcher.getPitcherStats().setLastGameDatePitched(schedule.getGameDate());
+        if (pitcher.getPitcherStats().getDaysRest() == 0)
+        {
+            if (pitcher.getPitcherStats().getGameInningsPitchedOuts() <= 4)
+            {
+                pitcher.getPitcherStats().setDaysRest(0);
+            } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() <= 8)
+            {
+                pitcher.getPitcherStats().setDaysRest(2);
+            } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() <= 14)
+            {
+                pitcher.getPitcherStats().setDaysRest(3);
+            } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() <= 21)
+            {
+                pitcher.getPitcherStats().setDaysRest(4);
             }
         }
     }

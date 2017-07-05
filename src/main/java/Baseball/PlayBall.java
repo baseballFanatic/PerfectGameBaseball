@@ -22,6 +22,7 @@ public class PlayBall {
         Batter batter = new Batter();
         Fielder fielder = new Fielder();
         Pitcher pitcher = new Pitcher();
+        Player player = new Player();
 
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
@@ -79,6 +80,9 @@ public class PlayBall {
         pitcher.getHomeStarter().getPitcherStats().setGameGameStarted(1);
         pitcher.getHomeStarter().getPitcherStats().setGameGamePlayed(1);
 
+        player.updatePlayPercent(visitorBatters, visitorPitchers, visitorFieldersReserves, visitorTeam);
+        player.updatePlayPercent(homeBatters, homePitchers, homeFieldersReserves, homeTeam);
+
         visitorTeam.setTeamName(schedule.getVisitingTeamId());
         homeTeam.setTeamName(schedule.getHomeTeamId());
 
@@ -114,7 +118,6 @@ public class PlayBall {
         visitorTeam.updateTeamGameStats(visitorTeam, visitorBatters, visitorFieldersReserves, visitorPitchers);
         new Database().updateBatters(visitorBatters);
         new Database().updateBatters(homeBatters);
-        //TODO Add in updates for fielders, pitchers, and team stats.
         pitcher.getPitcherStats().updatePitcherGameStats(visitorPitchers);
         pitcher.getPitcherStats().updatePitcherGameStats(homePitchers);
         fielder.getFielderStats().updateFielderGameStats(visitorFieldersReserves);

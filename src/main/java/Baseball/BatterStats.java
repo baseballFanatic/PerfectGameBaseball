@@ -36,8 +36,8 @@ class BatterStats {
     private int sSacrificeHits;
     private int sSacrificeFlies;
     private int gameDate;
-    private int histPercentPlayed;
-    private int actualPlayPercent;
+    private double histPercentPlayed;
+    private double actualPlayPercent;
     private int awardPoints;
     private int pinchAtBat;
     private int pinchHit;
@@ -496,19 +496,19 @@ class BatterStats {
         this.gameDate = gameDate;
     }
 
-    public int getHistPercentPlayed() {
+    public double getHistPercentPlayed() {
         return histPercentPlayed;
     }
 
-    public void setHistPercentPlayed(int histPercentPlayed) {
+    public void setHistPercentPlayed(double histPercentPlayed) {
         this.histPercentPlayed = histPercentPlayed;
     }
 
-    public int getActualPlayPercent() {
+    public double getActualPlayPercent() {
         return actualPlayPercent;
     }
 
-    public void setActualPlayPercent(int actualPlayPercent) {
+    public void setActualPlayPercent(double actualPlayPercent) {
         this.actualPlayPercent = actualPlayPercent;
     }
 
@@ -907,6 +907,10 @@ class BatterStats {
         setBattingAverage(getHits() / getAtBats());
         setOnBasePercentage((getHitByPitch() + getHits() + getWalks()) / getAtBats());
         double singles = getHits() - getDoubles() - getTriples() - getHomeRuns();
+        if (getCaughtStealing() == 0)
+        {
+            setCaughtStealing((int) (getStolenBases() * .826795));
+        }
         setSluggingAverage((singles + (getDoubles() * 2) + (getTriples() * 3) + getHomeRuns() * 4) / getAtBats());
         if (Objects.isNull(getSpeedRating()) || getSpeedRating() == 0)
         {

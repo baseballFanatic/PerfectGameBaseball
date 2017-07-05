@@ -52,7 +52,6 @@ class Inning {
                         currentPitcher = pitcher.getHomePitcher();
                     }
                 }
-                //TODO Add in actually removing batter and adding pinch hitter
                 // Looking for Pinch Hitter for visiting team
                 if (currentBatter.needPinchHitter(inning, visitorTeam, homeTeam, currentBatter, visitorPitchers,
                         homePitchers, pitcher.getVisitorPitcher()))

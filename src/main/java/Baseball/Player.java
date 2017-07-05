@@ -1,5 +1,7 @@
 package Baseball;
 
+import java.util.List;
+
 class Player {
     String nameFirst;
     String nameLast;
@@ -200,6 +202,57 @@ class Player {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public void updatePlayPercent(List<Batter> batterList, List<Pitcher> pitcherList, List<Fielder> fielderList,
+                                  Team team) {
+        if (team.getTeamStats().getSeasonGames() > 0) {
+            for (Batter batter : batterList) {
+                if (batter.getBatterStats().getsGamesPlayed() > 0) {
+                    batter.getBatterStats().setActualPlayPercent(batter.getBatterStats().getsGamesPlayed() / team.getTeamStats().getSeasonGames());
+                } else {
+                    batter.getBatterStats().setActualPlayPercent(0.00);
+                }
+
+                if (batter.getBatterStats().getGamesPlayed() > 0) {
+                    batter.getBatterStats().setHistPercentPlayed(batter.getBatterStats().getGamesPlayed() / team.getTeamStats().getGames());
+                } else {
+                    batter.getBatterStats().setHistPercentPlayed(0.00);
+                }
+            }
+
+            for (Pitcher pitcher : pitcherList) {
+                if (pitcher.getPitcherStats().getsGamesPlayed() > 0) {
+                    pitcher.getPitcherStats().setActualPlayPercent(pitcher.getPitcherStats().getsGamesPlayed() / team.getTeamStats().getSeasonGames());
+                } else {
+                    pitcher.getPitcherStats().setActualPlayPercent(0.00);
+                }
+
+                if (pitcher.getPitcherStats().getGamesPlayed() > 0) {
+                    pitcher.getPitcherStats().setHistPercentPlayed(pitcher.getPitcherStats().getGamesPlayed() / team.getTeamStats().getGames());
+                } else {
+                    pitcher.getPitcherStats().setHistPercentPlayed(0.00);
+                }
+            }
+
+            for (Fielder fielder : fielderList) {
+                if (fielder.getFielderStats().getsGamesPlayed() > 0) {
+                    fielder.getFielderStats().setActualPlayerPercentage(fielder.getFielderStats().getsGamesPlayed() /
+                            team.getTeamStats().getSeasonGames());
+                } else {
+                    fielder.getFielderStats().setActualPlayerPercentage(0.00);
+                    fielder.getFielderStats().setHistPlayerPercentage(fielder.getFielderStats().getGamesPlayed() /
+                            team.getTeamStats().getGames());
+                }
+
+                if (fielder.getFielderStats().getGamesPlayed() > 0) {
+                    fielder.getFielderStats().setHistPlayerPercentage(fielder.getFielderStats().getGamesPlayed() /
+                            team.getTeamStats().getGames());
+                } else {
+                    fielder.getFielderStats().setHistPlayerPercentage(0.00);
+                }
+            }
+        }
     }
 }
 

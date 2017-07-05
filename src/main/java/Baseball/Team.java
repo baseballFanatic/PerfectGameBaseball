@@ -181,5 +181,16 @@ class Team {
             team.getTeamStats().setsRunsAllowed(team.getTeamStats().getsRunsAllowed() + pitcher.getPitcherStats().getGameRunsAllowed());
         }
     }
+
+    public void updateTeamStreaks(Team winningTeam, Team losingTeam) {
+        if (winningTeam.getTeamStats().getCurrentWinStreak() == winningTeam.getTeamStats().getLongestWinStreak())
+        {
+            winningTeam.getTeamStats().setLongestWinStreak(winningTeam.getTeamStats().getLongestWinStreak() + 1);
+        }
+        if (losingTeam.getTeamStats().getCurrentLossStreak() == losingTeam.getTeamStats().getLongestLossStreak())
+        {
+            losingTeam.getTeamStats().setLongestLossStreak(losingTeam.getTeamStats().getLongestLossStreak() + 1);
+        }
+    }
 }
 

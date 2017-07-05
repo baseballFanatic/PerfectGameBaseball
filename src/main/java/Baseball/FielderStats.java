@@ -9,9 +9,25 @@ class FielderStats {
     gamesPlayed, gamesStarted, inningOuts, putOuts, assists, errors, doublePlays, passedBalls, stolenBases,
     caughtStealing, zoneRating, wildPitches, gameGamePlayed, gameGameStarted, sErrors, sAssists, sPutOuts, sRunnersThrownOut,
     sRunnersSuccessful, sGamesStarted, sGamesPlayed;
-    private double fieldingPercentage;
+    private double fieldingPercentage, actualPlayerPercentage, histPlayerPercentage;
 
     FielderStats() {
+    }
+
+    public double getActualPlayerPercentage() {
+        return actualPlayerPercentage;
+    }
+
+    public void setActualPlayerPercentage(double actualPlayerPercentage) {
+        this.actualPlayerPercentage = actualPlayerPercentage;
+    }
+
+    public double getHistPlayerPercentage() {
+        return histPlayerPercentage;
+    }
+
+    public void setHistPlayerPercentage(double histPlayerPercentage) {
+        this.histPlayerPercentage = histPlayerPercentage;
     }
 
     public int getGameGameStarted() {

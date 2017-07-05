@@ -16,24 +16,24 @@ class PitchResult {
         double xw = 0;
         double x1 = (batter.getBatterStats().getProbabilitySingle() * pitcher.getPitcherStats().getProbabilitySingle())
                 / league.getLeagueStats().getSinglePercentage();
-        double y1 = x1 / (x1 + (1 - batter.getBatterStats().getProbabilitySingle()) * (1 -
+        double y1 = x1 / (x1 + ((1 - batter.getBatterStats().getProbabilitySingle()) * (1 -
                 pitcher.getPitcherStats().getProbabilitySingle())) /
-                (1 - league.getLeagueStats().getSinglePercentage());
+                (1 - league.getLeagueStats().getSinglePercentage()));
         double x2 = (batter.getBatterStats().getProbabilityDouble() * pitcher.getPitcherStats().getProbabilityDouble())
                 / league.getLeagueStats().getDoublePercentage();
-        double y2 = x2 / (x2 + (1 - batter.getBatterStats().getProbabilityDouble()) *
+        double y2 = x2 / ((x2 + (1 - batter.getBatterStats().getProbabilityDouble()) *
                 (1 - pitcher.getPitcherStats().getProbabilityDouble())) /
-                (1 - league.getLeagueStats().getDoublePercentage());
+                (1 - league.getLeagueStats().getDoublePercentage()));
         double x3 = (batter.getBatterStats().getProbabilityTriple() * pitcher.getPitcherStats().getProbabilityTriple())
                 / league.getLeagueStats().getTriplePercentage();
-        double y3 = x3 / (x3 + (1 - batter.getBatterStats().getProbabilityTriple()) *
+        double y3 = x3 / ((x3 + (1 - batter.getBatterStats().getProbabilityTriple()) *
                 (1 - pitcher.getPitcherStats().getProbabilityTriple())) /
-                (1 - league.getLeagueStats().getTriplePercentage());
+                (1 - league.getLeagueStats().getTriplePercentage()));
         double x4 = (batter.getBatterStats().getProbabilityHomeRun() * pitcher.getPitcherStats().getProbabilityHomeRun())
                 / league.getLeagueStats().getHomeRunPercentage();
-        double y4 = x4 / (x4 + (1 - batter.getBatterStats().getProbabilityHomeRun()) *
+        double y4 = x4 / ((x4 + (1 - batter.getBatterStats().getProbabilityHomeRun()) *
                 (1 - pitcher.getPitcherStats().getProbabilityHomeRun())) /
-                (1 - league.getLeagueStats().getHomeRunPercentage());
+                (1 - league.getLeagueStats().getHomeRunPercentage()));
         if (pitchOut)
         {
             xw = ((batter.getBatterStats().getProbabilityWalk() * 1.67) * pitcher.getPitcherStats().getProbabilityWalk())

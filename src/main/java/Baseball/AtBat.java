@@ -24,14 +24,12 @@ class AtBat {
         BasesOccupied baseState = bases.checkBases(bases);
         new DisplayInfo().preAtBatInfo(bases, pitchResult);
 
-        // pitcher.determineWinner(visitorTeam, homeTeam, pitcher, Inning);
-
         if (checkPitchOut(bases, baseState))
         {
             setPitchOut(true);
         }
 
-        if (checkSteal(baseState, bases, pitcher)) {
+        if (checkSteal(baseState, bases, pitcher, visitorTeam, homeTeam, inning)) {
             if (stealResult(baseState, bases, pitchOut)) {
                 safeSteal(baseState, bases, fielderList, fielder, pitchResult);
             } else {
@@ -123,6 +121,7 @@ class AtBat {
                     if (randomBuntResult < .136) {
                         System.out.printf("%s attempts to bunt.%n%s throws to third! Runner is out.  Failed bunt.%n",
                                 batter.getNameLast(), buntFielder.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
                         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -156,6 +155,7 @@ class AtBat {
                     } else if (randomBuntResult < 1) {
                         System.out.printf("%s attempts to sacrifice.%n%s throws too late to second!%n%s beats the throw!" +
                                 "at first", batter.getNameLast(), buntFielder.getNameLast(), batter.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         batter.getBatterStats().setGameHits(batter.getBatterStats().getGameHits() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -170,6 +170,7 @@ class AtBat {
                     if (randomBuntResult < .178) {
                         System.out.printf("%s attempts to bunt.%n%s throws to second! Runner is out.  Failed bunt.%n",
                                 batter.getNameLast(), buntFielder.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
                         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -204,6 +205,7 @@ class AtBat {
                     } else if (randomBuntResult < 1) {
                         System.out.printf("%s attempts to sacrifice.%n%s throws too late to second!%n%s beats the throw" +
                                 "at first", batter.getNameLast(), buntFielder.getNameLast(), batter.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         batter.getBatterStats().setGameHits(batter.getBatterStats().getGameHits() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -222,6 +224,7 @@ class AtBat {
                     if (randomBuntResult < .136) {
                         System.out.printf("%s attempts to bunt.%n%s throws to third! Runner is out.  Failed bunt.%n",
                                 batter.getNameLast(), buntFielder.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
                         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -253,6 +256,7 @@ class AtBat {
                     } else if (randomBuntResult < 1) {
                         System.out.printf("%s attempts to sacrifice.%n%s throws too late to third!%n%s beats the throw!" +
                                 "at first", batter.getNameLast(), buntFielder.getNameLast(), batter.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         batter.getBatterStats().setGameHits(batter.getBatterStats().getGameHits() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -266,6 +270,7 @@ class AtBat {
                     if (randomBuntResult < .178) {
                         System.out.printf("%s attempts to bunt.%n%s throws to third! Runner is out.  Failed bunt.%n",
                                 batter.getNameLast(), buntFielder.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
                         buntFielder.getFielderStats().setGameAssists(buntFielder.getFielderStats().getGameAssists() + 1);
@@ -296,6 +301,7 @@ class AtBat {
                     } else if (randomBuntResult < 1) {
                         System.out.printf("%s attempts to sacrifice.%n%s throws too late to third!%n%s beats the throw" +
                                 "at first", batter.getNameLast(), buntFielder.getNameLast(), batter.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         batter.getBatterStats().setGameHits(batter.getBatterStats().getGameHits() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -313,6 +319,7 @@ class AtBat {
                     if (randomBuntResult < .136) {
                         System.out.printf("%s attempts to bunt.%n%s throws to second! Runner is out.  Failed bunt.%n",
                                 batter.getNameLast(), buntFielder.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
                         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -322,7 +329,8 @@ class AtBat {
                         System.out.printf("Assist: %s(%d)%nPut Out: %s(%d)", buntFielder.getNameLast(), buntFielder.getFielderStats().getGameAssists(),
                                 secondBase.getNameLast(), secondBase.getFielderStats().getGamePutOuts());
                         outs.setOuts(outs.getOuts() + 1);
-                        bases.getSecondBase().setOccupied(false);
+                        Batter first = bases.getFirstBase().getBatter();
+                        bases.getSecondBase().occupy(first);
                         bases.getFirstBase().occupy(batter);
                     } else if (randomBuntResult < .864) {
                         System.out.printf("%s lays down a perfect bunt.%n%s advances to second, %s out at first.%n",
@@ -341,8 +349,9 @@ class AtBat {
                         outs.setOuts(outs.getOuts() + 1);
                         bases.getFirstBase().setOccupied(false);
                     } else if (randomBuntResult < 1) {
-                        System.out.printf("%s attempts to sacrifice.%n%s throws too late to second!%n%s beats the throw!" +
+                        System.out.printf("%s attempts to sacrifice.%n%s throws too late to second!%n%s beats the throw " +
                                 "at first", batter.getNameLast(), buntFielder.getNameLast(), batter.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         batter.getBatterStats().setGameHits(batter.getBatterStats().getGameHits() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -355,6 +364,7 @@ class AtBat {
                     if (randomBuntResult < .178) {
                         System.out.printf("%s attempts to bunt.%n%s throws to second! Runner is out.  Failed bunt.%n",
                                 batter.getNameLast(), buntFielder.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
                         pitcher.getPitcherStats().setGameInningsPitchedOuts(pitcher.getPitcherStats().getGameInningsPitchedOuts() + 1);
@@ -385,6 +395,7 @@ class AtBat {
                     } else if (randomBuntResult < 1) {
                         System.out.printf("%s attempts to sacrifice.%n%s throws too late to second!%n%s beats the throw" +
                                 "at first", batter.getNameLast(), buntFielder.getNameLast(), batter.getNameLast());
+                        batter.setPitcherReachedOn(pitcher);
                         batter.getBatterStats().setGameAtBats(batter.getBatterStats().getGameAtBats() + 1);
                         batter.getBatterStats().setGameHits(batter.getBatterStats().getGameHits() + 1);
                         pitcher.getPitcherStats().setGameBattersFaced(pitcher.getPitcherStats().getGameBattersFaced() + 1);
@@ -551,7 +562,8 @@ class AtBat {
         return position;
     }
 
-    private boolean checkSteal(BasesOccupied baseState, Bases bases, Pitcher pitcher) {
+    private boolean checkSteal(BasesOccupied baseState, Bases bases, Pitcher pitcher, Team visitorTeam, Team homeTeam,
+                               Inning inning) {
         switch (baseState) {
             case EMPTY:
             case BASES_LOADED:
@@ -567,11 +579,22 @@ class AtBat {
                     // Runners steal 2nd 60% less on lefties than righties
                     if (pitcher.getPitchingArm().equals("L")) {
                         double randomStealPercentage = random();
-                        return (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() * .6) < randomStealPercentage;
+                        if (randomStealPercentage < (bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() *.6)
+                                && Math.abs(visitorTeam.getTeamStats().getGameRuns() - homeTeam.getTeamStats().getGameRunsAllowed()) < 5
+                                && inning.getInning() < 9)
+                        {
+                            return true;
+                        }
                     } else {
                         double randomStealPercentage = random();
-                        return bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() > randomStealPercentage;
+                        if (randomStealPercentage < bases.getFirstBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage()
+                                && Math.abs(visitorTeam.getTeamStats().getGameRuns() - homeTeam.getTeamStats().getGameRunsAllowed()) < 5
+                                && inning.getInning() < 9)
+                        {
+                            return true;
+                        }
                     }
+                    return false;
                 }
             }
             case SECOND_FIRST:
@@ -581,7 +604,12 @@ class AtBat {
                 } else {
                     // Runners steal 3rd 60% less than 2nd base.
                     double randomStealPercentage = random();
-                    return (bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() * .6) > randomStealPercentage;
+                    if ((randomStealPercentage < bases.getSecondBase().getBatter().getBatterStats().getStolenBaseAttemptPercentage() *.6)
+                            && Math.abs(visitorTeam.getTeamStats().getGameRuns() - homeTeam.getTeamStats().getGameRunsAllowed()) < 5
+                            && inning.getInning() < 9)
+                    {
+                        return true;
+                    }
                 }
             }
         }

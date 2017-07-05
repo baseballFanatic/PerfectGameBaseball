@@ -39,24 +39,24 @@ class Database {
 
             // Execute query
             stmt = conn.createStatement();
-            /*createPgbsBatters(stmt);
+            createPgbsBatters(stmt);
             createPgbsPitchers(stmt);
             createPgbsFielders(stmt);
             createPgbsSeasons(stmt);
-            createPgbsTeams(stmt);*/
+            createPgbsTeams(stmt);
             createPgbsSchedule(stmt);
-            //createPgbsLineUp(stmt);
+            createPgbsLineUp(stmt);
 
             int yearID = 1913;
             String lgID="AL";
-            /*insertPgbsBatters(conn, yearID);
+            insertPgbsBatters(conn, yearID);
             insertPgbsPitchers(conn, yearID);
             insertPgbsFielders(conn, yearID);
-            insertPgbsTeams(conn, yearID);*/
+            insertPgbsTeams(conn, yearID);
             insertPgbsSchedule(conn, yearID);
             Schedule schedule = new Schedule();
-            /*insertPgbsLineUp(conn);
-            insertPgbsSeasons(conn, yearID);*/
+            insertPgbsLineUp(conn);
+            insertPgbsSeasons(conn, yearID);
 
             // Clean-up environment
             //rs.close();
@@ -150,6 +150,7 @@ class Database {
                 "simName varchar(255)," +
                 "playerKey int(11) not null auto_increment primary key)";
         stmt.executeUpdate(batters);
+        System.out.println("Created pgbs_batters.");
     }
 
     private static void createPgbsPitchers(Statement stmt) throws SQLException {
@@ -205,10 +206,13 @@ class Database {
                 " sWins int(11), " +
                 " sLosses int(11), " +
                 " sSaves int(11), " +
+                " daysRest int(11), " +
+                " lastGameDatePitched date, " +
                 " simName varchar(255), " +
                 " playerKey int(11) not null auto_increment primary key)";
 
         stmt.executeUpdate(pitchers);
+        System.out.println("Created pgbs_pitchers");
     }
 
     private static void createPgbsFielders(Statement stmt) throws SQLException {
@@ -247,6 +251,7 @@ class Database {
                 " playerKey int(11) not null auto_increment primary key)";
 
         stmt.executeUpdate(fielders);
+        System.out.println("Created pgbs_fielders");
     }
 
     private static void createPgbsSchedule (Statement stmt) throws SQLException
@@ -305,6 +310,7 @@ class Database {
                 " gameKey int(11) not null auto_increment primary key)";
 
         stmt.executeUpdate(games);
+        System.out.println("Created pgbs_schedule");
     }
 
     private static void createPgbsSeasons(Statement stmt) throws SQLException {
@@ -352,6 +358,7 @@ class Database {
                 "seasonKey int(11) not null auto_increment primary key)";
 
         stmt.executeUpdate(seasons);
+        System.out.println("Created pgbs_season_reference.");
     }
 
     private static void createPgbsTeams(Statement stmt) throws SQLException {
@@ -457,6 +464,7 @@ class Database {
                 " lgProbStrikeOut double," +
                 " teamKey int(11) not null auto_increment primary key)";
         stmt.executeUpdate(teams);
+        System.out.println("Created pgbs_teams");
     }
 
     private static void createPgbsLineUp(Statement stmt) throws SQLException
@@ -472,6 +480,7 @@ class Database {
                 " playerOrder int(11), " +
                 " gameNumber int(11))";
         stmt.executeUpdate(games);
+        System.out.println("Created pgbs_lineups");
     }
 
 
@@ -639,8 +648,9 @@ class Database {
         {
             preparedStmt.close();
         }
-        System.out.println("stop");
+        System.out.println("Inserted schedule");
         }
+
 
     private static void insertPgbsBatters(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("insert into pgbs_batters (nameFirst," +
@@ -675,6 +685,7 @@ class Database {
                 " where b.yearID=?");
         statement.setInt(1, yearID);
         statement.executeUpdate();
+        System.out.println("Inserted batters.");
     }
 
     private static void insertPgbsPitchers(Connection conn, int yearID) throws SQLException {
@@ -723,6 +734,7 @@ class Database {
                 " WHERE p.yearID=?");
         statement.setInt(1, yearID);
         statement.executeUpdate();
+        System.out.println("Inserted pitchers.");
     }
 
     private static void insertPgbsFielders(Connection conn, int yearID) throws SQLException {
@@ -757,6 +769,7 @@ class Database {
                 " WHERE f.yearID=?");
         statement.setInt(1, yearID);
         statement.executeUpdate();
+        System.out.println("Inserted fielders.");
     }
 
     private static void insertPgbsSeasons(Connection conn, int yearID) throws SQLException {
@@ -811,6 +824,7 @@ class Database {
 
         statement.setString(39, "clint");
         statement.execute();
+        System.out.println("Inserted fielders.");
     }
 
     private static void insertPgbsTeams(Connection conn, int yearID) throws SQLException {
@@ -869,6 +883,7 @@ class Database {
         statement.setInt(1, yearID);
 
         statement.executeUpdate();
+        System.out.println("Inserted teams.");
     }
 
     private static void insertPgbsLineUp(Connection conn) throws SQLException, IOException, ParseException {
@@ -999,7 +1014,7 @@ class Database {
             preparedStmt.close();
         }
 
-        System.out.println("stop");
+        System.out.println("Inserted lineups.");
 
     }
 
@@ -1154,7 +1169,7 @@ class Database {
                 {
                     pitcher.setPitchingArm("L");
                 }
-
+                pitcher.getPitcherStats().setDaysRest(rs.getInt("daysRest"));
                 pitcher.setPlayerId(rs.getString("playerID"));
                 pitcher.setYearID(rs.getInt("yearID"));
                 pitcher.setRetroId(rs.getString("retroId"));
@@ -1472,8 +1487,6 @@ class Database {
                 schedule.setAcquisitionInfo(rs.getString("acquisitionInfo"));
                 schedule.setGameCompleted(rs.getString("gameCompleted"));
                 schedule.setGameKey(rs.getInt("gameKey"));
-                //return schedule;
-                //scheduleList.add(schedule);
             }
             rs.close();
             conn.close();
@@ -1832,7 +1845,7 @@ class Database {
 
             // Execute query
             String query = "UPDATE pgbs_fielders set sGamesPlayed = ?, sGamesStarted = ?, sErrors = ?,  sAssists = ?, sPutOuts = ?, " +
-                    " sRunnersThrownOut = ?, sRunnersSuccessful = ? where yearID = ? and playerID = ?";
+                    " sRunnersThrownOut = ?, sRunnersSuccessful = ? where yearID = ? and playerKey = ?";
 
             for (Fielder fielder : fielderList)
             {
@@ -1845,7 +1858,7 @@ class Database {
                 statement.setInt(6, fielder.getFielderStats().getsRunnersThrownOut());
                 statement.setInt(7, fielder.getFielderStats().getsRunnersSuccessful());
                 statement.setInt(8, fielder.getYearID());
-                statement.setString(9, fielder.getPlayerId());
+                statement.setInt(9, fielder.getPlayerKey());
 
                 statement.executeUpdate();
             }
@@ -1903,7 +1916,7 @@ class Database {
                 team.setLgId(rs.getString("lgID"));
                 team.setFranchId(rs.getString("franchID"));
                 team.setRank(rs.getInt("Rank"));
-                team.getTeamStats().setGameLeftOnBase(rs.getInt("G"));
+                team.getTeamStats().setGames(rs.getInt("G"));
                 team.getTeamStats().setGamesHome(rs.getInt("Ghome"));
                 team.getTeamStats().setWins(rs.getInt("W"));
                 team.getTeamStats().setLosses(rs.getInt("L"));
@@ -1958,8 +1971,6 @@ class Database {
                 team.getTeamStats().setLongestWinStreak(rs.getInt("longestWinStreak"));
                 team.getTeamStats().setLongestLossStreak(rs.getInt("longestLosingStreak"));
                 team.setTeamKey(rs.getInt("teamKey"));
-
-
                 return team;
             }
             rs.close();

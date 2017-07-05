@@ -217,25 +217,6 @@ public class Batter extends Player implements Comparable<Batter> {
 
     Batter getBatter(Inning inning, LineUp lineUp, HashMap<Integer, Batter> batters)
     {
-/*        if (inning.isTop())
-        {
-            for (Batter batter : batters)
-            {
-                if (batter.getBattingOrder() == lineUp.getVisitorBattingNumber())
-                {
-                    return batter;
-                }
-            }
-        } else
-        {
-            for (Batter batter : batters)
-            {
-                if (batter.getBattingOrder() == lineUp.getHomeBattingNumber())
-                {
-                    return batter;
-                }
-            }
-        }*/
         if (inning.isTop())
         {
             return batters.get(lineUp.getVisitorBattingNumber());
@@ -330,7 +311,6 @@ public class Batter extends Player implements Comparable<Batter> {
         {
             if (batter1.getPlayerId().equals(currentPitcher.getPlayerId()))
             {
-                //TODO currentPitcher doesn't have a batting order
                 batter1.setBattingOrder(currentPitcher.getBattingOrder());
                 batter1.getBatterStats().setGameGamePlayed();
                 batter1.setPosition(InPlayPosition.PITCHER);
