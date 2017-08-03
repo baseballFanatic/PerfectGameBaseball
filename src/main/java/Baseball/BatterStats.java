@@ -6,95 +6,25 @@ import java.util.Objects;
 class BatterStats {
     private double atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, plateAppearances, probabilityWalk,
             probabilitySingle, probabilityDouble, probabilityTriple, probabilityHomeRun, probabilityStrikeOut,
-            //stolenBaseAttempt = .1973, stolenBaseSuccess = .833, onBasePercentage = .359,
             stolenBaseAttempt, stolenBaseSuccess, onBasePercentage,
             battingAverage, sluggingAverage, triplesFactor, speedRating, stolenBases,
-            stolenBaseAttemptPercentage, stolenBaseAttemptSuccessPercentage;
-    private int gamesPlayed;
-    private int runs;
-    private int rbi;
-    private int intentionalWalks;
-    private int hitByPitch;
-    private int sacrificeHits;
-   // private int stolenBases;
-    private int sacrificeFlies;
-    private int groundedIntoDp;
-    private int sGamesPlayed;
-    private int sGamesStarted;
-    private int sAtBats;
-    private int sHits;
-    private int sRuns;
-    private int caughtStealing;
-    private int sDoubles;
-    private int sTriples;
-    private int sHomeRuns;
-    private int sRbi;
-    private int sWalks;
-    private int sStrikeOuts;
-    private int sHitByPitch;
-    private int sPlateAppearances;
-    private int sSacrificeHits;
-    private int sSacrificeFlies;
-    private int gameDate;
-    private double histPercentPlayed;
-    private double actualPlayPercent;
-    private int awardPoints;
-    private int pinchAtBat;
-    private int pinchHit;
-    private int pinchRbi;
-    private int rispAtBat;
-    private int rispHit;
-    private int rispRbi;
-    private int rispSingle;
-    private int rispDouble;
-    private int rispTriple;
-    private int rispHomeRun;
-    private int rispWalk;
-    private int rispStrikeOut;
-    private int rispGroundedIntoDp;
-    private int rispHitByPitch;
-    private int leftOnBase;
-    private int gameGamePlayed;
-    private int gameGameStarted;
-    private int gameAtBats;
-    private int gameHits;
-    private int gameRuns;
-    private int gameRbi;
-    private int gameSingle;
-    private int gameDouble;
-    private int gameTriple;
-    private int gameHomeRun;
-    private int gameWalk;
-    private int gameStrikeOut;
-    private int gameHitByPitch;
-    private int gameGidp;
-    private int gameLeftOnBase;
-    private int gameRispAtBat;
-    private int gameRispHit;
-    private int gameRispSingle;
-    private int gameRispDouble;
-    private int gameRispTriple;
-    private int gameRispHomeRun;
-    private int gameRispRbi;
-    private int gameRispStrikeOut;
-    private int gameRispWalk;
-    private int gameRispHitByPitch;
-    private int gameSacrificeFly;
-    private int gameSacrificeHit;
-    private int gameRispSacrificeFly;
-    private int gamePlateAppearance;
-    private int gameStolenBases;
-    private int gameCaughtStealing;
-    private int sStolenBases;
-    private int sCaughtStealing;
-    private int gameRispGidp;
-    private int yearID;
+            stolenBaseAttemptPercentage, stolenBaseAttemptSuccessPercentage, histPercentPlayed,actualPlayPercent;
+    private int gamesPlayed, runs ,rbi, intentionalWalks ,hitByPitch, sacrificeHits, sacrificeFlies, groundedIntoDp,
+            sGamesPlayed, sGamesStarted, sAtBats, sHits, sRuns, caughtStealing, sDoubles, sTriples, sHomeRuns, sRbi,
+            sWalks, sStrikeOuts, sHitByPitch, sPlateAppearances, sSacrificeHits, sSacrificeFlies, gameDate, awardPoints,
+            pinchAtBat, pinchHit, pinchRbi, rispAtBat, rispHit, rispRbi, rispSingle, rispDouble, rispTriple,
+            rispHomeRun, rispWalk, rispStrikeOut, rispGroundedIntoDp, rispHitByPitch, leftOnBase, gameGamePlayed,
+            gameGameStarted, gameAtBats, gameHits, gameRuns, gameRbi, gameSingle, gameDouble, gameTriple, gameHomeRun,
+            gameWalk, gameStrikeOut, gameHitByPitch, gameGidp, gameLeftOnBase, gameRispAtBat, gameRispHit, gameRispSingle,
+            gameRispDouble, gameRispTriple, gameRispHomeRun, gameRispRbi, gameRispStrikeOut, gameRispWalk, gameRispHitByPitch,
+            gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases, gameCaughtStealing,
+            sStolenBases, sCaughtStealing, gameRispGidp, yearID;
 
-    public int getYearID() {
+    int getYearID() {
         return yearID;
     }
 
-    public int getGameRispHitByPitch() {
+    private int getGameRispHitByPitch() {
         return gameRispHitByPitch;
     }
 
@@ -102,27 +32,27 @@ class BatterStats {
         this.gameRispHitByPitch = gameRispHitByPitch;
     }
 
-    public double getStolenBaseAttemptPercentage() {
+    double getStolenBaseAttemptPercentage() {
         return stolenBaseAttemptPercentage;
     }
 
-    public void setStolenBaseAttemptPercentage(double stolenBaseAttemptPercentage) {
+    private void setStolenBaseAttemptPercentage(double stolenBaseAttemptPercentage) {
         this.stolenBaseAttemptPercentage = stolenBaseAttemptPercentage;
     }
 
-    public double getStolenBaseAttemptSuccessPercentage() {
+    double getStolenBaseAttemptSuccessPercentage() {
         return stolenBaseAttemptSuccessPercentage;
     }
 
-    public void setStolenBaseAttemptSuccessPercentage(double stolenBaseAttemptSuccessPercentage) {
+    private void setStolenBaseAttemptSuccessPercentage(double stolenBaseAttemptSuccessPercentage) {
         this.stolenBaseAttemptSuccessPercentage = stolenBaseAttemptSuccessPercentage;
     }
 
-    public double getTriplesFactor() {
+    private double getTriplesFactor() {
         return triplesFactor;
     }
 
-    public void setTriplesFactor(double triplesFactor) {
+    private void setTriplesFactor(double triplesFactor) {
         this.triplesFactor = triplesFactor;
     }
 
@@ -130,7 +60,7 @@ class BatterStats {
         this.gameGamePlayed = gameGamePlayed;
     }
 
-    public double getBattingAverage() {
+    double getBattingAverage() {
         return battingAverage;
     }
 
@@ -156,7 +86,7 @@ class BatterStats {
         return pinchRbi;
     }
 
-    public void setPinchRbi(int pinchRbi) {
+    void setPinchRbi(int pinchRbi) {
         this.pinchRbi = pinchRbi;
     }
 
@@ -288,7 +218,7 @@ class BatterStats {
         this.probabilityStrikeOut = probabilityStrikeOut;
     }
 
-    public int getGamesPlayed() {
+    int getGamesPlayed() {
         return gamesPlayed;
     }
 
@@ -332,7 +262,7 @@ class BatterStats {
         return sacrificeHits;
     }
 
-    public void setSacrificeHits(int sacrificeHits) {
+    void setSacrificeHits(int sacrificeHits) {
         this.sacrificeHits = sacrificeHits;
     }
 
@@ -340,7 +270,7 @@ class BatterStats {
         return sacrificeFlies;
     }
 
-    public void setSacrificeFlies(int sacrificeFlies) {
+    void setSacrificeFlies(int sacrificeFlies) {
         this.sacrificeFlies = sacrificeFlies;
     }
 
@@ -352,139 +282,139 @@ class BatterStats {
         this.groundedIntoDp = groundedIntoDp;
     }
 
-    public int getsGamesPlayed() {
+    int getsGamesPlayed() {
         return sGamesPlayed;
     }
 
-    public void setsGamesPlayed(int sGamesPlayed) {
+    void setsGamesPlayed(int sGamesPlayed) {
         this.sGamesPlayed = sGamesPlayed;
     }
 
-    public int getsGamesStarted() {
+    private int getsGamesStarted() {
         return sGamesStarted;
     }
 
-    public void setsGamesStarted(int sGamesStarted) {
+    void setsGamesStarted(int sGamesStarted) {
         this.sGamesStarted = sGamesStarted;
     }
 
-    public int getsAtBats() {
+    int getsAtBats() {
         return sAtBats;
     }
 
-    public void setsAtBats(int sAtBats) {
+    void setsAtBats(int sAtBats) {
         this.sAtBats = sAtBats;
     }
 
-    public int getsHits() {
+    int getsHits() {
         return sHits;
     }
 
-    public void setsHits(int sHits) {
+    void setsHits(int sHits) {
         this.sHits = sHits;
     }
 
-    public int getsRuns() {
+    int getsRuns() {
         return sRuns;
     }
 
-    public void setsRuns(int sRuns) {
+    void setsRuns(int sRuns) {
         this.sRuns = sRuns;
     }
 
-    public int getsDoubles() {
+    int getsDoubles() {
         return sDoubles;
     }
 
-    public void setsDoubles(int sDoubles) {
+    void setsDoubles(int sDoubles) {
         this.sDoubles = sDoubles;
     }
 
-    public int getsTriples() {
+    int getsTriples() {
         return sTriples;
     }
 
-    public void setsTriples(int sTriples) {
+    void setsTriples(int sTriples) {
         this.sTriples = sTriples;
     }
 
-    public int getsHomeRuns() {
+    int getsHomeRuns() {
         return sHomeRuns;
     }
 
-    public void setsHomeRuns(int sHomeRuns) {
+    void setsHomeRuns(int sHomeRuns) {
         this.sHomeRuns = sHomeRuns;
     }
 
-    public int getsRbi() {
+    int getsRbi() {
         return sRbi;
     }
 
-    public void setsRbi(int sRbi) {
+    void setsRbi(int sRbi) {
         this.sRbi = sRbi;
     }
 
-    public int getsWalks() {
+    int getsWalks() {
         return sWalks;
     }
 
-    public void setsWalks(int sWalks) {
+    void setsWalks(int sWalks) {
         this.sWalks = sWalks;
     }
 
-    public int getsStrikeOuts() {
+    int getsStrikeOuts() {
         return sStrikeOuts;
     }
 
-    public void setsStrikeOuts(int sStrikeOuts) {
+    void setsStrikeOuts(int sStrikeOuts) {
         this.sStrikeOuts = sStrikeOuts;
     }
 
-    public int getsHitByPitch() {
+    int getsHitByPitch() {
         return sHitByPitch;
     }
 
-    public void setsHitByPitch(int sHitByPitch) {
+    void setsHitByPitch(int sHitByPitch) {
         this.sHitByPitch = sHitByPitch;
     }
 
-    public int getsStolenBases() {
+    int getsStolenBases() {
         return sStolenBases;
     }
 
-    public void setsStolenBases(int sStolenBases) {
+    void setsStolenBases(int sStolenBases) {
         this.sStolenBases = sStolenBases;
     }
 
-    public int getsCaughtStealing() {
+    int getsCaughtStealing() {
         return sCaughtStealing;
     }
 
-    public void setsCaughtStealing(int sCaughtStealing) {
+    void setsCaughtStealing(int sCaughtStealing) {
         this.sCaughtStealing = sCaughtStealing;
     }
 
-    public int getsPlateAppearances() {
+    int getsPlateAppearances() {
         return sPlateAppearances;
     }
 
-    public void setsPlateAppearances(int sPlateAppearances) {
+    void setsPlateAppearances(int sPlateAppearances) {
         this.sPlateAppearances = sPlateAppearances;
     }
 
-    public int getsSacrificeHits() {
+    int getsSacrificeHits() {
         return sSacrificeHits;
     }
 
-    public void setsSacrificeHits(int sSacrificeHits) {
+    private void setsSacrificeHits(int sSacrificeHits) {
         this.sSacrificeHits = sSacrificeHits;
     }
 
-    public int getsSacrificeFlies() {
+    int getsSacrificeFlies() {
         return sSacrificeFlies;
     }
 
-    public void setsSacrificeFlies(int sSacrificeFlies) {
+    private void setsSacrificeFlies(int sSacrificeFlies) {
         this.sSacrificeFlies = sSacrificeFlies;
     }
 
@@ -500,7 +430,7 @@ class BatterStats {
         return histPercentPlayed;
     }
 
-    public void setHistPercentPlayed(double histPercentPlayed) {
+    void setHistPercentPlayed(double histPercentPlayed) {
         this.histPercentPlayed = histPercentPlayed;
     }
 
@@ -508,7 +438,7 @@ class BatterStats {
         return actualPlayPercent;
     }
 
-    public void setActualPlayPercent(double actualPlayPercent) {
+    void setActualPlayPercent(double actualPlayPercent) {
         this.actualPlayPercent = actualPlayPercent;
     }
 
@@ -524,7 +454,7 @@ class BatterStats {
         return pinchAtBat;
     }
 
-    public void setPinchAtBat(int pinchAtBat) {
+    void setPinchAtBat(int pinchAtBat) {
         this.pinchAtBat = pinchAtBat;
     }
 
@@ -532,119 +462,119 @@ class BatterStats {
         return pinchHit;
     }
 
-    public void setPinchHit(int pinchHit) {
+    void setPinchHit(int pinchHit) {
         this.pinchHit = pinchHit;
     }
 
-    public int getRispAtBat() {
+    int getRispAtBat() {
         return rispAtBat;
     }
 
-    public void setRispAtBat(int rispAtBat) {
+    void setRispAtBat(int rispAtBat) {
         this.rispAtBat = rispAtBat;
     }
 
-    public int getRispHit() {
+    int getRispHit() {
         return rispHit;
     }
 
-    public void setRispHit(int rispHit) {
+    void setRispHit(int rispHit) {
         this.rispHit = rispHit;
     }
 
-    public int getRispRbi() {
+    int getRispRbi() {
         return rispRbi;
     }
 
-    public void setRispRbi(int rispRbi) {
+    void setRispRbi(int rispRbi) {
         this.rispRbi = rispRbi;
     }
 
-    public int getRispSingle() {
+    int getRispSingle() {
         return rispSingle;
     }
 
-    public void setRispSingle(int rispSingle) {
+    void setRispSingle(int rispSingle) {
         this.rispSingle = rispSingle;
     }
 
-    public int getRispDouble() {
+    int getRispDouble() {
         return rispDouble;
     }
 
-    public void setRispDouble(int rispDouble) {
+    void setRispDouble(int rispDouble) {
         this.rispDouble = rispDouble;
     }
 
-    public int getRispTriple() {
+    int getRispTriple() {
         return rispTriple;
     }
 
-    public void setRispTriple(int rispTriple) {
+    void setRispTriple(int rispTriple) {
         this.rispTriple = rispTriple;
     }
 
-    public int getRispHomeRun() {
+    int getRispHomeRun() {
         return rispHomeRun;
     }
 
-    public void setRispHomeRun(int rispHomeRun) {
+    void setRispHomeRun(int rispHomeRun) {
         this.rispHomeRun = rispHomeRun;
     }
 
-    public int getRispWalk() {
+    int getRispWalk() {
         return rispWalk;
     }
 
-    public void setRispWalk(int rispWalk) {
+    void setRispWalk(int rispWalk) {
         this.rispWalk = rispWalk;
     }
 
-    public int getRispStrikeOut() {
+    int getRispStrikeOut() {
         return rispStrikeOut;
     }
 
-    public void setRispStrikeOut(int rispStrikeOut) {
+    void setRispStrikeOut(int rispStrikeOut) {
         this.rispStrikeOut = rispStrikeOut;
     }
 
-    public int getRispGroundedIntoDp() {
+    int getRispGroundedIntoDp() {
         return rispGroundedIntoDp;
     }
 
-    public void setRispGroundedIntoDp(int rispGroundedIntoDp) {
+    void setRispGroundedIntoDp(int rispGroundedIntoDp) {
         this.rispGroundedIntoDp = rispGroundedIntoDp;
     }
 
-    public int getRispHitByPitch() {
+    private int getRispHitByPitch() {
         return rispHitByPitch;
     }
 
-    public void setRispHitByPitch(int rispHitByPitch) {
+    void setRispHitByPitch(int rispHitByPitch) {
         this.rispHitByPitch = rispHitByPitch;
     }
 
-    public int getLeftOnBase() {
+    int getLeftOnBase() {
         return leftOnBase;
     }
 
-    public void setLeftOnBase(int leftOnBase) {
+    void setLeftOnBase(int leftOnBase) {
         this.leftOnBase = leftOnBase;
     }
 
-    public int getGameGamePlayed() {
+    int getGameGamePlayed() {
         return gameGamePlayed;
     }
 
-    public void setGameGamePlayed() {
+    void setGameGamePlayed() {
         this.gameGamePlayed = 1;
     }
 
-    public int getGameGameStarted() {
+    private int getGameGameStarted() {
         return gameGameStarted;
     }
 
-    public void setGameGameStarted(int gameGameStarted) {
+    void setGameGameStarted(int gameGameStarted) {
         this.gameGameStarted = gameGameStarted;
     }
 
@@ -744,7 +674,7 @@ class BatterStats {
         this.gameGidp = gameGidp;
     }
 
-    public int getGameLeftOnBase() {
+    int getGameLeftOnBase() {
         return gameLeftOnBase;
     }
 
@@ -808,7 +738,7 @@ class BatterStats {
         this.gameRispRbi = gameRispRbi;
     }
 
-    public int getGameRispStrikeOut() {
+    private int getGameRispStrikeOut() {
         return gameRispStrikeOut;
     }
 
@@ -848,7 +778,7 @@ class BatterStats {
         this.gameRispSacrificeFly = gameRispSacrificeFly;
     }
 
-    public int getGamePlateAppearance() {
+    int getGamePlateAppearance() {
         return gamePlateAppearance;
     }
 
@@ -1032,11 +962,11 @@ class BatterStats {
         }
     }
 
-    double getStolenBaseAttempt() {
+    private double getStolenBaseAttempt() {
         return stolenBaseAttempt;
     }
 
-    public void setStolenBaseAttempt(double stolenBaseAttempt) {
+    private void setStolenBaseAttempt(double stolenBaseAttempt) {
         this.stolenBaseAttempt = stolenBaseAttempt;
     }
 
@@ -1044,7 +974,7 @@ class BatterStats {
         return stolenBaseSuccess;
     }
 
-    public void setStolenBaseSuccess(double stolenBaseSuccess) {
+    private void setStolenBaseSuccess(double stolenBaseSuccess) {
         this.stolenBaseSuccess = stolenBaseSuccess;
     }
 

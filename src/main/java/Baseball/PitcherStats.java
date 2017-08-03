@@ -21,199 +21,199 @@ class PitcherStats {
 
     private LocalDate lastGameDatePitched;
 
-    public LocalDate getLastGameDatePitched() {
+    LocalDate getLastGameDatePitched() {
         return lastGameDatePitched;
     }
 
-    public void setLastGameDatePitched(LocalDate lastGameDatePitched) {
+    void setLastGameDatePitched(LocalDate lastGameDatePitched) {
         this.lastGameDatePitched = lastGameDatePitched;
     }
 
-    public int getDaysRest() {
+    int getDaysRest() {
         return daysRest;
     }
 
-    public void setDaysRest(int daysRest) {
+    void setDaysRest(int daysRest) {
         this.daysRest = daysRest;
     }
 
-    public double getActualPlayPercent() {
+    double getActualPlayPercent() {
         return actualPlayPercent;
     }
 
-    public void setActualPlayPercent(double actualPlayPercent) {
+    void setActualPlayPercent(double actualPlayPercent) {
         this.actualPlayPercent = actualPlayPercent;
     }
 
-    public double getHistPercentPlayed() {
+    double getHistPercentPlayed() {
         return histPercentPlayed;
     }
 
-    public void setHistPercentPlayed(double histPercentPlayed) {
+    void setHistPercentPlayed(double histPercentPlayed) {
         this.histPercentPlayed = histPercentPlayed;
     }
 
-    public int getGameGameStarted() {
+    int getGameGameStarted() {
         return gameGameStarted;
     }
 
-    public void setGameGameStarted(int gameGameStarted) {
+    void setGameGameStarted(int gameGameStarted) {
         this.gameGameStarted = gameGameStarted;
     }
 
-    public int getGameGamePlayed() {
+    int getGameGamePlayed() {
         return gameGamePlayed;
     }
 
-    public void setGameGamePlayed(int gameGamePlayed) {
+    void setGameGamePlayed(int gameGamePlayed) {
         this.gameGamePlayed = gameGamePlayed;
     }
 
-    public int getsGamesPlayed() {
+    int getsGamesPlayed() {
         return sGamesPlayed;
     }
 
-    public void setsGamesPlayed(int sGamesPlayed) {
+    void setsGamesPlayed(int sGamesPlayed) {
         this.sGamesPlayed = sGamesPlayed;
     }
 
-    public int getsGamesStarted() {
+    int getsGamesStarted() {
         return sGamesStarted;
     }
 
-    public void setsGamesStarted(int sGamesStarted) {
+    void setsGamesStarted(int sGamesStarted) {
         this.sGamesStarted = sGamesStarted;
     }
 
-    public int getsBattersFaced() {
+    int getsBattersFaced() {
         return sBattersFaced;
     }
 
-    public void setsBattersFaced(int sBattersFaced) {
+    void setsBattersFaced(int sBattersFaced) {
         this.sBattersFaced = sBattersFaced;
     }
 
-    public int getsHitsAllowed() {
+    int getsHitsAllowed() {
         return sHitsAllowed;
     }
 
-    public void setsHitsAllowed(int sHitsAllowed) {
+    void setsHitsAllowed(int sHitsAllowed) {
         this.sHitsAllowed = sHitsAllowed;
     }
 
-    public int getsHitBatters() {
+    int getsHitBatters() {
         return sHitBatters;
     }
 
-    public void setsHitBatters(int sHitBatters) {
+    void setsHitBatters(int sHitBatters) {
         this.sHitBatters = sHitBatters;
     }
 
-    public int getsEarnedRuns() {
+    int getsEarnedRuns() {
         return sEarnedRuns;
     }
 
-    public void setsEarnedRuns(int sEarnedRuns) {
+    void setsEarnedRuns(int sEarnedRuns) {
         this.sEarnedRuns = sEarnedRuns;
     }
 
-    public int getsRunsAllowed() {
+    int getsRunsAllowed() {
         return sRunsAllowed;
     }
 
-    public void setsRunsAllowed(int sRunsAllowed) {
+    void setsRunsAllowed(int sRunsAllowed) {
         this.sRunsAllowed = sRunsAllowed;
     }
 
-    public int getsStrikeOutAllowed() {
+    int getsStrikeOutAllowed() {
         return sStrikeOutAllowed;
     }
 
-    public void setsStrikeOutAllowed(int sStrikeOutAllowed) {
+    void setsStrikeOutAllowed(int sStrikeOutAllowed) {
         this.sStrikeOutAllowed = sStrikeOutAllowed;
     }
 
-    public int getsWalksAllowed() {
+    int getsWalksAllowed() {
         return sWalksAllowed;
     }
 
-    public void setsWalksAllowed(int sWalksAllowed) {
+    void setsWalksAllowed(int sWalksAllowed) {
         this.sWalksAllowed = sWalksAllowed;
     }
 
-    public int getsHomeRunsAllowed() {
+    int getsHomeRunsAllowed() {
         return sHomeRunsAllowed;
     }
 
-    public void setsHomeRunsAllowed(int sHomeRunsAllowed) {
+    void setsHomeRunsAllowed(int sHomeRunsAllowed) {
         this.sHomeRunsAllowed = sHomeRunsAllowed;
     }
 
-    public int getsInningsPitchedOuts() {
+    int getsInningsPitchedOuts() {
         return sInningsPitchedOuts;
     }
 
-    public void setsInningsPitchedOuts(int sInningsPitchedOuts) {
+    void setsInningsPitchedOuts(int sInningsPitchedOuts) {
         this.sInningsPitchedOuts = sInningsPitchedOuts;
     }
 
-    public int getsShutOuts() {
+    int getsShutOuts() {
         return sShutOuts;
     }
 
-    public void setsShutOuts(int sShutOuts) {
+    void setsShutOuts(int sShutOuts) {
         this.sShutOuts = sShutOuts;
     }
 
-    public int getsCompleteGames() {
+    int getsCompleteGames() {
         return sCompleteGames;
     }
 
-    public void setsCompleteGames(int sCompleteGames) {
+    void setsCompleteGames(int sCompleteGames) {
         this.sCompleteGames = sCompleteGames;
     }
 
-    public int getsWins() {
+    int getsWins() {
         return sWins;
     }
 
-    public void setsWins(int sWins) {
+    void setsWins(int sWins) {
         this.sWins = sWins;
     }
 
-    public int getsLosses() {
+    int getsLosses() {
         return sLosses;
     }
 
-    public void setsLosses(int sLosses) {
+    void setsLosses(int sLosses) {
         this.sLosses = sLosses;
     }
 
-    public int getsSaves() {
+    int getsSaves() {
         return sSaves;
     }
 
-    public void setsSaves(int sSaves) {
+    void setsSaves(int sSaves) {
         this.sSaves = sSaves;
     }
 
-    public int getGameShutOuts() {
+    int getGameShutOuts() {
         return gameShutOuts;
     }
 
-    public void setGameShutOuts(int gameShutOuts) {
+    void setGameShutOuts(int gameShutOuts) {
         this.gameShutOuts = gameShutOuts;
     }
 
-    public int getGameCompleteGame() {
+    int getGameCompleteGame() {
         return gameCompleteGame;
     }
 
-    public void setGameCompleteGame(int gameCompleteGame) {
+    void setGameCompleteGame(int gameCompleteGame) {
         this.gameCompleteGame = gameCompleteGame;
     }
 
-    public int getGameWin() {
+    int getGameWin() {
         return gameWin;
     }
 
@@ -221,7 +221,7 @@ class PitcherStats {
         this.gameWin = gameWin;
     }
 
-    public int getGameLoss() {
+    int getGameLoss() {
         return gameLoss;
     }
 
@@ -229,7 +229,7 @@ class PitcherStats {
         this.gameLoss = gameLoss;
     }
 
-    public int getGameSave() {
+    int getGameSave() {
         return gameSave;
     }
 
@@ -237,7 +237,7 @@ class PitcherStats {
         this.gameSave = gameSave;
     }
 
-    private int getInningsPitched() {
+    int getInningsPitched() {
         return inningsPitched;
     }
 
@@ -257,7 +257,7 @@ class PitcherStats {
         this.losses = losses;
     }
 
-    public int getSaves() {
+    int getSaves() {
         return saves;
     }
 
@@ -265,7 +265,7 @@ class PitcherStats {
         this.saves = saves;
     }
 
-    public int getGamesPlayed() {
+    int getGamesPlayed() {
         return gamesPlayed;
     }
 
@@ -273,7 +273,7 @@ class PitcherStats {
         this.gamesPlayed = gamesPlayed;
     }
 
-    public int getGamesStarted() {
+    int getGamesStarted() {
         return gamesStarted;
     }
 
@@ -297,7 +297,7 @@ class PitcherStats {
         this.completeGames = completeGames;
     }
 
-    public int getiPouts() {
+    int getiPouts() {
         return iPouts;
     }
 
@@ -369,7 +369,7 @@ class PitcherStats {
         this.groundedIntoDoublePlays = groundedIntoDoublePlays;
     }
 
-    public int getRuns() {
+    int getRuns() {
         return runs;
     }
 
@@ -397,7 +397,7 @@ class PitcherStats {
         this.hitsAllowed = hitsAllowed;
     }
 
-    private int getHomeRunsAllowed() {
+    int getHomeRunsAllowed() {
         return homeRunsAllowed;
     }
 
@@ -477,7 +477,7 @@ class PitcherStats {
         this.probabilityStrikeOut = probabilityStrikeOut;
     }
 
-    public int getEarnedRuns() {
+    int getEarnedRuns() {
         return earnedRuns;
     }
 
@@ -489,63 +489,63 @@ class PitcherStats {
         this.gameBattersFaced = gameBattersFaced;
     }
 
-    public void setGameHitsAllowed(int gameHitsAllowed) {
+    void setGameHitsAllowed(int gameHitsAllowed) {
         this.gameHitsAllowed = gameHitsAllowed;
     }
 
-    public void setGameRunsAllowed(int gameRunsAllowed) {
+    void setGameRunsAllowed(int gameRunsAllowed) {
         this.gameRunsAllowed = gameRunsAllowed;
     }
 
-    public void setGameStrikeOutsAllowed(int gameStrikeOutsAllowed) {
+    void setGameStrikeOutsAllowed(int gameStrikeOutsAllowed) {
         this.gameStrikeOutsAllowed = gameStrikeOutsAllowed;
     }
 
-    public int getGameHitByPitch() {
+    int getGameHitByPitch() {
         return gameHitByPitch;
     }
 
-    public void setGameHitByPitch(int gameHitByPitch) {
+    void setGameHitByPitch(int gameHitByPitch) {
         this.gameHitByPitch = gameHitByPitch;
     }
 
-    public void setGameWalksAllowed(int gameWalksAllowed) {
+    void setGameWalksAllowed(int gameWalksAllowed) {
         this.gameWalksAllowed = gameWalksAllowed;
     }
 
-    public void setGameHomeRunsAllowed(int gameHomeRunsAllowed) {
+    void setGameHomeRunsAllowed(int gameHomeRunsAllowed) {
         this.gameHomeRunsAllowed = gameHomeRunsAllowed;
     }
 
-    public int getGameEarnedRunsAllowed() {
+    int getGameEarnedRunsAllowed() {
         return gameEarnedRunsAllowed;
     }
 
-    public void setGameEarnedRunsAllowed(int gameEarnedRunsAllowed) {
+    void setGameEarnedRunsAllowed(int gameEarnedRunsAllowed) {
         this.gameEarnedRunsAllowed = gameEarnedRunsAllowed;
     }
 
-    public double getProbabilityHitBatter() {
+    double getProbabilityHitBatter() {
         return probabilityHitBatter;
     }
 
-    public int getGameBattersFaced() {
+    int getGameBattersFaced() {
         return gameBattersFaced;
     }
 
-    public int getGameHitsAllowed() {
+    int getGameHitsAllowed() {
         return gameHitsAllowed;
     }
 
-    public int getGameRunsAllowed() {
+    int getGameRunsAllowed() {
         return gameRunsAllowed;
     }
 
-    public int getGameStrikeOutsAllowed() {
+    int getGameStrikeOutsAllowed() {
         return gameStrikeOutsAllowed;
     }
 
-    public int getGameWalksAllowed() {
+    int getGameWalksAllowed() {
         return gameWalksAllowed;
     }
 
@@ -553,19 +553,19 @@ class PitcherStats {
         this.probabilityHitBatter = probabilityHitBatter;
     }
 
-    public int getGameHomeRunsAllowed() {
+    int getGameHomeRunsAllowed() {
         return gameHomeRunsAllowed;
     }
 
-    public int getGameUnearnedRunsAllowed() {
+    int getGameUnearnedRunsAllowed() {
         return gameUnearnedRunsAllowed;
     }
 
-    public void setGameUnearnedRunsAllowed(int gameUnearnedRunsAllowed) {
+    void setGameUnearnedRunsAllowed(int gameUnearnedRunsAllowed) {
         this.gameUnearnedRunsAllowed = gameUnearnedRunsAllowed;
     }
 
-    public int getUnearnedRunsAllowed() {
+    int getUnearnedRunsAllowed() {
         return unearnedRunsAllowed;
     }
 
@@ -573,8 +573,7 @@ class PitcherStats {
         this.unearnedRunsAllowed = unearnedRunsAllowed;
     }
 
-    public void calculatePitcherProbabilities() {
-        //setBattersFaced((getInningsPitched() * 3) + getHitsAllowed() + getWalksAllowed());
+    void calculatePitcherProbabilities() {
         double homers = getHomeRunsAllowed();
         double batters = getBattersFaced();
         double hits = getHitsAllowed();
@@ -588,6 +587,8 @@ class PitcherStats {
         setProbabilityWalk(walks /batters);
         setProbabilityStrikeOut(strikeOuts / batters);
         setProbabilityHitBatter(hitBatsmen / batters);
+
+
     }
 
     public void updatePitcherStats(int gameBattersFaced, int gameHitsAllowed, int gameStrikeOutsAllowed, int gameWalksAllowed,
@@ -602,11 +603,11 @@ class PitcherStats {
     }
 
 
-    private int getHitBatters() {
+    int getHitBatters() {
         return hitBatters;
     }
 
-    public void setHitBatters(int hitBatters) {
+    void setHitBatters(int hitBatters) {
         this.hitBatters = hitBatters;
     }
 
@@ -614,7 +615,7 @@ class PitcherStats {
         setBattersFaced(getGameBattersFaced() + 1);
     }
 
-    public void outRunScored(Base baseRunner, Pitcher pitcher) {
+    void outRunScored(Base baseRunner, Pitcher pitcher) {
         if (baseRunner.getBatter().getBatterStats().isRunEarned()) {
             baseRunner.getBatter().getPitcherReachedOn().getPitcherStats().setGameEarnedRunsAllowed(baseRunner.getBatter()
                     .getPitcherReachedOn().getPitcherStats().getGameEarnedRunsAllowed() + 1);
@@ -630,7 +631,7 @@ class PitcherStats {
         }
     }
 
-    public void hitRunScores(Base baseRunner, Pitcher pitcher) {
+    void hitRunScores(Base baseRunner, Pitcher pitcher) {
         if (baseRunner.getBatter().getBatterStats().isRunEarned()) {
             baseRunner.getBatter().getPitcherReachedOn().getPitcherStats().setGameEarnedRunsAllowed(baseRunner.getBatter()
                     .getPitcherReachedOn().getPitcherStats().getGameEarnedRunsAllowed() + 1);

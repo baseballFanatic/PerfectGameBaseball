@@ -16,7 +16,7 @@ class Inning {
                      List<Pitcher> visitorPitchers, List<Pitcher> homePitchers, boolean gameOver,
                      Pitcher pitcher, List<Integer> visitorLineScore, List<Integer> homeLineScore,
                      List<Batter> visitorBattersReserves, List<Batter> homeBattersReserves,
-                     List<Fielder> visitorFielderReserves, List<Fielder> homeFielderReserves) {
+                     List<Fielder> visitorFielderReserves, List<Fielder> homeFielderReserves, Schedule schedule) {
         Batter batter = new Batter();
         Fielder fielder = new Fielder();
         Batter currentBatter;
@@ -38,7 +38,7 @@ class Inning {
                 currentBatter = batter.getBatter(inning, lineUp, visitorBatters);
                   // Check to see if home pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, homeTeam, visitorTeam, homePitchers, bases)) {
-                    currentPitcher = currentPitcher.getReliever(homePitchers);
+                    currentPitcher = currentPitcher.getReliever(homePitchers, schedule.getGameDate(), currentBatter);
                     if (currentPitcher != null) {
                         batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
                         fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
@@ -68,7 +68,7 @@ class Inning {
                             {
                                 batter.removePitcherFromBatters(visitorBatters, pitcher.getVisitorPitcher());
                                 fielder.removePitcherFromFielders(visitorFielders, pitcher.getVisitorPitcher());
-                                Pitcher reliefPitcher = currentPitcher.getReliever(visitorPitchers);
+                                Pitcher reliefPitcher = currentPitcher.getReliever(visitorPitchers, schedule.getGameDate(), currentBatter);
                                 reliefPitcher.setBattingOrder(currentPitcher.getBattingOrder());
                                 pitcher.setVisitorPitcher(reliefPitcher);
                                 pitcher.getVisitorPitcher().getPitcherStats().setGameGamePlayed(1);
@@ -108,7 +108,7 @@ class Inning {
                 currentBatter = batter.getBatter(inning, lineUp, homeBatters);
                 // Check to see if visitor pitcher needs to be relieved
                 if (currentPitcher.needReliever(currentPitcher, inning, visitorTeam, homeTeam, visitorPitchers, bases)) {
-                    currentPitcher = currentPitcher.getReliever(visitorPitchers);
+                    currentPitcher = currentPitcher.getReliever(visitorPitchers, schedule.getGameDate(), currentBatter);
                     if (currentPitcher != null) {
                         batter.removePitcherFromBatters(visitorBatters, pitcher.getVisitorPitcher());
                         fielder.removePitcherFromFielders(visitorFielders, pitcher.getVisitorPitcher());
@@ -141,7 +141,8 @@ class Inning {
                                 //Removing home pitcher from files.
                                 batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
                                 fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
-                                Pitcher reliefPitcher = currentPitcher.getReliever(homePitchers);
+                                Pitcher reliefPitcher = currentPitcher.getReliever(homePitchers, schedule.getGameDate(), currentBatter);
+                                //TODO problem with returning null for reliefPitcher
                                 reliefPitcher.setBattingOrder(currentPitcher.getBattingOrder());
                                 pitcher.setHomePitcher(reliefPitcher);
                                 pitcher.getHomePitcher().getPitcherStats().setGameGamePlayed(1);

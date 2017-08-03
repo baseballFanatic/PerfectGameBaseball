@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <!--Tells Thymeleaf where our css is stored-->
+    <link rel="stylesheet" th:href="@{css/materialize.css}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" th:href="@{/perfectGameWeb.css}"/>
     <title>Perfect Game Baseball | Home</title>
 </head>
@@ -10,6 +12,10 @@
     <h1>Perfect Game Baseball</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aut eligendi harum illo ipsam maxime, minima molestiae officia perspiciatis possimus quod, repellendus tenetur. Amet assumenda, autem earum eum repudiandae sequi.</p>
     <!-- Tells Thymeleaf where gifs are stored.  Currently no gifs loaded so this is just placeholder name-->
-    <img th:src="@{/gifs/name.gif}" alt="logo">
+    <img th:src="@{/img/perfectGameLogo2.jpg}" alt="logo"/>
+
+    <script th:src="@{/jquery-1.11.3.js}"></script>
+    <script th:src="@{/materialize.js}"></script>
+    <script th:src="@{/perfectGameApp.js}"></script>
 </body>
 </html>

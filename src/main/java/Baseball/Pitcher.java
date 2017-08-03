@@ -1,6 +1,7 @@
 package Baseball;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +26,7 @@ public class Pitcher extends Player {
         this.battingOrder = battingOrder;
     }
 
-    public String getTeamID() {
+    String getTeamID() {
         return teamID;
     }
 
@@ -41,7 +42,7 @@ public class Pitcher extends Player {
         this.lgID = lgID;
     }
 
-    public int getYearID() {
+    int getYearID() {
         return yearID;
     }
 
@@ -89,7 +90,7 @@ public class Pitcher extends Player {
         this.pitcherStats = pitcherStats;
     }
 
-    public Pitcher getVisitorStarter() {
+    Pitcher getVisitorStarter() {
         return visitorStarter;
     }
 
@@ -97,7 +98,7 @@ public class Pitcher extends Player {
         this.visitorStarter = visitorStarter;
     }
 
-    public Pitcher getHomeStarter() {
+    Pitcher getHomeStarter() {
         return homeStarter;
     }
 
@@ -129,14 +130,58 @@ public class Pitcher extends Player {
         return false;
     }
 
-    Pitcher getReliever(List<Pitcher> pitchingTeam) {
+    Pitcher getReliever(List<Pitcher> pitchingTeam, LocalDate date, Batter currentBatter) {
         for (Pitcher pitcher : pitchingTeam) {
             if (pitcher.getPitcherStats().getDaysRest() > 0)
             {
                 pitcher.setAvailable(false);
             }
-            if (pitcher.isAvailable && pitcher.getPitcherRole().equals(PitcherRole.RELIEVER)) {
+            // Looks for available pitcher with good righty/lefty matchup
+            if (pitcher.isAvailable && (pitcher.getPitcherStats().getActualPlayPercent() <
+                    pitcher.getPitcherStats().getHistPercentPlayed())
+                    && pitcher.getPitchingArm().equals(currentBatter.getBats().getHandCode())) {
                 pitcher.setAvailable(false);
+                pitcher.getPitcherStats().setLastGameDatePitched(date);
+                System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
+                return pitcher;
+            }
+
+            // If no match above will repeat the if but drop the matchup
+            if (pitcher.isAvailable && (pitcher.getPitcherStats().getActualPlayPercent() <
+                    pitcher.getPitcherStats().getHistPercentPlayed())) {
+                pitcher.setAvailable(false);
+                pitcher.getPitcherStats().setLastGameDatePitched(date);
+                System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
+                return pitcher;
+            }
+
+            // Added in the matchup but allows more inningsPitched as long as fewer games
+            if (pitcher.isAvailable && (pitcher.getPitcherStats().getsInningsPitchedOuts() <
+                    (pitcher.getPitcherStats().getiPouts() * 1.10))
+                    && pitcher.getPitcherStats().getsGamesPlayed() < pitcher.getPitcherStats().getGamesPlayed()
+                    && pitcher.getPitchingArm().equals(currentBatter.getBats().getHandCode()))
+            {
+                pitcher.setAvailable(false);
+                pitcher.getPitcherStats().setLastGameDatePitched(date);
+                System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
+                return pitcher;
+            }
+
+            // Drops the matchup again
+            if (pitcher.isAvailable && (pitcher.getPitcherStats().getsInningsPitchedOuts() <
+                    (pitcher.getPitcherStats().getiPouts() * 1.10))
+                    && pitcher.getPitcherStats().getsGamesPlayed() < pitcher.getPitcherStats().getGamesPlayed())
+            {
+                pitcher.setAvailable(false);
+                pitcher.getPitcherStats().setLastGameDatePitched(date);
+                System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
+                return pitcher;
+            }
+
+            if (pitcher.isAvailable && pitcher.getPitcherRole().equals(PitcherRole.RELIEVER))
+            {
+                pitcher.setAvailable(false);
+                pitcher.getPitcherStats().setLastGameDatePitched(date);
                 System.out.printf("%s comes in from the bullpen.%n", pitcher.getNameLast());
                 return pitcher;
             }
@@ -294,7 +339,7 @@ public class Pitcher extends Player {
         this.homeSavePitcher = homeSavePitcher;
     }
 
-    List<Pitcher> getPitcherList(boolean visitors, Schedule schedule) throws ClassNotFoundException, SQLException, InstantiationException {
+    List<Pitcher> getPitcherList(boolean visitors, Schedule schedule, Team pitcherTeam) throws ClassNotFoundException, SQLException, InstantiationException {
         List<Pitcher> pitcherList;
         Pitcher pitcher = new Pitcher();
 
@@ -302,33 +347,34 @@ public class Pitcher extends Player {
             //TODO Take out this hard coded year
             int yearID=1913;
             String teamID = schedule.getVisitingTeamId();
-            pitcherList = Database.selectPitchers(teamID, yearID);
+            pitcherList = Database.selectPitchers(teamID, yearID, schedule, schedule.getVisitingGameNumber(),
+                    pitcherTeam);
         } else {
             String teamID = schedule.getHomeTeamId();
             int yearID=1913;
-            pitcherList = Database.selectPitchers(teamID, yearID);
+            pitcherList = Database.selectPitchers(teamID, yearID, schedule, schedule.getHomeGameNumber(),
+                    pitcherTeam);
         }
         return pitcherList;
     }
 
-    Pitcher findStartingPitcher(List<Pitcher> pitchingTeam, Schedule schedule, boolean visitors)
+    Pitcher findStartingPitcher(List<Pitcher> pitchingTeam, String id, LocalDate date)
     {
-        for (Pitcher pitcher : pitchingTeam)
+        /*for (Pitcher pitcher : pitchingTeam) {
+            if (pitcher.getPitcherStats().getDaysRest() > 0) {
+                int daysRest = (int) ChronoUnit.DAYS.between(pitcher.getPitcherStats().getLastGameDatePitched(), date);
+                pitcher.getPitcherStats().setDaysRest(pitcher.getPitcherStats().getDaysRest() - daysRest);
+            }
+        }*/
+
+        for (Pitcher pitcher1 : pitchingTeam)
         {
-            if (visitors)
+            if (pitcher1.getRetroId().equals(id))
             {
-                if (pitcher.getRetroId().equals(schedule.getVisitingStartingPitcherId()))
-                {
-                    pitcher.setAvailable(false);
-                    return pitcher;
-                }
-            } else
-            {
-                if (pitcher.getRetroId().equals(schedule.getHomeStartingPitcherId()))
-                {
-                    pitcher.setAvailable(false);
-                    return pitcher;
-                }
+                pitcher1.setAvailable(false);
+                pitcher1.getPitcherStats().setDaysRest(4);
+                pitcher1.getPitcherStats().setLastGameDatePitched(date);
+                return pitcher1;
             }
         }
         return null;
@@ -337,7 +383,12 @@ public class Pitcher extends Player {
     boolean isRelieverAvailable(Team team, List<Pitcher> teamPitchers) {
         for (Pitcher reliever : teamPitchers)
         {
-            if (reliever.isAvailable && reliever.getPitcherRole().equals(PitcherRole.RELIEVER))
+            if (reliever.isAvailable && reliever.getPitcherRole().equals(PitcherRole.RELIEVER) &&
+            reliever.getPitcherStats().getDaysRest() == 0)
+            {
+                return true;
+            }
+            if (reliever.isAvailable && reliever.getPitcherStats().getDaysRest() == 0)
             {
                 return true;
             }
@@ -358,7 +409,7 @@ public class Pitcher extends Player {
         }
     }
 
-    public void checkCompleteGame(Pitcher pitcher, List<Integer> lineScore) {
+    void checkCompleteGame(Pitcher pitcher, List<Integer> lineScore) {
         if ((pitcher.getPitcherStats().getGameInningsPitchedOuts() >= (lineScore.size() * 3) )
                 && pitcher.getPitcherStats().getGameRunsAllowed() == 0
                 && pitcher.getPitcherStats().getGameGameStarted() == 1)
@@ -375,7 +426,7 @@ public class Pitcher extends Player {
         }
     }
 
-    public void updateDaysRest(Pitcher pitcher, Schedule schedule) {
+    void updateDaysRest(Pitcher pitcher, Schedule schedule) {
         pitcher.getPitcherStats().setLastGameDatePitched(schedule.getGameDate());
         if (pitcher.getPitcherStats().getDaysRest() == 0)
         {
@@ -388,10 +439,14 @@ public class Pitcher extends Player {
             } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() <= 14)
             {
                 pitcher.getPitcherStats().setDaysRest(3);
-            } else if (pitcher.getPitcherStats().getGameInningsPitchedOuts() <= 21)
+            } else
             {
                 pitcher.getPitcherStats().setDaysRest(4);
             }
+        }
+        if (pitcher.getPitcherStats().getDaysRest() < 0)
+        {
+            pitcher.getPitcherStats().setDaysRest(0);
         }
     }
 }

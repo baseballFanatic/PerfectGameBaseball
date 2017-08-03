@@ -1,3 +1,25 @@
+/* Typography
+======================================== */
+.navbar-text {
+    font-weight: bold;
+    margin-right: 0;
+}
+
+h1 {
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+
+.lead {
+    color: #d5c1f2;
+    margin-bottom: 75px;
+}
+
+.lead:nth-of-type(2) {
+    font-size: initial;
+    margin-bottom: 20px;
+}
+
 /*  LAYOUT
 ======================================== */
 body {
@@ -6,6 +28,7 @@ body {
 
 .container {
     max-width: 1000px;
+    text-align: left;
 }
 
 
@@ -13,7 +36,37 @@ body {
 /*  JUMBOTRON
 ======================================== */
 .jumbotron {
-    text-align: center;
+    background-image: url('../../images/perfectGameLogo2.jpg');
+    background-repeat: no-repeat;
+    background-position: 200% 100%;
+    padding: 200px 0 140px 0;
+    margin-bottom: 70px;
+    text-align: left;
+}
+
+.device {
+    width: 345px;
+    height: 589px;
+    background:  url('../../images/perfectGameLogo2.jpg') no-repeat;
+}
+
+p {
+    text-align: left;
+}
+
+/*  BUTTONS
+======================================== */
+.btn-default {
+    border-width: 2px;
+    border-color: inherit;
+    border-right: 15px;
+    padding: 12px 22px;
+}
+
+.btn-default:hover {
+    background-color: #fff;
+    color: #957bba;
+    border-color: #fff;
 }
 
 /* CAROUSEL
@@ -28,4 +81,65 @@ body {
 
 .carousel-indicators li {
     border-color: #222;
+}
+
+/* LOGOS & ICONS
+======================================== */
+.main-logo {
+    width: 124px;
+    height: 34px;
+    margin-top: 22px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    background: url('../../images/perfectGameLogo.jfif') no-repeat;
+    background-size: 100%;
+}
+
+.ft-icon {
+    width: 94%;
+    height: 196px;
+    position: relative;
+    background: #8c73b0 url('../../images/perfectGameLogo.jfif') no-repeat 270px -180px;
+    background-size: 140%;
+}
+
+.ft-icon.simulate {
+    background-position: -500px 0;
+}
+
+.ft-icon.standings {
+    background-position: 260px 0;
+}
+
+
+
+/* MEDIA QUERIES
+======================================== */
+@media (max-width: 991px){
+    .jumbotron {
+        padding-top: 120px;
+        padding-bottom: 20px;
+        background-position: 10% 10%;
+    }
+}
+
+@media (max-width: 767px){
+    .navbar {
+        min-height: 60px;
+        }
+
+    .main-logo {
+        width: 82px;
+        margin-top: 20px;
+    }
+
+    .jumbotron {
+        padding-top: 80px;
+        margin-bottom: 32px
+    }
+
+    .lead {
+        margin-bottom: 40px;
+    }
 }

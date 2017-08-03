@@ -49,7 +49,7 @@ public class PlayBall {
         List<LineUp> visitorStarters = lineUp.getStartingLineup(schedule, visitors);
         HashMap<Integer, Fielder> visitorFieldersStarters = fielder.getFieldersStartersList(visitorStarters, visitorFieldersReserves);
         // Selects all pitchers for the team
-        List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule);
+        List<Pitcher> visitorPitchers = pitcher.getPitcherList(visitors, schedule, visitorTeam);
         // Matches batter to fielder on retroID and assigns the batter to the starting lineup
         HashMap<Integer, Batter> visitorBatterStarters = batter.matchPositions(visitorBatters, visitorFieldersStarters);
 
@@ -59,12 +59,14 @@ public class PlayBall {
         List<Fielder> homeFieldersReserves = fielder.getFielderList(visitors, schedule);
         List<LineUp> homeStarters = lineUp.getStartingLineup(schedule, visitors);
         HashMap<Integer, Fielder> homeFieldersStarters = fielder.getFieldersStartersList(homeStarters, homeFieldersReserves);
-        List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule);
+        List<Pitcher> homePitchers = pitcher.getPitcherList(visitors, schedule, homeTeam);
         HashMap<Integer, Batter> homeBatterStarters = batter.matchPositions(homeBatters, homeFieldersStarters);
 
         // Selects an available starting pitcher
         setVisitors(true);
-        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
+        //pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule, visitors));
+        pitcher.setVisitorPitcher(pitcher.findStartingPitcher(visitorPitchers, schedule.getVisitingStartingPitcherId(),
+                schedule.getGameDate()));
         pitcher.setVisitorStarter(pitcher.getVisitorPitcher());
         schedule.setVisitingStartingPitcherName(pitcher.getVisitorStarter().getNameLast());
         schedule.setVisitingStartingPitcherId(pitcher.getVisitorStarter().getPlayerId());
@@ -72,7 +74,8 @@ public class PlayBall {
         pitcher.getVisitorStarter().getPitcherStats().setGameGamePlayed(1);
         pitcher.getVisitorStarter().getPitcherStats().setGameGameStarted(1);
         setVisitors(false);
-        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule, visitors));
+        pitcher.setHomePitcher(pitcher.findStartingPitcher(homePitchers, schedule.getHomeStartingPitcherId(),
+                schedule.getGameDate()));
         pitcher.setHomeStarter(pitcher.getHomePitcher());
         schedule.setHomeStartingPitcherName(pitcher.getHomeStarter().getNameLast());
         schedule.setHomeStartingPitcherId(pitcher.getHomeStarter().getPlayerId());
@@ -97,7 +100,7 @@ public class PlayBall {
         while (!isGameOver()) {
             inning.startInning(league, visitorBatterStarters, homeBatterStarters, visitorTeam, homeTeam, inning, visitorFieldersStarters,
                     homeFieldersStarters, lineUp, visitorPitchers, homePitchers, gameOver, pitcher, visitorLineScore,
-                    homeLineScore, visitorBatters, homeBatters, visitorFieldersReserves, homeFieldersReserves);
+                    homeLineScore, visitorBatters, homeBatters, visitorFieldersReserves, homeFieldersReserves, schedule);
             checkGameOver(visitorTeam, homeTeam, gameOver, inning);
             if (inning.isTop()){
                 inning.setTop(false);

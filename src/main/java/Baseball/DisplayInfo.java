@@ -82,7 +82,7 @@ class DisplayInfo {
         for (int i = 1; i < 10; i++)
         {
             Batter batter = visitorStartingLineup.get(i);
-            System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s %6s",
+            System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s %.1f",
                     batter.getNameLast(), batter.getBattingOrder(), batter.getBatterStats().getAtBats(),
                     batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
                     batter.getBatterStats().getRbi(),
@@ -134,7 +134,7 @@ class DisplayInfo {
         for (int i = 1; i < 10; i++)
         {
             Batter batter = homeStartingLineup.get(i);
-            System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s %6s",
+            System.out.format("%10s %3s %6s %4s %4s %4s %5s %5s %5s %5s %5s %4s %4s %4s %3s %16s %.1f",
                     batter.getNameLast(), batter.getBattingOrder(), batter.getBatterStats().getAtBats(),
                     batter.getBatterStats().getRuns(), batter.getBatterStats().getHits(),
                     batter.getBatterStats().getRbi(),
@@ -254,6 +254,8 @@ class DisplayInfo {
             schedule.setWinningPitcherId(pitcher.getHomeWinningPitcher().getPlayerId());
             homeTeam.getTeamStats().setSeasonGames(homeTeam.getTeamStats().getSeasonGames() + 1);
             homeTeam.getTeamStats().setSeasonWins(homeTeam.getTeamStats().getSeasonWins() + 1);
+            homeTeam.getTeamStats().setHomeWins(homeTeam.getTeamStats().getHomeWins() + 1);
+            visitorTeam.getTeamStats().setAwayLosses(visitorTeam.getTeamStats().getAwayLosses() + 1);
             visitorTeam.getTeamStats().setSeasonGames(visitorTeam.getTeamStats().getSeasonGames() + 1);
             visitorTeam.getTeamStats().setSeasonLosses(visitorTeam.getTeamStats().getSeasonLosses() + 1);
             homeTeam.getTeamStats().setCurrentWinStreak(homeTeam.getTeamStats().getCurrentWinStreak() + 1);
@@ -285,6 +287,8 @@ class DisplayInfo {
             schedule.setLosingPitcherId(pitcher.getHomeLosingPitcher().getPlayerId());
             visitorTeam.getTeamStats().setSeasonGames(visitorTeam.getTeamStats().getSeasonGames() + 1);
             visitorTeam.getTeamStats().setSeasonWins(visitorTeam.getTeamStats().getSeasonWins() + 1);
+            visitorTeam.getTeamStats().setAwayWins(visitorTeam.getTeamStats().getAwayWins() + 1);
+            homeTeam.getTeamStats().setHomeLosses(homeTeam.getTeamStats().getHomeLosses() + 1);
             homeTeam.getTeamStats().setSeasonGames(homeTeam.getTeamStats().getSeasonGames() + 1);
             homeTeam.getTeamStats().setSeasonLosses(homeTeam.getTeamStats().getSeasonLosses() + 1);
             homeTeam.getTeamStats().setCurrentLossStreak(homeTeam.getTeamStats().getCurrentLossStreak() + 1);
@@ -397,6 +401,7 @@ class DisplayInfo {
         System.out.println();
         for (Pitcher printedHomePitcher : homePitchers) {
             if (printedHomePitcher.getPitcherStats().getGameBattersFaced() > 0) {
+                pitcher.updateDaysRest(printedHomePitcher, schedule);
                 System.out.printf("%10s %2s %2s %4s %2s %2s %2s %2s", printedHomePitcher.getNameLast(),
                         printedHomePitcher.getPitcherStats().getGameBattersFaced(),
                         printedHomePitcher.getPitcherStats().getGameInningsPitchedOuts(),

@@ -204,11 +204,11 @@ class TeamStats {
         this.gameDoublePlays = gameDoublePlays;
     }
 
-    public int getGames() {
+    int getGames() {
         return games;
     }
 
-    public void setGames(int games) {
+    void setGames(int games) {
         this.games = games;
     }
 
@@ -216,7 +216,7 @@ class TeamStats {
         return gamesHome;
     }
 
-    public void setGamesHome(int gamesHome) {
+    void setGamesHome(int gamesHome) {
         this.gamesHome = gamesHome;
     }
 
@@ -224,7 +224,7 @@ class TeamStats {
         return wins;
     }
 
-    public void setWins(int wins) {
+    void setWins(int wins) {
         this.wins = wins;
     }
 
@@ -232,7 +232,7 @@ class TeamStats {
         return losses;
     }
 
-    public void setLosses(int losses) {
+    void setLosses(int losses) {
         this.losses = losses;
     }
 
@@ -240,7 +240,7 @@ class TeamStats {
         return divWin;
     }
 
-    public void setDivWin(String divWin) {
+    void setDivWin(String divWin) {
         this.divWin = divWin;
     }
 
@@ -248,7 +248,7 @@ class TeamStats {
         return wcWin;
     }
 
-    public void setWcWin(String wcWin) {
+    void setWcWin(String wcWin) {
         this.wcWin = wcWin;
     }
 
@@ -256,7 +256,7 @@ class TeamStats {
         return lgWin;
     }
 
-    public void setLgWin(String lgWin) {
+    void setLgWin(String lgWin) {
         this.lgWin = lgWin;
     }
 
@@ -264,7 +264,7 @@ class TeamStats {
         return WsWin;
     }
 
-    public void setWsWin(String wsWin) {
+    void setWsWin(String wsWin) {
         WsWin = wsWin;
     }
 
@@ -328,7 +328,7 @@ class TeamStats {
         return strikeOuts;
     }
 
-    public void setStrikeOuts(int strikeOuts) {
+    void setStrikeOuts(int strikeOuts) {
         this.strikeOuts = strikeOuts;
     }
 
@@ -432,7 +432,7 @@ class TeamStats {
         return walksAllowed;
     }
 
-    public void setWalksAllowed(int walksAllowed) {
+    void setWalksAllowed(int walksAllowed) {
         this.walksAllowed = walksAllowed;
     }
 
@@ -484,51 +484,51 @@ class TeamStats {
         this.pitchingParkEffect = pitchingParkEffect;
     }
 
-    public int getCurrentWinStreak() {
+    int getCurrentWinStreak() {
         return currentWinStreak;
     }
 
-    public void setCurrentWinStreak(int currentWinStreak) {
+    void setCurrentWinStreak(int currentWinStreak) {
         this.currentWinStreak = currentWinStreak;
     }
 
-    public int getCurrentLossStreak() {
+    int getCurrentLossStreak() {
         return currentLossStreak;
     }
 
-    public void setCurrentLossStreak(int currentLossStreak) {
+    void setCurrentLossStreak(int currentLossStreak) {
         this.currentLossStreak = currentLossStreak;
     }
 
-    public int getLongestWinStreak() {
+    int getLongestWinStreak() {
         return longestWinStreak;
     }
 
-    public void setLongestWinStreak(int longestWinStreak) {
+    void setLongestWinStreak(int longestWinStreak) {
         this.longestWinStreak = longestWinStreak;
     }
 
-    public int getLongestLossStreak() {
+    int getLongestLossStreak() {
         return longestLossStreak;
     }
 
-    public void setLongestLossStreak(int longestLossStreak) {
+    void setLongestLossStreak(int longestLossStreak) {
         this.longestLossStreak = longestLossStreak;
     }
 
-    public int getTeamLeftOnBase() {
+    int getTeamLeftOnBase() {
         return teamLeftOnBase;
     }
 
-    public void setTeamLeftOnBase(int teamLeftOnBase) {
+    void setTeamLeftOnBase(int teamLeftOnBase) {
         this.teamLeftOnBase = teamLeftOnBase;
     }
 
-    public int getsTeamDoublePlaysTurned() {
+    int getsTeamDoublePlaysTurned() {
         return sTeamDoublePlaysTurned;
     }
 
-    public void setsTeamDoublePlaysTurned(int sTeamDoublePlaysTurned) {
+    void setsTeamDoublePlaysTurned(int sTeamDoublePlaysTurned) {
         this.sTeamDoublePlaysTurned = sTeamDoublePlaysTurned;
     }
 

@@ -209,13 +209,13 @@ class Player {
         if (team.getTeamStats().getSeasonGames() > 0) {
             for (Batter batter : batterList) {
                 if (batter.getBatterStats().getsGamesPlayed() > 0) {
-                    batter.getBatterStats().setActualPlayPercent(batter.getBatterStats().getsGamesPlayed() / team.getTeamStats().getSeasonGames());
+                    batter.getBatterStats().setActualPlayPercent((double)batter.getBatterStats().getsGamesPlayed() / team.getTeamStats().getSeasonGames());
                 } else {
                     batter.getBatterStats().setActualPlayPercent(0.00);
                 }
 
                 if (batter.getBatterStats().getGamesPlayed() > 0) {
-                    batter.getBatterStats().setHistPercentPlayed(batter.getBatterStats().getGamesPlayed() / team.getTeamStats().getGames());
+                    batter.getBatterStats().setHistPercentPlayed((double)batter.getBatterStats().getGamesPlayed() / team.getTeamStats().getGames());
                 } else {
                     batter.getBatterStats().setHistPercentPlayed(0.00);
                 }
@@ -223,13 +223,13 @@ class Player {
 
             for (Pitcher pitcher : pitcherList) {
                 if (pitcher.getPitcherStats().getsGamesPlayed() > 0) {
-                    pitcher.getPitcherStats().setActualPlayPercent(pitcher.getPitcherStats().getsGamesPlayed() / team.getTeamStats().getSeasonGames());
+                    pitcher.getPitcherStats().setActualPlayPercent((double)pitcher.getPitcherStats().getsGamesPlayed() / team.getTeamStats().getSeasonGames());
                 } else {
                     pitcher.getPitcherStats().setActualPlayPercent(0.00);
                 }
 
                 if (pitcher.getPitcherStats().getGamesPlayed() > 0) {
-                    pitcher.getPitcherStats().setHistPercentPlayed(pitcher.getPitcherStats().getGamesPlayed() / team.getTeamStats().getGames());
+                    pitcher.getPitcherStats().setHistPercentPlayed((double)pitcher.getPitcherStats().getGamesPlayed() / team.getTeamStats().getGames());
                 } else {
                     pitcher.getPitcherStats().setHistPercentPlayed(0.00);
                 }
@@ -237,16 +237,14 @@ class Player {
 
             for (Fielder fielder : fielderList) {
                 if (fielder.getFielderStats().getsGamesPlayed() > 0) {
-                    fielder.getFielderStats().setActualPlayerPercentage(fielder.getFielderStats().getsGamesPlayed() /
+                    fielder.getFielderStats().setActualPlayerPercentage((double)fielder.getFielderStats().getsGamesPlayed() /
                             team.getTeamStats().getSeasonGames());
                 } else {
                     fielder.getFielderStats().setActualPlayerPercentage(0.00);
-                    fielder.getFielderStats().setHistPlayerPercentage(fielder.getFielderStats().getGamesPlayed() /
-                            team.getTeamStats().getGames());
                 }
 
                 if (fielder.getFielderStats().getGamesPlayed() > 0) {
-                    fielder.getFielderStats().setHistPlayerPercentage(fielder.getFielderStats().getGamesPlayed() /
+                    fielder.getFielderStats().setHistPlayerPercentage((double)fielder.getFielderStats().getGamesPlayed() /
                             team.getTeamStats().getGames());
                 } else {
                     fielder.getFielderStats().setHistPlayerPercentage(0.00);

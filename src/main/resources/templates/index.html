@@ -1,153 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Perfect Game Baseball Simulator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    <link href="css/perfectGameWebStyles.css" rel="stylesheet" media="screen">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+  <title>Perfect Game Baseball</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<header id="top" class="main-header">
+  <span class="title">Relieve the glory days of baseball's past!</span>
+  <h1>Perfect Game Baseball</h1>
+  <img class="arrow" src="img/arrow.svg" alt="Down arrow">
+</header>
 
-    <!-- Navbar-->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <!-- Makes navbar collapse and go to hamburger format on small screens-->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="#" class="navbar-brand text-muted">Perfect Game Logo</a>
-        <div class="collapse navbar-collapse">
+<div class="primary-content t-border">
+  <p class="intro">
+    Perfect Game Baseball is a free baseball simulator that allows players to replay complete seasons from baseballs glorious past. Users can play a single game pitting two teams
+    from any era against one another or replay an entire season!  You can also view historical as well as simulated stats for players and teams.
+  </p>
+  <a class="callout" href="/more">Find out more</a>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Simulator</a></li>
-            <li class="dropdown">
-              <a data-toggle="dropdown" data-target="#">Statistics<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Players</a></li>
-                  <li><a href="#">Teams</a></li>
-                  <li><a href="#">Schedule</a></li>
-                  <li><a href="#">Setup</a></li>
-                </ul>
-            </li>
-          </ul>
-        </div>
+  <div class="simulate">
+    <h2>Simulate a game</h2>
+    <p>
+      Quickly get started by playing a <a href="/simulate">single game</a>, or an <a href="#eagles">entire season</a>.
+    </p>
+  </div><!-- End .simulate -->
 
-      </div>
-    </div>
-    <!-- End Navbar-->
+  <a class="callout" href="#wildlife">See the Wildlife</a>
+</div><!-- End .primary-content -->
 
-    <!-- Carousel -->
-    <div id="myCarousel" class="carousel slide jumbotron">
-      <div class="container">
-        <ol class="carousel-indicators">
-          <li class="active" data-target="#myCarousel" data-slide-to="0"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="item active">
-            <h1>Perfect Game Baseball Simulator</h1>
-            <p class="lead">Simulate baseball seasons from the past!  Relieve the glory days of baseball.</p>
-            <p class="btn-group">
-              <a class="btn btn-success btn-lg" href="/simulate">Simulate a Game</a>
-              <a class="btn btn-default btn-lg" data-toggle="modal" href="#playerList" >See Player List</a>
-            </p>
-          </div>
-          <div class="item">
-            <h1>Schedules and Box Scores</h1>
-            <p class="lead">View schedule and box scores for completed games.</p>
-            <p class="btn-group">
-              <a class="btn btn-success btn-lg" href="/simulate">View Schedule</a>
-            </p>
-          </div>
-          <div class="item">
-            <h1>Player and Team Statistics</h1>
-            <p class="lead">View statistics from seasons on-going or completed.</p>
-            <p class="btn-group">
-              <a class="btn btn-success btn-lg" href="/simulate">View Player Stats</a>
-              <a class="btn btn-default btn-lg" href="#" >View Team Stats</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="icon-prev"></span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="icon-next"></span>
+<div class="secondary-content t-border group">
+  <div class="resorts">
+    <img src="img/nyyteamphoto.jpg" alt="Resort">
+    <h3>From Tents to Resorts</h3>
+    <p>
+      Perfect Game Baseball is a free baseball simulator that allows players to replay complete seasons from baseballs glorious past. Users can play a single game pitting two teams
+      from any era against one another or replay an entire season!  You can also view historical as well as simulated stats for players and teams.
+    </p>
+    <ul>
+      <li><a href="#hotels">Lake Tahoe Resort Hotel</a></li>
+      <li><a href="#resorts">South Lake Tahoe Resorts</a></li>
+      <li><a href="#lodging">Tahoe Ski Resort Lodging</a></li>
+    </ul>
+  </div>
 
-      </a>
-    </div>
+  <div class="tips">
+    <img src="img/playermanagers.jpg" alt="Mountain Landscape">
+    <h3>Pack Accordingly</h3>
+    <p>
+      One of most important things when it comes to traveling through the great outdoors is packing accordingly. Here are a few tips:
+    </p>
+    <ol>
+      <li>Bring layers of clothing</li>
+      <li>Pack sunscreen</li>
+      <li>Carry extra water just in case</li>
+      <li>Pack light</li>
+    </ol>
+  </div>
+</div><!-- End .secondary-content -->
 
-    <!-- End Carousel -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="playerList">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">See Player List!</h4>
-          </div>
-          <div class="modal-body">
-            <form class="form-inline">
-              <div class="form-group">
-                <label class="sr-only" for="yearID">Enter Year</label>
-                <input type="number" class="form-control" id="yearID" placeholder="Year">
-                <div class="form-group">
-                  <select class="form-control">
-                    <option>1913</option>
-                    <option>1914</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal">Show me the players.</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Modal -->
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <h2>Simulate</h2>
-          <p>Play a single game, series of games, or an entire season.</p>
-        </div>
-
-        <div class="col-sm-3">
-          <h2>Standings</h2>
-          <p>View standings for simulated league games.</p>
-        </div>
-
-        <div class="col-sm-3">
-          <h2>Schedule</h2>
-          <p>View schedule for simulated league.</p>
-        </div>
-
-        <div class="col-sm-3">
-          <h2>Statistics</h2>
-          <p>View player and team statistics for historical and simulated leagues..</p>
-        </div>
-      </div>
-
-      <div>
-        <p>&copy; 2017 Perfect Game Baseball Simulator</p>
-      </div>
-    </div>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+<footer class="main-footer">
+  <p>All rights reserved to the state of <a href="#">California</a>.</p>
+  <a href="#top">Back to top &raquo;</a>
+</footer>
+</body>
 </html>

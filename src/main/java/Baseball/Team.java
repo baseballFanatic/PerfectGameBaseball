@@ -179,6 +179,10 @@ class Team {
             team.getTeamStats().setsWalksAllowed(team.getTeamStats().getsWalksAllowed() + pitcher.getPitcherStats().getGameWalksAllowed());
             team.getTeamStats().setsHitBatters(team.getTeamStats().getsHitBatters() + pitcher.getPitcherStats().getGameHitByPitch());
             team.getTeamStats().setsRunsAllowed(team.getTeamStats().getsRunsAllowed() + pitcher.getPitcherStats().getGameRunsAllowed());
+            team.getTeamStats().setsStrikeOutsPitcher(team.getTeamStats().getsStrikeOutsPitcher() + pitcher.getPitcherStats().getGameStrikeOutsAllowed());
+            team.getTeamStats().setsSaves(team.getTeamStats().getsSaves() + pitcher.getPitcherStats().getGameSave());
+            team.getTeamStats().setsShutOuts(team.getTeamStats().getsShutOuts() + pitcher.getPitcherStats().getGameShutOuts());
+            team.getTeamStats().setsCompleteGames(team.getTeamStats().getsCompleteGames() + pitcher.getPitcherStats().getGameCompleteGame());
         }
     }
 
