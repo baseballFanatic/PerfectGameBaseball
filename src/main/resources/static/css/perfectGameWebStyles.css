@@ -31,6 +31,9 @@ body {
     text-align: left;
 }
 
+.main-content {
+    max-width: 900px;
+}
 
 
 /*  JUMBOTRON

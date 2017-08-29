@@ -1,0 +1,256 @@
+/* ===============================================
+    Base Element Styles
+================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Lato, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.6em;
+    color: #3a3a3a;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+p {
+    font-size: .95em;
+    margin-bottom: 1.8em;
+    color: black;
+}
+
+h2,
+h3,
+a {
+    color: #093a58;
+}
+
+h2,
+h3 {
+    margin-top: 0;
+}
+
+h5 {
+    font-size: 12px;
+    line-height: 16px;
+    color: black;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+/* ---- Navigation ---- */
+
+.name {
+	font-size: 1.35em;
+	margin: 0;
+}
+.main-nav {
+	margin-top: 5px;
+}
+.name a,
+.main-nav a {
+	text-align: center;
+	display: block;
+	padding: 10px 15px;
+}
+.main-nav a {
+	font-size: .95em;
+	color: #3acec2;
+	text-transform: uppercase;
+}
+.main-nav a:hover {
+	color: #093a58;
+}
+
+.row {
+    flex: 2;
+}
+
+.content {
+    	color: #fff;
+    	background: #3acec2;
+    	padding: 3.2em 0;
+    	margin-bottom: 48px;
+    	background-image: url("../img/Wrigley Field.jpg");
+    	background-repeat: no-repeat;
+    	background-size: cover;
+    	width: 1038px;
+    	display: flex;
+    	justify-content: center;
+}
+
+.div-placeholder {
+    flex-basis: 100px;
+}
+
+.primary,
+.secondary,
+.tertiary {
+    color: #fff;
+    background: #3acec2;
+    padding: 3.2em 0;
+    margin-bottom: 48px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.secondary {
+    background-image: url("../img/eddie-collins.jpg");
+}
+
+.primary {
+    background-image: url("../img/ty-cobb.jpg");
+}
+
+.tertiary {
+    background-image: url("../img/paul-molitor.jpg");
+}
+
+.box_inn {
+/*    position: relative;
+    border: 5px solid #fff;
+    border-radius: 5px;*/
+    position: absolute;
+    padding: 15px 0;
+    z-index: 3;
+    bottom: 20%;
+    left: 10px;
+    right: 10px;
+    text-align: center;
+    background-color: lightgrey;
+    opacity: .9;
+    margin-bottom: 20px;
+    height: 176.55px;
+}
+
+.promo-overlay {
+    background: rgba(245,245,245,.8);
+    padding: 20px 5px;
+    text-align: center;
+}
+
+/* ---- Layout Containers ---- */
+
+.main-header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+.banner,
+.main-footer {
+	text-align: center;
+}
+.banner {
+	color: #fff;
+	background: #3acec2;
+	padding: 3.2em 0;
+	margin-bottom: 48px;
+	background-image: url("../img/cubs_celebrating.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+.col {
+	padding: 1em;
+	border-radius: .35em;
+	margin: 5px 20px;
+	position: relative;
+    border: 5px solid #fff;
+    border-radius: 5px;
+}
+.main-footer {
+	background: #d9e4ea;
+	padding: 2em 0;
+	margin-top: 30px;
+}
+
+/* ---- Page Elements ---- */
+
+.logo {
+	width: 190px;
+}
+.headline {
+	margin-bottom: 0;
+}
+.feat-img {
+	border-radius: 5px;
+}
+
+.button {
+    color: #fff;
+    text-align: center;
+    padding: .625em 1.25em;
+    background: #3acec2;
+    border-radius: .35em;
+    margin-bottom: 10px;
+}
+
+/* =================================
+  Media Queries
+==================================== */
+@media (min-width: 769px) {
+	.main-header,
+	 .main-nav,
+	  .row,
+	   .col {
+	    display: flex;
+	}
+
+	.main-header {
+	    flex-direction: column;
+	    align-items: center;
+	}
+
+	.col {
+	    flex: 1;
+	    flex-basis: 50%;
+	    flex-direction: column;
+	}
+
+	.row {
+	    flex-wrap: wrap;
+	}
+
+	.button {
+	    margin-top: auto;
+	    align-self: center;
+	}
+}
+@media (min-width: 1025px) {
+	.main-header {
+	    flex-direction: row;
+	    justify-content: space-between;
+	}
+
+	.primary {
+	    flex; 2;
+	}
+
+	.col {
+	    flex-basis: 0;
+	}
+
+	.secondary {
+	    order: -1;
+	}
+}
+

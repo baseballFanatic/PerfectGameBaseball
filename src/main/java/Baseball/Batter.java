@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class Batter extends Player implements Comparable<Batter> {
+public class Batter extends Player {
     private String round, teamID, lgID, pos;
     private int battingOrder;
     private Hands bats;
@@ -252,7 +252,6 @@ public class Batter extends Player implements Comparable<Batter> {
         this.pitcherReachedOn = pitcherReachedOn;
     }
 
-   // List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
     HashMap<Integer, Batter> matchPositions(List<Batter> batters, HashMap<Integer, Fielder> fielders){
         //int b = 0;
         HashMap<Integer, Batter> matchedBatters = new HashMap<>();
@@ -275,20 +274,6 @@ public class Batter extends Player implements Comparable<Batter> {
         return matchedBatters;
     }
 
-    @Override
-    public int compareTo(Batter o) {
-        if(getBatterStats().getBattingAverage() < o.getBatterStats().getBattingAverage())
-        {
-            return 1;
-        } else if (getBatterStats().getBattingAverage() > o.getBatterStats().getBattingAverage())
-        {
-            return -1;
-        } else
-        {
-            return 0;
-        }
-
-    }
 
     List<Batter> findDesignatedHitter(List<Batter> batterStarters, List<Batter> teamBatters) {
         for (Batter batter : teamBatters)

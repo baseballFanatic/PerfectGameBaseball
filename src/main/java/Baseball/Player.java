@@ -2,10 +2,12 @@ package Baseball;
 
 import java.util.List;
 
-class Player {
+//provide a (value="") to the @Entity that corresponds to the table name.  If one isn't supplied the class name is default
+
+public class Player {
+    private String playerId;
     String nameFirst;
     String nameLast;
-    private String playerId;
     private String birthYear;
     private String birthMonth;
     private String birthDay;
@@ -23,12 +25,21 @@ class Player {
     private String finalGame;
     private String retroId;
     private String bbrefId;
-    String simName;
     private int weight;
     private int height;
+    String simName;
     int simNumber;
 
-    String getNameFirst() {
+    public Player(String nameFirst, String nameLast, String playerId) {
+        this.nameFirst = nameFirst;
+        this.nameLast = nameLast;
+        this.playerId = playerId;
+    }
+
+    public Player() {
+    }
+
+    public String getNameFirst() {
         return nameFirst;
     }
 
@@ -36,7 +47,7 @@ class Player {
         this.nameFirst = nameFirst;
     }
 
-    String getNameLast() {
+    public String getNameLast() {
         return nameLast;
     }
 
@@ -44,7 +55,7 @@ class Player {
         this.nameLast = nameLast;
     }
 
-    String getPlayerId() {
+    public String getPlayerId() {
         return playerId;
     }
 
@@ -172,11 +183,11 @@ class Player {
         this.finalGame = finalGame;
     }
 
-    public String getRetroId() {
+    String getRetroId() {
         return retroId;
     }
 
-    public void setRetroId(String retroId) {
+    void setRetroId(String retroId) {
         this.retroId = retroId;
     }
 
@@ -204,8 +215,8 @@ class Player {
         this.height = height;
     }
 
-    public void updatePlayPercent(List<Batter> batterList, List<Pitcher> pitcherList, List<Fielder> fielderList,
-                                  Team team) {
+    void updatePlayPercent(List<Batter> batterList, List<Pitcher> pitcherList, List<Fielder> fielderList,
+                           Team team) {
         if (team.getTeamStats().getSeasonGames() > 0) {
             for (Batter batter : batterList) {
                 if (batter.getBatterStats().getsGamesPlayed() > 0) {

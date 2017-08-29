@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <!--Tells Thymeleaf where our css is stored-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.structure.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.theme.min.css}"/>
-    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <link rel="stylesheet" th:href="@{/css/materialize.css}"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" th:href="@{/perfectGameWeb.css}"/>
-    <title>Perfect Game Baseball | Home</title>
-</head>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Perfect Game Baseball</title>
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css"/>
+        <link href="css/Dstyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    </head>
     <body>
         <div class="main-content">
             <header class="main-header">
@@ -22,25 +22,21 @@
                 </h1>
                 <ul class="main-nav">
                     <li><a href="/">Home</a></li>
-                    <li><a href="players">Players</a></li>
+                    <li><a href="more">Players</a></li>
                     <li><a href="teams">Teams</a></li>
                     <li><a href="simulate">Simulation</a></li>
                 </ul>
             </header> <!-- Main Header -->
 
-            <script th:src="@{/js/jquery-1.11.3.js}"></script>
-            <script th:src="@{/js/materialize.js}"></script>
-            <!--<script th:src="@{/js/materialize.js}"></script>-->
-            <script th:src="@{/js/perfectGameApp.js}"></script>
             <div class="banner">
-                <!--            <img class="logo" src="img/perfectGameLogo2.jpg" alt="City">-->
+    <!--            <img class="logo" src="img/perfectGameLogo2.jpg" alt="City">-->
                 <h1 class="headline">Perfect Game Baseball</h1>
                 <span class="tagline">Simulate games and/or seasons from baseball's past!</span>
             </div><!--/.banner-->
             <div class="content">
                 <div class="div-placeholder"></div>
                 <div class="row">
-                    <div class="primary col">
+                     <div class="primary col">
                         <div class="box_inn">
                             <h5>Simulate Games</h5>
                             <p>Use Perfect Game Baseball's powerful game simulator to replay seasons one game at a time or
@@ -55,7 +51,7 @@
                             <p>View historical stats from every player in Major League Baseball from the very beginning.
                                 Also view stats for any simulated leagues you have played.</p>
                         </div>
-                        <a class="button" href="players">Players</a>
+                        <a class="button" href="more">Players</a>
                     </div>
 
                     <div class="tertiary col">
@@ -74,7 +70,9 @@
             </footer>
         </div>
         <!--  Scripts-->
-        <script th:src="@{/js/jquery-ui.min.js}"></script>
-        <script th:src="@{/js/perfectGameApp.js}"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/perfectGameApp.js"></script>
     </body>
 </html>
+
+

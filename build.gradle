@@ -1,10 +1,10 @@
-plugins {
+/*plugins {
     id 'java'
     id 'idea'
     id 'org.springframework.boot' version '1.4.3.RELEASE'
 }
 
-group 'com.perfectgameaseball'
+group 'com.perfectgamebaseball'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -14,10 +14,44 @@ repositories {
 }
 
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'
+    compile 'javax.transaction:jta:1.1'
     compile 'org.hashids:hashids:1.0.1'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
     // Allows use of HTML5
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    compile 'org.codehaus.jackson:jackson-mrbean:1.9.11'
     runtime 'net.sourceforge.nekohtml:nekohtml:1.9.22'
+}*/
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'org.springframework.boot' version '1.4.3.RELEASE'
 }
+
+group 'Baseball'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.2.6.RELEASE'
+/*    compile 'org.hashids:hashids:1.0.1'
+    compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+    compile 'org.hibernate:hibernate-core:5.2.1.Final'
+    compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'*/
+}
+

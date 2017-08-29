@@ -13,7 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.Date;
 
-class Database {
+public class Database {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost/lahman2016?verifyServerCertificate=false&useSSL=true";
@@ -649,7 +649,6 @@ class Database {
         System.out.println("Inserted schedule");
         }
 
-
     private static void insertPgbsBatters(Connection conn, int yearID) throws SQLException {
         PreparedStatement statement = conn.prepareStatement("insert into pgbs_batters (nameFirst," +
                 " nameLast," +
@@ -1202,7 +1201,82 @@ class Database {
 
     }
 
-    static List<Batter> selectBatters(String teamID, int yearID) throws SQLException,
+    public static List<Season> selectSimulatedSeasons() throws SQLException, InstantiationException, ClassNotFoundException
+    {
+        Connection conn;
+
+        List<Season> seasons = new ArrayList<>();
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("SELECT * from pgbs_season_reference " +
+                    " order by yearID");
+
+            ResultSet rs = stmt.executeQuery();
+            // Extract data from result set
+            while (rs.next()) {
+                Season season = new Season();
+                // Retrieve by column name
+                season.setYearID(rs.getInt("yearID"));
+                season.setAlEastChamp(rs.getString("alEastChamp"));
+                season.setAlCentralChamp(rs.getString("alCentralChamp"));
+                season.setAlWestChamp(rs.getString("alWestChamp"));
+                season.setAlWildCard(rs.getString("alWildCard"));
+                season.setAlDivisionSeries1(rs.getString("alDivisionSeries1"));
+                season.setAlDivisionSeries2(rs.getString("alDivisionSeries2"));
+                season.setAlChampion(rs.getString("alChampion"));
+                season.setAlMvp(rs.getString("alMvp"));
+                season.setAlCyYoung(rs.getString("alCyYoung"));
+                season.setNlEastChamp(rs.getString("nlEastChamp"));
+                season.setNlCentralChamp(rs.getString("nlCentralChamp"));
+                season.setNlWestChamp(rs.getString("nlWestChamp"));
+                season.setNlWildCard(rs.getString("nlWildCard"));
+                season.setNlDivisionSeries1(rs.getString("nlDivisionSeries1"));
+                season.setNlDivisionSeries2(rs.getString("nlDivisionSeries2"));
+                season.setNlChampion(rs.getString("nlChampion"));
+                season.setNlMvp(rs.getString("nlMvp"));
+                season.setNlCyYoung(rs.getString("nlCyYoung"));
+                season.setWorldSeriesChamp(rs.getString("worldSeriesChamp"));
+                season.setAl1bSilver(rs.getString("al1bSilver"));
+                season.setAl2bSilver(rs.getString("al2bSilver"));
+                season.setAl3bSilver(rs.getString("al3bSilver"));
+                season.setAlSsSilver(rs.getString("alSsSilver"));
+                season.setAlCsilver(rs.getString("alCsilver"));
+                season.setAlDhSilver(rs.getString("alDhSilver"));
+                season.setAlLfSilver(rs.getString("alLfSilver"));
+                season.setAlCfSilver(rs.getString("alCfSilver"));
+                season.setAlRfSilver(rs.getString("alRfSilver"));
+                season.setNl1bSilver(rs.getString("nl1bSilver"));
+                season.setNl2bSilver(rs.getString("nl2bSilver"));
+                season.setNl3bSilver(rs.getString("nl3bSilver"));
+                season.setNlSsSilver(rs.getString("nlSsSilver"));
+                season.setNlCsilver(rs.getString("nlCsilver"));
+                season.setNlPsilver(rs.getString("nlPsilver"));
+                season.setNlLfSilver(rs.getString("nlLfSilver"));
+                season.setNlCfSilver(rs.getString("nlCfSilver"));
+                season.setNlRfSilver(rs.getString("nlRfSilver"));
+                season.setSimName(rs.getString("simName"));
+                season.setSeasonKey(rs.getInt("seasonKey"));
+
+                seasons.add(season);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return seasons;
+    }
+
+    public static List<Batter> selectBatters(String teamID, int yearID) throws SQLException,
             InstantiationException, ClassNotFoundException
     {
         Connection conn;
