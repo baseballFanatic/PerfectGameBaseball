@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Simulator</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css"/>
+    <link href="css/Dstyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <script>
+        function testIt()
+        {
+            $("#testDiv").load("/test/" + $("#yearSelect").val());
+        }
+    </script>
+</head>
+    <header class="main-header">
+        <h1 class="name">
+            <a href="/">Perfect Game Baseball</a>
+        </h1>
+        <ul class="main-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="players">Players</a></li>
+            <li><a href="teams">Teams</a></li>
+            <li><a href="simulate">Simulation</a></li>
+        </ul>
+    </header> <!-- Main Header -->
+    <body class="simulator">
+        <div id="ajax">
+
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Load</a></li>
+                <li><a href="#tabs-2">Standings</a></li>
+                <li><a href="#tabs-3">Player Stats</a></li>
+                <li><a href="#tabs-4">Team Stats</a></li>
+            </ul>
+            <div id="tabs-1" id="year">
+                <h3>Select a year to load</h3>
+                <select id="yearSelect" name="yearSelect">
+                    <option value="">Select a Year</option>
+                    <option th:each="season : ${seasons}"
+                            th:value="${season.yearID}"
+                            th:text="${season.yearID}">Year</option>
+                </select>
+                <button type="submit" id="load" value="Submit" onclick="testIt()">Submit</button>
+            </div>
+            <div id="tabs-2">
+                <p>Check Season Standings</p>
+            </div>
+            <div id="tabs-3">
+                <p>View Player Stats</p>
+            </div>
+            <div id="tabs-4">
+                <p>View Team Stats</p>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Year</th>
+                <th>World Series Champion</th>
+            </tr>
+            <tr>
+                <td th:each="season : ${seasons}" th:text="${season.yearID}">Year</td>
+                <td th:each="season : ${seasons}" th:text="${season.worldSeriesChamp}">World Series Champion</td>
+            </tr>
+        </table>
+
+        <div class="year-container">
+            <div class="row">
+                <div th:each="season : ${seasons}" class="col s12 l4">
+                    <p th:text="${season.yearID}"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="testDiv"></div>
+
+        <!--  Scripts-->
+
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/perfectGameApp.js"></script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!--Tells Thymeleaf where our css is stored-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.structure.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.theme.min.css}"/>
+    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/materialize.css}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" th:href="@{/perfectGameWeb.css}"/>
+    <title>Perfect Game Baseball | Players</title>
+</head>
+
+<body>
+    <h1>Players</h1>
+    <h4 th:text="${player.nameFirst} + ' ' + ${player.nameLast}">Name</h4>
+    <p th:text="'Player ID: ' + ${player.playerId}">PlayerId</p>
+</body>
+</html>

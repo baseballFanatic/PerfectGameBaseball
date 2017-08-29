@@ -1,0 +1,31 @@
+/*  LAYOUT
+======================================== */
+body {
+    padding-top: 50px;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+
+
+/*  JUMBOTRON
+======================================== */
+.jumbotron {
+    text-align: center;
+}
+
+/* CAROUSEL
+======================================== */
+.carousel-indicators {
+    bottom: 0;
+}
+
+.carousel-indicators .active {
+    background-color: #222;
+}
+
+.carousel-indicators li {
+    border-color: #222;
+}
