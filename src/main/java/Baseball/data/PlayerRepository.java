@@ -1,7 +1,5 @@
 package Baseball.data;
 
-import Baseball.Batter;
-import Baseball.Database;
 import Baseball.Player;
 import org.springframework.stereotype.Component;
 

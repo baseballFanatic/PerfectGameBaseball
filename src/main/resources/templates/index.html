@@ -1,67 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Perfect Game Baseball</title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="viewport" content="width=device-width">
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css"/>
+  <link href="css/Dstyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-<header id="top" class="main-header">
-  <span class="title">Relieve the glory days of baseball's past!</span>
-  <h1>Perfect Game Baseball</h1>
-  <img class="arrow" src="img/arrow.svg" alt="Down arrow">
-</header>
-
-<div class="primary-content t-border">
-  <p class="intro">
-    Perfect Game Baseball is a free baseball simulator that allows players to replay complete seasons from baseballs glorious past. Users can play a single game pitting two teams
-    from any era against one another or replay an entire season!  You can also view historical as well as simulated stats for players and teams.
-  </p>
-  <a class="callout" href="/more">Find out more</a>
-
-  <div class="simulate">
-    <h2>Simulate a game</h2>
-    <p>
-      Quickly get started by playing a <a href="/simulate">single game</a>, or an <a href="#eagles">entire season</a>.
-    </p>
-  </div><!-- End .simulate -->
-
-  <a class="callout" href="#wildlife">See the Wildlife</a>
-</div><!-- End .primary-content -->
-
-<div class="secondary-content t-border group">
-  <div class="resorts">
-    <img src="img/nyyteamphoto.jpg" alt="Resort">
-    <h3>From Tents to Resorts</h3>
-    <p>
-      Perfect Game Baseball is a free baseball simulator that allows players to replay complete seasons from baseballs glorious past. Users can play a single game pitting two teams
-      from any era against one another or replay an entire season!  You can also view historical as well as simulated stats for players and teams.
-    </p>
-    <ul>
-      <li><a href="#hotels">Lake Tahoe Resort Hotel</a></li>
-      <li><a href="#resorts">South Lake Tahoe Resorts</a></li>
-      <li><a href="#lodging">Tahoe Ski Resort Lodging</a></li>
+<div class="main-content">
+  <header class="main-header">
+    <h1 class="name">
+      <a href="/">Perfect Game Baseball</a>
+    </h1>
+    <ul class="main-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="more">Players</a></li>
+      <li><a href="teams">Teams</a></li>
+      <li><a href="simulate">Simulation</a></li>
     </ul>
-  </div>
+  </header> <!-- Main Header -->
 
-  <div class="tips">
-    <img src="img/playermanagers.jpg" alt="Mountain Landscape">
-    <h3>Pack Accordingly</h3>
-    <p>
-      One of most important things when it comes to traveling through the great outdoors is packing accordingly. Here are a few tips:
-    </p>
-    <ol>
-      <li>Bring layers of clothing</li>
-      <li>Pack sunscreen</li>
-      <li>Carry extra water just in case</li>
-      <li>Pack light</li>
-    </ol>
-  </div>
-</div><!-- End .secondary-content -->
+  <div class="banner">
+    <!--            <img class="logo" src="img/perfectGameLogo2.jpg" alt="City">-->
+    <h1 class="headline">Perfect Game Baseball</h1>
+    <span class="tagline">Simulate games and/or seasons from baseball's past!</span>
+  </div><!--/.banner-->
+  <div class="content">
+    <div class="div-placeholder"></div>
+    <div class="row">
+      <div class="primary col">
+        <div class="box_inn">
+          <h5>Simulate Games</h5>
+          <p>Use Perfect Game Baseball's powerful game simulator to replay seasons one game at a time or
+            all at once.</p>
+        </div>
+        <a class="button" href="simulate">Simulator</a>
+      </div>
 
-<footer class="main-footer">
-  <p>All rights reserved to the state of <a href="#">California</a>.</p>
-  <a href="#top">Back to top &raquo;</a>
-</footer>
+      <div class="secondary col">
+        <div class="box_inn">
+          <h5>View Player Stats</h5>
+          <p>View historical stats from every player in Major League Baseball from the very beginning.
+            Also view stats for any simulated leagues you have played.</p>
+        </div>
+        <a class="button" href="more">Players</a>
+      </div>
+
+      <div class="tertiary col">
+        <div class="box_inn">
+          <h5>View Team Stats</h5>
+          <p>View historical stats for every team in Major League Baseball from the very beginning.
+            Also view team stats for any simulated leagues you have played.</p>
+        </div>
+        <a class="button" href="teams">Teams</a>
+      </div>
+    </div>
+    <div class="div-placeholder"></div>
+  </div>
+  <footer class="main-footer">
+    <span>&copy;2017 Perfect Game Baseball Simulator</span>
+  </footer>
+</div>
+<!--  Scripts-->
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/perfectGameApp.js"></script>
 </body>
 </html>

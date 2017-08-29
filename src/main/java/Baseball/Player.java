@@ -2,7 +2,7 @@ package Baseball;
 
 import java.util.List;
 
-class Player {
+public class Player {
     String nameFirst;
     String nameLast;
     private String playerId;
@@ -28,7 +28,15 @@ class Player {
     private int height;
     int simNumber;
 
-    String getNameFirst() {
+    public Player() {}
+
+    public Player(String nameFirst, String nameLast, String playerId) {
+        this.nameFirst = nameFirst;
+        this.nameLast = nameLast;
+        this.playerId = playerId;
+    }
+
+    public String getNameFirst() {
         return nameFirst;
     }
 

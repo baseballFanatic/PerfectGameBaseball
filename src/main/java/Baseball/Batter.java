@@ -20,9 +20,9 @@ public class Batter extends Player implements Comparable<Batter> {
     private Pitcher pitcherReachedOn;
     private InPlayPosition position;
 
-    public Batter() {
+    public Batter() {}
 
-    }
+
 
     private Batter(String nameFirst, String nameLast, Hands bats, InPlayPosition position) {
         this.bats = bats;

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 class PerfectGameController {
     @RequestMapping("/")
     public String perfectGameWebLaunch() {
-        return "Pindex";
+        return "index";
     }
 
     @RequestMapping("/simulate")
