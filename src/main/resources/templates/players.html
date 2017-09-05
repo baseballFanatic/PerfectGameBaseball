@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Perfect Game Baseball | Players</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/Dstyle.css}">
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <h1 class="name">
+            <a href="/">Perfect Game Baseball</a>
+        </h1>
+        <ul class="main-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="players">Players</a></li>
+            <li><a href="stats">Stats</a></li>
+            <li><a href="simulate">Simulation</a></li>
+        </ul>
+    </header> <!-- Main Header -->
+    <div class="players container">
+        <div>
+            <div th:each="player : ${players}">
+                <h2 th:text="${player.nameFirst} + ' ' + ${player.nameLast}">Full Name</h2>
+                <h3 th:text="${player.playerId}">PlayerId</h3>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/perfectGameApp.js"></script>
+</html>

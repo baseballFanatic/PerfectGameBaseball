@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -8,10 +8,10 @@
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
-  <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
-  <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css"/>
-  <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css"/>
-  <link href="css/Dstyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.structure.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.theme.min.css}"/>
+  <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
@@ -22,8 +22,8 @@
     </h1>
     <ul class="main-nav">
       <li><a href="/">Home</a></li>
-      <li><a href="more">Players</a></li>
-      <li><a href="teams">Teams</a></li>
+      <li><a href="players">Players</a></li>
+      <li><a href="stats">Stats</a></li>
       <li><a href="simulate">Simulation</a></li>
     </ul>
   </header> <!-- Main Header -->
@@ -51,7 +51,7 @@
           <p>View historical stats from every player in Major League Baseball from the very beginning.
             Also view stats for any simulated leagues you have played.</p>
         </div>
-        <a class="button" href="more">Players</a>
+        <a class="button" href="players">Players</a>
       </div>
 
       <div class="tertiary col">
@@ -60,7 +60,7 @@
           <p>View historical stats for every team in Major League Baseball from the very beginning.
             Also view team stats for any simulated leagues you have played.</p>
         </div>
-        <a class="button" href="teams">Teams</a>
+        <a class="button" href="stats">Stats</a>
       </div>
     </div>
     <div class="div-placeholder"></div>

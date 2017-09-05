@@ -44,7 +44,7 @@ public class Player {
         this.nameFirst = nameFirst;
     }
 
-    String getNameLast() {
+    public String getNameLast() {
         return nameLast;
     }
 
@@ -52,7 +52,7 @@ public class Player {
         this.nameLast = nameLast;
     }
 
-    String getPlayerId() {
+    public String getPlayerId() {
         return playerId;
     }
 

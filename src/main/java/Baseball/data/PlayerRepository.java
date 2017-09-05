@@ -28,7 +28,16 @@ public class PlayerRepository {
         return null;
     }
 
-    public List<Player> getAllPlayers() {
+    public static Player findByPlayerId(String playerId) {
+        for(Player player : ALL_PLAYERS) {
+            if(player.getPlayerId().equals(playerId)) {
+                return player;
+            }
+        }
+        return null;
+    }
+
+    public static List<Player> getAllPlayers() {
         return ALL_PLAYERS;
     }
 }

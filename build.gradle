@@ -1,23 +1,70 @@
-plugins {
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE")
+    }
+}
+
+/*plugins {
     id 'java'
     id 'idea'
     id 'org.springframework.boot' version '1.4.3.RELEASE'
-}
+}*/
 
-group 'com.perfectgameaseball'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
 repositories {
     mavenCentral()
 }
 
+/*group 'com.perfectgameaseball'
+version '1.0-SNAPSHOT'*/
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+
+/*These dependencies work
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.hashids:hashids:1.0.1'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
     // Allows use of HTML5
+    runtime 'net.sourceforge.nekohtml:nekohtml:1.9.22'*/
+
+/*
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.hashids:hashids:1.0.1'
+    compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
+    // Allows use of HTML5
+    runtime 'net.sourceforge.nekohtml:nekohtml:1.9.22'
+}
+*/
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile 'org.hashids:hashids:1.0.1'
+    // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf-data-jpa'
+
+    // Use MySQL Connector-J
+    compile 'mysql:mysql-connector-java'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
     runtime 'net.sourceforge.nekohtml:nekohtml:1.9.22'
 }
