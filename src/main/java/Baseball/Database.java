@@ -1227,7 +1227,7 @@ class Database {
 
             ResultSet rs = stmt.executeQuery();
 
-            // Extract data from result set
+            // Extract repositories from result set
             while (rs.next()) {
                 Batter batter = new Batter();
                 // Retrieve by column name
@@ -1520,7 +1520,7 @@ class Database {
 
             ResultSet rs = stmt.executeQuery();
 
-            // Extract data from result set
+            // Extract repositories from result set
             while (rs.next()) {
                 Fielder fielder = new Fielder();
                 // Retrieve by column name
@@ -1849,7 +1849,7 @@ class Database {
 
             ResultSet rs = stmt.executeQuery();
 
-            // Extract data from result set
+            // Extract repositories from result set
             while (rs.next()) {
                 LineUp starter = new LineUp();
                 // Retrieve by column name
@@ -2125,7 +2125,7 @@ class Database {
 
             ResultSet rs = stmt.executeQuery();
 
-            // Extract data from result set
+            // Extract repositories from result set
             while (rs.next()) {
                 Team team = new Team();
                 // Retrieve by column name

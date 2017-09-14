@@ -1,12 +1,17 @@
 package Baseball;
 
+import javax.persistence.*;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class Batter extends Player implements Comparable<Batter> {
+/*@Entity(name = "batting")*/
+public class Batter extends Player {
+/*    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;*/
+
     private String round, teamID, lgID, pos;
     private int battingOrder;
     private Hands bats;
@@ -21,8 +26,6 @@ public class Batter extends Player implements Comparable<Batter> {
     private InPlayPosition position;
 
     public Batter() {}
-
-
 
     private Batter(String nameFirst, String nameLast, Hands bats, InPlayPosition position) {
         this.bats = bats;
@@ -273,21 +276,6 @@ public class Batter extends Player implements Comparable<Batter> {
             }
         }
         return matchedBatters;
-    }
-
-    @Override
-    public int compareTo(Batter o) {
-        if(getBatterStats().getBattingAverage() < o.getBatterStats().getBattingAverage())
-        {
-            return 1;
-        } else if (getBatterStats().getBattingAverage() > o.getBatterStats().getBattingAverage())
-        {
-            return -1;
-        } else
-        {
-            return 0;
-        }
-
     }
 
     List<Batter> findDesignatedHitter(List<Batter> batterStarters, List<Batter> teamBatters) {

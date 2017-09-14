@@ -1,8 +1,10 @@
 package Baseball;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Objects;
 
+/*@Entity*/
 class BatterStats {
     private double atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, plateAppearances, probabilityWalk,
             probabilitySingle, probabilityDouble, probabilityTriple, probabilityHomeRun, probabilityStrikeOut,

@@ -55,11 +55,15 @@ dependencies {
 */
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'org.springframework.boot:spring-boot-starter-parent'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.springframework.data:spring-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     compile 'org.hashids:hashids:1.0.1'
     // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-repositories'
 
     // Use MySQL Connector-J
     compile 'mysql:mysql-connector-java'

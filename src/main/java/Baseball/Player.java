@@ -3,6 +3,7 @@ package Baseball;
 import java.util.List;
 
 public class Player {
+    private Long id;
     String nameFirst;
     String nameLast;
     private String playerId;
@@ -28,12 +29,51 @@ public class Player {
     private int height;
     int simNumber;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Player() {}
 
     public Player(String nameFirst, String nameLast, String playerId) {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.playerId = playerId;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", nameFirst='" + nameFirst + '\'' +
+                ", nameLast='" + nameLast + '\'' +
+                ", playerId='" + playerId + '\'' +
+                ", birthYear='" + birthYear + '\'' +
+                ", birthMonth='" + birthMonth + '\'' +
+                ", birthDay='" + birthDay + '\'' +
+                ", birthCountry='" + birthCountry + '\'' +
+                ", birthState='" + birthState + '\'' +
+                ", birthCity='" + birthCity + '\'' +
+                ", deathYear='" + deathYear + '\'' +
+                ", deathMonth='" + deathMonth + '\'' +
+                ", deathDay='" + deathDay + '\'' +
+                ", deathCountry='" + deathCountry + '\'' +
+                ", deathState='" + deathState + '\'' +
+                ", deathCity='" + deathCity + '\'' +
+                ", nameGiven='" + nameGiven + '\'' +
+                ", debut='" + debut + '\'' +
+                ", finalGame='" + finalGame + '\'' +
+                ", retroId='" + retroId + '\'' +
+                ", bbrefId='" + bbrefId + '\'' +
+                ", simName='" + simName + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", simNumber=" + simNumber +
+                '}';
     }
 
     public String getNameFirst() {

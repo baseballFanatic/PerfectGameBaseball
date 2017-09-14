@@ -18,12 +18,14 @@
 <div id="meta">
     <div>
         <div>
-            <div th:each="reliever : ${relievers}">
-                <h3 th:text="${reliever.nameGiven}">Clint Riggan</h3>
-                <p class="reliever-info"><strong>Throws: </strong></p><p th:text="${reliever.hands}" class="reliever-info"></p>
-                <p class="reliever-info"><strong>Year: </strong></p><p class="reliever-info" th:text="${reliever.yearId}">Clint</p>
-                <p class="reliever-info"><strong>Team: </strong></p><p class="reliever-info"th:text="${reliever.teamId}">Riggan</p>
-                <p class="reliever-info"><strong>PlayerId: </strong></p><p class="reliever-info" th:text="${reliever.lgId}">crigga01</p>
+            <div th:with="firstReliever=${reliever[0]}">
+                <h3 th:text="${firstReliever.nameGiven}">Clint Riggan</h3>
+                    <div th:each="hurler : ${reliever}">
+                        <p class="reliever-info"><strong>Throws: </strong></p><p th:text="${hurler.hands}" class="reliever-info"></p>
+                        <p class="reliever-info"><strong>Year: </strong></p><p class="reliever-info" th:text="${hurler.yearId}">Clint</p>
+                        <p class="reliever-info"><strong>Team: </strong></p><p class="reliever-info"th:text="${hurler.teamId}">Riggan</p>
+                        <p class="reliever-info"><strong>PlayerId: </strong></p><p class="reliever-info" th:text="${hurler.lgId}">crigga01</p>
+                    </div>
             </div>
         </div>
     </div>

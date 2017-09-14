@@ -1,35 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
   <title>Perfect Game Baseball</title>
-
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.structure.min.css}"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.theme.min.css}"/>
-  <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
 <div class="main-content">
-  <header class="main-header">
-    <h1 class="name">
-      <a href="/">Perfect Game Baseball</a>
-    </h1>
-    <ul class="main-nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="players">Players</a></li>
-      <li><a href="stats">Stats</a></li>
-      <li><a href="simulate">Simulation</a></li>
-    </ul>
-  </header> <!-- Main Header -->
-
+  <header th:replace="layout :: site-header" />
   <div class="banner">
-    <!--            <img class="logo" src="img/perfectGameLogo2.jpg" alt="City">-->
     <h1 class="headline">Perfect Game Baseball</h1>
     <span class="tagline">Simulate games and/or seasons from baseball's past!</span>
   </div><!--/.banner-->
@@ -51,7 +28,7 @@
           <p>View historical stats from every player in Major League Baseball from the very beginning.
             Also view stats for any simulated leagues you have played.</p>
         </div>
-        <a class="button" href="players">Players</a>
+        <a class="button" href="relievers">Players</a>
       </div>
 
       <div class="tertiary col">
@@ -65,9 +42,7 @@
     </div>
     <div class="div-placeholder"></div>
   </div>
-  <footer class="main-footer">
-    <span>&copy;2017 Perfect Game Baseball Simulator</span>
-  </footer>
+  <footer th:replace="layout :: site-footer" />
 </div>
 <!--  Scripts-->
 <script src="js/jquery-ui.min.js"></script>

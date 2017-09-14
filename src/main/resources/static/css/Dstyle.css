@@ -56,6 +56,11 @@ a {
 img {
     max-width: 100%;
 }
+
+.reliever-info {
+    display:inline;
+    padding:5px;
+}
 /* ---- Navigation ---- */
 
 .name {
