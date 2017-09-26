@@ -1,7 +1,8 @@
-/*package Baseball.controller;
+/*
+package Baseball.controller;
 
 import Baseball.Player;
-import Baseball.services.PlayerService;
+import Baseball.repositories.PlayerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,20 +14,21 @@ import java.util.List;
 @Controller
 public class PlayerController {
     @Autowired
-    private PlayerService playerService;
+    private PlayerDao playerDao;
 
     @RequestMapping("/players")
-    public String players(Model model) {
-        List<Player> players = playerService.findAll();
+    public String players(Model model) throws ClassNotFoundException {
+        List<Player> players = playerDao.getAllPlayers();
         model.addAttribute("players", players);
 
         return "players";
     }
 
     @RequestMapping("/players/{playerId}")
-    public String view(@PathVariable("playerId") String playerId, Model model) {
-        Player player = playerService.findByPlayerId(playerId);
-        model.addAttribute("player", player);
+    public String view(@PathVariable("playerId") String playerId, Model model) throws ClassNotFoundException {
+        List<Player> players = playerDao.getPlayer(playerId);
+        model.addAttribute("player", players);
         return "player";
     }
-}*/
+}
+*/

@@ -1,60 +1,237 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.thumbnail img {
+    height: 330px;
+}
+
+.thumbnail {
+    height: 550px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: left;
+  color: white;
+  border-bottom: 1px solid #e5e5e5;
+  background-image: url("../img/cubs_celebrating.jpg");
+  background-color:#173234E;
+  margin-bottom:0;
+  min-height:50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+
+/*
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
+*/
 /* ===============================================
     Base Element Styles
-================================================== */
+================================================== *//*
+
 
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
+}
+
+head {
+    display:none;
+}
+
+html,
+body{
+    margin:0;
+    padding:0;
+    font:14px/1.25 "Helvetica Neue", helvetica, arial, sans-serif;
+    color:#000;
 }
 
 body {
-    font-family: Lato, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.6em;
-    color: #3a3a3a;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    position:relative;
+    background:#c9cbcd;
+    z-index:0;
+    -webkit-text-size-adjust:none;
+    -moz-text-size-adjust:none;
+    -ms-text-size-adjust:none;
 }
 
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+div {
+    display: block;
 }
 
-p {
-    font-size: .95em;
-    margin-bottom: 1.8em;
-    color: black;
+a img {
+    border:0;
 }
 
-h2,
-h3,
-a {
-    color: #093a58;
+ul,
+li,
+ol {
+    margin:0;
+    padding:0;
+    list-style-type:none;
 }
 
-h2,
-h3 {
-    margin-top: 0;
+table th,
+table td {
+    border:0;
 }
 
-h5 {
-    font-size: 12px;
-    line-height: 16px;
-    color: black;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-weight: 900;
+a,
+button,
+input,
+select,
+textarea,
+label,
+summary {
+    touch-action:manipulation;
+    -ms-touch-action:manipulation;
 }
 
-a {
-    text-decoration: none;
+::selection{
+    background:#ff0;
+    text-shadow:none;
 }
 
-img {
-    max-width: 100%;
+a[href]{
+    color:#34d;
 }
+
+a[href]:visited{
+    color:#848;
+}
+
+a[href]:hover{
+    color:#5E44B3;
+}
+
+a[href]:active{
+    color:#b12;
+}
+
+#wrap,
+#div {
+    position: relative;
+    clear:both;
+}
+
+#wrap,
+#info {
+    width: 96%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+#wrap,
+#ul {
+    position: relative;
+    clear:both;
+}
+
+@media screen and (min-width: 1020px) {
+    #wrap,
+    #header {
+        border-bottom:2px solid #cf2138;
+        overflow:visible;
+        height:126px;
+        background:#fff;
+    }
+
+    #wrap,
+    #info{
+        overflow:hidden;
+        margin-bottom:8px;
+    }
+}
+
+@media screen and (min-width: 736px) {
+    #wrap,
+    #header{
+        width:100%;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    #wrap,
+    #info {
+        width: calc(99% - 322px);
+        margin:0 auto;
+        padding-right: 320px;
+        min-height: 270px;
+    }
+}*/

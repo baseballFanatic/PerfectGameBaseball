@@ -3,8 +3,10 @@
     <title>PGBS || Relievers</title>
 </head>
 
-<body>
-<header th:replace="layout :: site-header" class="main-header" >
+<body class="br">
+    <div id="wrap">
+        <div id="header" role="banner">
+             <header th:replace="layout :: site-header" class="main-header" >
     <h1 class="name">
         <a href="/">Perfect Game Baseball</a>
     </h1>
@@ -15,23 +17,44 @@
         <li><a href="simulate">Simulation</a></li>
     </ul>
 </header> <!-- Main Header -->
-<div id="meta">
-    <div>
-        <div>
-            <div th:with="firstReliever=${reliever[0]}">
-                <h3 th:text="${firstReliever.nameGiven}">Clint Riggan</h3>
-                    <div th:each="hurler : ${reliever}">
-                        <p class="reliever-info"><strong>Throws: </strong></p><p th:text="${hurler.hands}" class="reliever-info"></p>
-                        <p class="reliever-info"><strong>Year: </strong></p><p class="reliever-info" th:text="${hurler.yearId}">Clint</p>
-                        <p class="reliever-info"><strong>Team: </strong></p><p class="reliever-info"th:text="${hurler.teamId}">Riggan</p>
-                        <p class="reliever-info"><strong>PlayerId: </strong></p><p class="reliever-info" th:text="${hurler.lgId}">crigga01</p>
-                    </div>
-            </div>
         </div>
+        <h2>Player Data</h2>
+        <div>
+            <table class="table table-condensed table-hover table-players">
+                <tr>
+                    <th>PlayerId</th>
+                    <th>Name</th>
+                    <th>Throws</th>
+                    <th>Team</th>
+                    <th>Year</th>
+                </tr>
+                <tr th:each="reliever : ${relievers}">
+                    <td th:text="${reliever.playerId}">PlayerId</td>
+                    <td th:text="${reliever.nameGiven}">Name</td>
+                    <td th:text="${reliever.hands}">Throws</td>
+                    <td th:text="${reliever.teamId}">Team</td>
+                    <td th:text="${reliever.yearId}">Year</td>
+                </tr>
+            </table>
+        </div>
+<!--        <div id="info" class="players open">
+            <div>
+                <div th:with="firstReliever=${reliever[0]}">
+                    <h3 th:text="${firstReliever.nameGiven}">Clint Riggan</h3>
+                        <div th:each="hurler : ${reliever}">
+                            <p class="reliever-info"><strong>Throws: </strong></p><p th:text="${hurler.hands}" class="reliever-info"></p>
+                            <p class="reliever-info"><strong>Year: </strong></p><p class="reliever-info" th:text="${hurler.yearId}">Clint</p>
+                            <p class="reliever-info"><strong>Team: </strong></p><p class="reliever-info"th:text="${hurler.teamId}">Riggan</p>
+                            <p class="reliever-info"><strong>PlayerId: </strong></p><p class="reliever-info" th:text="${hurler.lgId}">crigga01</p>
+                        </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- div#info -->
+    <footer th:replace="layout :: site-footer" />
     </div>
-</div>
-<footer th:replace="layout :: site-footer" />
 </body>
-<script src="js/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/perfectGameApp.js"></script>
 </html>

@@ -26,7 +26,7 @@ public class RelieversController {
     @RequestMapping("/relievers/{playerId}")
     public String view(@PathVariable("playerId") String playerId, Model model) throws ClassNotFoundException {
         List<Reliever> relievers = relieverService.getReliever(playerId);
-        model.addAttribute("reliever", relievers);
+        model.addAttribute("relievers", relievers);
         return "reliever";
     }
 }

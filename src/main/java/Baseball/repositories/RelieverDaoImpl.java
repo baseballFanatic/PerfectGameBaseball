@@ -43,6 +43,7 @@ public class RelieverDaoImpl implements RelieverDao {
                 reliever.setYearId(rs.getString("year_id"));
                 reliever.setLgId(rs.getString("lg_id"));
                 reliever.setTeamId(rs.getString("team_id"));
+                reliever.setPlayerId(rs.getString("player_id"));
 
                 relievers.add(reliever);
             }
@@ -90,6 +91,7 @@ public class RelieverDaoImpl implements RelieverDao {
                 reliever.setYearId(rs.getString("year_id"));
                 reliever.setLgId(rs.getString("lg_id"));
                 reliever.setTeamId(rs.getString("team_id"));
+                reliever.setPlayerId(rs.getString("player_id"));
 
                 relievers.add(reliever);
             }
