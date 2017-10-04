@@ -17,7 +17,8 @@ public class RelieverDaoImpl implements RelieverDao {
     private static final String PASS = "password";
 
     @Override
-    public List<Reliever> getAllRelievers() throws ClassNotFoundException {
+    public List<Reliever> getAllRelievers()
+    {
         Connection conn;
 
         List<Reliever> relievers = new ArrayList<>();
@@ -44,6 +45,12 @@ public class RelieverDaoImpl implements RelieverDao {
                 reliever.setLgId(rs.getString("lg_id"));
                 reliever.setTeamId(rs.getString("team_id"));
                 reliever.setPlayerId(rs.getString("player_id"));
+                reliever.setWins( rs.getInt( "wins" ) );
+                reliever.setLosses( rs.getInt( "losses" ) );
+                reliever.setSaves( rs.getInt( "saves" ) );
+                reliever.setGames( rs.getInt( "games" ) );
+                reliever.setGamesStarted( rs.getInt( "games_started" ) );
+                reliever.setHitsAgainst( rs.getInt( "hits_against" ) );
 
                 relievers.add(reliever);
             }
@@ -52,11 +59,7 @@ public class RelieverDaoImpl implements RelieverDao {
             stmt.close();
             conn.close();
 
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (IllegalAccessException | SQLException | InstantiationException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -64,7 +67,8 @@ public class RelieverDaoImpl implements RelieverDao {
     }
 
     @Override
-    public List<Reliever> getReliever(String playerId) throws ClassNotFoundException {
+    public List<Reliever> getReliever(String playerId)
+    {
         Connection conn;
 
         List<Reliever> relievers = new ArrayList<>();
@@ -78,7 +82,7 @@ public class RelieverDaoImpl implements RelieverDao {
 
             PreparedStatement stmt;
             stmt = conn.prepareStatement("SELECT * from pgbs_reliever " +
-                    " where player_id=? ");
+                    " where player_id=? ORDER BY year_id ASC");
             stmt.setString(1, playerId);
 
             ResultSet rs = stmt.executeQuery();
@@ -92,6 +96,12 @@ public class RelieverDaoImpl implements RelieverDao {
                 reliever.setLgId(rs.getString("lg_id"));
                 reliever.setTeamId(rs.getString("team_id"));
                 reliever.setPlayerId(rs.getString("player_id"));
+                reliever.setWins( rs.getInt( "wins" ) );
+                reliever.setLosses( rs.getInt( "losses" ) );
+                reliever.setSaves( rs.getInt( "saves" ) );
+                reliever.setGames( rs.getInt( "games" ) );
+                reliever.setGamesStarted( rs.getInt( "games_started" ) );
+                reliever.setHitsAgainst( rs.getInt( "hits_against" ) );
 
                 relievers.add(reliever);
             }
@@ -100,11 +110,7 @@ public class RelieverDaoImpl implements RelieverDao {
             stmt.close();
             conn.close();
 
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (IllegalAccessException | SQLException | InstantiationException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 

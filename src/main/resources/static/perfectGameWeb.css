@@ -39,6 +39,9 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
+.btn-group{
+    font-size:10px;
+}
 /* Customize container */
 @media (min-width: 768px) {
   .container {

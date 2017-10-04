@@ -1,36 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Perfect Game Baseball | Standings</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css"/>
-    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+    <title>PGBS | Stats</title>
 </head>
 <body>
-    <header class="main-header">
-        <h1 class="name">
-            <a href="/">Perfect Game Baseball</a>
-        </h1>
-        <ul class="main-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="players">Players</a></li>
-            <li><a href="stats">Stats</a></li>
-            <li><a href="simulate">Simulation</a></li>
-        </ul>
-    </header> <!-- Main Header -->
-    <div>
-    <h1>Stats page coming soon!</h1>
+<div class="container">
+    <header th:replace="layout :: site-header" />
+    <div class="jumbotron">
+        <h2>Perfect Game Baseball</h2>
+        <p class="lead">Individual Stats Coming Soon!</p>
     </div>
-</body>
+
+    <footer th:replace="layout :: site-footer" />
+</div>
+
+<!--  Scripts-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/perfectGameApp.js"></script>
+</body>
 </html>

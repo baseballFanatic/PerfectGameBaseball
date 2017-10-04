@@ -1,4 +1,3 @@
-/*
 package Baseball.repositories;
 
 import Baseball.Player;
@@ -10,4 +9,3 @@ public interface PlayerDao {
 
     List<Player> getPlayer(String playerId);
 }
-*/

@@ -7,6 +7,34 @@
     <div class="container">
         <header th:replace="layout :: site-header" class="main-header" >
         </header> <!-- Main Header -->
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">A</button>
+            <button type="button" class="btn btn-default">B</button>
+            <button type="button" class="btn btn-default">C</button>
+            <button type="button" class="btn btn-default">D</button>
+            <button type="button" class="btn btn-default">E</button>
+            <button type="button" class="btn btn-default">F</button>
+            <button type="button" class="btn btn-default">G</button>
+            <button type="button" class="btn btn-default">H</button>
+            <button type="button" class="btn btn-default">I</button>
+            <button type="button" class="btn btn-default">J</button>
+            <button type="button" class="btn btn-default">K</button>
+            <button type="button" class="btn btn-default">L</button>
+            <button type="button" class="btn btn-default">M</button>
+            <button type="button" class="btn btn-default">N</button>
+            <button type="button" class="btn btn-default">O</button>
+            <button type="button" class="btn btn-default">P</button>
+            <button type="button" class="btn btn-default">Q</button>
+            <button type="button" class="btn btn-default">R</button>
+            <button type="button" class="btn btn-default">S</button>
+            <button type="button" class="btn btn-default">T</button>
+            <button type="button" class="btn btn-default">U</button>
+            <button type="button" class="btn btn-default">V</button>
+            <button type="button" class="btn btn-default">W</button>
+            <button type="button" class="btn btn-default">X</button>
+            <button type="button" class="btn btn-default">Y</button>
+            <button type="button" class="btn btn-default">Z</button>
+        </div>
         <div>
             <table class="table table-condensed table-hover table-players" id="relievers-table">
                 <tr>
@@ -15,6 +43,12 @@
                     <th>Throws</th>
                     <th>Team</th>
                     <th>Year</th>
+                    <th>G</th>
+                    <th>GS</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>S</th>
+                    <th>HA</th>
                 </tr>
                 <tr th:each="reliever : ${relievers}">
                     <td><a href="http://localhost:8080/relievers" th:href="@{http://localhost:8080/relievers/{playerId}(playerId=${reliever.playerId})}" th:text="${reliever.playerId}">PlayerId</a></td>
@@ -22,13 +56,22 @@
                     <td th:text="${reliever.hands}">Name</td>
                     <td th:text="${reliever.teamId}">Name</td>
                     <td th:text="${reliever.yearId}">Name</td>
+                    <td th:text="${reliever.games}">Name</td>
+                    <td th:text="${reliever.gamesStarted}">Name</td>
+                    <td th:text="${reliever.wins}">Name</td>
+                    <td th:text="${reliever.losses}">Name</td>
+                    <td th:text="${reliever.saves}">Name</td>
+                    <td th:text="${reliever.hitsAgainst}">Name</td>
+
                 </tr>
             </table>
         </div>
         <footer th:replace="layout :: site-footer" />
     </div>
-</body>
+<!--  Scripts-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/perfectGameApp.js"></script>
+</body>
+
 </html>
