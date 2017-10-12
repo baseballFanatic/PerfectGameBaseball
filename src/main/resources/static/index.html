@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfect Game Baseball</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Database-driven baseball simulator">
+  <meta name="author" content="Clint Riggan">
+  <title>Perfect Game Baseball</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+  <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/jquery.dynatable.css"/>
+  <!--    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>-->
+  <link href="/perfectGameWeb.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!--  Scripts-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/perfectGameApp.js"></script>
+  <script>
+        $(document).ready(function(){
+            var url = "/years";
+            $.getJSON(url, function(response) {
+              var defaultYear = response[0].yearID;
+              var yearHtml = '<option value="' + defaultYear + '">' + defaultYear + '</option>';
+              var defaultHeadingAl = '<h3>' + defaultYear + ' Simulated Standings - AL</h3>';
+              var defaultHeadingNl = '<h3>' + defaultYear + ' Simulated Standings - NL</h3>';
+              $('#standings-heading-al').html(defaultHeadingAl);
+              $('#standings-heading-nl').html(defaultHeadingNl);
+              var defaultHtml = '<tr>';
+              defaultHtml += '<th>Team Name</th>';
+              defaultHtml += '<th>Wins</th>';
+              defaultHtml += '<th>Losses</th>';
+              defaultHtml += '</tr>';
+              $('#standings-table-al').html(defaultHtml);
+              $('#standings-table-nl').html(defaultHtml);
+              var defaultUrl = "/season";
+              var loadYear = 'yearID=' + defaultYear;
+              $.getJSON(defaultUrl, loadYear, function(response) {
+                $.each(response, function(index, team) {
+                    teamHtml = '<tr>';
+                    teamHtml += '<td>' + team.teamId + '</td>';
+                    teamHtml += '<td>' + team.teamStats.seasonWins + '</td>';
+                    teamHtml += '<td>' + team.teamStats.seasonLosses + '</td>';
+                    teamHtml += '<tr>';
+                    if (team.lgId === "AL")
+                    {
+                    console.log("got here");
+                      $('#standings-table-al').append(teamHtml);
+                    }
+                    else
+                    {
+                     console.log("nope, got here");
+                      $('#standings-table-nl').append(teamHtml);
+                    }
+                });
+              });
+              $.each(response, function(index, year) {
+                var actualYear = year.yearID;
+                yearHtml += '<option value="' + actualYear + '">' + actualYear + '</option>';
+              });
+              $('#simulated-years').html(yearHtml);
+            });
+
+            $("#simulated-years").change(function() {
+              var rowHtml = '<tr>';
+              rowHtml += '<th>Team Name</th>';
+              rowHtml += '<th>Wins</th>';
+              rowHtml += '<th>Losses</th>';
+              rowHtml += '</tr>';
+              $('#standings-table-al').html(rowHtml);
+              $('#standings-table-nl').html(rowHtml);
+              var year = $("#simulated-years").attr( "option" );
+              var urlYear = "/season";
+              var actualYear = 'yearID=' + $( "#simulated-years").val();
+              var changedHeadingAl = '<h3>' + $( "#simulated-years" ).val() + ' Simulated Standings - AL</h3>';
+              var changedHeadingNl = '<h3>' + $( "#simulated-years" ).val() + ' Simulated Standings - NL</h3>';
+              $('#standings-heading-al').html(changedHeadingAl);
+              $('#standings-heading-nl').html(changedHeadingNl);
+              $.getJSON(urlYear, actualYear, function(response) {
+                $.each(response, function(index, team) {
+                    teamHtml = '<tr>';
+                    teamHtml += '<td>' + team.teamId + '</td>';
+                    teamHtml += '<td>' + team.teamStats.seasonWins + '</td>';
+                    teamHtml += '<td>' + team.teamStats.seasonLosses + '</td>';
+                    teamHtml += '<tr>';
+                    if (team.lgId === "AL")
+                    {
+                    console.log("got here");
+                      $('#standings-table-al').append(teamHtml);
+                    }
+                    else
+                    {
+                     console.log("nope, got here");
+                      $('#standings-table-nl').append(teamHtml);
+                    }
+                });
+              });
+            });
+        });
+    </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/relievers">Players</a></li>
+            <li role="presentation"><a href="/stats">Stats</a></li>
+            <li role="presentation"><a href="/simulate">Simulation</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Perfect Game Baseball</h3>
+      </div>
+    </header> <!-- Main Header -->
+    <div class="jumbotron">
+      <h2>Perfect Game Baseball</h2>
+      <p class="lead">Welcome to Perfect Game Baseball.  A database-driven baseball simulator designed to relive
+      some of baseball's greatest season's of the past.  Can you lead your team to a World Series title?</p>
+    </div>
+
+    <div>
+      <p id="year-selector">Select a Simulated Year</p>
+      <select id="simulated-years">
+
+      </select>
+      <h3 id="standings-heading-al">1913 Simulated Standings - American League</h3>
+      <table class="table table-condensed table-hover table-standings" id="standings-table-al">
+        <tr id="standings-table-al-row"></tr>
+      </table>
+      <br>
+      <h3 id="standings-heading-nl">1913 Simulated Standings - National League</h3>
+      <table class="table table-condensed table-hover table-standings" id="standings-table-nl">
+        <tr id="standings-table-nl-row"></tr>
+      </table>
+    </div>
+    <!--<div class="row marketing">
+      <div class="thumbnail col-xs-4">
+        <img src="../img/ty-cobb.jpg">
+        <div class="caption">
+          <h3>Players</h3>
+          <p>View biographical data, historical, and simulated stats for all players from baseball's beginning.</p>
+          <p><a class="btn btn-lg btn-success" href="players">View Players</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="thumbnail col-xs-4">
+          <img src="../img/paul-molitor.jpg">
+          <div class="caption">
+            <h3>Teams</h3>
+            <p>View historical information as well as simulated stats for teams throughout baseball's storied past.</p>
+            <p><a class="btn btn-lg btn-success" href="teams">View Teams</a></p>
+          </div>
+        </div>
+        <div>
+          <div class="thumbnail col-xs-4">
+            <img src="../img/eddie-collins.jpg">
+            <div class="caption">
+              <h3>Simulate</h3>
+              <p>The real fun of the site!  Create seasons to simulate and player one game at a time or a season at once.</p>
+              <p><a class="btn btn-lg btn-success" href="simulate">Simulator</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <footer>
+      <span>&copy;2017 Perfect Game Baseball Simulator</span>
+    </footer>
+  </div>
+
+<!--  Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/perfectGameApp.js"></script>
+</body>
+</html>
