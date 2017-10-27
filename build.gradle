@@ -7,12 +7,6 @@ buildscript {
     }
 }
 
-/*plugins {
-    id 'java'
-    id 'idea'
-    id 'org.springframework.boot' version '1.4.3.RELEASE'
-}*/
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -22,47 +16,25 @@ repositories {
     mavenCentral()
 }
 
-/*group 'com.perfectgameaseball'
-version '1.0-SNAPSHOT'*/
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-
-
-
-/*These dependencies work
-dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    compile 'org.hashids:hashids:1.0.1'
-    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
-    // Allows use of HTML5
-    runtime 'net.sourceforge.nekohtml:nekohtml:1.9.22'*/
-
-/*
-dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    compile 'org.hashids:hashids:1.0.1'
-    compile 'org.springframework:spring-orm:4.2.5.RELEASE'
-    compile 'org.hibernate:hibernate-core:5.1.0.Final'
-    compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'
-    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
-    // Allows use of HTML5
-    runtime 'net.sourceforge.nekohtml:nekohtml:1.9.22'
-}
-*/
-
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-parent'
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.springframework.data:spring-data-jpa'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+
+
 
     compile 'org.hashids:hashids:1.0.1'
-    // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+    // JPA Data
     compile 'org.springframework.boot:spring-boot-starter-repositories'
 
     // Use MySQL Connector-J

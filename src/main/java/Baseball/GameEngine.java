@@ -11,7 +11,7 @@ class GameEngine {
             NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
         out.println("Take me out to the ballgame!\n");
-        for (int i=1; i < 600; i++)
+        for (int i=1; i < 8; i++)
         {
             PlayBall game = new PlayBall();
         }

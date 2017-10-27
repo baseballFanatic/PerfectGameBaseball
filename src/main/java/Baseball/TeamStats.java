@@ -1,6 +1,6 @@
 package Baseball;
 
-class TeamStats {
+public class TeamStats {
     private int games, gamesHome, wins, losses;
     private String divWin, wcWin, lgWin, WsWin;
     private int runs, atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, stolenBases, caughtStealing, hitByPitch,

@@ -6,12 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-/*@Entity(name = "batting")*/
 public class Batter extends Player {
-/*    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;*/
-
     private String round, teamID, lgID, pos;
     private int battingOrder;
     private Hands bats;

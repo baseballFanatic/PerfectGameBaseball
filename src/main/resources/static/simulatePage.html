@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:fragment="site-head">
+<html>
+<head>
+    <title>PGBS | Simulator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -8,20 +9,24 @@
     <meta name="author" content="Clint Riggan">
     <title>Perfect Game Baseball</title>
 
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link th:href="@{/css/jumbotron-narrow.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.structure.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.theme.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery.dynatable.css}"/>
-<!--    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>-->
-    <link th:href="@{/perfectGameWeb.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script type="text/javascript" th:href="@{/js/jquery-3.2.1.min.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dynatable.css"/>
+    <!--    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>-->
+    <link href="/perfectGameWeb.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!--  Scripts-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/perfectGameApp.js"></script>
 </head>
 <body>
-    <header th:fragment="site-header" th:remove="tag" class="main-header">
+<div class="container">
+    <header>
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
@@ -34,12 +39,16 @@
             <h3 class="text-muted">Perfect Game Baseball</h3>
         </div>
     </header> <!-- Main Header -->
-    <h1>Welcome</h1>
-    <p>Welcome to Perfect Game Baseball</p>
+    <div class="jumbotron" id="jumbo">
+        <h2>Perfect Game Baseball</h2>
+        <p class="lead">Game Simulator Coming Soon!</p>
+    </div>
 
-    <footer th:fragment="site-footer" class="main-footer">
+    <input type="button" id="external" value="Get External Content">
+    <footer>
         <span>&copy;2017 Perfect Game Baseball Simulator</span>
     </footer>
-</body>
+</div>
 
+</body>
 </html>

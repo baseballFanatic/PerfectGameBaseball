@@ -1629,7 +1629,7 @@ class Database {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement stmt;
             stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
-                    " where gameCompleted='N' and homeLgId='AL' " +
+                    " where gameCompleted='N' and homeLgId='NL' " +
                     " order by gameKey " +
                     " limit 1");
             ResultSet rs = stmt.executeQuery();

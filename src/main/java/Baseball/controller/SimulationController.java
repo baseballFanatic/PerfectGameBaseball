@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SimulationController
 {
     @RequestMapping( "/simulate" )
-    public String simulate( Model model ) { return "simulate"; }
+    public String simulate( Model model ) { return "simulatePage.html"; }
 }

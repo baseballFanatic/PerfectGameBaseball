@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StatsController
 {
     @RequestMapping( "/stats" )
-    public String stats( Model model ) { return "stats"; }
+    public String stats( Model model ) { return "statsPage.html"; }
 }

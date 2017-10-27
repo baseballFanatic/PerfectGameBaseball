@@ -1,11 +1,43 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: site-head">
+<html>
+<head>
     <title>PGBS || Players</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Database-driven baseball simulator">
+    <meta name="author" content="Clint Riggan">
+    <title>Perfect Game Baseball</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dynatable.css"/>
+    <!--    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>-->
+    <link href="/perfectGameWeb.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!--  Scripts-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/perfectGameApp.js"></script>
 </head>
 
 <body>
 <div class="container">
-    <header th:replace="layout :: site-header" class="main-header" >
+    <header>
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="/">Home</a></li>
+                    <li role="presentation"><a href="/relievers">Players</a></li>
+                    <li role="presentation"><a href="/stats">Stats</a></li>
+                    <li role="presentation"><a href="/simulate">Simulation</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Perfect Game Baseball</h3>
+        </div>
     </header> <!-- Main Header -->
     <div class="btn-group" role="group" aria-label="...">
         <button type="button" class="btn btn-default">A</button>
@@ -41,13 +73,15 @@
                 <th>PlayerId</th>
                 <th>Name</th>
             </tr>
-            <tr th:each="player : ${players}">
-                <td><a href="http://localhost:8080/players" th:href="@{http://localhost:8080/players/{playerId}(playerId=${player.playerId})}" th:text="${player.playerId}">PlayerId</a></td>
-                <td th:text="${player.nameFirst} + ' ' + ${player.nameLast}">Name</td>
+            <tr>
+                <td><a href="google.com">PlayerId</a></td>
+                <td>Name</td>
             </tr>
         </table>
     </div>
-    <footer th:replace="layout :: site-footer" />
+    <footer>
+        <span>&copy;2017 Perfect Game Baseball Simulator</span>
+    </footer>
 </div>
 <!--  Scripts-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

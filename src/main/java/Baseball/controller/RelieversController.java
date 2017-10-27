@@ -7,25 +7,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 @Controller
 public class RelieversController {
     @Autowired
-    private RelieverDao relieverService;
+    private RelieverDao relieverDao;
 
-    @RequestMapping("/relievers")
-    public String relievers(Model model) throws ClassNotFoundException {
-        List<Reliever> relievers = relieverService.getAllRelievers();
-        model.addAttribute("relievers", relievers);
-
-        return "relievers";
+    @RequestMapping(value = "/relievers", method = RequestMethod.GET)
+    public String relievers() {
+        return "relieversPage.html";
     }
-
     @RequestMapping("/relievers/{playerId}")
     public String view(@PathVariable("playerId") String playerId, Model model) throws ClassNotFoundException {
-        List<Reliever> relievers = relieverService.getReliever(playerId);
+        List<Reliever> relievers = relieverDao.getReliever(playerId);
         model.addAttribute("relievers", relievers);
         return "reliever";
     }

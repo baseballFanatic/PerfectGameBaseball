@@ -2,12 +2,12 @@ package Baseball;
 
 import java.util.List;
 
-class Team {
+public class Team {
     private String teamId, lgId, franchId, divId, simName, park, teamIdBr, teamIdLahman45, teamIdRetro, teamName;
     private int yearId, simNumber, rank, teamKey;
     private TeamStats teamStats = new TeamStats();
 
-    Team() {
+    public Team() {
 
     }
 
@@ -62,11 +62,11 @@ class Team {
         this.teamIdRetro = teamIdRetro;
     }
 
-    String getTeamName() {
+    public String getTeamName() {
         return teamName;
     }
 
-    void setTeamName(String teamName) {
+    public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
 
@@ -134,7 +134,7 @@ class Team {
         this.simNumber = simNumber;
     }
 
-    TeamStats getTeamStats() {
+    public TeamStats getTeamStats() {
         return teamStats;
     }
 

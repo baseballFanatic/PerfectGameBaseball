@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Perfect Game Baseball</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Database-driven baseball simulator">
+    <meta name="author" content="Clint Riggan">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dynatable.css"/>
+    <link href="/perfectGameWeb.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/gridHome.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!--  Scripts-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/perfectGameApp.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>Perfect Game Baseball</header>
+            <div class="navbar">
+                <div class="static-navbar">
+                    <a href="/home">Players</a>
+                    <a href="/home">Teams</a>
+                    <a href="/home">Schedule</a>
+                    <a href="/home">Stats</a>
+                    <a href="/home">Standings</a>
+                    <a href="/home">Setup</a>
+                </div>
+            </div>
+        <stats>
+            <div class="grid-content-stats">
+                <div class="grid-content-title">League Leaders</div>
+                <div class="p-player-leaderboard">
+                    <div id="navbar-leaders">
+                        <ul class="p-navbar-mini-nav-list">
+                            <li class="p-navbar-mini-active">
+                                <div class="p-navbar-mini-link">
+                                    <span class="p-navbar-mini-title">Batting</span>
+                                </div>
+                            </li>
+                            <li class="p-navbar-mini">
+                                <div class="p-navbar-mini-link">
+                                    <span class="p-navbar-mini-title">Pitching</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid-player-stats-container">
+                        <div class="grid-player-data-active">
+                            <div class="grid-player-data-average">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Batting Average</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">C Riggan</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * 3B</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">.354</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">AVG</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-runs">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Runs</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">C Riggan</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * 3B</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">123</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">R</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-homerun">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Home Runs</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">C Riggan</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * 3B</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">57</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">HR</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-rbi">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Runs Batted In</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">C Riggan</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * 3B</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">183</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">RBI</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-stolen-bases">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Stolen Bases</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">C Riggan</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * 3B</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">105</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">SB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-player-data">
+                            <div class="grid-player-data-wins">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Wins</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">J Sutherland</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * SP</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">23</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">Wins</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-saves">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Saves</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">L Sutherland</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * RP</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">44</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">Saves</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-earned-run-average">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Earned Run Average</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">J Sutherland</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * SP</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">1.12</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">ERA</span>
+                                </div>
+                            </div>
+                            <div class="grid-player-data-strike-outs">
+                                <div class="grid-player-data-stat">
+                                    <span class="player-data-stat">Strike Outs</span>
+                                </div>
+                                <div class="grid-player-data-name">
+                                    <span class="player-data-name">J Sutherland</span>
+                                </div>
+                                <div class="grid-player-data-team">
+                                    <span class="player-data-team">ATL * SP</span>
+                                </div>
+                                <div class="grid-player-data-number">
+                                    <span class="player-data-number">335</span>
+                                </div>
+                                <div class="grid-player-data-stat-abbreviation">
+                                    <span class="player-data-stat-abbreviation">Strike Outs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-player-data-sortable-stats">
+                            <a href="sortableStats" class="sortable-stats">Sortable Stats</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </stats>
+        <standings>
+            <div class="grid-content-standings">
+                <div class="grid-content-title">Standings</div>
+                <div class="t-teams-standings">
+                    <div id="navbar-standings" >
+                        <ul class="p-navbar-mini-nav-list">
+                            <li class="p-navbar-mini-active">
+                                <div class="p-navbar-mini-link">
+                                    <span class="p-navbar-mini-title">American</span>
+                                </div>
+                            </li>
+                            <li class="p-navbar-mini">
+                                <div class="p-navbar-mini-link">
+                                    <span class="p-navbar-mini-title">National</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <table class="table table-condensed table-hover table-standings table-body" id="standings-table-al">
+                        <tr class="standings-table-heading">
+                            <th>Leaders</th>
+                            <th>W</th>
+                            <th>L</th>
+                            <th>%</th>
+                        </tr>
+                        <tr id="standings-table-nl-row"></tr>
+
+                    </table>
+                </div>
+                <div class="grid-player-data-sortable-stats">
+                    <a href="sortableStats" class="sortable-stats">Full Standings</a>
+                </div>
+            </div>
+        </standings>
+        <main>
+            <div class="jumbotron">
+                <h2>Perfect Game Baseball</h2>
+                <p class="lead">Welcome to Perfect Game Baseball.  A database-driven baseball simulator designed to relive
+                    some of baseball's greatest season's of the past.  Can you lead your team to a World Series title?</p>
+            </div>
+            <div>
+                <p id="year-selector">Select a Simulated Year</p>
+                <select id="simulated-years">
+
+                </select>
+            </div>
+        </main>
+        <footer>Footer</footer>
+    </div>
+
+</body>
+</html>

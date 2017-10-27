@@ -9,19 +9,240 @@
     text-shadow: 0 2px 0 rgba(110,133,156,0.12);
     float: left
     padding: 0.85em;
-    border: solid 1px rgba(110,133,156,0.15);
     text-transform: uppercase;
     display: grid;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    grid-template-columns: 250px 1fr 250px;
+    grid-template-columns: 350px 1fr 350px;
     grid-auto-rows: 62px auto;
     grid-template-areas:
       "header"
       "stats"
       "main"
-      "aside"
+      "standings"
       "footer";
+}
+
+.grid-player-stats-container {
+    display: grid;
+    text-transform: none;
+    color: #333;
+    grid-auto-rows: auto;
+    grid-template-areas:
+    "grid-player-data-average"
+    "grid-player-data-runs"
+    "grid-player-data-homerun"
+    "grid-player-data-rbi"
+    "grid-player-data-stolen-bases"
+    "grid-player-data-wins"
+    "grid-player-data-saves"
+    "grid-player-data-earned-run-average"
+    "grid-player-data-strike-outs"
+}
+
+.grid-player-data-average {
+    grid-area: grid-player-data-average;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-homerun {
+    grid-area: grid-player-data-homerun;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-runs {
+    grid-area: grid-player-data-runs;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-rbi {
+    grid-area: grid-player-data-rbi;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-stolen-bases {
+    grid-area: grid-player-data-stolen-bases;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-wins {
+    grid-area: grid-player-data-wins;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-saves {
+    grid-area: grid-player-data-saves;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-earned-run-average {
+    grid-area: grid-player-data-earned-run-average;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-strike-outs {
+    grid-area: grid-player-data-strike-outs;
+    display: grid;
+    grid-template-areas:
+        "grid-player-data-stat grid-player-data-number"
+        "grid-player-data-name grid-player-data-number"
+        "grid-player-data-team grid-player-data-average";
+}
+
+.grid-player-data-stat {
+    grid-area: grid-player-data-stat;
+}
+
+.grid-player-data-name {
+    grid-area: grid-player-data-name;
+}
+
+.grid-player-data-team {
+    grid-area: grid-player-data-team;
+    color: #ececec;
+}
+
+.grid-player-data-number {
+    grid-area: grid-player-data-number;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-player-data-average,
+.grid-player-data-runs,
+.grid-player-data-homerun,
+.grid-player-data-rbi,
+.grid-player-data-stolen-bases,
+.grid-player-data-wins,
+.grid-player-data-saves,
+.grid-player-data-earned-run-average,
+.grid-player-data-strike-outs {
+    padding-bottom: .5rem;
+    border-bottom: 2px solid #ececec;
+    padding; .5rem 0;
+    position: relative;
+}
+
+/*.grid-player-data-pitching,
+.grid-player-data-batting {
+    display: none;
+}*/
+
+.grid-player-data {
+    display: none;
+}
+
+.grid-player-data-average {
+    grid-area: grid-player-data-average;
+
+}
+
+.grid-player-data-runs {
+    grid-area: grid-player-data-runs;
+}
+
+.grid-player-data-homerun {
+    grid-area: grid-player-data-homerun;
+}
+
+.grid-player-data-rbi {
+    grid-area: grid-player-data-rbi;
+}
+
+.grid-player-data-stolen-bases {
+    grid-area: grid-player-data-stolen-bases;
+}
+
+.grid-player-data-wins {
+    grid-area: grid-player-data-wins;
+}
+
+.grid-player-data-saves {
+    grid-area: grid-player-data-saves;
+}
+
+.grid-player-data-earned-run-average {
+    grid-area: grid-player-data-earned-run-average;
+}
+
+.grid-player-data-strike-outs {
+    grid-area: grid-player-data-strike-outs;
+}
+
+.grid-player-data-stat-abbreviation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-data-stat {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+
+.player-data-name {
+    margin: .25rem 0;
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.player-data-team {
+    color: #999999;
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.player-data-stat-abbreviation {
+    color: #333;
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.player-data-number {
+    font-weight: 600;
+    height: 45px;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2.4rem;
 }
 
 header {
@@ -40,8 +261,8 @@ main {
     grid-area: main;
 }
 
-aside {
-    grid-area: aside;
+standings {
+    grid-area: standings;
 }
 
 footer {
@@ -69,7 +290,161 @@ a {
     background-color: transparent;
 }
 
+.grid-content-title {
+    color: #002e6d;
+    font-size: 1.5rem;
+    text-transform: none;
+}
 
+.grid-content-stats,
+.grid-content-standings {
+    background-color: #fff;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+}
+
+.p-player-leaderboard,
+.t-teams-standings {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.p-navbar-mini-nav-list {
+    display: flex;
+    min-height: 0.1%;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.p-navbar-mini-active {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    border-color: #002e6d;
+    border-bottom: .25rem solid #cc0000;
+    color: #333333
+}
+
+.p-navbar-mini {
+    border-bottom: 2px solid #d2d2d2;
+    cursor: pointer;
+    text-decoration: none;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.p-navbar-mini-link {
+    margin-bottom: 0;
+    line-height: 1;
+    display: block;
+    padding: 0 0 .5rem 0;
+}
+
+.p-navbar-mini-link:hover,
+.p-navbar-mini-link:visited {
+    text-decoration: none;
+}
+
+.p-navbar-mini-title {
+    color: #333;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.player-leaderboard-list {
+    padding-top: 1rem;
+    border-bottom: 1px solid #ededed;
+}
+
+.player-leaderboard-leader {
+    display: none;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row:
+}
+
+.player-leaderboard-leader-container {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom: 1px solid #ececec;
+    padding: .5rem 0;
+    padding-bottom: .5rem;
+    position: relative;
+}
+
+.player-leaderboard-leader-category {
+    display: inline;
+    color: #002e6d;
+    font-size: .78431373rem;
+}
+
+.player-leaderboard-leader-row {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    line-height: 1.2;
+}
+
+.sortable-stats {
+    color: #333;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: auto;
+    line-height: 1.2;
+}
+
+.standings-table-heading {
+    color: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    border-left-color: #002e6d;
+    border-right-color: #002e6d;
+    border-left: 1px solid #002e6d;
+    border-right: 1px solid #002e6d;
+    background-color: #002e6d;
+}
+
+.table-body {
+    border-left: 2px solid #d2d2d2;
+    border-right: 2px solid #d2d2d2;
+}
+
+.table-standings-header {
+    background-color: #002E6D;
+    height: 32px;
+}
+
+.table-standings-header th{
+    color: #fff;
+}
+
+#standings-table-al {
+    margin-top: 5px;
+}
+
+#year-selector {
+    color: #002e6d;
+}
+
+#simulated-years {
+    color: #002e6d;
+}
 /* =====================================
    Page Styles
 ======================================== */
@@ -82,7 +457,7 @@ a {
   .container {
     grid-template-areas:
       "header header header"
-      "stats main aside"
+      "stats main standings"
       "footer footer footer";
   }
 }
@@ -108,18 +483,28 @@ body {
     color: #fff;
     text-shadow: 0 2px 0 rgba(110,133,156,0.12);
     padding: 0.85em;
-    border: solid 1px rgba(110,133,156,0.15);
 }
 
-stats {
-    background-color: #fbaea8;
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-main {
-    background-color: #aad2ed;
+
+li {
+    display: list-item;
 }
-aside {
-    background-color: #6ad78a;
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    border-bottom: 2px solid #d2d2d2;
 }
-footer {
-    background-color: #6e859c;
+
+td,
+th {
+    box-sizing: border-box;
+    padding: 0 .4rem;
+    color: #1f5a97;
 }
