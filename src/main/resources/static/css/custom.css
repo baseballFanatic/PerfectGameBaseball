@@ -1,0 +1,188 @@
+@font-face {
+    font-family: "benton-sans-regular";
+    src: url("font/BentonSans Regular Regular.otf");
+}
+
+
+html,
+body,
+header,
+#intro {
+    height: 100%;
+    font-family: benton-sans-regular, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+#intro {
+    background: url("../img/Turner Field_N.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#other-header {
+    height: 50px;
+}
+
+#regular-nav {
+    background: url("../img/sec-header-pattern.jpg") repeat;
+    color: white;
+}
+
+#off-page-footer {
+    color: black;
+}
+
+#bling {
+    float: right;
+    margin: 6px 1% 6px 0;
+    color: #fff;
+    overflow: hidden;
+    width: 250px;
+    height: auto;
+    margin-top: 10px;
+    margin-right: 0;
+    display: grid;
+    grid-gap: 5px 4px;
+    grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
+}
+
+.bling {
+    background: #82081b;
+}
+
+#bling li {
+    line-height: .9;
+    padding: 4px 1.25%;
+    text-align: center;
+    position: relative;
+    height: 20px;
+    font-size: em;
+    word-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+li.bling_hof {
+    grid-column-end: span 2;
+    background-color: #ffdb1c;
+    color: #000;
+}
+
+li.bling_all_star {
+    background-color: #c9cbcd;
+    color: #454041
+}
+
+.stats-pullout {
+    overflow: hidden;
+    text-align: center;
+    width: 96%;
+    margin: 5px auto 15px 0;
+    padding-top: 6px;
+}
+
+.stats-pullout div {
+    margin-left: 10px;
+    float: left;
+}
+
+.p1 {
+    border-left: 1px solid #d9dee2;
+}
+
+.stats-pullout div div {
+    margin-left: 21px;
+}
+
+.stats-pullout div:first-child {
+    margin-left: 5px;
+    text-align: left;
+}
+
+.stats-pullout h4 {
+    color: #900;
+    margin: 2px 0;
+    font-size: .785714286em;
+    text-align: center;
+}
+
+#player-batting th,
+#player-batting td {
+    font-size: .75rem;
+}
+
+#player-search input {
+    width: 275px;
+}
+
+#last-five-games {
+    line-height: .25;
+}
+
+#last-five-games th,
+#last-five-games td {
+    font-size: 10px;
+}
+
+.pgbs {
+    background: url('/img/mlb_bg_gradient.png') 0 0 repeat-x fixed;
+}
+
+#mc_container,
+#mc {
+    min-height: 600px;
+}
+
+#standingsContainer {
+    clear: both;
+    margin: 7px 0 15px 9px;
+}
+
+#headline {
+    font-family: 'adelle';
+    font-size: 24px;
+    padding: 10px 0 0 7px;
+    text-transform: uppercase;
+    width: 400px;
+    margin: 0;
+}
+
+.standings-nav {
+    border-radius: 4px;
+    background: #f5f5f5;
+    border: 1px #d7d7d7 solid;
+    color: #292929;
+    height: 40px;
+    width: 1090px;
+}
+
+#standing_year {
+    float: left;
+    padding: 5px 0 5px 5px;
+    font-size: 16px;
+}
+
+.custom-select {
+    width: 100px;
+}
+
+#sign-out {
+    padding: .4rem 1.05rem;
+}
+
+#standingsAL {
+    margin-bottom: 30px;
+    padding-top: 10px;
+    width: 970 px;
+}
+
+#alHeadline {
+    height: 48px;
+}
+
+#standingsAL h1 {
+
+}

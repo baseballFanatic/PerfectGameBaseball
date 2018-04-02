@@ -92,7 +92,7 @@ p {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../../images/perfectGameLogo.jfif') no-repeat;
+    background: url('../../images/perfectGameLogo.jif') no-repeat;
     background-size: 100%;
 }
 
@@ -100,7 +100,7 @@ p {
     width: 94%;
     height: 196px;
     position: relative;
-    background: #8c73b0 url('../../images/perfectGameLogo.jfif') no-repeat 270px -180px;
+    background: #8c73b0 url('../../images/perfectGameLogo.jif') no-repeat 270px -180px;
     background-size: 140%;
 }
 

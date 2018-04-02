@@ -245,7 +245,7 @@
     font-size: 2.4rem;
 }
 
-header {
+header{
     grid-area: header;
     background-color: #002e6d;
     margin: 0 auto;
@@ -267,6 +267,14 @@ standings {
 
 footer {
     grid-area: footer;
+    background-color: #002e6d;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 10px;
+/*    position: absolute;*/
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 
 stats {
