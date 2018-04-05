@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>PGBS || Standings</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/custom.css" rel="stylesheet">
+</head>
+<body class="pgbs">
+<!--Main Navigation-->
+<header id="other-header">
+    <!--Navbar-->
+</header>
+<!--/.Navbar-->
+<main class="page-wrapper">
+    <div class="container">
+        <section>
+            <!--Card-->
+            <div class="card my-4">
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--/.Card content-->
+                <div id="mc_container">
+                    <div id="mc">
+                        <div id="standingsContainer" class="currentYear">
+                            <div class="mb-1" id="headline">STANDINGS</div>
+                            <div class="standings-nav">
+                                <select class="custom-select align-middle" id="simulated-years">
+
+                                </select>
+                                <!--                                    <ul class="tabs newTabs">
+                                                                        <li class="topnav_regular"><a href="?ymd=20180330" class="active" style="cursor: pointer;">Regular Season</a></li>
+                                                                        <li class="topnav_wildcard" style="display: none;"><a href="/mlb/standings/wildcard.jsp?ymd=20180330" alt="Wild Card" title="Wild Card">Wild Card</a></li>
+                                                                        <li class="topnav_probs" style="display: none;"><a href="/mlb/standings/probability.jsp?ymd=20180330" alt="Postseason Projections" title="Postseason Projections">Postseason Projections</a></li>
+                                                                        &lt;!&ndash;<li class="topnav_interactivestandings"><a href='/mlb/standings/interactive_standings.jsp' alt='Interactive Standings' title='Interactive Standings'>Interactive Standings</a></li>&ndash;&gt;
+                                                                        <li class="topnav_postseasonpicture" style="display: none;"><a href="/mlb/standings/postseason-picture/">Postseason Picture »</a></li>
+                                                                        <li class="topnav_spring"><a href="/mlb/standings/exhibition.jsp?ymd=20180330" alt="Exhibition" title="Exhibition">Spring Training</a></li>
+                                                                    </ul>-->
+                            </div>
+                            <div id="standingsAL" style="opacity: 1;">
+                                <div id="alHeadline">
+                                    <h1>&nbsp;</h1>
+                                </div>
+                                <div id="standingsTableAL" class="homeSpriteBG">
+                                    <table cellspacing="0" class="stats_table data_grid">
+                                        <col class="dg-team-short">
+                                        <col class="dg-w">
+                                        <col class="dg-l">
+                                        <col class="dg-pct">
+                                        <col class="dg-gb">
+                                        <col class="dg-last-ten">
+                                        <col class="dg-streak">
+                                        <col class="dg-home">
+                                        <col class="dg-away">
+                                        <col class="dg-last-game">
+                                        <col class="dg-next-game">
+                                        <thead>
+                                        <tr>
+                                            <th tabindex="0" index="0" class="dg-team-short"></th>
+                                            <th tabindex="0" index="1" class="dg-w">W</th>
+                                            <th tabindex="0" index="2" class="dg-l">L</th>
+                                            <th tabindex="0" index="3" class="dg-pct">PCT</th>
+                                            <th tabindex="0" index="4" class="dg-gb">GB</th>
+                                            <th tabindex="0" index="5" class="dg-last-ten">L10</th>
+                                            <th tabindex="0" index="6" class="dg-streak">STRK</th>
+                                            <th tabindex="0" index="7" class="dg-home">HOME</th>
+                                            <th tabindex="0" index="8" class="dg-away">AWAY</th>
+                                            <th tabindex="0" index="9" class="dg-last-game">LAST GAME</th>
+                                            <th tabindex="0" index="10" class="dg-next-game">NEXT GAME</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody tabindex="-1" id="standingsTableBodyAL">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="standingsNL" style="opacity: 1;">
+                                <div id="nlHeadline">
+                                    <h1>&nbsp;</h1>
+                                </div>
+                                <div id="standingsTableNL" class="homeSpriteBG">
+                                    <table cellspacing="0" class="stats_table data_grid">
+                                        <col class="dg-team-short">
+                                        <col class="dg-w">
+                                        <col class="dg-l">
+                                        <col class="dg-pct">
+                                        <col class="dg-gb">
+                                        <col class="dg-last-ten">
+                                        <col class="dg-streak">
+                                        <col class="dg-home">
+                                        <col class="dg-away">
+                                        <col class="dg-last-game">
+                                        <col class="dg-next-game">
+                                        <thead>
+                                        <tr>
+                                            <th tabindex="0" index="0" class="dg-team-short"></th>
+                                            <th tabindex="0" index="1" class="dg-w">W</th>
+                                            <th tabindex="0" index="2" class="dg-l">L</th>
+                                            <th tabindex="0" index="3" class="dg-pct">PCT</th>
+                                            <th tabindex="0" index="4" class="dg-gb">GB</th>
+                                            <th tabindex="0" index="5" class="dg-last-ten">L10</th>
+                                            <th tabindex="0" index="6" class="dg-streak">STRK</th>
+                                            <th tabindex="0" index="7" class="dg-home">HOME</th>
+                                            <th tabindex="0" index="8" class="dg-away">AWAY</th>
+                                            <th tabindex="0" index="9" class="dg-last-game">LAST GAME</th>
+                                            <th tabindex="0" index="10" class="dg-next-game">NEXT GAME</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody tabindex="-1" id="standingsTableBodyNL">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--/.Card-->
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<!-- MDB core JavaScript -->
+<script src="/js/mdb.min.js"></script>
+<!-- PerfectGameHome JavaScript -->
+<script src="/js/perfectGameApp.js"></script>
+<script src="/js/perfectGameHome.js"></script>
+<script src="/js/standings.js"></script>
+</body>
+
+</html>

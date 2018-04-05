@@ -1,57 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>PGBS | Stats</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="Database-driven baseball simulator">
-    <meta name="author" content="Clint Riggan">
-    <title>Perfect Game Baseball</title>
-
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
-    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/jquery.dynatable.css"/>
-    <!--    <link th:href="@{/css/Dstyle.css}" type="text/css" rel="stylesheet" media="screen,projection"/>-->
-    <link href="/perfectGameWeb.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <!--  Scripts-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/perfectGameApp.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>PGBS || Stats</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/custom.css" rel="stylesheet">
 </head>
-<body>
-<div class="container">
-    <header>
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="/relievers">Players</a></li>
-                    <li role="presentation"><a href="/stats">Stats</a></li>
-                    <li role="presentation"><a href="/simulate">Simulation</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Perfect Game Baseball</h3>
-        </div>
-    </header> <!-- Main Header -->
-    <div class="jumbotron">
-        <h2>Perfect Game Baseball</h2>
-        <p class="lead">Individual Stats Coming Soon!</p>
+<body class="pgbs">
+<!--Main Navigation-->
+<header id="other-header">
+    <!--Navbar-->
+</header>
+<!--/.Navbar-->
+<main class="page-wrapper">
+    <div class="container">
+        <section>
+            <!--Card-->
+            <div class="card my-4">
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--/.Card content-->
+                <div id="mc_container">
+                    <div id="mc">
+                        <div id="standingsContainer" class="currentYear">
+                            <div class="mb-1" id="headline">STATISTICS</div>
+                            <div id="stats-top-nav">
+                                <div>
+                                    <ul class="tabs newTabs">
+                                        <li class>
+                                            <a id="sp_parent" class="tab_parent" name="spTab" href="#sp">Player</a>
+                                        </li>
+                                        <li>
+                                            <a id="sp_hitting_child" class="tab_child active" name="sp_hittingTab" href="#sp_hitting" style="display: inline;">Hitting</a>
+                                        </li>
+                                        <li>
+                                            <a id="sp_pitching_child" class="tab_child" name="sp_pitchingTab" href="#sp_pitching" style="display: inline;">Pitching</a>
+                                        </li>
+                                        <li>
+                                            <a id="sp_fielding_child" class="tab_child" name="sp_fieldingTab" href="#sp_fielding" style="display: inline;">Fielding</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="widgets" class="onscreen">
+                                <div class="panels">
+                                    <div id="sp_hitting" class="onscreen">
+                                        <div id="sp_hitting-0" class="grouping onscreen">
+                                            <fieldset class="widget-select">
+                                                <select class="season-select" id="sp_hitting_season" name="sp_hitting_season">
+                                                    <option value="1914" selected="selected">1914</option>
+                                                    <option value="1913">1913</option>
+                                                </select>
+                                            </fieldset>
+                                            <fieldset class="widget-select">
+                                                <select class="game_type_select" id="sp_hitting_game_type" name="sp_hitting_game_type">
+                                                    <option value="R" selected="selected">Regular Season</option>
+                                                    <option value="P">Postseason</option>
+                                                </select>
+                                            </fieldset>
+                                            <fieldset class="widget-radio ui-buttonset">
+                                                <input type="radio" name="sp_hitting_playerType" value="ALL" id="sp_hitting_playerType_alltime" checked="checked" class="ui-helper-hidden-accessible"><label for="sp_hitting_playerType_alltime" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="false" role="button" aria-disabled="false"><span class="ui-button-text">All Players</span></label>
+                                                <input type="radio" name="sp_hitting_playerType" value="QUALIFIER" id="sp_hitting_playerType_qualifier" class="ui-helper-hidden-accessible" checked="checked"><label for="sp_hitting_playerType_qualifier" aria-pressed="true" class="ui-button ui-widget ui-state-default ui-state-active ui-button-text-only ui-corner-right" role="button" aria-disabled="false"><span class="ui-button-text">Qualifiers</span></label>
+                                            </fieldset>
+                                        </div>
+                                        <div id="sp_hitting-1" class="grouping onscreen">
+                                            <fieldset class="widget-radio ui-buttonset mt-3">
+                                                <input type="radio" name="sp_hitting_league_code" value="'MLB'" id="sp_hitting_league_code_mlb" checked="checked" class="ui-helper-hidden-accessible"><label for="sp_hitting_league_code_mlb" class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="true" role="button" aria-disabled="false"><span class="ui-button-text">MLB</span></label>
+                                                <input type="radio" name="sp_hitting_league_code" value="'AL'" id="sp_hitting_league_code_al" class="ui-helper-hidden-accessible"><label for="sp_hitting_league_code_al" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">AL</span></label>
+                                                <input type="radio" name="sp_hitting_league_code" value="'NL'" id="sp_hitting_league_code_nl" class="ui-helper-hidden-accessible"><label for="sp_hitting_league_code_nl" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false"><span class="ui-button-text">NL</span></label>
+                                            </fieldset>
+                                            <fieldset class="widget-select mt-3">
+                                                <select class="team_id" id="sp_hitting_team_id" name="sp_hitting_team_id"><option value="" selected="selected">All Teams</option><option value="109">Arizona Diamondbacks</option><option value="144">Atlanta Braves</option><option value="110">Baltimore Orioles</option><option value="111">Boston Red Sox</option><option value="112">Chicago Cubs</option><option value="145">Chicago White Sox</option><option value="113">Cincinnati Reds</option><option value="114">Cleveland Indians</option><option value="115">Colorado Rockies</option><option value="116">Detroit Tigers</option><option value="117">Houston Astros</option><option value="118">Kansas City Royals</option><option value="108">Los Angeles Angels</option><option value="119">Los Angeles Dodgers</option><option value="146">Miami Marlins</option><option value="158">Milwaukee Brewers</option><option value="142">Minnesota Twins</option><option value="121">New York Mets</option><option value="147">New York Yankees</option><option value="133">Oakland Athletics</option><option value="143">Philadelphia Phillies</option><option value="134">Pittsburgh Pirates</option><option value="135">San Diego Padres</option><option value="137">San Francisco Giants</option><option value="136">Seattle Mariners</option><option value="138">St. Louis Cardinals</option><option value="139">Tampa Bay Rays</option><option value="140">Texas Rangers</option><option value="141">Toronto Blue Jays</option><option value="120">Washington Nationals</option></select>
+                                            </fieldset>
+                                            <fieldset class="widget-select mt-3">
+                                                <select class="team_id" id="sp_hitting_position" name="sp_hitting_position">
+                                                    <option value="" selected="selected">All Positions</option>
+                                                    <option value="'1'">P</option>
+                                                    <option value="'2'">C</option>
+                                                    <option value="'3'">1B</option>
+                                                    <option value="'4'">2B</option>
+                                                    <option value="'5'">3B</option>
+                                                    <option value="'6'">SS</option>
+                                                    <option value="'7'">LF</option>
+                                                    <option value="'8'">CF</option>
+                                                    <option value="'9'">RF</option>
+                                                    <option value="'D'">DH</option>
+                                                    <option value="'O'">OF</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <footer>
-        <span>&copy;2017 Perfect Game Baseball Simulator</span>
-    </footer>
-</div>
-
-<!--  Scripts-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/perfectGameApp.js"></script>
+</main>
+<!--/.Card-->
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<!-- MDB core JavaScript -->
+<script src="/js/mdb.min.js"></script>
+<!-- PerfectGameHome JavaScript -->
+<script src="/js/perfectGameApp.js"></script>
+<script src="/js/perfectGameHome.js"></script>
+<script src="/js/stats.js"></script>
 </body>
+
 </html>

@@ -36,13 +36,21 @@ public class HomeController {
         return "frontOffice.html";
     }
 
+    @RequestMapping(value = "/standings", method = RequestMethod.GET)
+    public String standings() { return "standingsPage.html"; }
+
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public String schedule() { return "schedulePage.html"; }
+
+    @RequestMapping(value = "/stats", method = RequestMethod.GET)
+    public String stats() { return "statsPage.html"; }
+
+    @RequestMapping(value = "/teams", method = RequestMethod.GET)
+    public String teams() { return "teamsPage.html"; }
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public List<Users> getUsers( ) { return usersDao.getUsers(); }
-
-    @RequestMapping(value = "/players", method = RequestMethod.GET)
-    public String players() {
-        return "playersPage.html"; }
 
     @RequestMapping(value = "/years", method = RequestMethod.GET)
     @ResponseBody

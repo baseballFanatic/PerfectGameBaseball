@@ -34,7 +34,7 @@ public class SeasonDaoImpl implements SeasonDao
 
             PreparedStatement stmt;
             stmt = conn.prepareStatement("SELECT yearID from pgbs_season_reference " +
-                    "ORDER BY yearID ASC");
+                    "ORDER BY yearID DESC");
 
             ResultSet rs = stmt.executeQuery();
 

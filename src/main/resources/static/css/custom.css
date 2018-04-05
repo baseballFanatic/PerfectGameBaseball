@@ -134,11 +134,28 @@ li.bling_all_star {
 #mc_container,
 #mc {
     min-height: 600px;
+    zoom: 1;
 }
 
 #standingsContainer {
     clear: both;
     margin: 7px 0 15px 9px;
+    width: 970px;
+    padding-left: 50px;
+}
+
+#standingsContainer .data-grid th.dg-team_short {
+    background: none;
+}
+
+#standingsContainer .data_grid td {
+    color: #000;
+    padding: 6px 2px 13px 4px;
+}
+
+#standingsContainer .data_grid td.dg-team-short {
+    font-size: 13px;
+    white-space: nowrap;
 }
 
 #headline {
@@ -156,7 +173,7 @@ li.bling_all_star {
     border: 1px #d7d7d7 solid;
     color: #292929;
     height: 40px;
-    width: 1090px;
+    width: 970px;
 }
 
 #standing_year {
@@ -173,16 +190,311 @@ li.bling_all_star {
     padding: .4rem 1.05rem;
 }
 
-#standingsAL {
+#standingsAL,
+#standingsNL {
     margin-bottom: 30px;
     padding-top: 10px;
-    width: 970 px;
+    width: 970px;
 }
 
-#alHeadline {
+#alHeadline,
+#nlHeadline {
     height: 48px;
 }
 
+#standingsNL h1,
 #standingsAL h1 {
+    background: url(/img/regular_season_large.png) no-repeat top left;
+    padding: 15px 919px;
+    display: block;
+    font-size: 14px;
+    color: #888;
+}
 
+#standingsAL h1 {
+    background-position: 0 0px;
+}
+
+#standingsNL h1 {
+    background-position: 0 -48px;
+}
+
+.stats-table,
+.data_grid {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dg-team-short {
+    width: 180px;
+}
+
+.dg-w,
+.dg-l,
+.dg-pct,
+.dg-gb {
+    width: 35px;
+}
+
+.stats-table thead,
+.data_grid thead {
+    background: #f1f1f1;
+    color: #666;
+}
+
+.stats-table th,
+.data_grid th {
+    padding: 6px 4px;
+    font-weight: bold;
+    font-size: .9em;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+#standingsContainer .data_grid td.dg-team-short a {
+    height: 26px;
+    background: url(/img/logos.png) no-repeat top left;
+    padding: 0 0 12px 43px;
+}
+
+#standingsContainer .data-grid td {
+    color: #000;
+    padding: 6px 2px 13px 4px;
+}
+
+.stats_table tbody td,
+.data_grid tbody td {
+    border-bottom: 1px solid #e7e7e7;
+    font: 12px Arial,Helvetica,sans-serif;
+}
+
+.data_grid td {
+    vertical-align: top;
+    font-size: 1em;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.nya {
+    background-position: 0 -990px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.bal {
+    background-position: 0 -165px;
+}
+
+a {
+    color: #000066;
+}
+
+#stats-top-nav {
+    border-radius: 4px;
+    height: 35px;
+    width: 970px;
+    float: left;
+    margin: 10px;
+    background: linear-gradient(to right, rgba(84,84,84,1) 0%, rgba(89,89,89,1) 9%, rgba(77,77,77,1) 50%, rgba(66,66,66,1) 51%, rgba(51,51,51,1) 100%);
+    color: #fff;
+    font-size: 14px;
+}
+
+#stats-top-nav div {
+    float: left;
+    width: 100%;
+    height: 35px;
+}
+
+#stats-top-nav ul.tabs {
+    float: left;
+    width: 100%;
+}
+
+#stats-top-nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    height: 35px;
+}
+
+#stats-top-nav ul li {
+    display: inline;
+    float: left;
+    margin: 0px;
+    padding: 3px 3px 0px 0px;
+    height: 32px;
+}
+
+#stats-top-nav ul.tabs li a {
+    position: relative;
+    top: 2px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #fff;
+    line-height: 2em;
+    padding: 0px 10px;
+    height: 35px;
+    text-align: center;
+}
+
+#stats-top-nav ul.tabs li a.active {
+    color: #fff;
+    padding; 4px 11px 4px 11px;
+    margin-left: 5px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#656464), color-stop(36%,#898989), color-stop(100%,#969696));
+    border-radius: 4px;
+}
+
+.tab-parent {
+    font-weight: bold;
+}
+
+.tab-child {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+#widgets {
+    float: left;
+    width: 93%;
+}
+
+.onscreen {
+    position: relative;
+    width: 100%;
+}
+
+#widgets div {
+    float: left;
+}
+
+.panels {
+    width: 100%;
+}
+
+#sp_hitting-0 {
+    padding-bottom: 5px;
+}
+
+#sp_hitting-1 {
+    padding-top: 7px;
+}
+
+#widgets sp_hitting-1 {
+    padding-top: 7px;
+}
+
+#widgets div.onscreen div.grouping {
+    margin: 0px 2px 2px 10px;
+    border-top: 1px solid #a7a7a7;
+}
+
+#widgets div.onscreen div.grouping:first-child {
+    border: none;
+}
+
+#widgets div.onscreen div.grouping {
+    margin: 0px 2px 2px 10px;
+    padding-top: 0px;
+}
+
+fieldset.widget-select {
+    border: none;
+}
+
+fieldset.widget-radio {
+    float: left;
+    border: none;
+}
+
+.panels fieldset {
+    float: left;
+    padding-right: 6px;
+    padding-top: 0px;
+}
+
+#widgets select {
+    -webkit-appearance: button;
+    background-image: url(/img/downarrow.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+    border-radius: 0.5em;
+    border: 1px solid #D3D3D3;
+    font-size: 12px;
+    padding: 4px 15px 4px 4px;
+    margin: 0px;
+}
+
+#widgets input {
+    float: left;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.ui-buttonset {
+    margin-right: 7px;
+}
+
+.ui-buttonset .ui-button {
+    margin-left: 0px;
+    margin-right: -.3em;
+}
+
+.ui-button {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    zoom: 1;
+    overflow: visible;
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: .4em 1em;
+}
+
+.ui-button .ui-button-text {
+    display: block;
+    line-height: 1.4;
+}
+
+.ui-corner-left {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+.ui-widget {
+    font-size: 12px;
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.ui-helper-hidden-accessible {
+    position: absolute;
+    clip: rect(1px,1px,1px,1px);
+}
+
+.ui-state-default {
+    border: 1px solid #d3d3d3;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F3F3F3), color-stop(100%,#FAFAFA));
+    font-weight: normal;
+    color: #555555;
 }

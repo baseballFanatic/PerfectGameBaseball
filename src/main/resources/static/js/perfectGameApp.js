@@ -1,39 +1,50 @@
-$(document).ready(function(){
-    createStandingsByYear();
+var otherHeader = `
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="regular-nav">
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="office">Perfect Game</a>
+            <img src="/img/baseball_lighter.png" height="20" class="d-inline-block align-top mr-3" alt="">
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="nav-front-office">
+                        <a class="nav-link" href="office">Front Office
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="nav-standings">
+                        <a class="nav-link" href="standings">Standings</a>
+                    </li>
+                    <li class="nav-item" id="nav-schedule">
+                        <a class="nav-link" href="schedule">Schedule</a>
+                    </li>
+                    <li class="nav-item" id="nav-leaders">
+                        <a class="nav-link" href="stats">Stats</a>
+                    </li>
+                    <li class="nav-item" id="nav-players">
+                        <a class="nav-link" href="players">Players
+                        </a>
+                    </li>
+                    <li class="nav-item" id="nav-teams">
+                        <a class="nav-link" href="teams">Teams</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Collapsible content -->
+            <button type="submit" class="btn btn-primary mb-0 btn-small" id="sign-out">Sign-Out</button>
+        </div>
+    </nav>
+`;
 
-    $("#simulated-years").change(function() {
-      var rowHtml = '<tr class="table-standings-header">';
-      rowHtml += '<th>Team</th>';
-      rowHtml += '<th>W</th>';
-      rowHtml += '<th>L</th>';
-      rowHtml += '<th>%</th>';
-      rowHtml += '</tr>';
-      $('#standings-table-al').html(rowHtml);
-      $('#standings-table-nl').html(rowHtml);
-      var year = $("#simulated-years").attr( "option" );
-      var urlYear = "/season";
-      var actualYear = 'yearID=' + $( "#simulated-years" ).val();
-      var league = 'American';
-      loadTeamsByLeague( league, $( "#simulated-years" ).val() );
-    });
-
-    $('.p-navbar-mini-title').click(function(event) {
-        var currentElement = $(this);
-        if ($(currentElement).text() == 'American' || $(currentElement).text() == 'National') {
-            $('#navbar-standings').find('li').toggleClass('p-navbar-mini p-navbar-mini-active');
-            loadTeamsByLeague( $(currentElement).text(), $( "#simulated-years" ).val() )
-            event.preventDefault();
-        }
-        else {
-            $("#navbar-leaders").find('li').toggleClass('p-navbar-mini p-navbar-mini-active');
-            event.preventDefault();
-            if ($( currentElement ).text() === 'Batting' )
-            {
-                $( "#grid-player-stats-container" ).find('div').toggleClass( 'grid-player-data grid-player-data-active');
-            }
-        }
-    });
-});
+function appendOtherHeader() {
+    $('#other-header').append(otherHeader);
+}
 
 function createStandingsByYear() {
     var url = "/years";
@@ -83,3 +94,5 @@ function loadTeamsByLeague( league, year ) {
         });
     });
 }
+
+
