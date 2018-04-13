@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -50,7 +51,10 @@ public class HomeController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
-    public List<Users> getUsers( ) { return usersDao.getUsers(); }
+    public boolean checkUser( @RequestParam String user, HttpSession session ) {
+        System.out.println( "Last one: " + session.getAttribute( "username" ) );
+        session.setAttribute( "username", user );
+        return usersDao.checkUser( user ); }
 
     @RequestMapping(value = "/years", method = RequestMethod.GET)
     @ResponseBody

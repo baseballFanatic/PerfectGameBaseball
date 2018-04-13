@@ -1,16 +1,15 @@
 package Baseball;
 
-import javax.persistence.Entity;
 import java.util.List;
 import java.util.Objects;
 
-/*@Entity*/
-class BatterStats {
+public class BatterStats {
     private double atBats, hits, doubles, triples, homeRuns, walks, strikeOuts, plateAppearances, probabilityWalk,
             probabilitySingle, probabilityDouble, probabilityTriple, probabilityHomeRun, probabilityStrikeOut,
             stolenBaseAttempt, stolenBaseSuccess, onBasePercentage,
             battingAverage, sluggingAverage, triplesFactor, speedRating, stolenBases,
-            stolenBaseAttemptPercentage, stolenBaseAttemptSuccessPercentage, histPercentPlayed,actualPlayPercent;
+            stolenBaseAttemptPercentage, stolenBaseAttemptSuccessPercentage, histPercentPlayed, actualPlayPercent,
+            onBasePlusSlugging;
     private int gamesPlayed, runs ,rbi, intentionalWalks ,hitByPitch, sacrificeHits, sacrificeFlies, groundedIntoDp,
             sGamesPlayed, sGamesStarted, sAtBats, sHits, sRuns, caughtStealing, sDoubles, sTriples, sHomeRuns, sRbi,
             sWalks, sStrikeOuts, sHitByPitch, sPlateAppearances, sSacrificeHits, sSacrificeFlies, gameDate, awardPoints,
@@ -22,7 +21,17 @@ class BatterStats {
             gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases, gameCaughtStealing,
             sStolenBases, sCaughtStealing, gameRispGidp, yearID;
 
-    int getYearID() {
+    public double getOnBasePlusSlugging()
+    {
+        return onBasePlusSlugging;
+    }
+
+    public void setOnBasePlusSlugging( double onBasePlusSlugging )
+    {
+        this.onBasePlusSlugging = onBasePlusSlugging;
+    }
+
+    public int getYearID() {
         return yearID;
     }
 
@@ -62,11 +71,11 @@ class BatterStats {
         this.gameGamePlayed = gameGamePlayed;
     }
 
-    double getBattingAverage() {
+    public double getBattingAverage() {
         return battingAverage;
     }
 
-    private void setBattingAverage(double battingAverage) {
+    public void setBattingAverage(double battingAverage) {
         this.battingAverage = battingAverage;
     }
 
@@ -74,11 +83,11 @@ class BatterStats {
         return sluggingAverage;
     }
 
-    private void setSluggingAverage(double sluggingAverage) {
+    public void setSluggingAverage(double sluggingAverage) {
         this.sluggingAverage = sluggingAverage;
     }
 
-    void setYearID(int yearID) {
+    public void setYearID(int yearID) {
         this.yearID = yearID;
     }
 
@@ -92,19 +101,19 @@ class BatterStats {
         this.pinchRbi = pinchRbi;
     }
 
-    double getOnBasePercentage() {
+    public double getOnBasePercentage() {
         return onBasePercentage;
     }
 
-    private void setOnBasePercentage(double onBasePercentage) {
+    public void setOnBasePercentage(double onBasePercentage) {
         this.onBasePercentage = onBasePercentage;
     }
 
-    int getGameRispGidp() {
+    public int getGameRispGidp() {
         return gameRispGidp;
     }
 
-    void setGameRispGidp(int gameRispGidp) {
+    public void setGameRispGidp(int gameRispGidp) {
         this.gameRispGidp = gameRispGidp;
     }
 
@@ -112,7 +121,7 @@ class BatterStats {
         return atBats;
     }
 
-    void setAtBats(double atBats) {
+    public void setAtBats(double atBats) {
         this.atBats = atBats;
     }
 
@@ -120,7 +129,7 @@ class BatterStats {
         return hits;
     }
 
-    void setHits(double hits) {
+    public void setHits(double hits) {
         this.hits = hits;
     }
 
@@ -128,7 +137,7 @@ class BatterStats {
         return doubles;
     }
 
-    void setDoubles(double doubles) {
+    public void setDoubles(double doubles) {
         this.doubles = doubles;
     }
 
@@ -144,7 +153,7 @@ class BatterStats {
         return homeRuns;
     }
 
-    void setHomeRuns(double homeRuns) {
+    public void setHomeRuns(double homeRuns) {
         this.homeRuns = homeRuns;
     }
 
@@ -152,7 +161,7 @@ class BatterStats {
         return walks;
     }
 
-    void setWalks(double walks) {
+    public void setWalks(double walks) {
         this.walks = walks;
     }
 
@@ -160,7 +169,7 @@ class BatterStats {
         return strikeOuts;
     }
 
-    void setStrikeOuts(double strikeOuts) {
+    public void setStrikeOuts(double strikeOuts) {
         this.strikeOuts = strikeOuts;
     }
 
@@ -168,7 +177,7 @@ class BatterStats {
         return plateAppearances;
     }
 
-    private void setPlateAppearances(double plateAppearances) {
+    public void setPlateAppearances(double plateAppearances) {
         this.plateAppearances = plateAppearances;
     }
 
@@ -224,7 +233,7 @@ class BatterStats {
         return gamesPlayed;
     }
 
-    void setGamesPlayed(int gamesPlayed) {
+    public void setGamesPlayed(int gamesPlayed) {
         this.gamesPlayed = gamesPlayed;
     }
 
@@ -232,7 +241,7 @@ class BatterStats {
         return runs;
     }
 
-    void setRuns(int runs) {
+    public void setRuns(int runs) {
         this.runs = runs;
     }
 
@@ -240,7 +249,7 @@ class BatterStats {
         return rbi;
     }
 
-    void setRbi(int rbi) {
+    public void setRbi(int rbi) {
         this.rbi = rbi;
     }
 
@@ -264,7 +273,7 @@ class BatterStats {
         return sacrificeHits;
     }
 
-    void setSacrificeHits(int sacrificeHits) {
+    public void setSacrificeHits(int sacrificeHits) {
         this.sacrificeHits = sacrificeHits;
     }
 
@@ -272,7 +281,7 @@ class BatterStats {
         return sacrificeFlies;
     }
 
-    void setSacrificeFlies(int sacrificeFlies) {
+    public void setSacrificeFlies(int sacrificeFlies) {
         this.sacrificeFlies = sacrificeFlies;
     }
 
@@ -284,139 +293,139 @@ class BatterStats {
         this.groundedIntoDp = groundedIntoDp;
     }
 
-    int getsGamesPlayed() {
+    public int getsGamesPlayed() {
         return sGamesPlayed;
     }
 
-    void setsGamesPlayed(int sGamesPlayed) {
+    public void setsGamesPlayed(int sGamesPlayed) {
         this.sGamesPlayed = sGamesPlayed;
     }
 
-    private int getsGamesStarted() {
+    public int getsGamesStarted() {
         return sGamesStarted;
     }
 
-    void setsGamesStarted(int sGamesStarted) {
+    public void setsGamesStarted(int sGamesStarted) {
         this.sGamesStarted = sGamesStarted;
     }
 
-    int getsAtBats() {
+    public int getsAtBats() {
         return sAtBats;
     }
 
-    void setsAtBats(int sAtBats) {
+    public void setsAtBats(int sAtBats) {
         this.sAtBats = sAtBats;
     }
 
-    int getsHits() {
+    public int getsHits() {
         return sHits;
     }
 
-    void setsHits(int sHits) {
+    public void setsHits(int sHits) {
         this.sHits = sHits;
     }
 
-    int getsRuns() {
+    public int getsRuns() {
         return sRuns;
     }
 
-    void setsRuns(int sRuns) {
+    public void setsRuns(int sRuns) {
         this.sRuns = sRuns;
     }
 
-    int getsDoubles() {
+    public int getsDoubles() {
         return sDoubles;
     }
 
-    void setsDoubles(int sDoubles) {
+    public void setsDoubles(int sDoubles) {
         this.sDoubles = sDoubles;
     }
 
-    int getsTriples() {
+    public int getsTriples() {
         return sTriples;
     }
 
-    void setsTriples(int sTriples) {
+    public void setsTriples(int sTriples) {
         this.sTriples = sTriples;
     }
 
-    int getsHomeRuns() {
+    public int getsHomeRuns() {
         return sHomeRuns;
     }
 
-    void setsHomeRuns(int sHomeRuns) {
+    public void setsHomeRuns(int sHomeRuns) {
         this.sHomeRuns = sHomeRuns;
     }
 
-    int getsRbi() {
+    public int getsRbi() {
         return sRbi;
     }
 
-    void setsRbi(int sRbi) {
+    public void setsRbi(int sRbi) {
         this.sRbi = sRbi;
     }
 
-    int getsWalks() {
+    public int getsWalks() {
         return sWalks;
     }
 
-    void setsWalks(int sWalks) {
+    public void setsWalks(int sWalks) {
         this.sWalks = sWalks;
     }
 
-    int getsStrikeOuts() {
+    public int getsStrikeOuts() {
         return sStrikeOuts;
     }
 
-    void setsStrikeOuts(int sStrikeOuts) {
+    public void setsStrikeOuts(int sStrikeOuts) {
         this.sStrikeOuts = sStrikeOuts;
     }
 
-    int getsHitByPitch() {
+    public int getsHitByPitch() {
         return sHitByPitch;
     }
 
-    void setsHitByPitch(int sHitByPitch) {
+    public void setsHitByPitch(int sHitByPitch) {
         this.sHitByPitch = sHitByPitch;
     }
 
-    int getsStolenBases() {
+    public int getsStolenBases() {
         return sStolenBases;
     }
 
-    void setsStolenBases(int sStolenBases) {
+    public void setsStolenBases(int sStolenBases) {
         this.sStolenBases = sStolenBases;
     }
 
-    int getsCaughtStealing() {
+    public int getsCaughtStealing() {
         return sCaughtStealing;
     }
 
-    void setsCaughtStealing(int sCaughtStealing) {
+    public void setsCaughtStealing(int sCaughtStealing) {
         this.sCaughtStealing = sCaughtStealing;
     }
 
-    int getsPlateAppearances() {
+    public int getsPlateAppearances() {
         return sPlateAppearances;
     }
 
-    void setsPlateAppearances(int sPlateAppearances) {
+    public void setsPlateAppearances(int sPlateAppearances) {
         this.sPlateAppearances = sPlateAppearances;
     }
 
-    int getsSacrificeHits() {
+    public int getsSacrificeHits() {
         return sSacrificeHits;
     }
 
-    private void setsSacrificeHits(int sSacrificeHits) {
+    public void setsSacrificeHits(int sSacrificeHits) {
         this.sSacrificeHits = sSacrificeHits;
     }
 
-    int getsSacrificeFlies() {
+    public int getsSacrificeFlies() {
         return sSacrificeFlies;
     }
 
-    private void setsSacrificeFlies(int sSacrificeFlies) {
+    public void setsSacrificeFlies(int sSacrificeFlies) {
         this.sSacrificeFlies = sSacrificeFlies;
     }
 
@@ -432,7 +441,7 @@ class BatterStats {
         return histPercentPlayed;
     }
 
-    void setHistPercentPlayed(double histPercentPlayed) {
+    public void setHistPercentPlayed(double histPercentPlayed) {
         this.histPercentPlayed = histPercentPlayed;
     }
 
@@ -456,7 +465,7 @@ class BatterStats {
         return pinchAtBat;
     }
 
-    void setPinchAtBat(int pinchAtBat) {
+    public void setPinchAtBat(int pinchAtBat) {
         this.pinchAtBat = pinchAtBat;
     }
 
@@ -464,207 +473,207 @@ class BatterStats {
         return pinchHit;
     }
 
-    void setPinchHit(int pinchHit) {
+    public void setPinchHit(int pinchHit) {
         this.pinchHit = pinchHit;
     }
 
-    int getRispAtBat() {
+    public int getRispAtBat() {
         return rispAtBat;
     }
 
-    void setRispAtBat(int rispAtBat) {
+    public void setRispAtBat(int rispAtBat) {
         this.rispAtBat = rispAtBat;
     }
 
-    int getRispHit() {
+    public int getRispHit() {
         return rispHit;
     }
 
-    void setRispHit(int rispHit) {
+   public void setRispHit(int rispHit) {
         this.rispHit = rispHit;
     }
 
-    int getRispRbi() {
+    public int getRispRbi() {
         return rispRbi;
     }
 
-    void setRispRbi(int rispRbi) {
+    public void setRispRbi(int rispRbi) {
         this.rispRbi = rispRbi;
     }
 
-    int getRispSingle() {
+    public int getRispSingle() {
         return rispSingle;
     }
 
-    void setRispSingle(int rispSingle) {
+    public void setRispSingle(int rispSingle) {
         this.rispSingle = rispSingle;
     }
 
-    int getRispDouble() {
+    public int getRispDouble() {
         return rispDouble;
     }
 
-    void setRispDouble(int rispDouble) {
+    public void setRispDouble(int rispDouble) {
         this.rispDouble = rispDouble;
     }
 
-    int getRispTriple() {
+    public int getRispTriple() {
         return rispTriple;
     }
 
-    void setRispTriple(int rispTriple) {
+    public void setRispTriple(int rispTriple) {
         this.rispTriple = rispTriple;
     }
 
-    int getRispHomeRun() {
+    public int getRispHomeRun() {
         return rispHomeRun;
     }
 
-    void setRispHomeRun(int rispHomeRun) {
+    public void setRispHomeRun(int rispHomeRun) {
         this.rispHomeRun = rispHomeRun;
     }
 
-    int getRispWalk() {
+    public int getRispWalk() {
         return rispWalk;
     }
 
-    void setRispWalk(int rispWalk) {
+    public void setRispWalk(int rispWalk) {
         this.rispWalk = rispWalk;
     }
 
-    int getRispStrikeOut() {
+    public int getRispStrikeOut() {
         return rispStrikeOut;
     }
 
-    void setRispStrikeOut(int rispStrikeOut) {
+    public void setRispStrikeOut(int rispStrikeOut) {
         this.rispStrikeOut = rispStrikeOut;
     }
 
-    int getRispGroundedIntoDp() {
+    public  int getRispGroundedIntoDp() {
         return rispGroundedIntoDp;
     }
 
-    void setRispGroundedIntoDp(int rispGroundedIntoDp) {
+    public void setRispGroundedIntoDp(int rispGroundedIntoDp) {
         this.rispGroundedIntoDp = rispGroundedIntoDp;
     }
 
-    private int getRispHitByPitch() {
+    public int getRispHitByPitch() {
         return rispHitByPitch;
     }
 
-    void setRispHitByPitch(int rispHitByPitch) {
+    public void setRispHitByPitch(int rispHitByPitch) {
         this.rispHitByPitch = rispHitByPitch;
     }
 
-    int getLeftOnBase() {
+    public int getLeftOnBase() {
         return leftOnBase;
     }
 
-    void setLeftOnBase(int leftOnBase) {
+    public void setLeftOnBase(int leftOnBase) {
         this.leftOnBase = leftOnBase;
     }
 
-    int getGameGamePlayed() {
+    public int getGameGamePlayed() {
         return gameGamePlayed;
     }
 
-    void setGameGamePlayed() {
+    public void setGameGamePlayed() {
         this.gameGamePlayed = 1;
     }
 
-    private int getGameGameStarted() {
+    public int getGameGameStarted() {
         return gameGameStarted;
     }
 
-    void setGameGameStarted(int gameGameStarted) {
+    public void setGameGameStarted(int gameGameStarted) {
         this.gameGameStarted = gameGameStarted;
     }
 
-    int getGameAtBats() {
+    public int getGameAtBats() {
         return gameAtBats;
     }
 
-    void setGameAtBats(int gameAtBats) {
+    public void setGameAtBats(int gameAtBats) {
         this.gameAtBats = gameAtBats;
     }
 
-    int getGameHits() {
+    public int getGameHits() {
         return gameHits;
     }
 
-    void setGameHits(int gameHits) {
+    public void setGameHits(int gameHits) {
         this.gameHits = gameHits;
     }
 
-    int getGameRuns() {
+    public int getGameRuns() {
         return gameRuns;
     }
 
-    void setGameRuns(int gameRuns) {
+    public void setGameRuns(int gameRuns) {
         this.gameRuns = gameRuns;
     }
 
-    int getGameRbi() {
+    public int getGameRbi() {
         return gameRbi;
     }
 
-    void setGameRbi(int gameRbi) {
+    public void setGameRbi(int gameRbi) {
         this.gameRbi = gameRbi;
     }
 
-    int getGameSingle() {
+    public int getGameSingle() {
         return gameSingle;
     }
 
-    private void setGameSingle(int gameSingle) {
+    public void setGameSingle(int gameSingle) {
         this.gameSingle = gameSingle;
     }
 
-    int getGameDouble() {
+    public int getGameDouble() {
         return gameDouble;
     }
 
-    private void setGameDouble(int gameDouble) {
+    public void setGameDouble(int gameDouble) {
         this.gameDouble = gameDouble;
     }
 
-    int getGameTriple() {
+    public int getGameTriple() {
         return gameTriple;
     }
 
-    private void setGameTriple(int gameTriple) {
+    public void setGameTriple(int gameTriple) {
         this.gameTriple = gameTriple;
     }
 
-    int getGameHomeRun() {
+    public int getGameHomeRun() {
         return gameHomeRun;
     }
 
-    private void setGameHomeRun(int gameHomeRun) {
+    public void setGameHomeRun(int gameHomeRun) {
         this.gameHomeRun = gameHomeRun;
     }
 
-    int getGameWalk() {
+    public int getGameWalk() {
         return gameWalk;
     }
 
-    void setGameWalk(int gameWalk) {
+    public void setGameWalk(int gameWalk) {
         this.gameWalk = gameWalk;
     }
 
-    int getGameStrikeOut() {
+    public int getGameStrikeOut() {
         return gameStrikeOut;
     }
 
-    void setGameStrikeOut(int gameStrikeOut) {
+    public void setGameStrikeOut(int gameStrikeOut) {
         this.gameStrikeOut = gameStrikeOut;
     }
 
-    int getGameHitByPitch() {
+    public int getGameHitByPitch() {
         return gameHitByPitch;
     }
 
-    void setGameHitByPitch(int gameHitByPitch) {
+    public void setGameHitByPitch(int gameHitByPitch) {
         this.gameHitByPitch = gameHitByPitch;
     }
 
@@ -676,7 +685,7 @@ class BatterStats {
         this.gameGidp = gameGidp;
     }
 
-    int getGameLeftOnBase() {
+    public int getGameLeftOnBase() {
         return gameLeftOnBase;
     }
 
@@ -684,63 +693,63 @@ class BatterStats {
         this.gameLeftOnBase = gameLeftOnBase;
     }
 
-    int getGameRispAtBat() {
+    public int getGameRispAtBat() {
         return gameRispAtBat;
     }
 
-    void setGameRispAtBat(int gameRispAtBat) {
+    public void setGameRispAtBat(int gameRispAtBat) {
         this.gameRispAtBat = gameRispAtBat;
     }
 
-    int getGameRispHit() {
+    public int getGameRispHit() {
         return gameRispHit;
     }
 
-    private void setGameRispHit(int gameRispHit) {
+    public void setGameRispHit(int gameRispHit) {
         this.gameRispHit = gameRispHit;
     }
 
-    int getGameRispSingle() {
+    public int getGameRispSingle() {
         return gameRispSingle;
     }
 
-    private void setGameRispSingle(int gameRispSingle) {
+    public void setGameRispSingle(int gameRispSingle) {
         this.gameRispSingle = gameRispSingle;
     }
 
-    int getGameRispDouble() {
+    public int getGameRispDouble() {
         return gameRispDouble;
     }
 
-    private void setGameRispDouble(int gameRispDouble) {
+    public void setGameRispDouble(int gameRispDouble) {
         this.gameRispDouble = gameRispDouble;
     }
 
-    int getGameRispTriple() {
+    public int getGameRispTriple() {
         return gameRispTriple;
     }
 
-    private void setGameRispTriple(int gameRispTriple) {
+    public void setGameRispTriple(int gameRispTriple) {
         this.gameRispTriple = gameRispTriple;
     }
 
-    int getGameRispHomeRun() {
+    public int getGameRispHomeRun() {
         return gameRispHomeRun;
     }
 
-    private void setGameRispHomeRun(int gameRispHomeRun) {
+    public void setGameRispHomeRun(int gameRispHomeRun) {
         this.gameRispHomeRun = gameRispHomeRun;
     }
 
-    int getGameRispRbi() {
+    public int getGameRispRbi() {
         return gameRispRbi;
     }
 
-    void setGameRispRbi(int gameRispRbi) {
+    public void setGameRispRbi(int gameRispRbi) {
         this.gameRispRbi = gameRispRbi;
     }
 
-    private int getGameRispStrikeOut() {
+    public int getGameRispStrikeOut() {
         return gameRispStrikeOut;
     }
 
@@ -748,39 +757,39 @@ class BatterStats {
         this.gameRispStrikeOut = gameRispStrikeOut;
     }
 
-    int getGameRispWalk() {
+    public int getGameRispWalk() {
         return gameRispWalk;
     }
 
-    void setGameRispWalk(int gameRispWalk) {
+    public void setGameRispWalk(int gameRispWalk) {
         this.gameRispWalk = gameRispWalk;
     }
 
-    int getGameSacrificeFly() {
+    public int getGameSacrificeFly() {
         return gameSacrificeFly;
     }
 
-    void setGameSacrificeFly(int gameSacrificeFly) {
+    public void setGameSacrificeFly(int gameSacrificeFly) {
         this.gameSacrificeFly = gameSacrificeFly;
     }
 
-    int getGameSacrificeHit() {
+    public int getGameSacrificeHit() {
         return gameSacrificeHit;
     }
 
-    void setGameSacrificeHit(int gameSacrificeHit) {
+    public void setGameSacrificeHit(int gameSacrificeHit) {
         this.gameSacrificeHit = gameSacrificeHit;
     }
 
-    int getGameRispSacrificeFly() {
+    public int getGameRispSacrificeFly() {
         return gameRispSacrificeFly;
     }
 
-    void setGameRispSacrificeFly(int gameRispSacrificeFly) {
+    public void setGameRispSacrificeFly(int gameRispSacrificeFly) {
         this.gameRispSacrificeFly = gameRispSacrificeFly;
     }
 
-    int getGamePlateAppearance() {
+    public int getGamePlateAppearance() {
         return gamePlateAppearance;
     }
 
@@ -788,43 +797,43 @@ class BatterStats {
         this.gamePlateAppearance = gamePlateAppearance;
     }
 
-    double getSpeedRating() {
+    public double getSpeedRating() {
         return speedRating;
     }
 
-    void setSpeedRating(double speedRating) {
+    public void setSpeedRating(double speedRating) {
         this.speedRating = speedRating;
     }
 
-    double getStolenBases() {
+    public double getStolenBases() {
         return stolenBases;
     }
 
-    void setStolenBases(double stolenBases) {
+    public void setStolenBases(double stolenBases) {
         this.stolenBases = stolenBases;
     }
 
-    int getCaughtStealing() {
+    public int getCaughtStealing() {
         return caughtStealing;
     }
 
-    void setCaughtStealing(int caughtStealing) {
+    public void setCaughtStealing(int caughtStealing) {
         this.caughtStealing = caughtStealing;
     }
 
-    int getGameStolenBases() {
+    public int getGameStolenBases() {
         return gameStolenBases;
     }
 
-    void setGameStolenBases(int gameStolenBases) {
+    public void setGameStolenBases(int gameStolenBases) {
         this.gameStolenBases = gameStolenBases;
     }
 
-    int getGameCaughtStealing() {
+    public int getGameCaughtStealing() {
         return gameCaughtStealing;
     }
 
-    void setGameCaughtStealing(int gameCaughtStealing) {
+    public void setGameCaughtStealing(int gameCaughtStealing) {
         this.gameCaughtStealing = gameCaughtStealing;
     }
 

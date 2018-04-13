@@ -1,6 +1,5 @@
 package Baseball;
 
-import javax.persistence.*;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +10,6 @@ public class Batter extends Player {
     private int battingOrder;
     private Hands bats;
     private BatterStats batterStats = new BatterStats();
-    //private boolean availability = true;
     private boolean isAvailable = true;
     private int awardPoints, stint, playerKey, fielderKey;
     private Base firstBase = new Base();
@@ -73,7 +71,7 @@ public class Batter extends Player {
         return lgID;
     }
 
-    void setLgID(String lgID) {
+    public void setLgID(String lgID) {
         this.lgID = lgID;
     }
 
@@ -89,7 +87,7 @@ public class Batter extends Player {
         return teamID;
     }
 
-    void setTeamID(String teamID) {
+    public void setTeamID(String teamID) {
         this.teamID = teamID;
     }
 
@@ -117,7 +115,7 @@ public class Batter extends Player {
         this.bats = bats;
     }
 
-    BatterStats getBatterStats() {
+    public BatterStats getBatterStats() {
         return batterStats;
     }
 

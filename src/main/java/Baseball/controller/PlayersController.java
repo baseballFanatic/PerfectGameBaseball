@@ -1,12 +1,13 @@
 package Baseball.controller;
 
+import Baseball.Batter;
 import Baseball.Player;
+import Baseball.repositories.BatterDao;
 import Baseball.repositories.PlayerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ import java.util.List;
 public class PlayersController {
     @Autowired
     private PlayerDao playerDao;
+
+    @Autowired
+    private BatterDao batterDao;
 
     @RequestMapping("/players")
     public String players(Model model) throws ClassNotFoundException {
@@ -25,5 +29,12 @@ public class PlayersController {
         List<Player> players = playerDao.getPlayer(playerId);
         model.addAttribute("players", players);
         return "players";
+    }
+
+    @RequestMapping(value = "/hitters", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Batter> getAllBattersByYear( @RequestParam String yearID )
+    {
+        return batterDao.getAllBattersByYear( yearID );
     }
 }

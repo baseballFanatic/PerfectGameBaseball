@@ -3,7 +3,8 @@ package Baseball;
 public class Users
 {
     private String username;
-    private int season;
+    private int recentYear;
+    private String displayName;
 
     public Users()
     {
@@ -19,13 +20,23 @@ public class Users
         this.username = username;
     }
 
-    public int getSeason()
+    public int getRecentYear()
     {
-        return season;
+        return recentYear;
     }
 
-    public void setSeason( int season )
+    public void setRecentYear( int season )
     {
-        this.season = season;
+        this.recentYear = season;
+    }
+
+    public String getDisplayName()
+    {
+        return displayName;
+    }
+
+    public void setDisplayName( String displayName )
+    {
+        this.displayName = displayName;
     }
 }

@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    appendOtherHeader();
-    $('#nav-schedule').addClass( "active" );
-});
+       appendOtherHeader();
+       $('#nav-schedule').addClass( "active" );
+   });

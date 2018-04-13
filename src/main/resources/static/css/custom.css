@@ -133,7 +133,7 @@ li.bling_all_star {
 
 #mc_container,
 #mc {
-    min-height: 600px;
+    min-height: 225px;
     zoom: 1;
 }
 
@@ -234,6 +234,17 @@ li.bling_all_star {
 .dg-pct,
 .dg-gb {
     width: 35px;
+    text-align: center;
+}
+
+data-grid td.dg-last-ten,
+data-grid td.dg-streak,
+data-grid td.dg-home,
+data-grid td.dg-away,
+data-grid td.dg-last-game,
+data-grid td.dg-next-game,
+data-grid td.dg-gb {
+    text-align: center;
 }
 
 .stats-table thead,
@@ -244,7 +255,7 @@ li.bling_all_star {
 
 .stats-table th,
 .data_grid th {
-    padding: 6px 4px;
+    padding: 6px 6px;
     font-weight: bold;
     font-size: .9em;
 }
@@ -287,14 +298,6 @@ tbody {
 .data_grid td {
     vertical-align: top;
     font-size: 1em;
-}
-
-#standingsContainer .data_grid td.dg-team-short a.nya {
-    background-position: 0 -990px;
-}
-
-#standingsContainer .data_grid td.dg-team-short a.bal {
-    background-position: 0 -165px;
 }
 
 a {
@@ -497,4 +500,99 @@ option {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F3F3F3), color-stop(100%,#FAFAFA));
     font-weight: normal;
     color: #555555;
+}
+
+.ui-state-active {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C0C0C0), color-stop(100%,#E9E9E9));
+}
+
+#stats-hitting-data-table_length label,
+#stats-hitting-data-table_length option,
+#stats-hitting-data-table_filter label,
+#stats-hitting-data-table tr,
+#stats-hitting-data-table td,
+.dataTables_info,
+.pagination li {
+    font-size: .8em;
+}
+
+table th {
+    font-size: .85em;
+}
+
+.silhouette {
+    width: 130px;
+    height: 130px;
+}
+/*
+
+  Team logos
+
+  */
+#standingsContainer .data_grid td.dg-team-short a.NYA {
+    background-position: 0 -990px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.BAL {
+    background-position: 0 -165px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.BOS {
+    background-position: 0 -220px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.CHA {
+    background-position: 0 -495px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.CLE {
+    background-position: 0 -385px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.DET {
+    background-position: 0 -550px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.SLN {
+    background-position: 0 -1375px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.CIN {
+    background-position: 0 -330px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.CHN {
+    background-position: 0 -275px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.PIT {
+    background-position: 0 -1155px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.NRO {
+    background-position: 0 -771px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.BSN {
+    background-position: 0 -111px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.NY1 {
+    background-position: 0 -1320px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.PHA {
+    background-position: 0 -1045px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.PHI {
+    background-position: 0 -1100px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.SLA {
+    background-position: 0 -165px;
+}
+
+#standingsContainer .data_grid td.dg-team-short a.WS1 {
+    background-position: 0 -1596px;
 }

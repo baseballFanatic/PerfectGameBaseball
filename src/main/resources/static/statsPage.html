@@ -13,6 +13,10 @@
     <!-- Material Design Bootstrap -->
     <link href="/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
+    <link href="/css/jquery-ui.css">
+    <link href="/css/jquery-ui.structure.css">
+    <link href="/css/jquery-ui.theme.css">
+    <link href="/css/dataTables.bootstrap4.min.css">
     <link href="/css/custom.css" rel="stylesheet">
 </head>
 <body class="pgbs">
@@ -40,18 +44,18 @@
                             <div class="mb-1" id="headline">STATISTICS</div>
                             <div id="stats-top-nav">
                                 <div>
-                                    <ul class="tabs newTabs">
+                                    <ul class="tabs newTabs categoryDisplay">
                                         <li class>
                                             <a id="sp_parent" class="tab_parent" name="spTab" href="#sp">Player</a>
                                         </li>
                                         <li>
-                                            <a id="sp_hitting_child" class="tab_child active" name="sp_hittingTab" href="#sp_hitting" style="display: inline;">Hitting</a>
+                                            <a id="sp_hitting_child" class="tab_child active" name="sp_hittingTab" href="#" style="display: inline;">Hitting</a>
                                         </li>
                                         <li>
-                                            <a id="sp_pitching_child" class="tab_child" name="sp_pitchingTab" href="#sp_pitching" style="display: inline;">Pitching</a>
+                                            <a id="sp_pitching_child" class="tab_child" name="sp_pitchingTab" href="#" style="display: inline;">Pitching</a>
                                         </li>
                                         <li>
-                                            <a id="sp_fielding_child" class="tab_child" name="sp_fieldingTab" href="#sp_fielding" style="display: inline;">Fielding</a>
+                                            <a id="sp_fielding_child" class="tab_child" name="sp_fieldingTab" href="#" style="display: inline;">Fielding</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -73,15 +77,30 @@
                                                 </select>
                                             </fieldset>
                                             <fieldset class="widget-radio ui-buttonset">
-                                                <input type="radio" name="sp_hitting_playerType" value="ALL" id="sp_hitting_playerType_alltime" checked="checked" class="ui-helper-hidden-accessible"><label for="sp_hitting_playerType_alltime" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="false" role="button" aria-disabled="false"><span class="ui-button-text">All Players</span></label>
-                                                <input type="radio" name="sp_hitting_playerType" value="QUALIFIER" id="sp_hitting_playerType_qualifier" class="ui-helper-hidden-accessible" checked="checked"><label for="sp_hitting_playerType_qualifier" aria-pressed="true" class="ui-button ui-widget ui-state-default ui-state-active ui-button-text-only ui-corner-right" role="button" aria-disabled="false"><span class="ui-button-text">Qualifiers</span></label>
+                                                <input type="radio" name="sp_hitting_playerType" value="ALL" id="sp_hitting_playerType_alltime" class="ui-helper-hidden-accessible">
+                                                    <label for="sp_hitting_playerType_alltime" id="sp-hitting-all" class="qualifying-selector ui-button ui-widget ui-state-default ui-state-active ui-button-text-only ui-corner-left" aria-pressed="false" role="button" aria-disabled="false">
+                                                        <span class="ui-button-text">All Players</span>
+                                                    </label>
+                                                <input type="radio" name="sp_hitting_playerType" value="QUALIFIER" id="sp_hitting_playerType_qualifier" class="ui-helper-hidden-accessible" checked="checked">
+                                                    <label for="sp_hitting_playerType_qualifier" aria-pressed="true" id="sp-hitting-qualifiers" class="qualifying-selector ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false">
+                                                        <span class="ui-button-text">Qualifiers</span>
+                                                    </label>
                                             </fieldset>
                                         </div>
                                         <div id="sp_hitting-1" class="grouping onscreen">
                                             <fieldset class="widget-radio ui-buttonset mt-3">
-                                                <input type="radio" name="sp_hitting_league_code" value="'MLB'" id="sp_hitting_league_code_mlb" checked="checked" class="ui-helper-hidden-accessible"><label for="sp_hitting_league_code_mlb" class="ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="true" role="button" aria-disabled="false"><span class="ui-button-text">MLB</span></label>
-                                                <input type="radio" name="sp_hitting_league_code" value="'AL'" id="sp_hitting_league_code_al" class="ui-helper-hidden-accessible"><label for="sp_hitting_league_code_al" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">AL</span></label>
-                                                <input type="radio" name="sp_hitting_league_code" value="'NL'" id="sp_hitting_league_code_nl" class="ui-helper-hidden-accessible"><label for="sp_hitting_league_code_nl" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false"><span class="ui-button-text">NL</span></label>
+                                                <input type="radio" name="sp_hitting_league_code" value="'MLB'" id="sp_hitting_league_code_mlb" checked="checked" class="ui-helper-hidden-accessible">
+                                                <label for="sp_hitting_league_code_mlb" class="league-selector ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="true" role="button" aria-disabled="false">
+                                                    <span class="ui-button-text">MLB</span>
+                                                </label>
+                                                <input type="radio" name="sp_hitting_league_code" value="'AL'" id="sp_hitting_league_code_al" class="ui-helper-hidden-accessible">
+                                                <label for="sp_hitting_league_code_al" aria-pressed="false" id="stats-league-al" class="league-selector ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false">
+                                                    <span class="ui-button-text">AL</span>
+                                                </label>
+                                                <input type="radio" name="sp_hitting_league_code" value="'NL'" id="sp_hitting_league_code_nl" class="ui-helper-hidden-accessible">
+                                                <label for="sp_hitting_league_code_nl" aria-pressed="false" class="league-selector ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false">
+                                                    <span class="ui-button-text">NL</span>
+                                                </label>
                                             </fieldset>
                                             <fieldset class="widget-select mt-3">
                                                 <select class="team_id" id="sp_hitting_team_id" name="sp_hitting_team_id"><option value="" selected="selected">All Teams</option><option value="109">Arizona Diamondbacks</option><option value="144">Atlanta Braves</option><option value="110">Baltimore Orioles</option><option value="111">Boston Red Sox</option><option value="112">Chicago Cubs</option><option value="145">Chicago White Sox</option><option value="113">Cincinnati Reds</option><option value="114">Cleveland Indians</option><option value="115">Colorado Rockies</option><option value="116">Detroit Tigers</option><option value="117">Houston Astros</option><option value="118">Kansas City Royals</option><option value="108">Los Angeles Angels</option><option value="119">Los Angeles Dodgers</option><option value="146">Miami Marlins</option><option value="158">Milwaukee Brewers</option><option value="142">Minnesota Twins</option><option value="121">New York Mets</option><option value="147">New York Yankees</option><option value="133">Oakland Athletics</option><option value="143">Philadelphia Phillies</option><option value="134">Pittsburgh Pirates</option><option value="135">San Diego Padres</option><option value="137">San Francisco Giants</option><option value="136">Seattle Mariners</option><option value="138">St. Louis Cardinals</option><option value="139">Tampa Bay Rays</option><option value="140">Texas Rangers</option><option value="141">Toronto Blue Jays</option><option value="120">Washington Nationals</option></select>
@@ -109,6 +128,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="ml-5">
+                    <table id="stats-hitting-data-table" class="table table-striped table-bordered display compact sortable" style="width:80%">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Team</th>
+                            <th>Pos</th>
+                            <th class="sorttable_numeric">G</th>
+                            <th class="sorttable_numeric">AB</th>
+                            <th class="sorttable_numeric">R</th>
+                            <th class="sorttable_numeric">H</th>
+                            <th class="sorttable_numeric">2B</th>
+                            <th class="sorttable_numeric">3B</th>
+                            <th class="sorttable_numeric">HR</th>
+                            <th class="sorttable_numeric">RBI</th>
+                            <th class="sorttable_numeric">BB</th>
+                            <th class="sorttable_numeric">SO</th>
+                            <th class="sorttable_numeric">SB</th>
+                            <th class="sorttable_numeric">CS</th>
+                            <th class="sorttable_numeric">AVG</th>
+                            <th class="sorttable_numeric">OBP</th>
+                            <th class="sorttable_numeric">SLG</th>
+                            <th class="sorttable_numeric">OPS</th>
+                        </tr>
+                        </thead>
+                        <tbody id="stats-table-hitters">
+
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </section>
     </div>
@@ -125,9 +175,11 @@
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <!-- MDB core JavaScript -->
 <script src="/js/mdb.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <!-- PerfectGameHome JavaScript -->
 <script src="/js/perfectGameApp.js"></script>
 <script src="/js/perfectGameHome.js"></script>
+<script src="/js/sorttable.js"></script>
 <script src="/js/stats.js"></script>
 </body>
 

@@ -2,7 +2,7 @@ var otherHeader = `
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="regular-nav">
         <div class="container">
             <!-- Navbar brand -->
-            <a class="navbar-brand" href="office">Perfect Game</a>
+            <a class="navbar-brand" href="home">Perfect Game</a>
             <img src="/img/baseball_lighter.png" height="20" class="d-inline-block align-top mr-3" alt="">
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -24,9 +24,23 @@ var otherHeader = `
                     <li class="nav-item" id="nav-schedule">
                         <a class="nav-link" href="schedule">Schedule</a>
                     </li>
-                    <li class="nav-item" id="nav-leaders">
-                        <a class="nav-link" href="stats">Stats</a>
-                    </li>
+                    <!-- Collapsible content -->
+                        <div class="collapse navbar-collapse" id="basicExampleNav">
+                            <!-- Links -->
+                            <ul class="navbar-nav mr-auto">
+                              <!-- Dropdown -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Stats</a>
+                                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="stats">Player Stats</a>
+                                        <a class="dropdown-item" href="#">League Leaders</a>
+                                        <a class="dropdown-item" href="#">Team Stats</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Links -->
+                        </div>
+                        <!-- Collapsible content -->
                     <li class="nav-item" id="nav-players">
                         <a class="nav-link" href="players">Players
                         </a>
@@ -46,7 +60,13 @@ function appendOtherHeader() {
     $('#other-header').append(otherHeader);
 }
 
-function createStandingsByYear() {
+function User(username, displayName, recentYear) {
+    this.username = username;
+    this.displayName = displayName;
+    this.recentYear = recentYear;
+}
+
+/*function createStandingsByYear() {
     var url = "/years";
     $.getJSON(url, function(response) {
       var defaultYear = response[0].yearID;
@@ -67,7 +87,7 @@ function createStandingsByYear() {
       });
       $('#simulated-years').html(yearHtml);
     });
-}
+}*/
 
 function loadTeamsByLeague( league, year ) {
     var defaultUrl = "/season";
