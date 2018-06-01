@@ -36,8 +36,62 @@
                 <!--/.Card content-->
                 <div id="mc_container">
                     <div id="mc">
-                        <div id="standingsContainer" class="currentYear">
+                        <div id="calendar" class="currentYear">
                             <div class="mb-1" id="headline">SCHEDULE</div>
+                            <div class="calendar-nav">
+                                <select class="custom-select align-middle" id="simulated-years">
+
+                                </select>
+                            </div>
+                            <div class="ui-widget bam-monthpicker">
+                                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only bam-monthpicker-previous" role="button">
+                                    <span class="ui-button-text">Previous month</span>
+                                </button>
+                                <button class="ui-button ui-widget ui-state-default ui-corner-all bam-monthpicker-toggle ui-button-text-only" role="button">
+                                    <span class="ui-button-text">April</span>
+                                </button>
+                                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only bam-monthpicker-next" role="button">
+                                    <span class="ui-button-text">Next month</span>
+                                </button>
+                            </div>
+                            <div id="schedule" style="opacity: 1;">
+                                <div id="scheduleTable">
+                                    <table cellspacing="0" class="schedule_table data_grid">
+                                        <col class="dg-date">
+                                        <col class="dg-away">
+                                        <col class="dg-home">
+                                        <col class="dg-away-probable">
+                                        <col class="dg-home-probable">
+                                        <col class="dg-result">
+                                        <col class="dg-winning-pitcher">
+                                        <col class="dg-losing-pitcher">
+                                        <thead>
+                                        <tr>
+                                            <th tabindex="0" index="0" class="dg-date">Date</th>
+                                            <th tabindex="0" index="1" class="dg-away centered">Away</th>
+                                            <th tabindex="0" index="2" class="dg-home centered">Home</th>
+                                            <th tabindex="0" index="3" class="dg-away-probable centered">Away Probable</th>
+                                            <th tabindex="0" index="4" class="dg-home-probable centered">Home Probable</th>
+                                            <th tabindex="0" index="5" class="dg-result centered">Result</th>
+                                            <th tabindex="0" index="6" class="dg-winning-pitcher centered">Winning Pitcher</th>
+                                            <th tabindex="0" index="7" class="dg-losing-pitcher centered">Losing Pitcher</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody tabindex="-1" id="scheduleTableBody">
+                                            <tr index="0" tabindex="0">
+                                                <td index="0" class="dg-date">04/20/1914</td>
+                                                <td index="0" class="dg-away">Senators</td>
+                                                <td index="0" class="dg-home">Yankees</td>
+                                                <td index="0" class="dg-away-probable">Brown</td>
+                                                <td index="0" class="dg-home-probable">Ford</td>
+                                                <td index="0" class="dg-result">WSH 1, NYA 7</td>
+                                                <td index="0" class="dg-result">Ford (1-0)</td>
+                                                <td index="0" class="dg-result">Brown (0-1)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

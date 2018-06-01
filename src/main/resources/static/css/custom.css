@@ -176,6 +176,15 @@ li.bling_all_star {
     width: 970px;
 }
 
+.setup-nav {
+    border-radius: 4px;
+    background: #f5f5f5;
+    border: 1px #d7d7d7 solid;
+    color: #292929;
+    height: 40px;
+    width: 100px;
+}
+
 #standing_year {
     float: left;
     padding: 5px 0 5px 5px;
@@ -506,11 +515,92 @@ option {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C0C0C0), color-stop(100%,#E9E9E9));
 }
 
+.bam-monthpicker {
+    margin: 1em 0;
+}
+
+.bam-monthpicker-previous {
+    width: inherit;
+    text-align: left;
+    margin-left: 10px;
+    color: #006;
+    font-family: 'mlb_secondary';
+    background: url(/img/mlb.png) no-repeat;
+    border: 0;
+    padding: 0;
+    line-height: 20px;
+    filter: none;
+    background-position: -3px -75px !important;
+    height: 30px !important;
+}
+
+.bam-monthpicker-next {
+    width: inherit;
+    text-align: right;
+    margin-right: 10px;
+    color: #006;
+    font-family: 'mlb_secondary';
+    background: url(/img/mlb.png) no-repeat;
+    border: 0;
+    padding: 0;
+    line-height: 20px;
+    filter: none;
+    background-position: -3px -75px !important;
+    height: 30px !important;
+}
+
+#calendar {
+    clear: both;
+    margin: 7px 0 15px 9px;
+    width: 1050px;
+    padding-left: 50px;
+}
+
+#calendar .bam-monthpicker .ui-button-text {
+    padding-left: 30px;
+    background-position: left -78px;
+    overflow: visible;
+    text-indent: 0em;
+    font-size: 14px;
+    background-color: white;
+}
+
+#calendar .bam-monthpicker-toggle {
+    width: 120px;
+    margin: 0 5px;
+    border-radius: 0;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    line-height: 20px;
+    filter: none;
+}
+
+#calendar .bam-monthpicker-toggle .ui-state-default {
+    border: 0;
+}
+
+#calendar .data_grid th,
+#calendar .data_grid td
+{
+    font-size: 13px;
+}
+
+.deletes {
+    display: -webkit-box;
+}
+
 #stats-hitting-data-table_length label,
 #stats-hitting-data-table_length option,
 #stats-hitting-data-table_filter label,
 #stats-hitting-data-table tr,
 #stats-hitting-data-table td,
+#stats-pitching-data-table_length label,
+#stats-pitching-data-table_length option,
+#stats-pitching-data-table_filter label,
+#stats-pitching-data-table tr,
+#stats-pitching-data-table td,
 .dataTables_info,
 .pagination li {
     font-size: .8em;

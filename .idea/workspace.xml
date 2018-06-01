@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6711f80-d0e5-4cfc-ba1d-bf0f3f63b06c" name="Default" comment="- created table for standings in js&#10;- changed the header - added Standings instead of Seasons and changed order&#10;- created Standings page and moved from Front Office to the standings page&#10;- scaled down the Front Office page&#10;- created Coming Soon landing page for all Schedule, Leaders, and Teams&#10;- added selectors for Stats page">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Baseball/StringSupport.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/css/datatables.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/datatables.min.js" />
+    <list default="true" id="a6711f80-d0e5-4cfc-ba1d-bf0f3f63b06c" name="Default" comment="- adding table for Schedule page">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/setup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/setupPage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/favicon.ico" afterPath="$PROJECT_DIR$/src/main/resources/favicon.ico" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/Users.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Users.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/Pitcher.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Pitcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/PitcherStats.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/PitcherStats.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/SetupController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/SetupController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/frontOffice.html" afterPath="$PROJECT_DIR$/src/main/resources/static/frontOffice.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/standings.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/stats.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/stats.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" afterPath="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/playersPage.html" afterPath="$PROJECT_DIR$/src/main/resources/static/playersPage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/standingsPage.html" afterPath="$PROJECT_DIR$/src/main/resources/static/standingsPage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" afterPath="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/statsPage.html" afterPath="$PROJECT_DIR$/src/main/resources/static/statsPage.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -71,41 +69,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="perfectGameApp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js">
+      <file leaf-file-name="schedulePage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/schedulePage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="76" lean-forward="false" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+            <state relative-caret-position="373">
+              <caret line="97" column="18" lean-forward="true" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="perfectGameHome.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js">
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+            <state relative-caret-position="0">
+              <caret line="53" column="80" lean-forward="false" selection-start-line="53" selection-start-column="80" selection-end-line="53" selection-end-column="80" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="statsPage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/statsPage.html">
+      <file leaf-file-name="standingsPage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/standingsPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="68" />
+            <state relative-caret-position="765">
+              <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java">
+      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="65" column="79" lean-forward="false" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
+            <state relative-caret-position="51">
+              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScheduleDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,53 +121,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-573">
-              <caret line="519" column="21" lean-forward="false" selection-start-line="519" selection-start-column="21" selection-end-line="519" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeamsDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stats.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/stats.js">
+      <file leaf-file-name="ScheduleDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1088">
-              <caret line="64" column="82" lean-forward="false" selection-start-line="64" selection-start-column="82" selection-end-line="64" selection-end-column="82" />
-              <folding />
+              <caret line="64" column="24" lean-forward="false" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BatterDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java">
+      <file leaf-file-name="standings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/standings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" column="51" lean-forward="false" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+            <state relative-caret-position="1020">
+              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -174,8 +152,8 @@
         <option value="Kotlin Class" />
         <option value="AnnotationType" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -206,6 +184,7 @@
       <find>makeSortable</find>
       <find>init</find>
       <find>table th</find>
+      <find>ui</find>
     </findStrings>
     <replaceStrings>
       <replace>'NONE'</replace>
@@ -664,17 +643,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/RelieversController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/Season.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/configuration/SwaggerConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/Team.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/home.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/home.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/gridHome.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/perfectGameWeb.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/homePage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/perfectGameWebStyles.css" />
         <option value="$PROJECT_DIR$/src/main/resources/registry.json" />
@@ -682,7 +650,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/FrontOfficeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/players.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/standings.html" />
@@ -690,31 +657,43 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/leaders.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/teamsPage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/teams.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/playersPage.html" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/StringSupport.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Users.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/frontOffice.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/standingsPage.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/Pitcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/PitcherStats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/statsPage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/stats.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/SetupController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/setupPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/setup.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" />
       </list>
     </option>
   </component>
@@ -725,10 +704,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="178" />
-    <option name="y" value="-1084" />
+    <option name="x" value="197" />
+    <option name="y" value="80" />
     <option name="width" value="1612" />
-    <option name="height" value="963" />
+    <option name="height" value="949" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -770,9 +749,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -855,12 +832,23 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -886,15 +874,15 @@
       <recent name="Baseball.model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\img\logos" />
       <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources" />
       <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static" />
       <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\css\font" />
       <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\img" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="Baseball" />
       <recent name="Baseball.repositories" />
+      <recent name="Baseball" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\css" />
@@ -1468,7 +1456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522935302125</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="- fixed option value for select dropdown on Standings page&#10;- added in populating the standings on change of year select&#10;- added sortable table to Stats page for hitting&#10;- added styling for active buttons on Stats page&#10;- moved check users to server side&#10;- sign-in page clears out input value when invalid username is entered&#10;- added coords for logos for 1913 teams&#10;- added ability to select league (MLB, AL, or NL) for stats page">
+      <created>1523633306437</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1523633306437</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1484,23 +1479,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2954292" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28985506" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22974414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2761194" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1552,8 +1547,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added in logic to select batters based on batting order." />
-    <MESSAGE value="Changed batter and fielder starters lists to HashMaps to make it easier to add and remove batters/fielders to those lists and keep them at 9." />
     <MESSAGE value="Added in logic for pitchers entering the game show in batting and fielding stats." />
     <MESSAGE value="Fixed bug with pitchers who did not have a position assigned of 'PITCHER' and were causing a nullPointerException when they got on base and then checked for a steal.  Position is now assigned to both the batter and fielder lists when the pitcher comes into the game." />
     <MESSAGE value="Added logic for pitchOuts and added a stolenBaseAttemptPercentage and stolenBaseAttemptSuccessPercentage for calculating successful stolen bases or not." />
@@ -1577,7 +1570,9 @@
     <MESSAGE value="Home page team standings works.  Leaders layout looks good but needs to have&#10;the actual data pulled and input." />
     <MESSAGE value="Changed to use MaterialDesign for Bootstrap." />
     <MESSAGE value="- created table for standings in js&#10;- changed the header - added Standings instead of Seasons and changed order&#10;- created Standings page and moved from Front Office to the standings page&#10;- scaled down the Front Office page&#10;- created Coming Soon landing page for all Schedule, Leaders, and Teams&#10;- added selectors for Stats page" />
-    <option name="LAST_COMMIT_MESSAGE" value="- created table for standings in js&#10;- changed the header - added Standings instead of Seasons and changed order&#10;- created Standings page and moved from Front Office to the standings page&#10;- scaled down the Front Office page&#10;- created Coming Soon landing page for all Schedule, Leaders, and Teams&#10;- added selectors for Stats page" />
+    <MESSAGE value="- fixed option value for select dropdown on Standings page&#10;- added in populating the standings on change of year select&#10;- added sortable table to Stats page for hitting&#10;- added styling for active buttons on Stats page&#10;- moved check users to server side&#10;- sign-in page clears out input value when invalid username is entered&#10;- added coords for logos for 1913 teams&#10;- added ability to select league (MLB, AL, or NL) for stats page" />
+    <MESSAGE value="- adding table for Schedule page" />
+    <option name="LAST_COMMIT_MESSAGE" value="- adding table for Schedule page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1628,12 +1623,136 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/al_symbol.gif">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/favicon.ico">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/nl_symbol.gif">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/SetupController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="61" lean-forward="false" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/frontOffice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" column="17" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="62" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/homePage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="6" lean-forward="false" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/setup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="3" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/teamsPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9945">
+          <caret line="585" column="0" lean-forward="false" selection-start-line="585" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/setupPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/875266374.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header_bkgd.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/anon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/baseball_lighter.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/bats.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/batter_usa.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/mlb.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/mlb_bg_gradient.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/PGBS_logo_all_red.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/playermanagers.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1643,43 +1762,27 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="35" lean-forward="false" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/sec-header-pattern.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/RelieverDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/stadium.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/configuration/SwaggerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/vector-dark-background-of-baseball-vector-illustration_k23000283.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="43" lean-forward="false" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/Wrigley Field.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/perfectGameWeb.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="60" column="53" lean-forward="false" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/SetupController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/StatsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
@@ -1687,344 +1790,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/teamsPage.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/leadersPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="44" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="61" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/datatables.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/datatables.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="93" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="36" column="41" lean-forward="false" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+        <state relative-caret-position="221">
+          <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Team.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/teams.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/schedulePage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="21" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        <state relative-caret-position="68">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+        <state relative-caret-position="160">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/playersPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="62" lean-forward="false" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="329" column="5" lean-forward="false" selection-start-line="329" selection-start-column="5" selection-end-line="329" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#8453#8454#0" expanded="false" />
-            <element signature="e#8481#8482#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/AtBat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10971">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/training/spring-demo/src/main/java/com/abcfinancial/springdemo/controller/ClintController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/training/spring-demo/src/main/java/com/abcfinancial/springdemo/service/ClintService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/training/spring-demo/src/main/java/com/abcfinancial/springdemo/domain/ClintObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/StringSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1428">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#736#737#0" expanded="false" />
-            <element signature="e#796#797#0" expanded="false" />
-            <element signature="e#1717#1718#0" expanded="false" />
-            <element signature="e#1773#1774#0" expanded="false" />
-            <element signature="e#1838#1839#0" expanded="false" />
-            <element signature="e#1882#1883#0" expanded="false" />
-            <element signature="e#2224#2225#0" expanded="false" />
-            <element signature="e#2261#2262#0" expanded="false" />
-            <element signature="e#4546#4547#0" expanded="false" />
-            <element signature="e#4602#4603#0" expanded="false" />
-            <element signature="e#5577#5578#0" expanded="false" />
-            <element signature="e#5617#5618#0" expanded="false" />
-            <element signature="e#6024#6025#0" expanded="false" />
-            <element signature="e#6067#6068#0" expanded="false" />
-            <element signature="e#7490#7491#0" expanded="false" />
-            <element signature="e#7533#7534#0" expanded="false" />
-            <element signature="e#7583#7584#0" expanded="false" />
-            <element signature="e#7626#7627#0" expanded="false" />
-            <element signature="e#7671#7672#0" expanded="false" />
-            <element signature="e#7728#7729#0" expanded="false" />
-            <element signature="e#8535#8536#0" expanded="false" />
-            <element signature="e#8589#8590#0" expanded="false" />
-            <element signature="e#8786#8787#0" expanded="false" />
-            <element signature="e#8839#8840#0" expanded="false" />
-            <element signature="e#10102#10103#0" expanded="false" />
-            <element signature="e#10152#10153#0" expanded="false" />
-            <element signature="e#12725#12726#0" expanded="false" />
-            <element signature="e#12780#12781#0" expanded="false" />
-            <element signature="e#16138#16139#0" expanded="false" />
-            <element signature="e#16178#16179#0" expanded="false" />
-            <element signature="e#16989#16990#0" expanded="false" />
-            <element signature="e#17045#17046#0" expanded="false" />
-            <element signature="e#18215#18216#0" expanded="false" />
-            <element signature="e#18258#18259#0" expanded="false" />
-            <element signature="e#19318#19319#0" expanded="false" />
-            <element signature="e#19385#19386#0" expanded="false" />
-            <element signature="e#19447#19448#0" expanded="false" />
-            <element signature="e#19499#19500#0" expanded="false" />
-            <element signature="e#27428#27429#0" expanded="false" />
-            <element signature="e#27477#27478#0" expanded="false" />
-            <element signature="e#35351#35352#0" expanded="false" />
-            <element signature="e#35405#35406#0" expanded="false" />
-            <element signature="e#36053#36054#0" expanded="false" />
-            <element signature="e#36104#36105#0" expanded="false" />
-            <element signature="e#37756#37757#0" expanded="false" />
-            <element signature="e#37825#37826#0" expanded="false" />
-            <element signature="e#38658#38659#0" expanded="false" />
-            <element signature="e#38707#38708#0" expanded="false" />
-            <element signature="e#42406#42407#0" expanded="false" />
-            <element signature="e#42448#42449#0" expanded="false" />
-            <element signature="e#42502#42503#0" expanded="false" />
-            <element signature="e#42548#42549#0" expanded="false" />
-            <element signature="e#43366#43367#0" expanded="false" />
-            <element signature="e#43409#43410#0" expanded="false" />
-            <element signature="e#43465#43466#0" expanded="false" />
-            <element signature="e#43508#43509#0" expanded="false" />
-            <element signature="e#43736#43737#0" expanded="false" />
-            <element signature="e#43800#43801#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="68" column="95" lean-forward="false" selection-start-line="68" selection-start-column="95" selection-end-line="68" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/TeamStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#561#562#0" expanded="false" />
-            <element signature="e#621#622#0" expanded="false" />
-            <element signature="e#667#668#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/standings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="59" lean-forward="false" selection-start-line="65" selection-start-column="59" selection-end-line="65" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/standingsPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="120" column="48" lean-forward="false" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/frontOffice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="78" lean-forward="false" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="58" lean-forward="false" selection-start-line="3" selection-start-column="58" selection-end-line="3" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Batter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="117" column="11" lean-forward="false" selection-start-line="117" selection-start-column="11" selection-end-line="117" selection-end-column="11" />
-          <folding>
-            <element signature="e#2524#2525#0" expanded="false" />
-            <element signature="e#2558#2559#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="56" column="39" lean-forward="false" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
+        <state relative-caret-position="278">
+          <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="65" column="79" lean-forward="false" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
+        <state relative-caret-position="312">
+          <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2033,53 +1846,118 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/stats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6630">
+          <caret line="730" column="11" lean-forward="false" selection-start-line="730" selection-start-column="11" selection-end-line="730" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/standings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="76" lean-forward="false" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+        <state relative-caret-position="304">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/sorttable.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-757">
-          <caret line="344" column="64" lean-forward="false" selection-start-line="344" selection-start-column="60" selection-end-line="344" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="51" lean-forward="false" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+        <state relative-caret-position="0">
+          <caret line="53" column="80" lean-forward="false" selection-start-line="53" selection-start-column="80" selection-end-line="53" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/statsPage.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/standingsPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="68" />
+        <state relative-caret-position="765">
+          <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/stats.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/BOS-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/BRO-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/BSN-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/CHC-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/CHW-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/al_symbol.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
-          <caret line="64" column="82" lean-forward="false" selection-start-line="64" selection-start-column="82" selection-end-line="64" selection-end-column="82" />
-          <folding />
+          <caret line="64" column="24" lean-forward="false" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/schedulePage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-573">
-          <caret line="519" column="21" lean-forward="false" selection-start-line="519" selection-start-column="21" selection-end-line="519" selection-end-column="21" />
+        <state relative-caret-position="373">
+          <caret line="97" column="18" lean-forward="true" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
           <folding />
         </state>
       </provider>

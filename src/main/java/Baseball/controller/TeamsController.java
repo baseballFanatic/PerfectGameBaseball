@@ -1,6 +1,5 @@
 package Baseball.controller;
 
-import Baseball.Player;
 import Baseball.Team;
 import Baseball.repositories.TeamsDao;
 import org.springframework.beans.factory.annotation.Autowired;

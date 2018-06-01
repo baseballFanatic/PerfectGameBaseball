@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SetupController {
     @RequestMapping("/setup")
-    public String setup(Model model) { return "setup"; }
+    public String setup(Model model) { return "setupPage.html"; }
 }

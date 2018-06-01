@@ -1,25 +1,5 @@
 var selectedYear = 1900;
 
-function loadSimulatedYears() {
-    const url = "/years";
-    var addedClass = false;
-    $.getJSON(url, function(simulatedYears) {
-        var yearHtml = '<option value="';
-        $.each(simulatedYears, function(key, simulatedYear) {
-            if (!addedClass) {
-                yearHtml += simulatedYear.yearID + '" selected>'
-                addedClass = true;
-            } else {
-                yearHtml += '<option value="' + simulatedYear.yearID + '">'
-            }
-            yearHtml +=  + simulatedYear.yearID + '</option>'
-        })
-        $('#simulated-years').html(yearHtml);
-        selectedYear = $('#simulated-years').val();
-        loadTeamStandingsData(selectedYear);
-    });
-}
-
 function loadTeamStandingsData(selectedYear) {
     const getTeams = "/season?yearID=" + selectedYear;
     var alTableHtml = '';

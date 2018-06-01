@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.StringTokenizer;
 
-class Schedule {
+public class Schedule {
     private String gameDay, visitingTeamId, visitingLgId, homeTeamId, homeLgId, lengthOuts, dayNight,
         completionInfo, forfeitInfo, protestInfo, parkId, visitingLineScore, homeLineScore, homePlateUmpireId,
         homePlateUmpireName, firstBaseUmpireId, firstBaseUmpireName, secondBaseUmpireId, secondBaseUmpireName,
@@ -72,7 +72,7 @@ class Schedule {
         return visitingTeamId;
     }
 
-    void setVisitingTeamId(String visitingTeamId) {
+    public void setVisitingTeamId(String visitingTeamId) {
         this.visitingTeamId = visitingTeamId;
     }
 
@@ -88,7 +88,7 @@ class Schedule {
         return homeTeamId;
     }
 
-    void setHomeTeamId(String homeTeamId) {
+    public void setHomeTeamId(String homeTeamId) {
         this.homeTeamId = homeTeamId;
     }
 
@@ -304,7 +304,7 @@ class Schedule {
         return winningPitcherName;
     }
 
-    void setWinningPitcherName(String winningPitcherName) {
+    public void setWinningPitcherName(String winningPitcherName) {
         this.winningPitcherName = winningPitcherName;
     }
 
@@ -320,7 +320,7 @@ class Schedule {
         return losingPitcherName;
     }
 
-    void setLosingPitcherName(String losingPitcherName) {
+    public void setLosingPitcherName(String losingPitcherName) {
         this.losingPitcherName = losingPitcherName;
     }
 
@@ -336,7 +336,7 @@ class Schedule {
         return savingPitcherName;
     }
 
-    void setSavingPitcherName(String savingPitcherName) {
+    public void setSavingPitcherName(String savingPitcherName) {
         this.savingPitcherName = savingPitcherName;
     }
 
@@ -368,7 +368,7 @@ class Schedule {
         return visitingStartingPitcherName;
     }
 
-    void setVisitingStartingPitcherName(String visitingStartingPitcherName) {
+    public void setVisitingStartingPitcherName(String visitingStartingPitcherName) {
         this.visitingStartingPitcherName = visitingStartingPitcherName;
     }
 
@@ -384,7 +384,7 @@ class Schedule {
         return homeStartingPitcherName;
     }
 
-    void setHomeStartingPitcherName(String homeStartingPitcherName) {
+    public void setHomeStartingPitcherName(String homeStartingPitcherName) {
         this.homeStartingPitcherName = homeStartingPitcherName;
     }
 
@@ -720,7 +720,7 @@ class Schedule {
         return visitingScore;
     }
 
-    void setVisitingScore(int visitingScore) {
+    public void setVisitingScore(int visitingScore) {
         this.visitingScore = visitingScore;
     }
 
@@ -728,7 +728,7 @@ class Schedule {
         return homeScore;
     }
 
-    void setHomeScore(int homeScore) {
+    public void setHomeScore(int homeScore) {
         this.homeScore = homeScore;
     }
 

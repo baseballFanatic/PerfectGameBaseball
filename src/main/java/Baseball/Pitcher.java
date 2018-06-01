@@ -26,11 +26,11 @@ public class Pitcher extends Player {
         this.battingOrder = battingOrder;
     }
 
-    String getTeamID() {
+    public String getTeamID() {
         return teamID;
     }
 
-    void setTeamID(String teamID) {
+    public void setTeamID(String teamID) {
         this.teamID = teamID;
     }
 
@@ -42,11 +42,11 @@ public class Pitcher extends Player {
         this.lgID = lgID;
     }
 
-    int getYearID() {
+    public int getYearID() {
         return yearID;
     }
 
-    void setYearID(int yearID) {
+    public void setYearID(int yearID) {
         this.yearID = yearID;
     }
 
@@ -74,7 +74,7 @@ public class Pitcher extends Player {
         this.playerKey = playerKey;
     }
 
-    String getPitchingArm() {
+    public String getPitchingArm() {
         return pitchingArm;
     }
 
@@ -82,7 +82,7 @@ public class Pitcher extends Player {
         this.pitchingArm = pitchingArm;
     }
 
-    PitcherStats getPitcherStats() {
+    public PitcherStats getPitcherStats() {
         return pitcherStats;
     }
 

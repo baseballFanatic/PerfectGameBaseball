@@ -1,7 +1,6 @@
 package Baseball.repositories;
 
 import Baseball.Batter;
-import Baseball.BatterStats;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;

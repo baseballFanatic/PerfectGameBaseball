@@ -1,8 +1,10 @@
 package Baseball.controller;
 
 import Baseball.Batter;
+import Baseball.Pitcher;
 import Baseball.Player;
 import Baseball.repositories.BatterDao;
+import Baseball.repositories.PitcherDao;
 import Baseball.repositories.PlayerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class PlayersController {
 
     @Autowired
     private BatterDao batterDao;
+
+    @Autowired
+    private PitcherDao pitcherDao;
 
     @RequestMapping("/players")
     public String players(Model model) throws ClassNotFoundException {
@@ -36,5 +41,12 @@ public class PlayersController {
     public List<Batter> getAllBattersByYear( @RequestParam String yearID )
     {
         return batterDao.getAllBattersByYear( yearID );
+    }
+
+    @RequestMapping(value = "/pitchers", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Pitcher> getAllPitchersByYear( @RequestParam String yearID )
+    {
+        return pitcherDao.getAllPitchersByYear( yearID );
     }
 }

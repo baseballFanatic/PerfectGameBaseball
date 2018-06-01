@@ -3,7 +3,7 @@ var otherHeader = `
         <div class="container">
             <!-- Navbar brand -->
             <a class="navbar-brand" href="home">Perfect Game</a>
-            <img src="/img/baseball_lighter.png" height="20" class="d-inline-block align-top mr-3" alt="">
+            <img src="/img/PGBS_logo_circle_blue.png" height="40" class="d-inline-block align-top mr-3" alt="">
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -112,6 +112,25 @@ function loadTeamsByLeague( league, year ) {
               $('#standings-table-al').append(teamHtml);
             }
         });
+    });
+}
+
+function loadSimulatedYears() {
+    const url = "/years";
+    var addedClass = false;
+    $.getJSON(url, function(simulatedYears) {
+        var yearHtml = '<option value="';
+        $.each(simulatedYears, function(key, simulatedYear) {
+            if (!addedClass) {
+                yearHtml += simulatedYear.yearID + '" selected>'
+                addedClass = true;
+            } else {
+                yearHtml += '<option value="' + simulatedYear.yearID + '">'
+            }
+            yearHtml +=  + simulatedYear.yearID + '</option>'
+        })
+        $('#simulated-years').html(yearHtml);
+        loadTeamStandingsData($('#simulated-years').val());
     });
 }
 

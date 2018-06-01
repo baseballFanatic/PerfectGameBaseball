@@ -3,7 +3,7 @@ package Baseball;
 import java.time.LocalDate;
 import java.util.List;
 
-class PitcherStats {
+public class PitcherStats {
     private double probabilityHomeRun, probabilityTriple, probabilityDouble, probabilitySingle, probabilityWalk,
             probabilityStrikeOut, probabilityHitBatter, era, actualPlayPercent, histPercentPlayed ;
 
@@ -69,147 +69,147 @@ class PitcherStats {
         this.gameGamePlayed = gameGamePlayed;
     }
 
-    int getsGamesPlayed() {
+    public int getsGamesPlayed() {
         return sGamesPlayed;
     }
 
-    void setsGamesPlayed(int sGamesPlayed) {
+    public void setsGamesPlayed(int sGamesPlayed) {
         this.sGamesPlayed = sGamesPlayed;
     }
 
-    int getsGamesStarted() {
+    public int getsGamesStarted() {
         return sGamesStarted;
     }
 
-    void setsGamesStarted(int sGamesStarted) {
+    public void setsGamesStarted(int sGamesStarted) {
         this.sGamesStarted = sGamesStarted;
     }
 
-    int getsBattersFaced() {
+    public int getsBattersFaced() {
         return sBattersFaced;
     }
 
-    void setsBattersFaced(int sBattersFaced) {
+    public void setsBattersFaced(int sBattersFaced) {
         this.sBattersFaced = sBattersFaced;
     }
 
-    int getsHitsAllowed() {
+    public int getsHitsAllowed() {
         return sHitsAllowed;
     }
 
-    void setsHitsAllowed(int sHitsAllowed) {
+    public void setsHitsAllowed(int sHitsAllowed) {
         this.sHitsAllowed = sHitsAllowed;
     }
 
-    int getsHitBatters() {
+    public int getsHitBatters() {
         return sHitBatters;
     }
 
-    void setsHitBatters(int sHitBatters) {
+    public void setsHitBatters(int sHitBatters) {
         this.sHitBatters = sHitBatters;
     }
 
-    int getsEarnedRuns() {
+    public int getsEarnedRuns() {
         return sEarnedRuns;
     }
 
-    void setsEarnedRuns(int sEarnedRuns) {
+    public void setsEarnedRuns(int sEarnedRuns) {
         this.sEarnedRuns = sEarnedRuns;
     }
 
-    int getsRunsAllowed() {
+    public int getsRunsAllowed() {
         return sRunsAllowed;
     }
 
-    void setsRunsAllowed(int sRunsAllowed) {
+    public void setsRunsAllowed(int sRunsAllowed) {
         this.sRunsAllowed = sRunsAllowed;
     }
 
-    int getsStrikeOutAllowed() {
+    public int getsStrikeOutAllowed() {
         return sStrikeOutAllowed;
     }
 
-    void setsStrikeOutAllowed(int sStrikeOutAllowed) {
+    public void setsStrikeOutAllowed(int sStrikeOutAllowed) {
         this.sStrikeOutAllowed = sStrikeOutAllowed;
     }
 
-    int getsWalksAllowed() {
+    public int getsWalksAllowed() {
         return sWalksAllowed;
     }
 
-    void setsWalksAllowed(int sWalksAllowed) {
+    public void setsWalksAllowed(int sWalksAllowed) {
         this.sWalksAllowed = sWalksAllowed;
     }
 
-    int getsHomeRunsAllowed() {
+    public int getsHomeRunsAllowed() {
         return sHomeRunsAllowed;
     }
 
-    void setsHomeRunsAllowed(int sHomeRunsAllowed) {
+    public void setsHomeRunsAllowed(int sHomeRunsAllowed) {
         this.sHomeRunsAllowed = sHomeRunsAllowed;
     }
 
-    int getsInningsPitchedOuts() {
+    public int getsInningsPitchedOuts() {
         return sInningsPitchedOuts;
     }
 
-    void setsInningsPitchedOuts(int sInningsPitchedOuts) {
+    public void setsInningsPitchedOuts(int sInningsPitchedOuts) {
         this.sInningsPitchedOuts = sInningsPitchedOuts;
     }
 
-    int getsShutOuts() {
+    public int getsShutOuts() {
         return sShutOuts;
     }
 
-    void setsShutOuts(int sShutOuts) {
+    public void setsShutOuts(int sShutOuts) {
         this.sShutOuts = sShutOuts;
     }
 
-    int getsCompleteGames() {
+    public int getsCompleteGames() {
         return sCompleteGames;
     }
 
-    void setsCompleteGames(int sCompleteGames) {
+    public void setsCompleteGames(int sCompleteGames) {
         this.sCompleteGames = sCompleteGames;
     }
 
-    int getsWins() {
+    public int getsWins() {
         return sWins;
     }
 
-    void setsWins(int sWins) {
+    public void setsWins(int sWins) {
         this.sWins = sWins;
     }
 
-    int getsLosses() {
+    public int getsLosses() {
         return sLosses;
     }
 
-    void setsLosses(int sLosses) {
+    public void setsLosses(int sLosses) {
         this.sLosses = sLosses;
     }
 
-    int getsSaves() {
+    public int getsSaves() {
         return sSaves;
     }
 
-    void setsSaves(int sSaves) {
+    public void setsSaves(int sSaves) {
         this.sSaves = sSaves;
     }
 
-    int getGameShutOuts() {
+    public int getGameShutOuts() {
         return gameShutOuts;
     }
 
-    void setGameShutOuts(int gameShutOuts) {
+    public void setGameShutOuts(int gameShutOuts) {
         this.gameShutOuts = gameShutOuts;
     }
 
-    int getGameCompleteGame() {
+    public int getGameCompleteGame() {
         return gameCompleteGame;
     }
 
-    void setGameCompleteGame(int gameCompleteGame) {
+    public void setGameCompleteGame(int gameCompleteGame) {
         this.gameCompleteGame = gameCompleteGame;
     }
 
