@@ -19,11 +19,11 @@ public class ScheduleController
     @RequestMapping( "/schedule" )
     public String schedule ( Model model ) { return "schedulePage.html"; }
 
-    @RequestMapping( "/schedule/{yearID}" )
+/*    @RequestMapping( "/schedule/{yearID}" )
     public String view ( @PathVariable("yearID") String yearID, Model model) throws ClassNotFoundException {
         List<Schedule> schedule = scheduleDao.getScheduleByYear( yearID );
         model.addAttribute( "schedule", schedule );
         return "schedule";
-    }
+    }*/
 
 }

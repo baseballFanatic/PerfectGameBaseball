@@ -31,17 +31,19 @@ public class ScheduleDaoImpl implements ScheduleDao
             connection = DriverManager.getConnection( DB_URL, USER, PASS );
 
             PreparedStatement statement;
-            statement = connection.prepareStatement( "SELECT gameDate, visitingTeamId, homeTeamId, visitingScore, " +
+            statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, visitingTeamId, homeTeamId, visitingScore, " +
                     "homeScore, winningPitcherName, losingPitcherName, " +
-                    "visitingStartingPitcherName, homeStartingPitcherName FROM pgbs_schedule WHERE yearID=? " +
+                    "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted FROM pgbs_schedule " +
                     "ORDER BY gameDate ASC" );
-            statement.setString( 1, yearID );
+/*            statement.setString( 1, yearID );*/
 
             ResultSet resultSet = statement.executeQuery();
 
             while ( resultSet.next() )
             {
                 Schedule schedule = new Schedule();
+                schedule.setGameMonth( resultSet.getInt( "gameMonth" ) );
+                schedule.setGameDay( resultSet.getInt( "gameDay" ) );
                 schedule.setVisitingTeamId( resultSet.getString( "visitingTeamId" ) );
                 schedule.setHomeTeamId( resultSet.getString( "homeTeamId" ) );
                 schedule.setVisitingScore( resultSet.getInt( "visitingScore" ) );
@@ -50,6 +52,7 @@ public class ScheduleDaoImpl implements ScheduleDao
                 schedule.setLosingPitcherName( resultSet.getString( "losingPitcherName" ) );
                 schedule.setVisitingStartingPitcherName( resultSet.getString( "visitingStartingPitcherName" ) );
                 schedule.setHomeStartingPitcherName( resultSet.getString( "homeStartingPitcherName" ) );
+                schedule.setGameCompleted( resultSet.getString( "gameCompleted" ) );
 
                 schedules.add( schedule );
             }

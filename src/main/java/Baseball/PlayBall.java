@@ -29,10 +29,10 @@ public class PlayBall {
 
         //TODO Find way to take out this hard coded year
         int yearID=1913;
-        String lgID="NL";
+        String lgID="AL";
 
         league = Database.selectTeamStats(yearID, lgID, league);
-        league.setLgID("NL");
+        league.setLgID("AL");
 
         Schedule schedule = Database.selectSchedule(yearID, lgID);
 

@@ -587,6 +587,15 @@ option {
     font-size: 13px;
 }
 
+#scheduleTableBody td {
+    vertical-align: middle;
+}
+
+#scheduleTableBody .btn {
+    padding: .375rem .75rem;
+    width: 56.28px;
+}
+
 .deletes {
     display: -webkit-box;
 }

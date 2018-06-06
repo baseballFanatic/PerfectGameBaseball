@@ -37,24 +37,24 @@ class Database {
             int yearID = 1913;
             String lgID="AL";
             stmt = conn.createStatement();
-            createPgbsPitchers(stmt);
+/*            createPgbsPitchers(stmt);*/
             insertPgbsPitchers(conn, yearID);
 
-            createPgbsBatters(stmt);
+/*            createPgbsBatters(stmt);
             createPgbsFielders(stmt);
             createPgbsSeasons(stmt);
-            createPgbsTeams(stmt);
-            createPgbsSchedule(stmt);
-            createPgbsLineUp(stmt);
+            createPgbsTeams(stmt);*/
+/*            createPgbsSchedule(stmt);
+            createPgbsLineUp(stmt);*/
 
 
-            insertPgbsBatters(conn, yearID);
-            insertPgbsFielders(conn, yearID);
-            insertPgbsTeams(conn, yearID);
-            insertPgbsSchedule(conn, yearID);
+/*            insertPgbsBatters(conn, yearID);*/
+/*            insertPgbsFielders(conn, yearID);*/
+/*            insertPgbsTeams(conn, yearID);*/
+/*            insertPgbsSchedule(conn, yearID);
             Schedule schedule = new Schedule();
             insertPgbsLineUp(conn);
-            insertPgbsSeasons(conn, yearID);
+            insertPgbsSeasons(conn, yearID);*/
 
             // Clean-up environment
             //rs.close();
@@ -257,8 +257,11 @@ class Database {
         String games;
         games = "CREATE TABLE pgbs_schedule " +
                 " (gameDate date, " +
+                " gameDay int(11), " +
+                " gameMonth int(11), " +
+                " gameYear int(11), " +
                 " gameNumber int(11), " +
-                " gameDay varchar(255), " +
+                " gameDayName varchar(255), " +
                 " visitingTeamId varchar(255), " +
                 " visitingLgId varchar(255), " +
                 " visitingGameNumber int(11), " +
@@ -497,8 +500,11 @@ class Database {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
             LocalDate localDate = LocalDate.parse(split[0], formatter);
             game.setGameDate(localDate);
+            game.setGameDay( localDate.getDayOfMonth() );
+            game.setGameMonth( localDate.getMonthValue() );
+            game.setGameYear( localDate.getYear() );
             game.setGameNumber(Integer.parseInt(split[1]));
-            game.setGameDay(split[2]);
+            game.setGameDayName(split[2]);
             game.setVisitingTeamId(split[3]);
             game.setVisitingLgId(split[4]);
             game.setVisitingGameNumber(Integer.parseInt(split[5]));
@@ -521,7 +527,7 @@ class Database {
             }
             if (split[18].isEmpty())
             {
-                game.setAttendance(0);
+                game.setTimeInMinutes(0);
             } else
             {
                 game.setTimeInMinutes(Integer.parseInt(split[18]));
@@ -565,7 +571,7 @@ class Database {
 
             }
 
-        String query = " insert into pgbs_schedule (gameDate, gameNumber, gameDay, visitingTeamId, visitingLgId, " +
+        String query = " insert into pgbs_schedule (gameDate, gameDay, gameMonth, gameYear, gameNumber, gameDayName, visitingTeamId, visitingLgId, " +
                 " visitingGameNumber, homeTeamId, homeLgId, homeGameNumber, visitingScore, homeScore, lengthOuts, " +
                 " dayNight, completionInfo, forfeitInfo, parkId, attendance, timeInMinutes, visitingLineScore, " +
                 " homeLineScore, homePlateUmpireId, homePlateUmpireName, firstBaseUmpireId, firstBaseUmpireName, " +
@@ -575,7 +581,7 @@ class Database {
                 " savingPitcherId, savingPitcherName, visitingStartingPitcherId, visitingStartingPitcherName, " +
                 " homeStartingPitcherId, homeStartingPitcherName, additionalInfo, acquisitionInfo, gameCompleted) " +
                 " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStmt = null;
 
@@ -586,54 +592,57 @@ class Database {
             for (Schedule gameRow : scheduleList)
             {
                 preparedStmt.setDate(1, java.sql.Date.valueOf(gameRow.getGameDate()));
-                preparedStmt.setInt(2, gameRow.getGameNumber());
-                preparedStmt.setString(3, gameRow.getGameDay());
-                preparedStmt.setString(4, gameRow.getVisitingTeamId());
-                preparedStmt.setString(5, gameRow.getVisitingLgId());
-                preparedStmt.setInt(6, gameRow.getVisitingGameNumber());
-                preparedStmt.setString(7, gameRow.getHomeTeamId());
-                preparedStmt.setString(8, gameRow.getHomeLgId());
-                preparedStmt.setInt(9, gameRow.getHomeGameNumber());
-                preparedStmt.setInt(10, gameRow.getVisitingScore());
-                preparedStmt.setInt(11, gameRow.getHomeScore());
-                preparedStmt.setString(12, gameRow.getLengthOuts());
-                preparedStmt.setString(13, gameRow.getDayNight());
-                preparedStmt.setString(14, gameRow.getCompletionInfo());
-                preparedStmt.setString(15, gameRow.getForfeitInfo());
-                preparedStmt.setString(16, gameRow.getParkId());
-                preparedStmt.setInt(17, gameRow.getAttendance());
-                preparedStmt.setInt(18, gameRow.getTimeInMinutes());
-                preparedStmt.setString(19, gameRow.getVisitingLineScore());
-                preparedStmt.setString(20, gameRow.getHomeLineScore());
-                preparedStmt.setString(21, gameRow.getHomePlateUmpireId());
-                preparedStmt.setString(22, gameRow.getHomePlateUmpireName());
-                preparedStmt.setString(23, gameRow.getFirstBaseUmpireId());
-                preparedStmt.setString(24, gameRow.getFirstBaseUmpireName());
-                preparedStmt.setString(25, gameRow.getSecondBaseUmpireId());
-                preparedStmt.setString(26, gameRow.getSecondBaseUmpireName());
-                preparedStmt.setString(27, gameRow.getThirdBaseUmpireId());
-                preparedStmt.setString(28, gameRow.getThirdBaseUmpireName());
-                preparedStmt.setString(29, gameRow.getLeftFieldUmpireId());
-                preparedStmt.setString(30, gameRow.getLeftFieldUmpireName());
-                preparedStmt.setString(31, gameRow.getRightFieldUmpireId());
-                preparedStmt.setString(32, gameRow.getRightFieldUmpireName());
-                preparedStmt.setString(33, gameRow.getVisitingManagerId());
-                preparedStmt.setString(34, gameRow.getVisitingManagerName());
-                preparedStmt.setString(35, gameRow.getHomeManagerId());
-                preparedStmt.setString(36, gameRow.getHomeManagerName());
-                preparedStmt.setString(37, gameRow.getWinningPitcherId());
-                preparedStmt.setString(38, gameRow.getWinningPitcherName());
-                preparedStmt.setString(39, gameRow.getLosingPitcherId());
-                preparedStmt.setString(40, gameRow.getLosingPitcherName());
-                preparedStmt.setString(41, gameRow.getSavingPitcherId());
-                preparedStmt.setString(42, gameRow.getSavingPitcherName());
-                preparedStmt.setString(43, gameRow.getVisitingStartingPitcherId());
-                preparedStmt.setString(44, gameRow.getVisitingStartingPitcherName());
-                preparedStmt.setString(45, gameRow.getHomeStartingPitcherId());
-                preparedStmt.setString(46, gameRow.getHomeStartingPitcherName());
-                preparedStmt.setString(47, gameRow.getAdditionalInfo());
-                preparedStmt.setString(48, gameRow.getAcquisitionInfo());
-                preparedStmt.setString(49, gameRow.getGameCompleted());
+                preparedStmt.setInt( 2, gameRow.getGameDay() );
+                preparedStmt.setInt( 3, gameRow.getGameMonth() );
+                preparedStmt.setInt( 4, gameRow.getGameYear() );
+                preparedStmt.setInt(5, gameRow.getGameNumber());
+                preparedStmt.setString(6, gameRow.getGameDayName());
+                preparedStmt.setString(7, gameRow.getVisitingTeamId());
+                preparedStmt.setString(8, gameRow.getVisitingLgId());
+                preparedStmt.setInt(9, gameRow.getVisitingGameNumber());
+                preparedStmt.setString(10, gameRow.getHomeTeamId());
+                preparedStmt.setString(11, gameRow.getHomeLgId());
+                preparedStmt.setInt(12, gameRow.getHomeGameNumber());
+                preparedStmt.setInt(13, gameRow.getVisitingScore());
+                preparedStmt.setInt(14, gameRow.getHomeScore());
+                preparedStmt.setString(15, gameRow.getLengthOuts());
+                preparedStmt.setString(16, gameRow.getDayNight());
+                preparedStmt.setString(17, gameRow.getCompletionInfo());
+                preparedStmt.setString(18, gameRow.getForfeitInfo());
+                preparedStmt.setString(19, gameRow.getParkId());
+                preparedStmt.setInt(20, gameRow.getAttendance());
+                preparedStmt.setInt(21, gameRow.getTimeInMinutes());
+                preparedStmt.setString(22, gameRow.getVisitingLineScore());
+                preparedStmt.setString(23, gameRow.getHomeLineScore());
+                preparedStmt.setString(24, gameRow.getHomePlateUmpireId());
+                preparedStmt.setString(25, gameRow.getHomePlateUmpireName());
+                preparedStmt.setString(26, gameRow.getFirstBaseUmpireId());
+                preparedStmt.setString(27, gameRow.getFirstBaseUmpireName());
+                preparedStmt.setString(28, gameRow.getSecondBaseUmpireId());
+                preparedStmt.setString(29, gameRow.getSecondBaseUmpireName());
+                preparedStmt.setString(30, gameRow.getThirdBaseUmpireId());
+                preparedStmt.setString(31, gameRow.getThirdBaseUmpireName());
+                preparedStmt.setString(32, gameRow.getLeftFieldUmpireId());
+                preparedStmt.setString(33, gameRow.getLeftFieldUmpireName());
+                preparedStmt.setString(34, gameRow.getRightFieldUmpireId());
+                preparedStmt.setString(35, gameRow.getRightFieldUmpireName());
+                preparedStmt.setString(36, gameRow.getVisitingManagerId());
+                preparedStmt.setString(37, gameRow.getVisitingManagerName());
+                preparedStmt.setString(38, gameRow.getHomeManagerId());
+                preparedStmt.setString(39, gameRow.getHomeManagerName());
+                preparedStmt.setString(40, gameRow.getWinningPitcherId());
+                preparedStmt.setString(41, gameRow.getWinningPitcherName());
+                preparedStmt.setString(42, gameRow.getLosingPitcherId());
+                preparedStmt.setString(43, gameRow.getLosingPitcherName());
+                preparedStmt.setString(44, gameRow.getSavingPitcherId());
+                preparedStmt.setString(45, gameRow.getSavingPitcherName());
+                preparedStmt.setString(46, gameRow.getVisitingStartingPitcherId());
+                preparedStmt.setString(47, gameRow.getVisitingStartingPitcherName());
+                preparedStmt.setString(48, gameRow.getHomeStartingPitcherId());
+                preparedStmt.setString(49, gameRow.getHomeStartingPitcherName());
+                preparedStmt.setString(50, gameRow.getAdditionalInfo());
+                preparedStmt.setString(51, gameRow.getAcquisitionInfo());
+                preparedStmt.setString(52, gameRow.getGameCompleted());
                 preparedStmt.executeUpdate();
             }
         }
@@ -725,7 +734,7 @@ class Database {
                 " GIDP) " +
                 " SELECT m.nameFirst," +
                 " m.nameLast, " +
-                " m.throws, " +
+                " m.hands, " +
                 " m.retroId, " +
                 " p.* " +
                 " FROM pitching as p " +
@@ -1629,7 +1638,7 @@ class Database {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement stmt;
             stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
-                    " where gameCompleted='N' and homeLgId='NL' " +
+                    " where gameCompleted='N' and homeLgId='AL' " +
                     " order by gameKey " +
                     " limit 1");
             ResultSet rs = stmt.executeQuery();
@@ -1642,8 +1651,11 @@ class Database {
                 String text = df.format(date);
                 LocalDate gameDate = LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyyMMdd"));
                 schedule.setGameDate(gameDate);
+                schedule.setGameDay(rs.getInt( "gameDay" ) );
+                schedule.setGameMonth( rs.getInt( "gameMonth" ) );
+                schedule.setGameYear( rs.getInt( "gameYear" ) );
+                schedule.setGameDayName( rs.getString( "gameDayName" ) );
                 schedule.setGameNumber(Integer.parseInt(rs.getString("gameNumber")));
-                schedule.setGameDay(rs.getString("gameDay"));
                 schedule.setVisitingTeamId(rs.getString("visitingTeamId"));
                 schedule.setVisitingLgId(rs.getString("visitingLgId"));
                 schedule.setVisitingGameNumber(rs.getInt("visitingGameNumber"));

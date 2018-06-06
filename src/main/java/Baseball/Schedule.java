@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class Schedule {
-    private String gameDay, visitingTeamId, visitingLgId, homeTeamId, homeLgId, lengthOuts, dayNight,
+    private String gameDayName, visitingTeamId, visitingLgId, homeTeamId, homeLgId, lengthOuts, dayNight,
         completionInfo, forfeitInfo, protestInfo, parkId, visitingLineScore, homeLineScore, homePlateUmpireId,
         homePlateUmpireName, firstBaseUmpireId, firstBaseUmpireName, secondBaseUmpireId, secondBaseUmpireName,
         thirdBaseUmpireId, thirdBaseUmpireName, leftFieldUmpireId, leftFieldUmpireName, rightFieldUmpireId,
@@ -28,7 +28,7 @@ public class Schedule {
         visitingBatter7Position, visitingBatter8Position, visitingBatter9Position, homeBatter1Position,
         homeBatter2Position, homeBatter3Position, homeBatter4Position, homeBatter5Position,
         homeBatter6Position, homeBatter7Position, homeBatter8Position, homeBatter9Position ;
-    private int visitingGameNumber, homeGameNumber, visitingScore, homeScore, attendance, timeInMinutes,
+    private int gameYear, gameDay, gameMonth, visitingGameNumber, homeGameNumber, visitingScore, homeScore, attendance, timeInMinutes,
         visitingAtBats, visitingHits, visitingDoubles, visitingTriples, visitingHomeRuns, visitingRbi, visitingSacrificeHits,
         visitingSacrificeFlies, visitingHitByPitch, visitingWalks, visitingIntentionalWalks, visitingStrikeOuts,
         visitingStolenBases, visitingCaughtStealing, visitingGroundedIntoDoublePlays, visitingAwardCatchersInterference,
@@ -42,6 +42,46 @@ public class Schedule {
     private LocalDate gameDate;
 
     public Schedule() {
+    }
+
+    public int getGameYear()
+    {
+        return gameYear;
+    }
+
+    public void setGameYear( int gameYear )
+    {
+        this.gameYear = gameYear;
+    }
+
+    public int getGameDay()
+    {
+        return gameDay;
+    }
+
+    public String getGameDayName()
+    {
+        return gameDayName;
+    }
+
+    public void setGameDayName( String gameDayName )
+    {
+        this.gameDayName = gameDayName;
+    }
+
+    public void setGameDay( int gameDay )
+    {
+        this.gameDay = gameDay;
+    }
+
+    public int getGameMonth()
+    {
+        return gameMonth;
+    }
+
+    public void setGameMonth( int gameMonth )
+    {
+        this.gameMonth = gameMonth;
     }
 
     public LocalDate getGameDate() {
@@ -58,14 +98,6 @@ public class Schedule {
 
     void setGameNumber(int gameNumber) {
         this.gameNumber = gameNumber;
-    }
-
-    public String getGameDay() {
-        return gameDay;
-    }
-
-    void setGameDay(String gameDay) {
-        this.gameDay = gameDay;
     }
 
     public String getVisitingTeamId() {
