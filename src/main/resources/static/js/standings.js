@@ -54,7 +54,6 @@ function loadTeamStandingsData(selectedYear) {
 
 
 $(document).ready(function() {
-    appendOtherHeader();
     $('#nav-standings').addClass( "active" );
     loadSimulatedYears();
 

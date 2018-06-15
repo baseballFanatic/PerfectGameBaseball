@@ -1,14 +1,10 @@
 $(document).ready(function() {
     var url = "/users";
-    var currentUser = new User(null, null, null);
 
     $('#signIn-button').on('click', function() {
         var submittedUser = "user=" + $('#signInUserName').val();
         $.getJSON( url, submittedUser, function(response) {
             if ( response ) {
-                currentUser.username = $('#signInUserName').val();
-                currentUser.recentYear = 1913;
-                currentUser.displayName = 'Clint';
                 window.location.replace("/office");
                 return false;
             } else {
@@ -21,5 +17,4 @@ $(document).ready(function() {
             }
         });
     });
-
 });

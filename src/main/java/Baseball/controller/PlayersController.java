@@ -26,7 +26,7 @@ public class PlayersController {
 
     @RequestMapping("/players")
     public String players(Model model) throws ClassNotFoundException {
-        return "playersPage.html";
+        return "playersPage";
     }
 
     @RequestMapping("/players/{playerId}")

@@ -1,0 +1,475 @@
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+article {
+    display: block;
+}
+
+table thead th {
+    vertical-align: bottom;
+}
+
+table.batting-stats,
+table.pitching-stats {
+    width: 956px;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px,1px,1px,1px);
+    overflow: hidden;
+    height: 1px;
+}
+
+.content table {
+    font-size: 11px;
+}
+
+.content table thead th {
+    background-color: #01375d;
+    border: none;
+    color: #fff;
+    font: bold 10px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    letter-spacing: 1px;
+    padding: 4px 3px;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.content table th {
+    background: #01375D;
+    color: #FFF;
+    -x-system-font: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 11px;
+    border: none;
+    border-top: 3px solid #0164A8;
+    padding: 4px 6px;
+}
+
+.content table tr td {
+    border: none;
+    padding: 4px 8px;
+    line-height: 14px;
+    max-width: inherit;
+    vertical-align: middle;
+}
+.content table tr:nth-child(even) {
+    background-color: #ededed;
+}
+
+#gamecenter {
+    clear: both;
+    margin-top: 20px;
+}
+
+#gamecenter .linescore-head {
+    width: 960px;
+    margin-left: 75px;
+}
+
+#gamecenter .line-score {
+    max-height: 200px;
+    margin: 0px auto 0px auto;
+    clear: left;
+    border-top: 8px solid #B9B9B9;
+}
+
+#gamecenter .line-score.baseball td {
+    min-width: 10px;
+}
+
+#gamecenter .line-score td.period {
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#gamecenter .line-score .team-flag {
+    float: left;
+    text-align: center;
+    width: 180px;
+    background: url("../img/scoreboard-logo-flag.png") no-repeat top;
+    margin-top: -8px;
+    height: 115px;
+}
+
+#gamecenter .line-score .team-flag.home {
+    float: right;
+}
+
+#gamecenter .line-score .team-flag .team-logo {
+    margin-top: 15px;
+}
+
+#gamecenter .linescore-head .gamecenter-logo-wrapper {
+    float: left;
+    position: relative;
+    left: 50%;
+}
+
+#gamecenter .linescore-head .gamecenter-logo {
+    float: left;
+    position: relative;
+    left: -50%;
+    height: 80px;
+    background-color: #001029;
+    border: 2px solid #fff;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    padding: 0px 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: rgba(128,128,128,0.4) 0px -2px 10px;
+}
+
+#gamecenter .linescore-head .gamecenter-logo .gc-logo-img {
+    margin: 20px 0px;
+}
+
+#gamecenter .linescore-head .away {
+    float: left;
+    width: 50%;
+    color: #fff;
+    height: 50px;
+    margin-top: -40px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: 1px solid #fff;
+}
+
+#gamecenter .linescore-head .away {
+    clear: left;
+}
+
+#gamecenter .linescore-head .home {
+    float: right;
+    text-align: right;
+    direction: rtl;
+    width: 50%;
+    color: #fff;
+    height: 50px;
+    margin-top: -40px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: 1px solid #fff;
+}
+
+#gamecenter .linescore-head .team-name,
+#gamecenter .linescore-head .record {
+    width: 180px;
+    text-align: center;
+    direction: ltr;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+#gamecenter .linescore-head .team-name a,
+#gamecenter .linescore-head .record a {
+    color: #fff;
+    text-decoration: none;
+/*    font: 12px "TechwoodSlabW04", "Rockwell", "Georgia", serif;*/
+    font: 12px serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#game-center .line-score .line-score-container {
+    margin: 0px auto;
+    min-height: 90px;
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+}
+
+#gamecenter .line-score .line-score-container {
+    margin: 0px auto;
+    min-height: 90px;
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+}
+
+#gamecenter .line-score table {
+    color: #000;
+    min-width: 250px;
+    border: 0px;
+}
+
+#game-center .line-score .line-score-container thead tr {
+    color: #333;
+    height: 10px;
+    font: 10px "TechwoodSlabW04","Rockwell","Georgia",serif;
+}
+
+#game-center .line-score tr,
+#game-center .line-score tbody {
+    border: 0px;
+    background-color: inherit;
+}
+
+#gamecenter .line-score th {
+    text-align: center;
+    border: 0px;
+    background-color: inherit;
+    color: #888;
+    font-weight: normal;
+    padding: 1px;
+}
+
+#gamecenter .line-score tr,
+#gamecenter .line-score tbody {
+    border: 0px;
+    background-color: inherit;
+}
+
+#gamecenter .line-score .line-score-container #linescore tbody tr {
+    height: 25px;
+    border-right: 1px solid #BDBDBD;
+    border-left: 1px solid #BDBDBD;
+}
+
+#gamecenter .line-score .line-score-container #linescore tbody {
+    font: 12px "TechwoodSlabW04","Rockwell","Georgia",serif;
+}
+
+#gamecenter .line-score td {
+    padding-top: 4px;
+    border-bottom: 1px solid #BDBDBD;
+    border-top: 1px solid #BDBDBD;
+    background-color: #fff;
+    min-width: 28px;
+    text-align: center;
+}
+
+#gamecenter .line-score .line-score-container #linescore {
+    display: table;
+    width: auto;
+    margin: 0 auto;
+}
+
+#gamecenter .line-score .line-score-container #linescore thead tr {
+    color: #333;
+    height: 10px;
+    font: 10px "TechwoodSlabW04","Rockwell","Georgia",serif;
+}
+
+#gamecenter .line-score .line-score-container #linescore tbody td:first-child {
+    text-align: left;
+}
+
+#gamecenter .line-score .line-score-container #linescore tbody .school {
+    border-left: 1px solid #BDBDBD;
+}
+
+#gamecenter .line-score .line-score-container #linescore .team {
+    color: #0F6DAA;
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+#gamecenter .line-score .line-score-container #linescore td {
+    background-color: #fff;
+    padding: 2px 5px;
+    border-bottom: 1px solid #BDBDBD;
+    vertical-align: middle;
+}
+
+#gamecenter .line-score td.team {
+    text-align: left;
+    border-right: 0px;
+}
+
+#gamecenter .line-score .game-date {
+    font-family: serif;
+    font-weight: bold;
+    bottom: 18px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+}
+
+#gamecenter h3 {
+    display: none;
+}
+
+#gamecenter #mlbTabDisp {
+    font: normal 11px Arial,sans-serif;
+    width: 100%;
+}
+
+#gamecenter #mlbTabDisp .team-name-large {
+    padding: 10px 10px 10px 0px;
+    font: bold 24px "TechwoodSlabW04","Rockwell","Georgia",serif;
+}
+
+.gamecenter-tabs #mlbTabDisp {
+    float: left;
+}
+
+.gamecenter-tabs {
+    clear: left;
+    margin-top: 20px;
+    width: 956px;
+    margin-left: 75px;
+}
+
+#gamecenter .gamecenter-tabs ul {
+    height: 30px;
+}
+
+#details-tabs {
+    clear: both;
+    border-bottom: 8px solid #01375D;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+#details-tabs li {
+    list-style: none;
+    cursor: pointer;
+    margin: 0px 3px 0px 0px;
+    padding: 0px;
+    float: left;
+}
+
+#details-tabs .active a {
+    color: #fff;
+    text-shadow: none;
+    background-color: #01233F;
+    background: -moz-linear-gradient(left,#00203c 0%,#1b3e60 50%,#00203c 100%);
+    background: -webkit-gradient(linear,left top,right top,color-stop(0%,#00203c),color-stop(50%,#1b3e60),color-stop(100%,#00203c));
+    background: -webkit-linear-gradient(left,#00203c 0%,#1b3e60 50%,#00203c 100%);
+    background: -o-linear-gradient(left,#00203c 0%,#1b3e60 50%,#00203c 100%);
+    background: -ms-linear-gradient(left,#00203c 0%,#1b3e60 50%,#00203c 100%);
+    background: linear-gradient(to right,#00203c 0%,#1b3e60 50%,#00203c 100%);
+}
+
+#details-tabs a, #details-tabs a:visited {
+    background-color: #D9D9D9;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    padding: 0px 8px;
+    min-width: 65px;
+    color: #5D5D5D;
+    font: bold 12px/30px serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #fff;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: -moz-linear-gradient(top,#d9d9d9 72%,#b7b7b7 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(72%,#d9d9d9),color-stop(100%,#b7b7b7));
+    background: -webkit-linear-gradient(top,#d9d9d9 72%,#b7b7b7 100%);
+    background: -o-linear-gradient(top,#d9d9d9 72%,#b7b7b7 100%);
+    background: -ms-linear-gradient(top,#d9d9d9 72%,#b7b7b7 100%);
+    background: linear-gradient(to bottom,#d9d9d9 72%,#b7b7b7 100%);
+}
+
+#boxscore-baseball tr.header {
+    color: #f4f4f4;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#score-breakdown {
+    width: 956px;
+    height: 160px;
+    text-align: center;
+    border-right: 2px solid #DBDBDB;
+    border-bottom: 2px solid #DBDBDB;
+    border-left: 2px solid #DBDBDB;
+    position: relative;
+    background: linear-gradient(to bottom, #d3d3d3 0%, #ffffff 50%, #d3d3d3 100%);
+}
+
+.game-state {
+    width: 680px;
+    margin: 0px auto;
+    position: relative;
+}
+
+.game-state .game-score {
+    position: absolute;
+    top: 20px;
+    width: 135px;
+    height: 85px;
+    color: #333;
+    font: bold 80px/80px "TechwoodSlabW04","Rockwell","Georgia",serif;
+    text-align: center;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.game-state .game-score.winner {
+    color: #0166A8;
+}
+
+.game-state .game-score.top {
+    left: 20px;
+}
+
+.game-state .game-score.bottom {
+    right: 20px;
+}
+
+.game-state .final {
+    text=-transform: uppercase;
+}
+
+.game-state-info {
+    margin: auto;
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    height: 53px;
+}
+
+.game-state-info .game-state-header {
+    display: table;
+    margin: auto;
+}
+
+.game-state-info .game-state-header #action-tabs {
+    display: table-row;
+}
+
+.game-state .game-status {
+    padding: 0;
+}
+
+.game-state-info .game-status {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    top: 15px;
+}
+
+.game-state-info .game-time-info {
+    text-shadow: 0px 1px 1px rgba(254,254,254,0.8);
+}

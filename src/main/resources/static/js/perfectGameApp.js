@@ -114,7 +114,6 @@ function loadTeamsByLeague( league, year ) {
         });
     });
 }
-
 function loadSimulatedYears() {
     const url = "/years";
     var addedClass = false;

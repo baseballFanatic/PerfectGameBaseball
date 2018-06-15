@@ -6,9 +6,14 @@
 
 html,
 body,
-header,
+#home-header,
 #intro {
     height: 100%;
+    font-family: benton-sans-regular, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+header {
+    height: 50px;
     font-family: benton-sans-regular, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 

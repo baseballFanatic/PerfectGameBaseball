@@ -17,7 +17,6 @@ public class SeasonDaoImpl implements SeasonDao
     private static final String USER = "root";
     private static final String PASS = "password";
 
-
     @Override
     public List<Season> getYears()
     {

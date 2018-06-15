@@ -1,30 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<head th:replace="layout::site-head">
     <title>PGBS || Stats</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="/css/jquery-ui.css">
-    <link href="/css/jquery-ui.structure.css">
-    <link href="/css/jquery-ui.theme.css">
-    <link href="/css/dataTables.bootstrap4.min.css">
-    <link href="/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="/css/jquery-ui.css"/>
+    <link href="/css/jquery-ui.structure.css"/>
+    <link href="/css/jquery-ui.theme.css"/>
+    <link href="/css/dataTables.bootstrap4.min.css"/>
 </head>
 <body class="pgbs">
 <!--Main Navigation-->
-<header id="other-header">
-    <!--Navbar-->
-</header>
-<!--/.Navbar-->
+<header th:replace="layout::site-header"/>
 <main class="page-wrapper">
     <div class="container">
         <section>
@@ -32,7 +20,7 @@
             <div class="card my-4">
                 <!--Card image-->
                 <div class="view overlay">
-                    <img src="../img/background_field_edited.jpg" class="img-fluid">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid"/>
                     <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -89,15 +77,15 @@
                                         </div>
                                         <div id="sp_hitting-1" class="grouping onscreen">
                                             <fieldset class="widget-radio ui-buttonset mt-3">
-                                                <input type="radio" name="sp_hitting_league_code" value="'MLB'" id="sp_hitting_league_code_mlb" checked="checked" class="ui-helper-hidden-accessible">
+                                                <input type="radio" name="sp_hitting_league_code" value="'MLB'" id="sp_hitting_league_code_mlb" checked="checked" class="ui-helper-hidden-accessible"/>
                                                 <label for="sp_hitting_league_code_mlb" class="league-selector ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="true" role="button" aria-disabled="false">
                                                     <span class="ui-button-text">MLB</span>
                                                 </label>
-                                                <input type="radio" name="sp_hitting_league_code" value="'AL'" id="sp_hitting_league_code_al" class="ui-helper-hidden-accessible">
+                                                <input type="radio" name="sp_hitting_league_code" value="'AL'" id="sp_hitting_league_code_al" class="ui-helper-hidden-accessible"/>
                                                 <label for="sp_hitting_league_code_al" aria-pressed="false" id="stats-league-al" class="league-selector ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false">
                                                     <span class="ui-button-text">AL</span>
                                                 </label>
-                                                <input type="radio" name="sp_hitting_league_code" value="'NL'" id="sp_hitting_league_code_nl" class="ui-helper-hidden-accessible">
+                                                <input type="radio" name="sp_hitting_league_code" value="'NL'" id="sp_hitting_league_code_nl" class="ui-helper-hidden-accessible"/>
                                                 <label for="sp_hitting_league_code_nl" aria-pressed="false" class="league-selector ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false">
                                                     <span class="ui-button-text">NL</span>
                                                 </label>

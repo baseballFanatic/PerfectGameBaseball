@@ -19,7 +19,7 @@ function loadScheduleData(selectedYear) {
                 scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">' + scheduleDay.winningPitcherName + '</td>';
                 scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">' + scheduleDay.losingPitcherName + '</td>';
                 if (scheduleDay.gameCompleted === 'Y') {
-                    scheduleHtml += '<td index="' + scheduleIndex + '">' + '<a class="btn btn-success btn-small" href="box" role="button">BOX</a>' + '</td>';
+                    scheduleHtml += '<td index="' + scheduleIndex + '">' + '<a class="btn btn-success btn-small" href="box?gameKey=' + scheduleDay.gameKey + '" role="button">BOX</a>' + '</td>';
                 } else {
                     scheduleHtml += '<td index="' + scheduleIndex + '">' + '<a class="btn btn-default btn-small" href="play" role="button">PLAY</a>' + '</td>';
                 }
@@ -32,7 +32,6 @@ function loadScheduleData(selectedYear) {
 
 
 $(document).ready(function() {
-       appendOtherHeader();
        $('#nav-schedule').addClass( "active" );
        loadSimulatedYears();
        loadScheduleData(selectedYear);

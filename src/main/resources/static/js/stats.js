@@ -116,7 +116,6 @@ function changeDisplay() {
 
 $(document).ready(function() {
     document.getElementById("stats-pitching-data-table").style.display="none";
-    appendOtherHeader();
     var league = 'MLB';
     $('#nav-leaders').addClass( "active" );
     loadHittersByYearByLeague(1913, league);

@@ -1,26 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<head th:replace="layout::site-head">
     <title>PGBS || Front Office</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="/css/custom.css" rel="stylesheet">
 </head>
 <body class="pgbs">
     <!--Main Navigation-->
-    <header id="other-header">
-        <!--Navbar-->
-    </header>
-    <!--/.Navbar-->
+    <header th:replace="layout::site-header"/>
+
     <main class="page-wrapper">
         <div class="container">
             <section>
@@ -28,7 +15,7 @@
                 <div class="card my-4">
                     <!--Card image-->
                     <div class="view overlay">
-                        <img src="../img/background_field_edited.jpg" class="img-fluid">
+                        <img src="../img/background_field_edited.jpg" class="img-fluid"/>
                         <a href="#!">
                             <div class="mask rgba-white-slight"></div>
                         </a>
@@ -43,8 +30,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="card ml-3 mb-3">
-                                <div class="card-body text-center">
-                                    <p class="card-text">Member since: </p>
+                                <div class="card-body text-center" id="memberName">
+
                                 </div>
                             </div>
                         </div>
@@ -60,7 +47,7 @@
             </section>
         </div>
     </main>
-    <!--/.Card-->
+    <!--/Card-->
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script src="/js/jquery-3.3.1.min.js"></script>

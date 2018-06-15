@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6711f80-d0e5-4cfc-ba1d-bf0f3f63b06c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/boxScore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/boxScorePage.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/helloPage.jsp" />
+    <list default="true" id="a6711f80-d0e5-4cfc-ba1d-bf0f3f63b06c" name="Default" comment="- Added in html and css for the box score page">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_4_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ognl_ognl_3_0_8.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_groovy_groovy_2_4_12.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_thymeleaf_1_5_6_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_thymeleaf_thymeleaf_2_1_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_thymeleaf_thymeleaf_spring4_2_1_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_unbescape_unbescape_1_1_0_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/css/boxScorePage.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/templates/ajax_test.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/templates/more.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/frontOffice.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/frontOffice.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/perfectGameHome.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/playersPage.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/playersPage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/schedulePage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/setupPage.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/setupPage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/standingsPage.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/standingsPage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/statsPage.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/statsPage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/static/teamsPage.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/teamsPage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/boxScorePage.jsp" afterPath="$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/Database.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/GameEngine.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/PlayBall.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/PlayBall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" afterPath="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/standings.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/stats.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/stats.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -62,11 +82,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="59" column="2" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="64" selection-end-column="7" />
+            <state relative-caret-position="918">
+              <caret line="69" column="61" lean-forward="false" selection-start-line="69" selection-start-column="61" selection-end-line="69" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,31 +94,125 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="boxScorePage.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/boxScorePage.jsp">
+      <file leaf-file-name="ScheduleDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="37" column="54" lean-forward="false" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+            <state relative-caret-position="1530">
+              <caret line="95" column="2" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="boxScore.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/boxScore.js">
+      <file leaf-file-name="ScheduleDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+            <state relative-caret-position="68">
+              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schedulePage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/schedulePage.html">
+      <file leaf-file-name="SeasonDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="78" column="91" lean-forward="false" selection-start-line="78" selection-start-column="91" selection-end-line="78" selection-end-column="91" />
+            <state relative-caret-position="119">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SeasonDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="867">
+              <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="boxScorePage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-12000">
+              <caret line="136" column="24" lean-forward="false" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="24" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#6;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#7;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#8;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#9;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#10;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#11;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#12;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#13;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#14;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#15;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#16;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#17;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#18;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#6;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#7;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#6;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#7;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#8;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#9;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#10;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#11;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#12;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#13;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#14;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="boxScorePage.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/boxScorePage.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -146,6 +260,7 @@
       <find>init</find>
       <find>table th</find>
       <find>ui</find>
+      <find>basicExample</find>
     </findStrings>
     <replaceStrings>
       <replace>'NONE'</replace>
@@ -416,9 +531,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4498495432172" />
+        <entry key="$PROJECT_DIR$" value="4519399481367" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="1362274831" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="4002028121" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="829777938" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="40468877" />
       </map>
@@ -604,57 +719,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/static/teamsPage.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/teams.js" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/playersPage.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/StringSupport.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/Users.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/frontOffice.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/standingsPage.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/Pitcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/PitcherStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/statsPage.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/stats.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/SetupController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/setupPage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/setup.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/PlayBall.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Database.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/schedulePage.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/boxScorePage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/boxScore.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/boxScorePage.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/hello.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/configuration/WebMvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/helloPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Application.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/boxScorePage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/frontOffice.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/perfectGameHome.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/playersPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/setupPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/layout.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/standingsPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/statsPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/stats.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/teamsPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/perfectGameHome.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/frontOffice.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/schedulePage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/boxScorePage.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html" />
       </list>
     </option>
   </component>
@@ -664,9 +779,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="91" />
-    <option name="y" value="47" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="174" />
+    <option name="y" value="8" />
     <option name="width" value="1612" />
     <option name="height" value="980" />
   </component>
@@ -710,8 +825,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -752,7 +865,16 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Baseball" type="462c0819:PsiDirectoryNode" />
-              <item name="configuration" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Baseball" type="462c0819:PsiDirectoryNode" />
+              <item name="repositories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
@@ -760,6 +882,59 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="font" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="font" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
@@ -785,16 +960,14 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -803,7 +976,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Baseball" />
-    <property name="last_opened_file_path" value="$USER_HOME$/MySql-Spring-Tutorial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25345623" />
@@ -818,21 +991,21 @@
       <recent name="Baseball.config" />
       <recent name="Baseball.model" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\webapp\WEB-INF\pages" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\webapp" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\img\logos" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\css" />
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\js" />
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\webapp\assets\static" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Baseball.repositories" />
       <recent name="Baseball" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\css" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static\js" />
-      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\webapp\assets\static" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\templates" />
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources\static" />
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\resources" />
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\webapp\WEB-INF\pages" />
+      <recent name="C:\Users\ClintR\PerfectGameBaseball\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1415,7 +1588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527867131895</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="- added query to pull schedule data from the database&#10;- fixed date on schedule page to display month and day&#10;- fixed display on schedule page to display one month at a time&#10;- added button for BOX or PLAY to schedule page depending on whether game was completed or not">
+      <created>1528310175709</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1528310175709</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1431,23 +1611,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="91" y="47" width="1612" height="980" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32643119" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32552955" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3727162" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4057971" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36533505" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26332623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1499,8 +1679,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added in logic for pitchers entering the game show in batting and fielding stats." />
-    <MESSAGE value="Fixed bug with pitchers who did not have a position assigned of 'PITCHER' and were causing a nullPointerException when they got on base and then checked for a steal.  Position is now assigned to both the batter and fielder lists when the pitcher comes into the game." />
     <MESSAGE value="Added logic for pitchOuts and added a stolenBaseAttemptPercentage and stolenBaseAttemptSuccessPercentage for calculating successful stolen bases or not." />
     <MESSAGE value="Fixed issue with Winning/Losing Pitcher not accurately displaying when home team wins in bottom of last inning." />
     <MESSAGE value="Added in logic for pinch hitting for the #8 hitter when 7th or greater inning and run difference &lt; 5." />
@@ -1524,7 +1702,9 @@
     <MESSAGE value="- created table for standings in js&#10;- changed the header - added Standings instead of Seasons and changed order&#10;- created Standings page and moved from Front Office to the standings page&#10;- scaled down the Front Office page&#10;- created Coming Soon landing page for all Schedule, Leaders, and Teams&#10;- added selectors for Stats page" />
     <MESSAGE value="- fixed option value for select dropdown on Standings page&#10;- added in populating the standings on change of year select&#10;- added sortable table to Stats page for hitting&#10;- added styling for active buttons on Stats page&#10;- moved check users to server side&#10;- sign-in page clears out input value when invalid username is entered&#10;- added coords for logos for 1913 teams&#10;- added ability to select league (MLB, AL, or NL) for stats page" />
     <MESSAGE value="- adding table for Schedule page" />
-    <option name="LAST_COMMIT_MESSAGE" value="- adding table for Schedule page" />
+    <MESSAGE value="- added query to pull schedule data from the database&#10;- fixed date on schedule page to display month and day&#10;- fixed display on schedule page to display one month at a time&#10;- added button for BOX or PLAY to schedule page depending on whether game was completed or not" />
+    <MESSAGE value="- Added in html and css for the box score page" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added in html and css for the box score page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1581,141 +1761,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/mlb.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/mlb_bg_gradient.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/PGBS_logo_all_red.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/playermanagers.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/regular_season_large.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/sec-header-pattern.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/stadium.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/vector-dark-background-of-baseball-vector-illustration_k23000283.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/Wrigley Field.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/StatsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/stats.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="45" lean-forward="false" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/BOS-1913.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/BRO-1913.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/BSN-1913.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/CHC-1913.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/CHW-1913.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/al_symbol.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Schedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1734,31 +1783,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="1640" column="61" lean-forward="false" selection-start-line="1640" selection-start-column="61" selection-end-line="1640" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/DisplayInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/standingsPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="47" lean-forward="false" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/standings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="13" lean-forward="false" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1770,13 +1798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/teamsPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="61" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/teams.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1784,56 +1805,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9945">
-          <caret line="585" column="1" lean-forward="false" selection-start-line="585" selection-start-column="1" selection-end-line="585" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="54" column="78" lean-forward="false" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="122" lean-forward="false" selection-start-line="21" selection-start-column="122" selection-end-line="21" selection-end-column="122" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/boxScore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/schedulePage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="91" lean-forward="false" selection-start-line="78" selection-start-column="91" selection-end-line="78" selection-end-column="91" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1855,7 +1830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1863,31 +1837,91 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/configuration/WebMvcConfig.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="1640" column="61" lean-forward="false" selection-start-line="1640" selection-start-column="61" selection-end-line="1640" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="37" column="57" lean-forward="false" selection-start-line="37" selection-start-column="57" selection-end-line="37" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/ajax_test.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/more.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/playersPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="-11359">
+          <caret line="36" column="60" lean-forward="false" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/setupPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1819">
+          <caret line="30" column="84" lean-forward="false" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
         </state>
       </provider>
     </entry>
@@ -1895,32 +1929,248 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/standings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/teamsPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/stats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/statsPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2210">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/frontOffice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="9" lean-forward="false" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/boxScorePage.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/perfectGameHome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="37" column="54" lean-forward="false" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+        <state relative-caret-position="1343">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/configuration/WebMvcConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="21" column="42" lean-forward="false" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+        <state relative-caret-position="263">
+          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Season.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/standingsPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2142">
+          <caret line="126" column="38" lean-forward="false" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/schedulePage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="158" lean-forward="false" selection-start-line="21" selection-start-column="158" selection-end-line="21" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="95" column="2" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="59" column="2" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="64" selection-end-column="7" />
+        <state relative-caret-position="918">
+          <caret line="69" column="61" lean-forward="false" selection-start-line="69" selection-start-column="61" selection-end-line="69" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/PHI-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/logos/PHA-1913.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/boxScorePage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12000">
+          <caret line="136" column="24" lean-forward="false" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#6;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#7;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#8;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#9;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#10;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#11;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#12;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#13;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#14;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#15;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#16;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#17;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#18;n#tbody#0;n#table#0;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#6;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#7;n#tbody#0;n#table#1;n#div#0;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#6;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#7;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#8;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#9;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#10;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#11;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#12;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#13;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#14;n#tbody#0;n#table#0;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#2;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#3;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#4;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#5;n#tbody#0;n#table#1;n#div#1;n#article#0;n#div#0;n#section#1;n#article#0;n#div#1;n#div#0;n#section#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

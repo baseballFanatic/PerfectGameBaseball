@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="site-head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Material Design Bootstrap -->
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet"/>
+    <!-- Your custom styles (optional) -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet"/>
+    <meta th:include="this :: head" th:remove="tag"/>
+</head>
+<header th:fragment="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="regular-nav">
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="home">Perfect Game</a>
+            <img th:src="@{/img/PGBS_logo_circle_blue.png}" height="40" class="d-inline-block align-top mr-3" alt=""/>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="nav-front-office">
+                        <a class="nav-link" th:href="@{office}">Front Office
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="nav-standings">
+                        <a class="nav-link" th:href="@{standings}">Standings</a>
+                    </li>
+                    <li class="nav-item" id="nav-schedule">
+                        <a class="nav-link" th:href="@{schedule}">Schedule</a>
+                    </li>
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse">
+                        <!-- Links -->
+                        <ul class="navbar-nav mr-auto">
+                            <!-- Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Stats</a>
+                                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" th:href="@{stats}">Player Stats</a>
+                                    <a class="dropdown-item" th:href="@{#}">League Leaders</a>
+                                    <a class="dropdown-item" th:href="@{#}">Team Stats</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Links -->
+                    </div>
+                    <!-- Collapsible content -->
+                    <li class="nav-item" id="nav-players">
+                        <a class="nav-link" th:href="@{players}">Players
+                        </a>
+                    </li>
+                    <li class="nav-item" id="nav-teams">
+                        <a class="nav-link" th:href="@{teams}">Teams</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Collapsible content -->
+            <button type="submit" class="btn btn-primary mb-0 btn-small" id="sign-out">Sign-Out</button>
+        </div>
+    </nav>
+</header>
+
+</html>

@@ -1,26 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<head th:replace="layout::site-head">
     <title>PGBS || Schedule</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="/css/custom.css" rel="stylesheet">
 </head>
 <body class="pgbs">
 <!--Main Navigation-->
-<header id="other-header">
-    <!--Navbar-->
-</header>
-<!--/.Navbar-->
+<header th:replace="layout::site-header"/>
 <main class="page-wrapper">
     <div class="container">
         <section>
@@ -28,7 +14,7 @@
             <div class="card my-4">
                 <!--Card image-->
                 <div class="view overlay">
-                    <img src="../img/background_field_edited.jpg" class="img-fluid">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid"/>
                     <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -57,15 +43,15 @@
                             <div id="schedule" style="opacity: 1;">
                                 <div id="scheduleTable">
                                     <table cellspacing="0" class="schedule_table data_grid">
-                                        <col class="dg-date">
-                                        <col class="dg-away">
-                                        <col class="dg-home">
-                                        <col class="dg-away-probable">
-                                        <col class="dg-home-probable">
-                                        <col class="dg-result">
-                                        <col class="dg-winning-pitcher">
-                                        <col class="dg-losing-pitcher">
-                                        <col class="dg-play-box">
+                                        <col class="dg-date"/>
+                                        <col class="dg-away"/>
+                                        <col class="dg-home"/>
+                                        <col class="dg-away-probable"/>
+                                        <col class="dg-home-probable"/>
+                                        <col class="dg-result"/>
+                                        <col class="dg-winning-pitcher"/>
+                                        <col class="dg-losing-pitcher"/>
+                                        <col class="dg-play-box"/>
                                         <thead>
                                         <tr>
                                             <th tabindex="0" index="0" class="dg-date">Date</th>

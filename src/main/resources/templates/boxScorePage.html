@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout::site-head">
+    <title>PGBS || Box Score</title>
+</head>
+<body class="pgbs">
+<!--Main Navigation-->
+<header th:replace="layout::site-header"/>
+<link th:href="@{/css/boxScorePage.css}" rel="stylesheet"/>
+
+<main class="page-wrapper">
+    <div class="container">
+        <section>
+            <!--Card-->
+            <div class="card my-4">
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid"/>
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!--/.Card content-->
+                <div class="content">
+                    <div class="clearfix">
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <article class="game final" id="gamecenter">
+                        <div class="linescore-head">
+                            <div class="gamecenter-logo-wrapper">
+                                <div class="gamecenter-logo">
+                                    <img class="gc-logo-img" src="../img/header-logo.png" width="261" height="38" alt="GameCenter logo"/>
+                                </div>
+                            </div>
+                            <div class="away" style="background-color: #73000A;">
+                                <p class="team-name">
+                                    <a href="#"><span th:text="${visitingTeamID}">ABC</span></a>
+                                </p>
+                                <p class="record">0-1</p>
+                            </div>
+                            <div class="home" style="background-color: #BE0F34;">
+                                <p class="team-name">
+                                    <a href="#"><span th:text="${homeTeamID}">DEF</span></a>
+                                </p>
+                                <p class="record">1-0</p>
+                            </div>
+                        </div>
+                        <section id="score-breakdown" class="line-score baseball">
+                            <h3>Line Score</h3>
+                            <div class="team-flag away">
+                                <a href="#">
+                                    <img class="team-logo away" src="../img/logos/PHA-1913.png" width="70" height="70" alt="Philadelphia"/>
+                                </a>
+                            </div>
+                            <div class="team-flag home">
+                                <a href="#">
+                                    <img class="team-logo home" src="../img/logos/BRO-1913.png" width="70" height="70" alt="Brooklyn"/>
+                                </a>
+                            </div>
+                            <div class="linescore-details">
+                                <div class="game-state final">
+                                    <div class="game-state-info">
+                                        <div class="game-state-info-header">
+                                            <div id="action-tabs" class="final">
+                                                <div class="game-status ">
+                                                    <div class="game-time-info">Final</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="game-score top">
+                                        <span class="score">4</span>
+                                    </div>
+                                    <div class="game-score bottom winner">
+                                        <span class="score">14</span>
+                                    </div>
+                                </div>
+                                <div class="line-score-container">
+                                    <table id="linescore">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="1" title="Team"><span class="element-invisible">Team</span></th>
+                                                <th class="line-scores pre-0 post--1">1</th>
+                                                <th class="line-scores pre-0 post--1">2</th>
+                                                <th class="line-scores pre-0 post--1">3</th>
+                                                <th class="line-scores pre-0 post--1">4</th>
+                                                <th class="line-scores pre-0 post--1">5</th>
+                                                <th class="line-scores pre-0 post--1">6</th>
+                                                <th class="line-scores pre-0 post--1">7</th>
+                                                <th class="line-scores pre-0 post--1">8</th>
+                                                <th class="line-scores pre-0 post--1">9</th>
+                                                <th class="rhe" title="Runs">R</th>
+                                                <th class="rhe" title="Hits">H</th>
+                                                <th class="rhe" title="Errors">E</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="team"><span class="ranking" title="Rank/Seed">2</span><a href="/schools/south-carolina">South Carolina</a></td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">2</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">1</td>
+                                                <td class="period line-scores pre-0 post--1">1</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="rhe rhefirst">4</td><td class="rhe">6</td>
+                                                <td class="rhe rhelast">1</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="team"><span class="ranking" title="Rank/Seed">1</span><a href="/schools/arkansas">Arkansas</a></td>
+                                                <td class="period line-scores pre-0 post--1">5</td>
+                                                <td class="period line-scores pre-0 post--1">2</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">1</td>
+                                                <td class="period line-scores pre-0 post--1">5</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">1</td>
+                                                <td class="period line-scores pre-0 post--1">0</td>
+                                                <td class="period line-scores pre-0 post--1">X</td>
+                                                <td class="rhe rhefirst">14</td>
+                                                <td class="rhe">11</td>
+                                                <td class="rhe rhelast">0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="game-date">
+                                    June 11, 2018
+                                </div>
+                            </div>
+                        </section>
+                        <section class="gamecenter-tabs  clear-block">
+                            <ul id="details-tabs" class="details-tabs clear-block">
+                                <li class="active ajaxTab boxscore" id="tab_boxscore">
+                                    <a>Box Score</a>
+                                </li>
+                                <li class="ajaxTab play-by-play" id="tab_play-by-play">
+                                    <a>Play-By-Play</a>
+                                </li>
+                            </ul>
+                            <div id="mlbTabDisp" style="display: block;">
+                                <article id="boxscore-baseball">
+                                    <h3>Box Score</h3>
+                                    <div class="boxscore-visiting">
+                                        <div class="team-name-large" style="color: #73000A">
+                                            South Carolina
+                                        </div>
+                                        <table class="batting-stats">
+                                            <tbody><tr class="header" style="background-color:#73000A">
+                                                <td colspan="2">BATTER</td>
+                                                <td>POS</td>
+                                                <td>AB</td>
+                                                <td>R</td>
+                                                <td>H</td>
+                                                <td>RBI</td>
+                                                <td>BB</td>
+                                                <td>SO</td>
+                                                <td>AVG</td>
+                                                <td>OBP</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>4</td>
+                                                <td> Danny Blair</td>
+                                                <td>CF</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>.230</td>
+                                                <td>.288</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>2</td>
+                                                <td class="substitute"> Noah Campbell</td>
+                                                <td>CF</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>.270</td>
+                                                <td>.372</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>8</td>
+                                                <td> Carlos Cortes</td>
+                                                <td>LF/RF</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>.265</td>
+                                                <td>.385</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>14</td>
+                                                <td> Madison Stokes</td>
+                                                <td>DH</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>.322</td>
+                                                <td>.414</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>20</td>
+                                                <td> Jonah Bride</td>
+                                                <td>3B</td>
+                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>.301</td>
+                                                <td>.419</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>3</td>
+                                                <td> Justin Row</td>
+                                                <td>2B</td>
+                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>.347</td>
+                                                <td>.418</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>11</td>
+                                                <td> LT Tolbert</td>
+                                                <td>SS</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>.322</td>
+                                                <td>.401</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>38</td>
+                                                <td> Hunter Taylor</td>
+                                                <td>C</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>.261</td>
+                                                <td>.328</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>33</td>
+                                                <td class="substitute"> Chris Cullen</td>
+                                                <td>C</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>.190</td>
+                                                <td>.294</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>7</td>
+                                                <td> Jacob Olson</td>
+                                                <td>RF/LF</td>
+                                                <td>4</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>.234</td>
+                                                <td>.290</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>48</td>
+                                                <td> Matt Williams</td>
+                                                <td>1B</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>.214</td>
+                                                <td>.321</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>21</td>
+                                                <td> Carmen Mlodzinski</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>13</td>
+                                                <td class="substitute"> Graham Lawson</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>22</td>
+                                                <td class="substitute"> Logan Chapman</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>9</td>
+                                                <td class="substitute"> Eddy Demurias</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>16</td>
+                                                <td class="substitute"> John Gilreath</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>28</td>
+                                                <td class="substitute"> Ridge Chapman</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>44</td>
+                                                <td class="substitute"> Parker Coyne</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr class="totals">
+                                                <td colspan="3">Total</td>
+                                                <td>33</td>
+                                                <td>4</td>
+                                                <td>6</td>
+                                                <td>2</td>
+                                                <td>7</td>
+                                                <td>12</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody></table>
+
+                                        <div class="boxscore-additional">
+                                            <p>2B:  Row 1 (13),  Tolbert 1 (11)</p>
+                                            <p>HR:  Olson 2 (12)</p>
+                                            <p>RBI:  Olson 2 (36)</p>
+
+                                        </div>
+
+                                        <table class="pitching-stats">
+                                            <tbody><tr class="header" style="background-color:#73000A">
+                                                <td colspan="2">PITCHER</td>
+                                                <td>POS</td>
+                                                <td>IP</td>
+                                                <td>H</td>
+                                                <td>R</td>
+                                                <td>ER</td>
+                                                <td>BB</td>
+                                                <td>SO</td>
+                                                <td>BF</td>
+                                                <td>ERA</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>21</td>
+                                                <td> Carmen Mlodzinski</td>
+                                                <td></td>
+                                                <td>1.0</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>9</td>
+                                                <td>5.52</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>13</td>
+                                                <td class="substitute"> Graham Lawson</td>
+                                                <td></td>
+                                                <td>2.0</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>11</td>
+                                                <td>5.60</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>22</td>
+                                                <td class="substitute"> Logan Chapman</td>
+                                                <td></td>
+                                                <td>1.0</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>6</td>
+                                                <td>5.85</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>9</td>
+                                                <td class="substitute"> Eddy Demurias</td>
+                                                <td></td>
+                                                <td>0.0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>4.87</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>16</td>
+                                                <td class="substitute"> John Gilreath</td>
+                                                <td></td>
+                                                <td>0.1</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>3</td>
+                                                <td>4.50</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>28</td>
+                                                <td class="substitute"> Ridge Chapman</td>
+                                                <td></td>
+                                                <td>2.0</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>3</td>
+                                                <td>7</td>
+                                                <td>4.93</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>44</td>
+                                                <td class="substitute"> Parker Coyne</td>
+                                                <td></td>
+                                                <td>1.2</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>6</td>
+                                                <td>3.18</td>
+                                            </tr>
+                                            <tr class="totals">
+                                                <td colspan="3">Total</td>
+                                                <td>8.0</td>
+                                                <td>11</td>
+                                                <td>14</td>
+                                                <td>13</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>43</td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody></table>
+                                        <div class="boxscore-additional">
+                                            <p>Loss:  Mlodzinski</p>
+                                            <p> Mlodzinski 34 (22 strikes),  Lawson 32 (17 strikes),  Chapman 32 (14 strikes),  Demurias 5 (1 strikes),  Gilreath 15 (7 strikes),  Chapman 28 (17 strikes),  Coyne 20 (12 strikes)</p>
+                                        </div>
+                                    </div>
+                                    <div class="boxscore-home">
+                                        <div class="team-name-large" style="color: #BE0F34">
+                                            Arkansas
+                                        </div>
+                                        <table class="batting-stats">
+                                            <tbody><tr class="header" style="background-color:#BE0F34">
+                                                <td colspan="2">BATTER</td>
+                                                <td>POS</td>
+                                                <td>AB</td>
+                                                <td>R</td>
+                                                <td>H</td>
+                                                <td>RBI</td>
+                                                <td>BB</td>
+                                                <td>SO</td>
+                                                <td>AVG</td>
+                                                <td>OBP</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>8</td>
+                                                <td> Eric Cole</td>
+                                                <td>RF</td>
+                                                <td>3</td>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>.329</td>
+                                                <td>.417</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>15</td>
+                                                <td> Casey Martin</td>
+                                                <td>3B</td>
+                                                <td>4</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>.344</td>
+                                                <td>.422</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>18</td>
+                                                <td> Heston Kjerstad</td>
+                                                <td>LF</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>0</td>
+                                                <td>.340</td>
+                                                <td>.427</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>17</td>
+                                                <td> Luke Bonfield</td>
+                                                <td>DH</td>
+                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>.307</td>
+                                                <td>.444</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>24</td>
+                                                <td> Dominic Fletcher</td>
+                                                <td>CF</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>.282</td>
+                                                <td>.337</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>20</td>
+                                                <td> Carson Shaddy</td>
+                                                <td>2B</td>
+                                                <td>5</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>.341</td>
+                                                <td>.437</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>3</td>
+                                                <td> Jared Gates</td>
+                                                <td>1B</td>
+                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>.236</td>
+                                                <td>.358</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>33</td>
+                                                <td> Grant Koch</td>
+                                                <td>C</td>
+                                                <td>3</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>.251</td>
+                                                <td>.364</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>9</td>
+                                                <td> Jax Biggers</td>
+                                                <td>SS</td>
+                                                <td>3</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>.287</td>
+                                                <td>.390</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>55</td>
+                                                <td> Isaiah Campbell</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>46</td>
+                                                <td class="substitute"> Barrett Loseke</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>34</td>
+                                                <td class="substitute"> Jake Reindl</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>28</td>
+                                                <td class="substitute"> Kole Ramage</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1.000</td>
+                                                <td>1.000</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>32</td>
+                                                <td class="substitute"> Matt Cronin</td>
+                                                <td>P</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr class="totals">
+                                                <td colspan="3">Total</td>
+                                                <td>32</td>
+                                                <td>14</td>
+                                                <td>11</td>
+                                                <td>13</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody></table>
+
+                                        <div class="boxscore-additional">
+                                            <p>2B:  Cole 1 (13),  Martin 1 (12)</p>
+                                            <p>HR:  Cole 1 (14),  Shaddy 1 (13)</p>
+                                            <p>RBI:  Cole 2 (50),  Martin 2 (46),  Kjerstad 1 (54),  Bonfield 4 (39),  Fletcher 1 (41),  Shaddy 3 (52)</p>
+
+                                        </div>
+
+                                        <table class="pitching-stats">
+                                            <tbody><tr class="header" style="background-color:#BE0F34">
+                                                <td colspan="2">PITCHER</td>
+                                                <td>POS</td>
+                                                <td>IP</td>
+                                                <td>H</td>
+                                                <td>R</td>
+                                                <td>ER</td>
+                                                <td>BB</td>
+                                                <td>SO</td>
+                                                <td>BF</td>
+                                                <td>ERA</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>55</td>
+                                                <td> Isaiah Campbell</td>
+                                                <td></td>
+                                                <td>4.0</td>
+                                                <td>4</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>5</td>
+                                                <td>18</td>
+                                                <td>4.19</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>46</td>
+                                                <td class="substitute"> Barrett Loseke</td>
+                                                <td></td>
+                                                <td>2.1</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>10</td>
+                                                <td>3.15</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>34</td>
+                                                <td class="substitute"> Jake Reindl</td>
+                                                <td></td>
+                                                <td>0.2</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>4</td>
+                                                <td>2.96</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>28</td>
+                                                <td class="substitute"> Kole Ramage</td>
+                                                <td></td>
+                                                <td>1.0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>4</td>
+                                                <td>3.73</td>
+                                            </tr>
+                                            <tr style="background-color:">
+                                                <td>32</td>
+                                                <td class="substitute"> Matt Cronin</td>
+                                                <td></td>
+                                                <td>1.0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>4</td>
+                                                <td>2.98</td>
+                                            </tr>
+                                            <tr class="totals">
+                                                <td colspan="3">Total</td>
+                                                <td>9.0</td>
+                                                <td>6</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>7</td>
+                                                <td>12</td>
+                                                <td>40</td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody></table>
+                                        <div class="boxscore-additional">
+                                            <p>Win:  Loseke</p>
+                                            <p> Campbell 78 (45 strikes),  Loseke 43 (25 strikes),  Reindl 18 (8 strikes),  Ramage 24 (14 strikes),  Cronin 20 (13 strikes)</p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </article>
+<!--                    <p>You selected: <span th:text="${gameKey}">1</span></p>
+                    <div>
+                        Game Day: <span th:text="${gameDay}">01</span>
+                        Game Month: <span th:tex="${gameMonth}">04</span>-->
+                    </div>
+                </div>
+        </section>
+    </div>
+</main>
+<!--/.Card-->
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<!-- MDB core JavaScript -->
+<script src="/js/mdb.min.js"></script>
+<!-- PerfectGameHome JavaScript -->
+<script src="/js/perfectGameApp.js"></script>
+<script src="/js/perfectGameHome.js"></script>
+<script src="/js/boxScore.js"></script>
+</body>
+
+</html>
