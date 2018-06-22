@@ -2,12 +2,22 @@ package Baseball;
 
 public class Users
 {
-    private String username;
+    private String username, email, password, firstName, lastName, active;
     private int recentYear;
-    private String displayName;
 
     public Users()
     {
+    }
+
+    public Users( String username, String email, String password, String firstName, String lastName, String active, int recentYear )
+    {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.active = active;
+        this.recentYear = recentYear;
     }
 
     public String getUsername()
@@ -30,13 +40,53 @@ public class Users
         this.recentYear = season;
     }
 
-    public String getDisplayName()
+    public String getEmail()
     {
-        return displayName;
+        return email;
     }
 
-    public void setDisplayName( String displayName )
+    public void setEmail( String email )
     {
-        this.displayName = displayName;
+        this.email = email;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword( String password )
+    {
+        this.password = password;
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName( String firstName )
+    {
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName( String lastName )
+    {
+        this.lastName = lastName;
+    }
+
+    public String getActive()
+    {
+        return active;
+    }
+
+    public void setActive( String active )
+    {
+        this.active = active;
     }
 }

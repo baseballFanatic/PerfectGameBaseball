@@ -83,7 +83,7 @@ public class ScheduleDaoImpl implements ScheduleDao
             connection = DriverManager.getConnection( DB_URL, USER, PASS );
 
             PreparedStatement statement;
-            statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, visitingTeamId, homeTeamId, visitingScore, " +
+            statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, gameYear, visitingTeamId, homeTeamId, visitingScore, " +
                     "homeScore, winningPitcherName, losingPitcherName, " +
                     "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey FROM pgbs_schedule WHERE gameKey = ? " +
                     "ORDER BY gameDate ASC" );
@@ -96,6 +96,7 @@ public class ScheduleDaoImpl implements ScheduleDao
 /*                Schedule schedule = new Schedule();*/
                 schedule.setGameMonth( resultSet.getInt( "gameMonth" ) );
                 schedule.setGameDay( resultSet.getInt( "gameDay" ) );
+                schedule.setGameYear( resultSet.getInt( "gameYear" ) );
                 schedule.setVisitingTeamId( resultSet.getString( "visitingTeamId" ) );
                 schedule.setHomeTeamId( resultSet.getString( "homeTeamId" ) );
                 schedule.setVisitingScore( resultSet.getInt( "visitingScore" ) );

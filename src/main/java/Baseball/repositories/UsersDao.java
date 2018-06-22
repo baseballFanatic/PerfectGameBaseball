@@ -10,5 +10,5 @@ public interface UsersDao
 
     boolean checkUser(String user);
 
-    List<Users> getUser(String user);
+    List<Users> getUser( String user);
 }

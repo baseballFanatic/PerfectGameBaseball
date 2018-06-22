@@ -198,16 +198,18 @@ public class Fielder extends Player {
 
         if (visitors) {
             //TODO Take out the hard coded year
-            int yearID = 1913;
+            int yearID = schedule.getGameYear();
+            int gameKey = schedule.getGameKey();
             String teamID = schedule.getVisitingTeamId();
             // Selects all fielders for the visitor team and orders by games played desc.
-            fielderList = Database.selectFielders(teamID, yearID);
+            fielderList = Database.selectFielders(teamID, yearID, gameKey);
 
         } else {
-            int yearID = 1913;
+            int yearID = schedule.getGameYear();
+            int gameKey = schedule.getGameKey();
             String teamID = schedule.getHomeTeamId();
             // Selects all fielders for the home team and orders by games played desc.
-            fielderList = Database.selectFielders(teamID, yearID);
+            fielderList = Database.selectFielders(teamID, yearID, gameKey);
         }
 
         for (Fielder player : fielderList) {

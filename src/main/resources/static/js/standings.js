@@ -6,7 +6,7 @@ function loadTeamStandingsData(selectedYear) {
     var nlTableHtml = '';
     var alIndex = 0;
     var nlIndex = 0;
-    $.getJSON(getTeams, function(teams) {
+    $.getJSON( getTeams, function(teams) {
         const alLeaderWins = teams[0].teamStats.seasonWins;
         const nlLeaderWins = teams[8].teamStats.seasonWins;
         $.each(teams, function(key, simulatedTeam) {

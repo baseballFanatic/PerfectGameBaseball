@@ -1,5 +1,6 @@
 package Baseball;
 
+import javax.xml.crypto.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class PlayBall {
     private boolean gameOver = false;
     private boolean visitors = true;
 
-    public PlayBall() throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException,
+    public PlayBall(int yearID, String lgID, String round, String simName) throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException {
         Team visitorTeam;
         Team homeTeam;
@@ -27,12 +28,8 @@ public class PlayBall {
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
 
-        //TODO Find way to take out this hard coded year
-        int yearID=1913;
-        String lgID="AL";
-
         league = Database.selectTeamStats(yearID, lgID, league);
-        league.setLgID("AL");
+        league.setLgID(lgID);
 
         Schedule schedule = Database.selectSchedule(yearID, lgID);
 
@@ -42,7 +39,7 @@ public class PlayBall {
         visitorTeam.setTeamId(schedule.getVisitingTeamId());
 
         // Selects batters based on schedule file
-        List<Batter> visitorBatters = batter.getBatterList(visitors,schedule);
+        List<Batter> visitorBatters = batter.getBatterList(visitors, schedule);
         // Selects all fielders available for the team
         List<Fielder> visitorFieldersReserves = fielder.getFielderList(visitors, schedule);
         // Selects starters for all 8 regular positions from the schedule list based on game
@@ -115,16 +112,29 @@ public class PlayBall {
                 homePitchers, visitorTeam, homeTeam, pitcher, visitorLineScore, homeLineScore, visitorFieldersReserves,
                 homeFieldersReserves, schedule);
 
+
         batter.getBatterStats().updateBatterGameStats(visitorBatters);
         batter.getBatterStats().updateBatterGameStats(homeBatters);
         homeTeam.updateTeamGameStats(homeTeam, homeBatters, homeFieldersReserves, homePitchers);
         visitorTeam.updateTeamGameStats(visitorTeam, visitorBatters, visitorFieldersReserves, visitorPitchers);
         new Database().updateBatters(visitorBatters);
         new Database().updateBatters(homeBatters);
+
         pitcher.getPitcherStats().updatePitcherGameStats(visitorPitchers);
         pitcher.getPitcherStats().updatePitcherGameStats(homePitchers);
         fielder.getFielderStats().updateFielderGameStats(visitorFieldersReserves);
         fielder.getFielderStats().updateFielderGameStats(homeFieldersReserves);
+
+        // Inserts the players into pgbs_box_score
+        new Database().insertPlayersBoxScore( visitorBatters, round, simName );
+        new Database().insertPlayersBoxScore( homeBatters, round, simName );
+        // Updates the fielder stats for the players already inserted into pgbs_box_score
+        new Database().updateBoxScoreFielders( visitorFieldersReserves );
+        new Database().updateBoxScoreFielders( homeFieldersReserves );
+        // Updates the pitcher stats for the players already inserted into pgbs_box_score
+        new Database().updateBoxScorePitchers( visitorPitchers );
+        new Database().updateBoxScorePitchers( homePitchers );
+
         new Database().updatePitchers(visitorPitchers);
         new Database().updatePitchers(homePitchers);
         new Database().updateFielders(visitorFieldersReserves);

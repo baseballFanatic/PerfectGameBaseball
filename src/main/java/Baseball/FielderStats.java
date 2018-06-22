@@ -8,10 +8,20 @@ class FielderStats {
     private int gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful,
     gamesPlayed, gamesStarted, inningOuts, putOuts, assists, errors, doublePlays, passedBalls, stolenBases,
     caughtStealing, zoneRating, wildPitches, gameGamePlayed, gameGameStarted, sErrors, sAssists, sPutOuts, sRunnersThrownOut,
-    sRunnersSuccessful, sGamesStarted, sGamesPlayed;
+    sRunnersSuccessful, sGamesStarted, sGamesPlayed, gameKey;
     private double fieldingPercentage, actualPlayerPercentage, histPlayerPercentage;
 
     FielderStats() {
+    }
+
+    public int getGameKey()
+    {
+        return gameKey;
+    }
+
+    public void setGameKey( int gameKey )
+    {
+        this.gameKey = gameKey;
     }
 
     public double getActualPlayerPercentage() {

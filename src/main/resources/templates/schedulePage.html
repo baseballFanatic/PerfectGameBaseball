@@ -77,7 +77,40 @@
             </div>
         </section>
     </div>
+
+
 </main>
+
+<div class="modal fade" id="modalPlayGame" tabindex="-1" role="dialog" aria-labelledby="modalPlayGame" aria-hidden="true">
+    <!--Modal: Contact form-->
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header primary-color white-text">
+                <h4 class="title">
+                    <i class="fa fa-exclamation-circle"></i> Play Ball!</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body" id="playGameModal">
+                <!-- Material input name -->
+                <div class="md-form form-sm">
+                    <span>Game simulating....</span>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="text-center mt-4 mb-2" id="modalGameCompleted">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <!--/Modal: Contact form-->
+</div>
 <!--/.Card-->
 <!-- SCRIPTS -->
 <!-- JQuery -->
@@ -93,6 +126,7 @@
 <!-- PerfectGameHome JavaScript -->
 <script src="/js/perfectGameApp.js"></script>
 <script src="/js/perfectGameHome.js"></script>
+<script src="/js/standings.js"></script>
 <script src="/js/schedule.js"></script>
 </body>
 

@@ -13,5 +13,5 @@ function getSessionUser(url) {
 
 $(document).ready(function() {
     $('#nav-front-office').addClass( "active" );
-    getSessionUser(sessionUrl);
+    /*getSessionUser(sessionUrl);*/
 });

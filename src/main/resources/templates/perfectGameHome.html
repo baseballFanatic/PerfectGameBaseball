@@ -23,6 +23,8 @@
                             <h4 class="white-text my-4">Welcome to your home for the very best data-driven baseball simulator on the planet!</h4>
                             <button type="submit" class="btn btn-primary mb-0" data-toggle="modal"
                                     data-target="#modalSignInForm">Sign-In</button>
+                            <button type="register" class="btn btn-primary mb-0" data-toggle="modal"
+                                    data-target="#modalRegisterForm">Register</button>
                         </div>
                     </div>
                 </div>
@@ -63,12 +65,51 @@
                         <button class="btn btn-primary" id="signIn-button">Submit
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <!--/Modal: Contact form-->
+</div>
+
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="modalRegisterForm" aria-hidden="true">
+    <!--Modal: Contact form-->
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header primary-color white-text">
+                <h4 class="title">
+                    <i class="fa fa-pencil"></i> Register</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body" id="registerModal">
+                <!-- Material input name -->
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="registerUserName" class="form-control form-control-sm"/>
+                    <label for="registerUserName">Username</label>
+                </div>
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="registerFirstName" class="form-control form-control-sm"/>
+                    <label for="registerFirstName">First Name</label>
+                </div>
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="registerLastName" class="form-control form-control-sm"/>
+                    <label for="registerLastName">Last Name</label>
+                </div>
+                <div class="row justify-content-center">
                     <div class="text-center mt-4 mb-2">
-                        <button class="btn btn-primary" id="register-button">Register
+                        <button class="btn btn-primary" id="register-button">Submit
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--/.Content-->

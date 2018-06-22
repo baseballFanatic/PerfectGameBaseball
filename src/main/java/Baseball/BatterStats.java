@@ -19,7 +19,141 @@ public class BatterStats {
             gameWalk, gameStrikeOut, gameHitByPitch, gameGidp, gameLeftOnBase, gameRispAtBat, gameRispHit, gameRispSingle,
             gameRispDouble, gameRispTriple, gameRispHomeRun, gameRispRbi, gameRispStrikeOut, gameRispWalk, gameRispHitByPitch,
             gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases, gameCaughtStealing,
-            sStolenBases, sCaughtStealing, gameRispGidp, yearID;
+            sStolenBases, sCaughtStealing, gameRispGidp, yearID, gameNumber, gamePinchAtBat, gamePinchHitHit, gameKey,
+            gamePinchHitSingle, gamePinchHitDouble, gamePinchHitTriple, gamePinchHitHomeRun, gamePinchHitRbi, gamePinchHitWalk,
+            gamePinchHitStrikeOut, gamePinchHitGdp;
+
+    private String gameField;
+
+    public int getGameKey()
+    {
+        return gameKey;
+    }
+
+    public int getGamePinchHitSingle()
+    {
+        return gamePinchHitSingle;
+    }
+
+    public void setGamePinchHitSingle( int gamePinchHitSingle )
+    {
+        this.gamePinchHitSingle = gamePinchHitSingle;
+    }
+
+    public int getGamePinchHitDouble()
+    {
+        return gamePinchHitDouble;
+    }
+
+    public void setGamePinchHitDouble( int gamePinchHitDouble )
+    {
+        this.gamePinchHitDouble = gamePinchHitDouble;
+    }
+
+    public int getGamePinchHitTriple()
+    {
+        return gamePinchHitTriple;
+    }
+
+    public void setGamePinchHitTriple( int gamePinchHitTriple )
+    {
+        this.gamePinchHitTriple = gamePinchHitTriple;
+    }
+
+    public int getGamePinchHitHomeRun()
+    {
+        return gamePinchHitHomeRun;
+    }
+
+    public void setGamePinchHitHomeRun( int gamePinchHitHomeRun )
+    {
+        this.gamePinchHitHomeRun = gamePinchHitHomeRun;
+    }
+
+    public int getGamePinchHitRbi()
+    {
+        return gamePinchHitRbi;
+    }
+
+    public void setGamePinchHitRbi( int gamePinchHitRbi )
+    {
+        this.gamePinchHitRbi = gamePinchHitRbi;
+    }
+
+    public int getGamePinchHitWalk()
+    {
+        return gamePinchHitWalk;
+    }
+
+    public void setGamePinchHitWalk( int gamePinchHitWalk )
+    {
+        this.gamePinchHitWalk = gamePinchHitWalk;
+    }
+
+    public int getGamePinchHitStrikeOut()
+    {
+        return gamePinchHitStrikeOut;
+    }
+
+    public void setGamePinchHitStrikeOut( int gamePinchHitStrikeOut )
+    {
+        this.gamePinchHitStrikeOut = gamePinchHitStrikeOut;
+    }
+
+    public int getGamePinchHitGdp()
+    {
+        return gamePinchHitGdp;
+    }
+
+    public void setGamePinchHitGdp( int gamePinchHitGdp )
+    {
+        this.gamePinchHitGdp = gamePinchHitGdp;
+    }
+
+    public void setGameKey( int gameKey )
+    {
+        this.gameKey = gameKey;
+    }
+
+    public int getGameNumber()
+    {
+        return gameNumber;
+    }
+
+    public String getGameField()
+    {
+        return gameField;
+    }
+
+    public void setGameField( String gameField )
+    {
+        this.gameField = gameField;
+    }
+
+    public int getGamePinchAtBat()
+    {
+        return gamePinchAtBat;
+    }
+
+    public void setGamePinchAtBat( int gamePinchAtBat )
+    {
+        this.gamePinchAtBat = gamePinchAtBat;
+    }
+
+    public int getGamePinchHitHit()
+    {
+        return gamePinchHitHit;
+    }
+
+    public void setGamePinchHitHit( int gamePinchHitHit )
+    {
+        this.gamePinchHitHit = gamePinchHitHit;
+    }
+
+    public void setGameNumber( int gameNumber )
+    {
+        this.gameNumber = gameNumber;
+    }
 
     public double getOnBasePlusSlugging()
     {
@@ -35,7 +169,7 @@ public class BatterStats {
         return yearID;
     }
 
-    private int getGameRispHitByPitch() {
+    int getGameRispHitByPitch() {
         return gameRispHitByPitch;
     }
 

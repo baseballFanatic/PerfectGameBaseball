@@ -1,8 +1,6 @@
 package Baseball.controller;
 
-import Baseball.Schedule;
-import Baseball.Season;
-import Baseball.Team;
+import Baseball.*;
 import Baseball.repositories.ScheduleDao;
 import Baseball.repositories.SeasonDao;
 import Baseball.repositories.TeamsDao;
@@ -13,6 +11,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -38,7 +38,12 @@ public class HomeController {
         return "perfectGameHome"; }
 
     @RequestMapping(value = "/office", method = RequestMethod.GET)
-    public String frontOffice() {
+    public String frontOffice( HttpSession session, ModelMap modelMap ) {
+        modelMap.put( "username", session.getAttribute( "username" ) );
+        modelMap.put( "firstName", session.getAttribute( "firstName" ) );
+        modelMap.put( "lastName", session.getAttribute( "lastName" ) );
+        modelMap.put( "active", session.getAttribute( "active" ) );
+        modelMap.put( "recentYear", session.getAttribute( "recentYear" ) );
         return "frontOffice";
     }
 
@@ -64,6 +69,7 @@ public class HomeController {
         modelMap.put( "gameDate", schedule.getGameDate() );
         modelMap.put( "gameDay", schedule.getGameDay());
         modelMap.put( "gameMonth", schedule.getGameMonth() );
+        modelMap.put( "gameYear", schedule.getGameYear() );
         modelMap.put( "visitingTeamID", schedule.getVisitingTeamId() );
         modelMap.put( "homeTeamID", schedule.getHomeTeamId() );
         modelMap.put( "visitingScore", schedule.getVisitingScore() );
@@ -85,11 +91,47 @@ public class HomeController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
-    public boolean checkUser( @RequestParam String user, HttpSession session ) {
+    public boolean checkUser( @RequestParam String user, HttpSession session )
+    {
         System.out.println( "Last one: " + session.getAttribute( "username" ) );
-        session.setAttribute( "username", user );
-        System.out.println( "Current one: " + session.getAttribute( "username" ));
-        return usersDao.checkUser( user ); }
+        if ( usersDao.checkUser( user ) )
+        {
+            List<Users> returnedUser = usersDao.getUser( user );
+            for (Users possibleUser : returnedUser) {
+                session.setAttribute( "username", user );
+                session.setAttribute( "firstName", possibleUser.getFirstName() );
+                session.setAttribute( "lastName", possibleUser.getLastName() );
+                session.setAttribute( "active", possibleUser.getActive() );
+                session.setAttribute( "recentYear", possibleUser.getRecentYear() );
+                System.out.println("username: " + session.getAttribute( "username" ));
+                System.out.println("firstName: " + session.getAttribute( "firstName" ));
+                System.out.println("lastName: " + session.getAttribute( "lastName" ));
+                System.out.println("active: " + session.getAttribute( "active" ));
+                System.out.println("recentYear: " + session.getAttribute( "recentYear" ));
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+/*    @RequestMapping( value = "/register", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean*/
+
+    @RequestMapping( value = "/playGame", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean startGame (  ) throws NoSuchMethodException, InstantiationException,
+            SQLException, IllegalAccessException, InvocationTargetException, ClassNotFoundException
+    {
+        System.out.println("Before launching the game");
+        PlayBall playBall = new PlayBall(1913, "AL", "RS", "clint");
+        System.out.println("After launching the game");
+        return true;
+    }
 
     @RequestMapping(value = "/years", method = RequestMethod.GET)
     @ResponseBody

@@ -76,6 +76,26 @@ public class Player {
                 '}';
     }
 
+    public String getSimName()
+    {
+        return simName;
+    }
+
+    public void setSimName( String simName )
+    {
+        this.simName = simName;
+    }
+
+    public int getSimNumber()
+    {
+        return simNumber;
+    }
+
+    public void setSimNumber( int simNumber )
+    {
+        this.simNumber = simNumber;
+    }
+
     public String getNameFirst() {
         return nameFirst;
     }

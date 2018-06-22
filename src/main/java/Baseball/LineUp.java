@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.Date;
 
-class LineUp {
+public class LineUp {
     private int battingOrder;
     private int visitorBattingNumber=1;
     private int homeBattingNumber=1, yearID, gameKey, playerOrder, gameNumber, gamePlayed;
@@ -187,17 +187,19 @@ class LineUp {
         {
             String teamID = schedule.getVisitingTeamId();
             LocalDate gameDate = schedule.getGameDate();
+            int gameKey = schedule.getGameKey();
             int gameNumber = schedule.getVisitingGameNumber();
 
-            lineUpList = Database.selectStartingFielders(teamID, gameDate, gameNumber);
+            lineUpList = Database.selectStartingFielders(teamID, gameDate, gameNumber, gameKey);
 
         } else
         {
             String teamID = schedule.getHomeTeamId();
             LocalDate gameDate = schedule.getGameDate();
             int gameNumber = schedule.getHomeGameNumber();
+            int gameKey = schedule.getGameKey();
 
-            lineUpList = Database.selectStartingFielders(teamID, gameDate, gameNumber);
+            lineUpList = Database.selectStartingFielders(teamID, gameDate, gameNumber, gameKey);
         }
 
         return lineUpList;

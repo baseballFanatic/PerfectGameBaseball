@@ -15,7 +15,7 @@ public enum InPlayPosition {
         this.positionCode = positionCode;
     }
 
-    private String getPositionCode() {
+    public String getPositionCode() {
         return positionCode;
     }
 

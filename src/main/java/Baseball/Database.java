@@ -1,5 +1,6 @@
 package Baseball;
 
+import javax.swing.plaf.nimbus.State;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,24 +38,25 @@ class Database {
             int yearID = 1913;
             String lgID="AL";
             stmt = conn.createStatement();
-/*            createPgbsPitchers(stmt);*/
+            createPgbsPitchers(stmt);
             insertPgbsPitchers(conn, yearID);
 
-/*            createPgbsBatters(stmt);
+            createPgbsBatters(stmt);
             createPgbsFielders(stmt);
             createPgbsSeasons(stmt);
-            createPgbsTeams(stmt);*/
-/*            createPgbsSchedule(stmt);
-            createPgbsLineUp(stmt);*/
+            createPgbsTeams(stmt);
+            createPgbsSchedule(stmt);
+            createPgbsBoxScore( stmt );
+/*            createPgbsLineUp(stmt);*/
 
 
-/*            insertPgbsBatters(conn, yearID);*/
-/*            insertPgbsFielders(conn, yearID);*/
-/*            insertPgbsTeams(conn, yearID);*/
-/*            insertPgbsSchedule(conn, yearID);
+            insertPgbsBatters(conn, yearID);
+            insertPgbsFielders(conn, yearID);
+            insertPgbsTeams(conn, yearID);
+            insertPgbsSchedule(conn, yearID);
             Schedule schedule = new Schedule();
-            insertPgbsLineUp(conn);
-            insertPgbsSeasons(conn, yearID);*/
+/*            insertPgbsLineUp(conn);*/
+            insertPgbsSeasons(conn, yearID);
 
             // Clean-up environment
             //rs.close();
@@ -468,6 +470,81 @@ class Database {
         System.out.println("Created pgbs_teams");
     }
 
+    private static void createPgbsBoxScore ( Statement stmt ) throws SQLException {
+        String boxScores;
+        boxScores = "CREATE TABLE pgbs_box_score (" +
+                " gameKey int(11)," +
+                " teamID varchar(255)," +
+                " nameFirst varchar(255)," +
+                " nameLast varchar(255)," +
+                " gameStarted int(11)," +
+                " gamePlayed int(11)," +
+                " position varchar(255)," +
+                " gameAtBats int(4)," +
+                " gameHits int(4)," +
+                " gameRuns int(4)," +
+                " gameRbi int(4)," +
+                " gameStolenBases int(4)," +
+                " gameCaughtStealing int(4)," +
+                " gameErrors int(4)," +
+                " gamePutOuts int(4)," +
+                " gameAssists int(4)," +
+                " gameDoubles int(4)," +
+                " gameTriples int(4)," +
+                " gameHomeRuns int(4)," +
+                " gameWalks int(4)," +
+                " gameStrikeOuts int(4)," +
+                " gameGdp int(4)," +
+                " gameSacFly int(4)," +
+                " gameSacHit int(4)," +
+                " gameHitByPitch int(4)," +
+                " gameHitsAllowed int(4)," +
+                " gameWalksAllowed int(4)," +
+                " gameRunsAllowed int(4)," +
+                " gameUnearnedRunsAllowed int(4)," +
+                " gameHomeRunsAllowed int(4)," +
+                " gameHitBatters int(4)," +
+                " gameInningsPitched int(4)," +
+                " gameStrikeOutsAllowed int(4)," +
+                " gameBatterOuts int(4)," +
+                " gameWin int(4)," +
+                " gameLoss int(4)," +
+                " gameSave int(4)," +
+                " gameShutOut int(4)," +
+                " gameCompleteGame int(4)," +
+                " gameDoublePlaysStarted int(4)," +
+                " gameCatcherRunnersThrownOut int(4)," +
+                " gameCatcherRunnersSuccessful int(4)," +
+                " gameRispAtBat int(4)," +
+                " gameRispRbi int(4)," +
+                " gameRispSingle int(4)," +
+                " gameRispDouble int(4)," +
+                " gameRispTriple int(4)," +
+                " gameRispHomeRun int(4)," +
+                " gameRispGdp int(4)," +
+                " gameRispWalk int(4)," +
+                " gameRispStrikeOut int(4)," +
+                " gameRispHitByPitch int(4)," +
+                " gameLeftOnBase int(4)," +
+                " gamePinchAtBat int(4)," +
+                " gamePinchHitHit int(4)," +
+                " gamePinchHitRbi int(4)," +
+                " gamePinchHitSingle int(4)," +
+                " gamePinchHitDouble int(4)," +
+                " gamePinchHitTriple int(4)," +
+                " gamePinchHitHomeRun int(4)," +
+                " gamePinchHitGdp int(4)," +
+                " gamePinchHitWalk int(4)," +
+                " gamePinchHitStrikeOut int(4)," +
+                " round varchar(255)," +
+                " battingOrder int(4)," +
+                " simNumber int(4)," +
+                " simName varchar(255)," +
+                " yearID int(4)," +
+                " gameField varchar(255)," +
+                " lgID varchar(255))";
+    }
+
     private static void createPgbsLineUp(Statement stmt) throws SQLException
     {
         String games;
@@ -759,6 +836,10 @@ class Database {
                 Pitcher pitcher = new Pitcher();
                 pitcher.setNameFirst(rs.getString("nameFirst"));
                 pitcher.setNameLast(rs.getString("nameLast"));
+                //TODO eventually take out these hard-coded values and use what is in registry and accurate
+                pitcher.setSimName( "clint" );
+                pitcher.setSimNumber( 1 );
+
                 // Sets Hands based on bats
                 if (Objects.equals(rs.getString("throws"), "R"))
                 {
@@ -896,7 +977,8 @@ class Database {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // Execute query
-            String query = "UPDATE pgbs_pitchers set lastGameDatePitched = ?, daysRest = ? where playerID = ? " +
+            String query = "UPDATE pgbs_pitchers set lastGameDatePitched = ?, daysRest = ? , simName = ?, simNumber = ?" +
+                    " where playerID = ? " +
                     " and teamID = ? and yearID = ?";
 
             for (Pitcher pitcher : pitcherList)
@@ -904,9 +986,11 @@ class Database {
                 statement = conn.prepareStatement(query);
                 statement.setDate(1, java.sql.Date.valueOf(pitcher.getPitcherStats().getLastGameDatePitched()));
                 statement.setInt(2, pitcher.getPitcherStats().getDaysRest());
-                statement.setString(3, pitcher.getPlayerId());
-                statement.setString(4, pitcher.getTeamID());
-                statement.setString(5, String.valueOf(pitcher.getYearID()));
+                statement.setString( 3, "clint" );
+                statement.setInt( 4, 1 );
+                statement.setString(5, pitcher.getPlayerId());
+                statement.setString(6, pitcher.getTeamID());
+                statement.setString(7, String.valueOf(pitcher.getYearID()));
                 statement.executeUpdate();
             }
 
@@ -1211,7 +1295,7 @@ class Database {
 
     }
 
-    static List<Batter> selectBatters(String teamID, int yearID) throws SQLException,
+    static List<Batter> selectBatters(String teamID, Schedule schedule) throws SQLException,
             InstantiationException, ClassNotFoundException
     {
         Connection conn;
@@ -1232,7 +1316,7 @@ class Database {
                    // " and AB > 10 " +
                     " order by AB desc");
             stmt.setString(1, teamID);
-            stmt.setInt(2, yearID);
+            stmt.setInt(2, schedule.getGameYear());
 
             ResultSet rs = stmt.executeQuery();
 
@@ -1242,6 +1326,8 @@ class Database {
                 // Retrieve by column name
                 batter.setNameFirst(rs.getString("nameFirst"));
                 batter.setNameLast(rs.getString("nameLast"));
+                batter.getBatterStats().setGameKey( schedule.getGameKey() );
+                batter.getBatterStats().setGameField( schedule.getParkId() );
                 // Sets Hands based on bats
                 if (Objects.equals(rs.getString("bats"), "R"))
                 {
@@ -1505,7 +1591,7 @@ class Database {
         return pitchers;
     }
 
-    static List<Fielder> selectFielders(String teamID, int yearID) throws InstantiationException,
+    static List<Fielder> selectFielders(String teamID, int yearID, int gameKey) throws InstantiationException,
             SQLException, ClassNotFoundException
     {
         Connection conn;
@@ -1535,6 +1621,7 @@ class Database {
                 // Retrieve by column name
                 fielder.setNameFirst(rs.getString("nameFirst"));
                 fielder.setNameLast(rs.getString("nameLast"));
+                fielder.getFielderStats().setGameKey( gameKey );
                 fielder.setRetroId(rs.getString("retroID"));
                 fielder.setTeamID(rs.getString("teamID"));
                 fielder.setPlayerId(rs.getString("playerID"));
@@ -1836,7 +1923,7 @@ class Database {
         return league;
     }
 
-    static List<LineUp> selectStartingFielders (String teamID, LocalDate gameDate, int gameNumber) throws SQLException,
+    static List<LineUp> selectStartingFielders (String teamID, LocalDate gameDate, int gameNumber, int gameKey) throws SQLException,
             InstantiationException, ClassNotFoundException
     {
         Connection conn;
@@ -1866,6 +1953,7 @@ class Database {
                 LineUp starter = new LineUp();
                 // Retrieve by column name
                 starter.setGameDate(rs.getDate("gameDate"));
+                starter.setGameKey( gameKey );
                 starter.setLgID(rs.getString("lgID"));
                 starter.setTeamID(rs.getString("teamID"));
                 starter.setRetroID(rs.getString("retroID"));
@@ -1883,6 +1971,174 @@ class Database {
             e.printStackTrace();
         }
         return lineUp;
+    }
+
+    void insertPlayersBoxScore( List<Batter> players, String round, String simName ) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException
+    {
+
+        // JDBC driver name and database URL
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/lahman2016?verifyServerCertificate=false&useSSL=true";
+
+        // Database credentials
+        String USER = "root";
+        String PASS = "password";
+
+        Connection conn = null;
+        PreparedStatement preparedStmt = null;
+
+        try
+        {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            // Execute query
+            String query = " insert into pgbs_box_score (gameKey, gamePlayed, nameFirst, nameLast," +
+                    " position, gameAtBats, gameHits, gameRuns, gameDoubles," +
+                    " gameTriples, gameHomeRuns, gameRbi, gameWalks, gameStrikeOuts, gameHitByPitch," +
+                    " gameGdp, gameSacFly, " +
+                    " gameStolenBases, gameCaughtStealing, " +
+                    " gameRispAtBat, gameRispHit, gameRispRbi," +
+                    " gameRispSingle, gameRispDouble, gameRispTriple, gameRispHomeRun, gameRispWalk," +
+                    " gameRispStrikeOut, gameRispGdp, gameLeftOnBase, gamePinchAtBat, gamePinchHitHit," +
+                    " round, battingOrder, simNumber, simName, yearID, gameField, lgID, teamID, gameStarted," +
+                    " gameRispHitByPitch, gameSacHit, gamePinchHitRbi, gamePinchHitSingle, gamePinchHitDouble," +
+                    " gamePinchHitTriple, gamePinchHitHomeRun, gamePinchHitWalk, gamePinchHitStrikeOut, gamePinchHitGdp," +
+                    " playerID) " +
+                    " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                    " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            preparedStmt = conn.prepareStatement(query);
+
+            for (Batter batterRow : players)
+            {
+                preparedStmt.setInt(1, batterRow.getBatterStats().getGameKey());
+                preparedStmt.setInt( 2, batterRow.getBatterStats().getGameGamePlayed() );
+                preparedStmt.setString( 3, batterRow.getNameFirst() );
+                preparedStmt.setString( 4, batterRow.getNameLast() );
+                preparedStmt.setString(5, String.valueOf( batterRow.getPosition() ) );
+                preparedStmt.setInt(6, batterRow.getBatterStats().getGameAtBats() );
+                preparedStmt.setInt(7, batterRow.getBatterStats().getGameHits() );
+                preparedStmt.setInt(8, batterRow.getBatterStats().getGameRuns() );
+                preparedStmt.setInt(9, batterRow.getBatterStats().getGameDouble() );
+                preparedStmt.setInt(10, batterRow.getBatterStats().getGameTriple() );
+                preparedStmt.setInt(11, batterRow.getBatterStats().getGameHomeRun());
+                preparedStmt.setInt(12, batterRow.getBatterStats().getGameRbi() );
+                preparedStmt.setInt(13, batterRow.getBatterStats().getGameWalk() );
+                preparedStmt.setInt(14, batterRow.getBatterStats().getGameStrikeOut() );
+                preparedStmt.setInt(15, batterRow.getBatterStats().getGameHitByPitch() );
+                preparedStmt.setInt(16, batterRow.getBatterStats().getGameGidp());
+                preparedStmt.setInt(17, batterRow.getBatterStats().getGameSacrificeFly());
+                preparedStmt.setInt(18, batterRow.getBatterStats().getGameStolenBases());
+                preparedStmt.setInt(19, batterRow.getBatterStats().getGameCaughtStealing());
+                preparedStmt.setInt(20, batterRow.getBatterStats().getGameRispAtBat());
+                preparedStmt.setInt(21, batterRow.getBatterStats().getGameRispHit());
+                preparedStmt.setInt(22, batterRow.getBatterStats().getGameRispRbi());
+                preparedStmt.setInt(23, batterRow.getBatterStats().getGameRispSingle());
+                preparedStmt.setInt(24, batterRow.getBatterStats().getGameRispDouble());
+                preparedStmt.setInt(25, batterRow.getBatterStats().getGameRispTriple());
+                preparedStmt.setInt(26, batterRow.getBatterStats().getGameRispHomeRun());
+                preparedStmt.setInt(27, batterRow.getBatterStats().getGameRispWalk());
+                preparedStmt.setInt(28, batterRow.getBatterStats().getGameRispStrikeOut());
+                preparedStmt.setInt(29, batterRow.getBatterStats().getGameRispGidp());
+                preparedStmt.setInt(30, batterRow.getBatterStats().getGameLeftOnBase());
+                preparedStmt.setInt(31, batterRow.getBatterStats().getGamePinchAtBat());
+                preparedStmt.setInt(32, batterRow.getBatterStats().getGamePinchHitHit());
+                preparedStmt.setString(33, round);
+                preparedStmt.setInt(34, batterRow.getBattingOrder());
+                preparedStmt.setInt(35, batterRow.getSimNumber());
+                preparedStmt.setString(36, simName);
+                preparedStmt.setInt(37, batterRow.getBatterStats().getYearID());
+                preparedStmt.setString(38, batterRow.getBatterStats().getGameField());
+                preparedStmt.setString(39, batterRow.getLgID());
+                preparedStmt.setString( 40, batterRow.getTeamID() );
+                preparedStmt.setInt( 41, batterRow.getBatterStats().getGameGameStarted() );
+                preparedStmt.setInt( 42, batterRow.getBatterStats().getGameRispHitByPitch() );
+                preparedStmt.setInt( 43, batterRow.getBatterStats().getGameSacrificeHit() );
+                preparedStmt.setInt( 44, batterRow.getBatterStats().getGamePinchHitRbi() );
+                preparedStmt.setInt( 45, batterRow.getBatterStats().getGamePinchHitSingle() );
+                preparedStmt.setInt( 46, batterRow.getBatterStats().getGamePinchHitDouble() );
+                preparedStmt.setInt( 47, batterRow.getBatterStats().getGamePinchHitTriple() );
+                preparedStmt.setInt( 48, batterRow.getBatterStats().getGamePinchHitHomeRun() );
+                preparedStmt.setInt( 49, batterRow.getBatterStats().getGamePinchHitWalk() );
+                preparedStmt.setInt( 50, batterRow.getBatterStats().getGamePinchHitStrikeOut() );
+                preparedStmt.setInt( 51, batterRow.getBatterStats().getGamePinchHitGdp() );
+                preparedStmt.setString( 52, batterRow.getPlayerId() );
+
+                preparedStmt.executeUpdate();
+            }
+        }
+        catch (SQLException se)
+        {
+            se.printStackTrace();
+            throw se;
+        }
+        finally
+        {
+            preparedStmt.close();
+        }
+        System.out.println("Inserted players into Box Score");
+    }
+
+    void updateBoxScoreFielders( List<Fielder> fielderList ) throws SQLException, InstantiationException,
+            ClassNotFoundException, IllegalAccessException
+    {
+        // JDBC driver name and database URL
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/lahman2016?verifyServerCertificate=false&useSSL=true";
+
+        // Database credentials
+        String USER = "root";
+        String PASS = "password";
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        try
+        {
+            // Register JDBC driver
+            Class.forName( "com.mysql.jdbc.Driver" ).newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection( DB_URL, USER, PASS );
+
+            // Execute query
+            String query = "UPDATE pgbs_box_score set gamePlayed = ?, gameErrors = ?, gamePutOuts = ?, gameAssists = ?," +
+                    " gameCatcherRunnersThrownOut = ?, gameCatcherRunnersSuccessful = ?" +
+                    " where yearID = ? and playerID = ?";
+
+            for (Fielder fielder : fielderList) {
+                PreparedStatement statement = conn.prepareStatement( query );
+                statement.setInt( 1, fielder.getFielderStats().getGameGamePlayed() );
+                statement.setInt( 2, fielder.getFielderStats().getGameErrors() );
+                statement.setInt( 3, fielder.getFielderStats().getGamePutOuts() );
+                statement.setInt( 4, fielder.getFielderStats().getGameAssists() );
+                statement.setInt( 5, fielder.getFielderStats().getGameRunnersThrownOut() );
+                statement.setInt( 6, fielder.getFielderStats().getsRunnersSuccessful() );
+                statement.setInt( 7, fielder.getYearID() );
+                statement.setString( 8, fielder.getPlayerId() );
+
+                statement.executeUpdate();
+            }
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            // Block used to close resources
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                try {
+                    conn.close();
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }
+        }
+        System.out.println("Inserted fielders stats into box score");
     }
 
     void updateBatters(List<Batter> batterList) throws SQLException, InstantiationException, ClassNotFoundException,
@@ -2351,6 +2607,81 @@ class Database {
             statement.setInt(41, team.getTeamKey());
 
             statement.executeUpdate();
+
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            // Block used to close resources
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                try {
+                    conn.close();
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void updateBoxScorePitchers( List<Pitcher> pitcherList ) throws ClassNotFoundException, IllegalAccessException, InstantiationException
+    {
+        // JDBC driver name and database URL
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String DB_URL = "jdbc:mysql://localhost/lahman2016?verifyServerCertificate=false&useSSL=true";
+
+        // Database credentials
+        String USER = "root";
+        String PASS = "password";
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            // Execute query
+            String query = "UPDATE pgbs_box_score set gameHitsAllowed = ?, " +
+                    " gameWalksAllowed = ?, gameRunsAllowed = ?, gameUnearnedRunsAllowed = ?, gameHomeRunsAllowed = ?," +
+                    " gameHitBatters = ?, " +
+                    " gameInningsPitched = ?, gameStrikeOutsAllowed = ?, gameBatterOuts = ?, gameWin = ?, gameLoss = ?," +
+                    " gameSave = ?, " +
+                    " gameShutOut = ?, gameCompleteGame = ? where playerID = ? " +
+                    " and teamID = ? and yearID = ?";
+
+            for (Pitcher pitcher : pitcherList)
+            {
+                if (pitcher.getPitcherStats().getLastGameDatePitched() == null)
+                {
+                    pitcher.getPitcherStats().setLastGameDatePitched(LocalDate.parse("1900-01-01"));
+                }
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, pitcher.getPitcherStats().getGameHitsAllowed());
+                statement.setInt(2, pitcher.getPitcherStats().getGameWalksAllowed());
+                statement.setInt(3, pitcher.getPitcherStats().getGameRunsAllowed());
+                statement.setInt(4, pitcher.getPitcherStats().getGameUnearnedRunsAllowed());
+                statement.setInt(5, pitcher.getPitcherStats().getGameHomeRunsAllowed());
+                statement.setInt(6, pitcher.getPitcherStats().getGameHitByPitch());
+                statement.setInt(7, pitcher.getPitcherStats().getGameInningsPitchedOuts());
+                statement.setInt(8, pitcher.getPitcherStats().getGameStrikeOutsAllowed());
+                statement.setInt(9, pitcher.getPitcherStats().getGameBattersFaced());
+                statement.setInt(10, pitcher.getPitcherStats().getGameWin());
+                statement.setInt(11, pitcher.getPitcherStats().getGameLoss());
+                statement.setInt(12, pitcher.getPitcherStats().getGameSave());
+                statement.setInt(13, pitcher.getPitcherStats().getGameShutOuts());
+                statement.setInt(14, pitcher.getPitcherStats().getGameCompleteGame());
+                statement.setString(15, pitcher.getPlayerId());
+                statement.setString(16, pitcher.getTeamID());
+                statement.setInt( 17, pitcher.getYearID() );
+
+                statement.executeUpdate();
+            }
 
             conn.close();
         } catch (SQLException se) {

@@ -130,7 +130,7 @@
                                     </table>
                                 </div>
                                 <div class="game-date">
-                                    June 11, 2018
+                                    <span th:text="${gameMonth} + '-' + ${gameDay} + '-' + ${gameYear}"></span>
                                 </div>
                             </div>
                         </section>
@@ -856,10 +856,6 @@
                             </div>
                         </section>
                     </article>
-<!--                    <p>You selected: <span th:text="${gameKey}">1</span></p>
-                    <div>
-                        Game Day: <span th:text="${gameDay}">01</span>
-                        Game Month: <span th:tex="${gameMonth}">04</span>-->
                     </div>
                 </div>
         </section>

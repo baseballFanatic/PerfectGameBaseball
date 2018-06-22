@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Batter extends Player {
-    private String round, teamID, lgID, pos;
-    private int battingOrder;
+    private String round, teamID, lgID, pos, simName;
+    private int battingOrder, simNumber;
     private Hands bats;
     private BatterStats batterStats = new BatterStats();
     private boolean isAvailable = true;
@@ -227,15 +227,14 @@ public class Batter extends Player {
         Batter batter = new Batter();
 
         if (visitors) {
-            //TODO Take out this hard coded year
-            int yearID=1913;
             String teamID = schedule.getVisitingTeamId();
-            batterList = Database.selectBatters(teamID, yearID);
+
+            batterList = Database.selectBatters(teamID, schedule);
 
         } else {
-            int yearID=1913;
             String teamID = schedule.getHomeTeamId();
-            batterList = Database.selectBatters(teamID, yearID);
+
+            batterList = Database.selectBatters(teamID, schedule);
         }
         return batterList;
     }
@@ -293,8 +292,9 @@ public class Batter extends Player {
             if (batter1.getPlayerId().equals(currentPitcher.getPlayerId()))
             {
                 batter1.setBattingOrder(currentPitcher.getBattingOrder());
-                batter1.getBatterStats().setGameGamePlayed();
+                batter1.getBatterStats().setGameGamePlayed(1);
                 batter1.setPosition(InPlayPosition.PITCHER);
+                batter1.getBatterStats().setGameGamePlayed(1);
                 System.out.printf("Set currentPitcher batting order to %s and position to %s%n",
                         batter1.getBattingOrder(), batter1.getPosition());
                 batter = batter1;
@@ -335,7 +335,7 @@ public class Batter extends Player {
     }
 
     void addBatterToBatterStarters(HashMap<Integer, Batter> batterStarters, Batter batter) {
-        batter.getBatterStats().setGameGamePlayed();
+        batter.getBatterStats().setGameGamePlayed(1);
         batterStarters.put(batter.getBattingOrder(), batter);
 
     }

@@ -75,7 +75,7 @@ public class UsersDaoImpl implements UsersDao
     {
         Connection conn;
 
-        List<Users> returnedUser = new ArrayList<>();
+        List<Users> returnedUsers = new ArrayList<>();
 
         try {
             // Register JDBC driver
@@ -92,13 +92,15 @@ public class UsersDaoImpl implements UsersDao
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Users returnedUsers = new Users();
+                Users returnedUser = new Users();
                 // Retrieve by column name
-                returnedUsers.setUsername( rs.getString( "username" ) );
-                returnedUsers.setRecentYear( rs.getInt( "recentYear" ) );
-                returnedUsers.setDisplayName( rs.getString( "displayName" ) );
+                returnedUser.setUsername( rs.getString( "username" ) );
+                returnedUser.setRecentYear( rs.getInt( "mostRecentYear" ) );
+                returnedUser.setFirstName( rs.getString( "firstName" ) );
+                returnedUser.setLastName( rs.getString( "lastName" ) );
+                returnedUser.setActive( rs.getString( "active" ) );
 
-                returnedUser.add(returnedUsers);
+                returnedUsers.add(returnedUser);
             }
 
             rs.close();
@@ -109,6 +111,6 @@ public class UsersDaoImpl implements UsersDao
             e.printStackTrace();
         }
 
-        return returnedUser;
+        return returnedUsers;
     }
 }

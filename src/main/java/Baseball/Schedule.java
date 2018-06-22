@@ -27,7 +27,7 @@ public class Schedule {
         visitingBatter3Position, visitingBatter4Position, visitingBatter5Position, visitingBatter6Position,
         visitingBatter7Position, visitingBatter8Position, visitingBatter9Position, homeBatter1Position,
         homeBatter2Position, homeBatter3Position, homeBatter4Position, homeBatter5Position,
-        homeBatter6Position, homeBatter7Position, homeBatter8Position, homeBatter9Position ;
+        homeBatter6Position, homeBatter7Position, homeBatter8Position, homeBatter9Position, gameField ;
     private int gameYear, gameDay, gameMonth, visitingGameNumber, homeGameNumber, visitingScore, homeScore, attendance, timeInMinutes,
         visitingAtBats, visitingHits, visitingDoubles, visitingTriples, visitingHomeRuns, visitingRbi, visitingSacrificeHits,
         visitingSacrificeFlies, visitingHitByPitch, visitingWalks, visitingIntentionalWalks, visitingStrikeOuts,
@@ -42,6 +42,16 @@ public class Schedule {
     private LocalDate gameDate;
 
     public Schedule() {
+    }
+
+    public String getGameField()
+    {
+        return gameField;
+    }
+
+    public void setGameField( String gameField )
+    {
+        this.gameField = gameField;
     }
 
     public int getGameYear()
