@@ -138,7 +138,7 @@ public class Schedule {
         return homeLgId;
     }
 
-    void setHomeLgId(String homeLgId) {
+    public void setHomeLgId(String homeLgId) {
         this.homeLgId = homeLgId;
     }
 

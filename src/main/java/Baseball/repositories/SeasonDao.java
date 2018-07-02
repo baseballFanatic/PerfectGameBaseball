@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface SeasonDao
 {
-    List<Season> getYears();
+    List<Season> getYears( Object username );
 
 }

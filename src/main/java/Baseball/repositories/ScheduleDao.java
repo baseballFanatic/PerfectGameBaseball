@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ScheduleDao
 {
-    List<Schedule> getScheduleByYear( String yearID);
+    List<Schedule> getScheduleByYear( String yearID );
 
     Schedule getScheduleGameByGameKey ( int gameKey);
 }

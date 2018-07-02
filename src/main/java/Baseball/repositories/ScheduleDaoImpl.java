@@ -17,7 +17,6 @@ public class ScheduleDaoImpl implements ScheduleDao
     private static final String USER = "root";
     private static final String PASS = "password";
 
-    @Override
     public List<Schedule> getScheduleByYear( String yearID )
     {
         Connection connection;
@@ -31,11 +30,13 @@ public class ScheduleDaoImpl implements ScheduleDao
             connection = DriverManager.getConnection( DB_URL, USER, PASS );
 
             PreparedStatement statement;
+
             statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, visitingTeamId, homeTeamId, visitingScore, " +
-                    "homeScore, winningPitcherName, losingPitcherName, " +
+                    "homeScore, winningPitcherName, losingPitcherName, homeLgId," +
                     "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey FROM pgbs_schedule " +
+                    "where gameYear = ? " +
                     "ORDER BY gameDate ASC" );
-/*            statement.setString( 1, yearID );*/
+            statement.setString( 1, yearID );
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -50,6 +51,7 @@ public class ScheduleDaoImpl implements ScheduleDao
                 schedule.setHomeScore( resultSet.getInt( "homeScore" ) );
                 schedule.setWinningPitcherName( resultSet.getString( "winningPitcherName" ) );
                 schedule.setLosingPitcherName( resultSet.getString( "losingPitcherName" ) );
+                schedule.setHomeLgId( resultSet.getString( "homeLgId" ) );
                 schedule.setVisitingStartingPitcherName( resultSet.getString( "visitingStartingPitcherName" ) );
                 schedule.setHomeStartingPitcherName( resultSet.getString( "homeStartingPitcherName" ) );
                 schedule.setGameCompleted( resultSet.getString( "gameCompleted" ) );

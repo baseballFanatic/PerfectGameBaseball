@@ -405,11 +405,13 @@ a {
     padding-bottom: 5px;
 }
 
-#sp_hitting-1 {
+#sp_hitting-1,
+ schedule_league {
     padding-top: 7px;
 }
 
-#widgets sp_hitting-1 {
+#widgets sp_hitting-1,
+ #widgets schedule_league {
     padding-top: 7px;
 }
 

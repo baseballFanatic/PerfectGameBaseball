@@ -26,15 +26,31 @@
                             <div class="mb-1" id="headline">SCHEDULE</div>
                             <div class="calendar-nav">
                                 <select class="custom-select align-middle" id="simulated-years">
-
+                                    <option th:each="year : ${years}" th:value="${year.yearID}" th:text="${year.yearID}"></option>
                                 </select>
+                            </div>
+                            <div id="schedule_league" class="grouping onscreen">
+                                <fieldset class="widget-radio ui-buttonset mt-3">
+                                    <input type="radio" name="schedule_league_code" value="'MLB'" id="schedule_league_code_mlb" checked="checked" class="ui-helper-hidden-accessible"/>
+                                    <label for="schedule_league_code_mlb" class="league-selector ui-state-active ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" aria-pressed="true" role="button" aria-disabled="false">
+                                        <span class="ui-button-text">MLB</span>
+                                    </label>
+                                    <input type="radio" name="schedule_league_code" value="'AL'" id="schedule_league_code_al" class="ui-helper-hidden-accessible"/>
+                                    <label for="schedule_league_code_al" aria-pressed="false" id="stats-league-al" class="league-selector ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false">
+                                        <span class="ui-button-text">AL</span>
+                                    </label>
+                                    <input type="radio" name="schedule_league_code" value="'NL'" id="schedule_league_code_nl" class="ui-helper-hidden-accessible"/>
+                                    <label for="schedule_league_code_nl" aria-pressed="false" class="league-selector ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right" role="button" aria-disabled="false">
+                                        <span class="ui-button-text">NL</span>
+                                    </label>
+                                </fieldset>
                             </div>
                             <div class="ui-widget bam-monthpicker">
                                 <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only bam-monthpicker-previous" role="button">
                                     <span class="ui-button-text">Previous month</span>
                                 </button>
                                 <button class="ui-button ui-widget ui-state-default ui-corner-all bam-monthpicker-toggle ui-button-text-only" role="button">
-                                    <span class="ui-button-text">April</span>
+                                    <span class="ui-button-text display-month">APR</span>
                                 </button>
                                 <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only bam-monthpicker-next" role="button">
                                     <span class="ui-button-text">Next month</span>
@@ -66,7 +82,21 @@
                                         </tr>
                                         </thead>
                                         <tbody tabindex="-1" id="scheduleTableBody">
-
+<!--                                            <tr th:each="day : ${displaySchedule}" tabindex="0">
+                                                <td th:text="${day.gameMonth} + '-' + ${day.gameDay}"</td>
+                                                <td th:text="${day.visitingTeamId}">BRO</td>
+                                                <td th:text="${day.homeTeamId}">NYA</td>
+                                                <td th:text="${day.visitingStartingPitcherName}">Young</td>
+                                                <td th:text="${day.homeStartingPitcherName}">Mathewson</td>
+                                                <td th:if="${day.gameCompleted == 'Y'}" th:text="${day.visitingScore} + '-' + ${day.homeScore}">0-0</td>
+                                                <td th:if="${day.gameCompleted == 'N'}">0-0</td>
+                                                <td th:if="${day.gameCompleted == 'Y'}" th:text="${day.winningPitcherName}">Mathewson</td>
+                                                <td th:if="${day.gameCompleted == 'N'}">N/A</td>
+                                                <td th:if="${day.gameCompleted == 'Y'}" th:text="${day.losingPitcherName}">Young</td>
+                                                <td th:if="${day.gameCompleted == 'N'}">N/A</td>
+                                                <td th:if="${day.gameCompleted == 'N'}"><button type="submit" class="btn btn-default btn-small playButton" data-toggle="modal" data-target="#modalPlayGame">PLAY</button></td>
+                                                <td th:if="${day.gameCompleted == 'Y'}"><a class="btn btn-success btn-small" th:href="@{/box(gameKey=${day.gameKey})}" role="button">BOX</a></td>
+                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -126,7 +156,6 @@
 <!-- PerfectGameHome JavaScript -->
 <script src="/js/perfectGameApp.js"></script>
 <script src="/js/perfectGameHome.js"></script>
-<script src="/js/standings.js"></script>
 <script src="/js/schedule.js"></script>
 </body>
 

@@ -31,7 +31,7 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "index.html"; }
+        return "perfectGameHome"; }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
@@ -51,8 +51,17 @@ public class HomeController {
     public String standings() { return "standingsPage"; }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
-    public String schedule(ModelMap modelMap) {
-        List<Season> allYears = seasonDao.getYears();
+    public String schedule( ModelMap modelMap, HttpSession session ) {
+        int displayYear = 1900;
+        List<Season> allYears = seasonDao.getYears( session.getAttribute( "username" ));
+        for ( Season year : allYears ) {
+            displayYear = year.getYearID();
+            break;
+        }
+        List<Schedule> displaySchedule = scheduleDao.getScheduleByYear( String.valueOf( displayYear ) );
+
+        modelMap.put( "displaySchedule", displaySchedule );
+        modelMap.put( "displayYear", displayYear );
         modelMap.put( "years", allYears );
         return "schedulePage";
     }
@@ -74,7 +83,7 @@ public class HomeController {
         modelMap.put( "homeTeamID", schedule.getHomeTeamId() );
         modelMap.put( "visitingScore", schedule.getVisitingScore() );
         modelMap.put( "homeScore", schedule.getHomeScore() );
-        modelMap.put( "visitingStartingPitcherName", schedule.getVisitingStartingPitcherId() );
+        modelMap.put( "visitingStartingPitcherName", schedule.getVisitingStartingPitcherName() );
         modelMap.put( "homeStartingPitcherName", schedule.getHomeStartingPitcherName() );
         modelMap.put( "gameKey", schedule.getGameKey() );
         return "boxScorePage";
@@ -135,9 +144,10 @@ public class HomeController {
 
     @RequestMapping(value = "/years", method = RequestMethod.GET)
     @ResponseBody
-    public List<Season> getYears()
+    public List<Season> getYears( HttpSession session )
     {
-        return seasonDao.getYears();
+        List<Season> allYears = seasonDao.getYears( session.getAttribute( "username" ));
+        return allYears;
     }
 
     @RequestMapping(value = "/season", method = RequestMethod.GET)

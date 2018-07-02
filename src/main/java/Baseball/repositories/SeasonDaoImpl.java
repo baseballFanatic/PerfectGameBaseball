@@ -18,7 +18,7 @@ public class SeasonDaoImpl implements SeasonDao
     private static final String PASS = "password";
 
     @Override
-    public List<Season> getYears()
+    public List<Season> getYears( Object username )
     {
         Connection conn;
 
@@ -32,8 +32,10 @@ public class SeasonDaoImpl implements SeasonDao
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             PreparedStatement stmt;
-            stmt = conn.prepareStatement("SELECT yearID from pgbs_season_reference " +
+            stmt = conn.prepareStatement("SELECT yearID from pgbs_season_reference where simName = ?" +
                     "ORDER BY yearID DESC");
+
+            stmt.setString( 1, (String) username );
 
             ResultSet rs = stmt.executeQuery();
 

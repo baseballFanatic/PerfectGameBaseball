@@ -250,7 +250,8 @@ class DisplayInfo {
             pitcher.getVisitorLosingPitcher().getPitcherStats().setsLosses(pitcher.getVisitorLosingPitcher().getPitcherStats().getsLosses() + 1);
             pitcher.checkCompleteGame(pitcher.getHomeWinningPitcher(), visitorLineScore);
             homeTeam.updateTeamStreaks(homeTeam, visitorTeam);
-            schedule.setWinningPitcherName(pitcher.getHomeWinningPitcher().getNameLast());
+            String winningPitcherFullName = pitcher.getHomeWinningPitcher().getNameFirst().substring( 0, 1 ) + ' ' + pitcher.getHomeWinningPitcher().getNameLast();
+            schedule.setWinningPitcherName(winningPitcherFullName);
             schedule.setWinningPitcherId(pitcher.getHomeWinningPitcher().getPlayerId());
             homeTeam.getTeamStats().setSeasonGames(homeTeam.getTeamStats().getSeasonGames() + 1);
             homeTeam.getTeamStats().setSeasonWins(homeTeam.getTeamStats().getSeasonWins() + 1);
@@ -263,12 +264,14 @@ class DisplayInfo {
             visitorTeam.getTeamStats().setCurrentWinStreak(0);
             visitorTeam.getTeamStats().setCurrentLossStreak(visitorTeam.getTeamStats().getCurrentLossStreak() + 1);
             System.out.printf("Losing Pitcher: %s%n", pitcher.getVisitorLosingPitcher().getNameLast());
-            schedule.setLosingPitcherName(pitcher.getVisitorLosingPitcher().getNameLast());
+            String losingPitcherFullName = pitcher.getVisitorLosingPitcher().getNameFirst().substring( 0, 1 ) + ' ' + pitcher.getVisitorLosingPitcher().getNameLast();
+            schedule.setLosingPitcherName(losingPitcherFullName);
             schedule.setLosingPitcherId(pitcher.getVisitorLosingPitcher().getPlayerId());
             if (pitcher.getHomeSavePitcher() != null) {
                 System.out.printf("Save: %s%n", pitcher.getHomeSavePitcher().getNameLast());
                 pitcher.getHomeSavePitcher().getPitcherStats().setsSaves(pitcher.getHomeSavePitcher().getPitcherStats().getsSaves() + 1);
-                schedule.setSavingPitcherName(pitcher.getHomeSavePitcher().getNameLast());
+                String savingPitcherFullName = pitcher.getHomeSavePitcher().getFinalGame() + ' ' + pitcher.getHomeSavePitcher().getNameLast();
+                schedule.setSavingPitcherName(savingPitcherFullName);
                 schedule.setSavingPitcherId(pitcher.getHomeSavePitcher().getPlayerId());
                 homeTeam.getTeamStats().setsSaves(homeTeam.getTeamStats().getsSaves() + 1);
             } else {
@@ -281,9 +284,11 @@ class DisplayInfo {
             pitcher.getHomeLosingPitcher().getPitcherStats().setsLosses(pitcher.getHomeLosingPitcher().getPitcherStats().getsLosses() + 1);
             pitcher.checkCompleteGame(pitcher.getVisitorWinningPitcher(), homeLineScore);
             visitorTeam.updateTeamStreaks(visitorTeam, homeTeam);
-            schedule.setWinningPitcherName(pitcher.getVisitorWinningPitcher().getNameLast());
+            String winningPitcherFullName = pitcher.getVisitorWinningPitcher().getNameFirst().substring( 0, 1 ) + ' ' + pitcher.getVisitorWinningPitcher().getNameLast();
+            schedule.setWinningPitcherName(winningPitcherFullName);
             schedule.setWinningPitcherId(pitcher.getVisitorWinningPitcher().getPlayerId());
-            schedule.setLosingPitcherName(pitcher.getHomeLosingPitcher().getNameLast());
+            String losingPitcherFullName = pitcher.getHomeLosingPitcher().getNameFirst().substring( 0, 1 ) + ' ' + pitcher.getHomeLosingPitcher().getNameLast();
+            schedule.setLosingPitcherName(losingPitcherFullName);
             schedule.setLosingPitcherId(pitcher.getHomeLosingPitcher().getPlayerId());
             visitorTeam.getTeamStats().setSeasonGames(visitorTeam.getTeamStats().getSeasonGames() + 1);
             visitorTeam.getTeamStats().setSeasonWins(visitorTeam.getTeamStats().getSeasonWins() + 1);
@@ -298,7 +303,8 @@ class DisplayInfo {
             if (pitcher.getVisitorSavePitcher() != null) {
                 System.out.printf("Save: %s%n", pitcher.getVisitorSavePitcher().getNameLast());
                 pitcher.getVisitorSavePitcher().getPitcherStats().setsSaves(pitcher.getVisitorSavePitcher().getPitcherStats().getsSaves() + 1);
-                schedule.setSavingPitcherName(pitcher.getVisitorSavePitcher().getNameLast());
+                String pitcherSaveFullName = pitcher.getVisitorSavePitcher().getNameFirst().substring( 0, 1 ) + ' ' + pitcher.getVisitorSavePitcher().getNameLast();
+                schedule.setSavingPitcherName(pitcherSaveFullName);
                 schedule.setSavingPitcherId(pitcher.getVisitorSavePitcher().getPlayerId());
                 visitorTeam.getTeamStats().setsSaves(visitorTeam.getTeamStats().getsSaves() + 1);
             } else {
