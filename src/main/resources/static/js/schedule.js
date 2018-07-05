@@ -23,14 +23,14 @@ function loadScheduleData(selectedYear, league) {
 
                         if (scheduleDay.gameCompleted === 'Y') {
                             scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-result">' + scheduleDay.visitingScore + ' - ' + scheduleDay.homeScore + '</td>';
-                            scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">' + scheduleDay.winningPitcherName + '</td>';
-                            scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">' + scheduleDay.losingPitcherName + '</td>';
+                            scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">' + scheduleDay.winningPitcherName + ' (' + scheduleDay.winningPitcherWins + '-' + scheduleDay.winningPitcherLosses + ')' + '</td>';
+                            scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">' + scheduleDay.losingPitcherName + ' (' + scheduleDay.losingPitcherWins + '-' + scheduleDay.losingPitcherLosses + ')' + '</td>';
                             scheduleHtml += '<td index="' + scheduleIndex + '">' + '<a class="btn btn-success btn-small" href="box?gameKey=' + scheduleDay.gameKey + '" role="button">BOX</a>' + '</td>';
                         } else {
                             scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-result">0 - 0</td>';
                             scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">NA</td>';
                             scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">NA</td>';
-                            scheduleHtml += '<td index="' + scheduleIndex + '">' + '<button type="submit" class="btn btn-default btn-small playButton" data-toggle="modal" data-target="#modalPlayGame">PLAY</button>' + '</td>';
+                            scheduleHtml += '<td index="' + scheduleIndex + '">' + '<button type="submit" class="btn btn-default btn-small playButton" data-toggle="modal" data-gameKey="' + scheduleDay.gameKey + '" data-target="#modalPlayGame">PLAY</button>' + '</td>';
                         }
                         scheduleIndex++;
                     }
@@ -47,14 +47,15 @@ function loadScheduleData(selectedYear, league) {
 
                     if (scheduleDay.gameCompleted === 'Y') {
                         scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-result">' + scheduleDay.visitingScore + ' - ' + scheduleDay.homeScore + '</td>';
-                        scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">' + scheduleDay.winningPitcherName + '</td>';
-                        scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">' + scheduleDay.losingPitcherName + '</td>';
+/*                        scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">' + scheduleDay.winningPitcherName + '</td>';*/
+                        scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">' + scheduleDay.winningPitcherName + ' (' + scheduleDay.winningPitcherWins + '-' + scheduleDay.winningPitcherLosses + ')' + '</td>';
+                        scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">' + scheduleDay.losingPitcherName + ' (' + scheduleDay.losingPitcherWins + '-' + scheduleDay.losingPitcherLosses + ')' + '</td>';
                         scheduleHtml += '<td index="' + scheduleIndex + '">' + '<a class="btn btn-success btn-small" href="box?gameKey=' + scheduleDay.gameKey + '" role="button">BOX</a>' + '</td>';
                     } else {
                         scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-result">0 - 0</td>';
                         scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-winning-pitcher">NA</td>';
                         scheduleHtml += '<td index="' + scheduleIndex + '" class="dg-losing-pitcher">NA</td>';
-                        scheduleHtml += '<td index="' + scheduleIndex + '">' + '<button type="submit" class="btn btn-default btn-small playButton" data-toggle="modal" data-target="#modalPlayGame">PLAY</button>' + '</td>';
+                        scheduleHtml += '<td index="' + scheduleIndex + '">' + '<button type="submit" class="btn btn-default btn-small playButton" data-toggle="modal" data-gameKey="' + scheduleDay.gameKey + '" data-target="#modalPlayGame">PLAY</button>' + '</td>';
                     }
                     scheduleIndex++;
                 }
@@ -63,15 +64,14 @@ function loadScheduleData(selectedYear, league) {
         $('#scheduleTableBody').html(scheduleHtml);
 
     $('.playButton').on('click', function() {
-           console.log("recognized the clicking of the play button")
     /*     todo this currently doesn't play the current game selected but instead the next game available */
-           var playGame = "/playGame";
+           var lgID = $('.league-selector.ui-state-active').children().text();
+           var gameKey = $(this).attr('data-gameKey');
+           var playGame = "/playGame?yearID=" + selectedYear + "&lgID=" + lgID + "&round=RS&simName=clint&gameKey=" + gameKey;
            $.getJSON( playGame, function(response) {
                if ( response ) {
-                console.log("Game completed");
                 $('#modalGameCompleted').append(`<span>Game Completed!</span>`);
                } else {
-                console.log("something went wrong");
                 $('#modalGameCompleted').append(`<span>Something bad happened...</span>`);
                }
            });
@@ -93,6 +93,11 @@ $(document).ready(function() {
    loadScheduleData(selectedYear, league);
 
     $('.league-selector').on( 'click', changeLeague );
+
+    $('#modalPlayGame').on('hidden.bs.modal', function() {
+        league = $(".league-selector.ui-state-active").text();
+        loadScheduleData( selectedYear, league )
+    });
 });
 
 

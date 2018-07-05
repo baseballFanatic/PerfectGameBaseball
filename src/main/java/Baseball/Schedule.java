@@ -38,10 +38,91 @@ public class Schedule {
         homeSacrificeFlies, homeHitByPitch, homeWalks, homeIntentionalWalks, homeStrikeOuts, homeStolenBases,
         homeCaughtStealing, homeGroundedIntoDoublePlays, homeAwardCatchersInterference, homeLeftOnBase, homePitchersUsed,
         homeIndividualEarnedRuns, homeTeamEarnedRuns, homeWildPitches, homeBalks, homePutOuts, homeAssists, homeErrors,
-        homePassedBalls, homeDoublePlays, homeTriplePlays, gameKey, gameNumber;
+        homePassedBalls, homeDoublePlays, homeTriplePlays, gameKey, gameNumber, homeWins, homeLosses, awayWins, awayLosses,
+        winningPitcherWins, winningPitcherLosses, losingPitcherWins, losingPitcherLosses;
     private LocalDate gameDate;
 
     public Schedule() {
+    }
+
+    public int getWinningPitcherWins()
+    {
+        return winningPitcherWins;
+    }
+
+    public void setWinningPitcherWins( int winningPitcherWins )
+    {
+        this.winningPitcherWins = winningPitcherWins;
+    }
+
+    public int getWinningPitcherLosses()
+    {
+        return winningPitcherLosses;
+    }
+
+    public void setWinningPitcherLosses( int winningPitcherLosses )
+    {
+        this.winningPitcherLosses = winningPitcherLosses;
+    }
+
+    public int getLosingPitcherWins()
+    {
+        return losingPitcherWins;
+    }
+
+    public void setLosingPitcherWins( int losingPitcherWins )
+    {
+        this.losingPitcherWins = losingPitcherWins;
+    }
+
+    public int getLosingPitcherLosses()
+    {
+        return losingPitcherLosses;
+    }
+
+    public void setLosingPitcherLosses( int losingPitcherLosses )
+    {
+        this.losingPitcherLosses = losingPitcherLosses;
+    }
+
+    public int getHomeWins()
+    {
+        return homeWins;
+    }
+
+    public void setHomeWins( int homeWins )
+    {
+        this.homeWins = homeWins;
+    }
+
+    public int getHomeLosses()
+    {
+        return homeLosses;
+    }
+
+    public void setHomeLosses( int homeLosses )
+    {
+        this.homeLosses = homeLosses;
+    }
+
+    public int getAwayWins()
+    {
+        return awayWins;
+    }
+
+    public void setAwayWins( int awayWins )
+    {
+        this.awayWins = awayWins;
+    }
+
+    public int getAwayLosses()
+    {
+        return awayLosses;
+    }
+
+    public void setAwayLosses( int awayLosses )
+    {
+        this.awayLosses = awayLosses;
     }
 
     public String getGameField()

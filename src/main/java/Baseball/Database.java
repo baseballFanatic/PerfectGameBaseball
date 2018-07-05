@@ -46,8 +46,8 @@ class Database {
             createPgbsSeasons(stmt);
             createPgbsTeams(stmt);
             createPgbsSchedule(stmt);
-            createPgbsBoxScore( stmt );
-/*            createPgbsLineUp(stmt);*/
+/*            createPgbsBoxScore( stmt );*/
+            createPgbsLineUp(stmt);
 
 
             insertPgbsBatters(conn, yearID);
@@ -55,7 +55,7 @@ class Database {
             insertPgbsTeams(conn, yearID);
             insertPgbsSchedule(conn, yearID);
             Schedule schedule = new Schedule();
-/*            insertPgbsLineUp(conn);*/
+            insertPgbsLineUp(conn);
             insertPgbsSeasons(conn, yearID);
 
             // Clean-up environment
@@ -271,7 +271,15 @@ class Database {
                 " homeLgId varchar(255), " +
                 " homeGameNumber int(11), " +
                 " visitingScore int (11), " +
+                " visitingHits int (11), " +
+                " visitingErrors int (11), " +
                 " homeScore int(11), " +
+                " homeHits int(11), " +
+                " homeErrors int(11), " +
+                " homeWins int(11), " +
+                " homeLosses int(11), " +
+                " awayWins int(11), " +
+                " awayLosses int(11), " +
                 " lengthOuts varchar(255), " +
                 " dayNight varchar(255), " +
                 " completionInfo varchar(255), " +
@@ -299,8 +307,12 @@ class Database {
                 " homeManagerName varchar(255), " +
                 " winningPitcherId varchar(255), " +
                 " winningPitcherName varchar(255), " +
+                " winningPitcherWins int(11), " +
+                " winningPitcherLosses int(11), " +
                 " losingPitcherId varchar(255), " +
                 " losingPitcherName varchar(255), " +
+                " losingPitcherWins int(11), " +
+                " losingPitcherLosses int(11), " +
                 " savingPitcherId varchar(255), " +
                 " savingPitcherName varchar(255), " +
                 " visitingStartingPitcherId varchar(255), " +
@@ -542,7 +554,8 @@ class Database {
                 " simName varchar(255)," +
                 " yearID int(4)," +
                 " gameField varchar(255)," +
-                " lgID varchar(255))";
+                " lgID varchar(255)," +
+                " playerID varchar(255))";
     }
 
     private static void createPgbsLineUp(Statement stmt) throws SQLException
@@ -640,6 +653,18 @@ class Database {
             game.setAdditionalInfo(split[159]);
             game.setAcquisitionInfo(split[160]);
             game.setGameCompleted(split[161]);
+            game.setVisitingHits( 0 );
+            game.setVisitingErrors( 0 );
+            game.setHomeHits( 0 );
+            game.setHomeErrors( 0 );
+            game.setAwayWins( 0 );
+            game.setAwayLosses( 0 );
+            game.setHomeWins( 0 );
+            game.setHomeLosses( 0 );
+            game.setWinningPitcherWins( 0 );
+            game.setWinningPitcherLosses( 0 );
+            game.setLosingPitcherWins( 0 );
+            game.setLosingPitcherLosses( 0 );
 
             scheduleList.add(game);
             split = null;
@@ -656,9 +681,11 @@ class Database {
                 " leftFieldUmpireName, rightFieldUmpireId, rightFieldUmpireName, visitingManagerId, visitingManagerName, " +
                 " homeManagerId, homeManagerName, winningPitcherId, winningPitcherName, losingPitcherId, losingPitcherName, " +
                 " savingPitcherId, savingPitcherName, visitingStartingPitcherId, visitingStartingPitcherName, " +
-                " homeStartingPitcherId, homeStartingPitcherName, additionalInfo, acquisitionInfo, gameCompleted) " +
+                " homeStartingPitcherId, homeStartingPitcherName, additionalInfo, acquisitionInfo, gameCompleted, " +
+                " visitingHits, visitingErrors, homeHits, homeErrors, homeWins, homeLosses, awayWins, awayLosses, " +
+                " winningPitcherWins, winningPitcherLosses, losingPitcherWins, losingPitcherLosses) " +
                 " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement preparedStmt = null;
 
@@ -720,6 +747,18 @@ class Database {
                 preparedStmt.setString(50, gameRow.getAdditionalInfo());
                 preparedStmt.setString(51, gameRow.getAcquisitionInfo());
                 preparedStmt.setString(52, gameRow.getGameCompleted());
+                preparedStmt.setInt( 53, gameRow.getVisitingHits() );
+                preparedStmt.setInt( 54, gameRow.getVisitingErrors() );
+                preparedStmt.setInt( 55, gameRow.getHomeHits() );
+                preparedStmt.setInt( 56, gameRow.getHomeErrors() );
+                preparedStmt.setInt( 57, gameRow.getAwayWins() );
+                preparedStmt.setInt( 58, gameRow.getAwayLosses() );
+                preparedStmt.setInt( 59, gameRow.getHomeWins() );
+                preparedStmt.setInt( 60, gameRow.getHomeLosses() );
+                preparedStmt.setInt( 61, gameRow.getWinningPitcherWins() );
+                preparedStmt.setInt( 62, gameRow.getWinningPitcherLosses() );
+                preparedStmt.setInt( 63, gameRow.getLosingPitcherWins() );
+                preparedStmt.setInt( 64, gameRow.getLosingPitcherLosses() );
                 preparedStmt.executeUpdate();
             }
         }
@@ -773,6 +812,7 @@ class Database {
     }
 
     private static void insertPgbsPitchers(Connection conn, int yearID) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        System.out.println("This is the one I want.");
         List<Pitcher> pitcherList = new ArrayList<>();
         PreparedStatement statement = conn.prepareStatement("INSERT INTO pgbs_pitchers (" +
                 " nameFirst, " +
@@ -868,23 +908,23 @@ class Database {
                 pitcher.getPitcherStats().setWalksAllowed(rs.getInt("BB"));
                 pitcher.getPitcherStats().setStrikeOutsAllowed(rs.getInt("SO"));
                 pitcher.getPitcherStats().setEra(rs.getInt("ERA"));
-                pitcher.getPitcherStats().setsGamesPlayed(rs.getInt("sGamesPlayed"));
-                pitcher.getPitcherStats().setsGamesStarted(rs.getInt("sGamesStarted"));
-                pitcher.getPitcherStats().setsBattersFaced(rs.getInt("sBattersFaced"));
-                pitcher.getPitcherStats().setsHitsAllowed(rs.getInt("sHitsAllowed"));
-                pitcher.getPitcherStats().setsHitBatters(rs.getInt("sHitBatters"));
-                pitcher.getPitcherStats().setsHitsAllowed(rs.getInt("sHitsAllowed"));
-                pitcher.getPitcherStats().setsEarnedRuns(rs.getInt("sEarnedRuns"));
-                pitcher.getPitcherStats().setsRunsAllowed(rs.getInt("sRunsAllowed"));
-                pitcher.getPitcherStats().setsStrikeOutAllowed(rs.getInt("sStrikeOutsAllowed"));
-                pitcher.getPitcherStats().setsWalksAllowed(rs.getInt("sWalksAllowed"));
-                pitcher.getPitcherStats().setsHomeRunsAllowed(rs.getInt("sHomeRunsAllowed"));
-                pitcher.getPitcherStats().setsInningsPitchedOuts(rs.getInt("sInningsPitchedOuts"));
-                pitcher.getPitcherStats().setsShutOuts(rs.getInt("sShutOuts"));
-                pitcher.getPitcherStats().setsCompleteGames(rs.getInt("sCompleteGames"));
-                pitcher.getPitcherStats().setsWins(rs.getInt("sWins"));
-                pitcher.getPitcherStats().setsLosses(rs.getInt("sLosses"));
-                pitcher.getPitcherStats().setsSaves(rs.getInt("sSaves"));
+                pitcher.getPitcherStats().setsGamesPlayed(0);
+                pitcher.getPitcherStats().setsGamesStarted(0);
+                pitcher.getPitcherStats().setsBattersFaced(0);
+                pitcher.getPitcherStats().setsHitsAllowed(0);
+                pitcher.getPitcherStats().setsHitBatters(0);
+                pitcher.getPitcherStats().setsHitsAllowed(0);
+                pitcher.getPitcherStats().setsEarnedRuns(0);
+                pitcher.getPitcherStats().setsRunsAllowed(0);
+                pitcher.getPitcherStats().setsStrikeOutAllowed(0);
+                pitcher.getPitcherStats().setsWalksAllowed(0);
+                pitcher.getPitcherStats().setsHomeRunsAllowed(0);
+                pitcher.getPitcherStats().setsInningsPitchedOuts(0);
+                pitcher.getPitcherStats().setsShutOuts(0);
+                pitcher.getPitcherStats().setsCompleteGames(0);
+                pitcher.getPitcherStats().setsWins(0);
+                pitcher.getPitcherStats().setsLosses(0);
+                pitcher.getPitcherStats().setsSaves(0);
                 if (Objects.equals(rs.getString("IBB"), ""))
                 {
                     pitcher.getPitcherStats().setIntentionalWalksAllowed(0);
@@ -977,7 +1017,7 @@ class Database {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // Execute query
-            String query = "UPDATE pgbs_pitchers set lastGameDatePitched = ?, daysRest = ? , simName = ?, simNumber = ?" +
+            String query = "UPDATE pgbs_pitchers set lastGameDatePitched = ?, daysRest = ? , simName = ? " +
                     " where playerID = ? " +
                     " and teamID = ? and yearID = ?";
 
@@ -987,14 +1027,14 @@ class Database {
                 statement.setDate(1, java.sql.Date.valueOf(pitcher.getPitcherStats().getLastGameDatePitched()));
                 statement.setInt(2, pitcher.getPitcherStats().getDaysRest());
                 statement.setString( 3, "clint" );
-                statement.setInt( 4, 1 );
-                statement.setString(5, pitcher.getPlayerId());
-                statement.setString(6, pitcher.getTeamID());
-                statement.setString(7, String.valueOf(pitcher.getYearID()));
+                statement.setString(4, pitcher.getPlayerId());
+                statement.setString(5, pitcher.getTeamID());
+                statement.setString(6, String.valueOf(pitcher.getYearID()));
                 statement.executeUpdate();
             }
 
             conn.close();
+            System.out.println("Updated already inserted pitchers");
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -1724,10 +1764,19 @@ class Database {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             PreparedStatement stmt;
-            stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
-                    " where gameCompleted='N' and homeLgId='AL' " +
-                    " order by gameKey " +
-                    " limit 1");
+            if (lgID != "MLB") {
+                stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
+                        " where gameCompleted='N' and homeLgId=? " +
+                        " order by gameKey " +
+                        " limit 1");
+                stmt.setString( 1, lgID );
+            } else {
+                stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
+                        " where gameCompleted='N' " +
+                        " order by gameKey " +
+                        " limit 1");
+            }
+
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next())
@@ -1790,6 +1839,114 @@ class Database {
                 schedule.setAcquisitionInfo(rs.getString("acquisitionInfo"));
                 schedule.setGameCompleted(rs.getString("gameCompleted"));
                 schedule.setGameKey(rs.getInt("gameKey"));
+                schedule.setHomeWins( rs.getInt( "homeWins" ) );
+                schedule.setHomeLosses( rs.getInt( "homeLosses" ) );
+                schedule.setAwayWins( rs.getInt( "awayWins" ) );
+                schedule.setAwayLosses( rs.getInt( "awayLosses" ) );
+            }
+            rs.close();
+            conn.close();
+            stmt.close();
+
+        } catch (IllegalAccessException e1) {
+            e1.printStackTrace();
+        }
+        return schedule;
+    }
+
+    static Schedule selectScheduleByYearIDByLgIDByGameKey(int yearID, String lgID, String gameKey) throws InstantiationException, SQLException,
+            ClassNotFoundException
+    {
+        Connection conn;
+        Schedule schedule = new Schedule();
+        List<Schedule> scheduleList = new ArrayList<>();
+
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt;
+            if (lgID != "MLB") {
+                stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
+                        " where gameYear=? and gameCompleted='N' and gameKey=?" +
+                        " limit 1");
+                stmt.setInt( 1, yearID );
+                stmt.setInt( 2, Integer.parseInt( gameKey ));
+            } else {
+                stmt = conn.prepareStatement("SELECT * FROM pgbs_schedule" +
+                        " where gameYear=? and gameCompleted='N' and homeLgId=? and gameKey=?" +
+                        " limit 1");
+                stmt.setInt( 1, yearID );
+                stmt.setString( 2, lgID );
+                stmt.setInt( 3, Integer.parseInt( gameKey ));
+            }
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next())
+            {
+                schedule = new Schedule();
+                Date date = rs.getDate("gameDate");
+                DateFormat df = new SimpleDateFormat("yyyyMMdd");
+                String text = df.format(date);
+                LocalDate gameDate = LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyyMMdd"));
+                schedule.setGameDate(gameDate);
+                schedule.setGameDay(rs.getInt( "gameDay" ) );
+                schedule.setGameMonth( rs.getInt( "gameMonth" ) );
+                schedule.setGameYear( rs.getInt( "gameYear" ) );
+                schedule.setGameDayName( rs.getString( "gameDayName" ) );
+                schedule.setGameNumber(Integer.parseInt(rs.getString("gameNumber")));
+                schedule.setVisitingTeamId(rs.getString("visitingTeamId"));
+                schedule.setVisitingLgId(rs.getString("visitingLgId"));
+                schedule.setVisitingGameNumber(rs.getInt("visitingGameNumber"));
+                schedule.setHomeTeamId(rs.getString("homeTeamId"));
+                schedule.setHomeLgId(rs.getString("homeLgId"));
+                schedule.setHomeGameNumber(rs.getInt("homeGameNumber"));
+                schedule.setVisitingScore(rs.getInt("visitingScore"));
+                schedule.setHomeScore(rs.getInt("homeScore"));
+                schedule.setLengthOuts(rs.getString("lengthOuts"));
+                schedule.setDayNight(rs.getString("dayNight"));
+                schedule.setCompletionInfo(rs.getString("completionInfo"));
+                schedule.setForfeitInfo(rs.getString("forfeitInfo"));
+                schedule.setParkId(rs.getString("parkId"));
+                schedule.setAttendance(rs.getInt("attendance"));
+                schedule.setTimeInMinutes(rs.getInt("timeInMinutes"));
+                schedule.setVisitingLineScore(rs.getString("visitingLineScore"));
+                schedule.setHomeLineScore(rs.getString("homeLineScore"));
+                schedule.setHomePlateUmpireId(rs.getString("homePlateUmpireId"));
+                schedule.setHomePlateUmpireName(rs.getString("homePlateUmpireName"));
+                schedule.setFirstBaseUmpireId(rs.getString("firstBaseUmpireId"));
+                schedule.setFirstBaseUmpireName(rs.getString("firstBaseUmpireName"));
+                schedule.setSecondBaseUmpireId(rs.getString("secondBaseUmpireId"));
+                schedule.setSecondBaseUmpireName(rs.getString("secondBaseUmpireName"));
+                schedule.setThirdBaseUmpireId(rs.getString("thirdBaseUmpireId"));
+                schedule.setThirdBaseUmpireName(rs.getString("thirdBaseUmpireName"));
+                schedule.setLeftFieldUmpireId(rs.getString("leftFieldUmpireId"));
+                schedule.setLeftFieldUmpireName(rs.getString("leftFieldUmpireName"));
+                schedule.setRightFieldUmpireId(rs.getString("rightFieldUmpireId"));
+                schedule.setRightFieldUmpireName(rs.getString("rightFieldUmpireName"));
+                schedule.setVisitingManagerId(rs.getString("visitingManagerId"));
+                schedule.setVisitingManagerName(rs.getString("visitingManagerName"));
+                schedule.setHomeManagerId(rs.getString("homeManagerId"));
+                schedule.setHomeManagerName(rs.getString("homeManagerName"));
+                schedule.setWinningPitcherId(rs.getString("winningPitcherId"));
+                schedule.setWinningPitcherName(rs.getString("winningPitcherName"));
+                schedule.setLosingPitcherId(rs.getString("losingPitcherId"));
+                schedule.setLosingPitcherName(rs.getString("losingPitcherName"));
+                schedule.setSavingPitcherId(rs.getString("savingPitcherId"));
+                schedule.setSavingPitcherName(rs.getString("savingPitcherName"));
+                schedule.setVisitingStartingPitcherId(rs.getString("visitingStartingPitcherId"));
+                schedule.setVisitingStartingPitcherName(rs.getString("visitingStartingPitcherName"));
+                schedule.setHomeStartingPitcherId(rs.getString("homeStartingPitcherId"));
+                schedule.setHomeStartingPitcherName(rs.getString("homeStartingPitcherName"));
+                schedule.setAdditionalInfo(rs.getString("additionalInfo"));
+                schedule.setAcquisitionInfo(rs.getString("acquisitionInfo"));
+                schedule.setGameCompleted(rs.getString("gameCompleted"));
+                schedule.setGameKey(rs.getInt("gameKey"));
+                schedule.setHomeWins( rs.getInt( "homeWins" ) );
+                schedule.setHomeLosses( rs.getInt( "homeLosses" ) );
+                schedule.setAwayWins( rs.getInt( "awayWins" ) );
+                schedule.setAwayLosses( rs.getInt( "awayLosses" ) );
             }
             rs.close();
             conn.close();
@@ -2493,7 +2650,9 @@ class Database {
                     " winningPitcherName = ?, losingPitcherId = ?, losingPitcherName = ?, savingPitcherId = ?, " +
                     " savingPitcherName = ?, visitingStartingPitcherId = ?, " +
                     " visitingStartingPitcherName = ?, homeStartingPitcherId = ?, homeStartingPitcherName = ?, " +
-                    " gameCompleted = ? where gameKey = ?";
+                    " gameCompleted = ?, visitingHits = ?, visitingErrors = ?, homeHits = ?, homeErrors = ?, " +
+                    " homeWins = ?, homeLosses = ?, awayWins = ?, awayLosses = ?, winningPitcherWins = ?, " +
+                    " winningPitcherLosses = ?, losingPitcherWins = ?, losingPitcherLosses = ? where gameKey = ?";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, schedule.getVisitingScore());
@@ -2511,7 +2670,19 @@ class Database {
             statement.setString(13, schedule.getHomeStartingPitcherId());
             statement.setString(14, schedule.getHomeStartingPitcherName());
             statement.setString(15, schedule.getGameCompleted());
-            statement.setInt(16, schedule.getGameKey());
+            statement.setInt( 16, schedule.getVisitingHits() );
+            statement.setInt( 17, schedule.getVisitingErrors() );
+            statement.setInt( 18, schedule.getHomeHits() );
+            statement.setInt( 19, schedule.getHomeErrors() );
+            statement.setInt( 20, schedule.getHomeWins() );
+            statement.setInt( 21, schedule.getHomeLosses() );
+            statement.setInt( 22, schedule.getAwayWins() );
+            statement.setInt( 23, schedule.getAwayLosses() );
+            statement.setInt( 24, schedule.getWinningPitcherWins() );
+            statement.setInt( 25, schedule.getWinningPitcherLosses() );
+            statement.setInt( 26, schedule.getLosingPitcherWins() );
+            statement.setInt( 27, schedule.getLosingPitcherLosses() );
+            statement.setInt(28, schedule.getGameKey());
 
             statement.executeUpdate();
 

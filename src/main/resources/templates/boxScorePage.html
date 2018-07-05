@@ -38,25 +38,25 @@
                                 <p class="team-name">
                                     <a href="#"><span th:text="${visitingTeamID}">ABC</span></a>
                                 </p>
-                                <p class="record">0-1</p>
+                                <p class="record"><span th:text="${visitingTeamWins}"></span><span>-</span><span th:text="${visitingTeamLosses}"></span></p>
                             </div>
                             <div class="home" style="background-color: #BE0F34;">
                                 <p class="team-name">
                                     <a href="#"><span th:text="${homeTeamID}">DEF</span></a>
                                 </p>
-                                <p class="record">1-0</p>
+                                <p class="record"> <span th:text="${homeTeamWins}"></span><span>-</span><span th:text="${homeTeamLosses}"></span> </p>
                             </div>
                         </div>
                         <section id="score-breakdown" class="line-score baseball">
                             <h3>Line Score</h3>
                             <div class="team-flag away">
                                 <a href="#">
-                                    <img class="team-logo away" src="../img/logos/PHA-1913.png" width="70" height="70" alt="Philadelphia"/>
+                                    <img class="team-logo away" th:src="@{${'../img/logos/' + visitingTeamID + '-' + gameYear + '.png'}}" width="70" height="70" alt="Philadelphia"/>
                                 </a>
                             </div>
                             <div class="team-flag home">
                                 <a href="#">
-                                    <img class="team-logo home" src="../img/logos/BRO-1913.png" width="70" height="70" alt="Brooklyn"/>
+                                    <img class="team-logo home" th:src="@{${'../img/logos/' + homeTeamID + '-' + gameYear + '.png'}}" width="70" height="70" alt="Brooklyn"/>
                                 </a>
                             </div>
                             <div class="linescore-details">
@@ -71,10 +71,10 @@
                                         </div>
                                     </div>
                                     <div class="game-score top">
-                                        <span class="score">4</span>
+                                        <span class="score" th:text="${visitingScore}">4</span>
                                     </div>
                                     <div class="game-score bottom winner">
-                                        <span class="score">14</span>
+                                        <span class="score" th:text="${homeScore}">14</span>
                                     </div>
                                 </div>
                                 <div class="line-score-container">

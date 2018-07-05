@@ -13,7 +13,7 @@ class GameEngine {
         out.println("Take me out to the ballgame!\n");
         for (int i=1; i < 2; i++)
         {
-            PlayBall game = new PlayBall(1913, "AL", "RS", "clint");
+            PlayBall game = new PlayBall(1913, "AL", "RS", "clint", "1");
         }
 
 

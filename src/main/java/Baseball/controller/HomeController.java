@@ -83,8 +83,16 @@ public class HomeController {
         modelMap.put( "homeTeamID", schedule.getHomeTeamId() );
         modelMap.put( "visitingScore", schedule.getVisitingScore() );
         modelMap.put( "homeScore", schedule.getHomeScore() );
+        modelMap.put( "visitingTeamWins", schedule.getAwayWins() );
+        modelMap.put( "visitingTeamLosses", schedule.getAwayLosses() );
+        modelMap.put( "homeTeamWins", schedule.getHomeWins() );
+        modelMap.put( "homeTeamLosses", schedule.getHomeLosses() );
         modelMap.put( "visitingStartingPitcherName", schedule.getVisitingStartingPitcherName() );
         modelMap.put( "homeStartingPitcherName", schedule.getHomeStartingPitcherName() );
+        modelMap.put( "winningPitcherWins", schedule.getWinningPitcherWins() );
+        modelMap.put( "winningPitcherLosses", schedule.getWinningPitcherLosses() );
+        modelMap.put( "losingPitcherWins", schedule.getLosingPitcherLosses() );
+        modelMap.put( "losingPitcherLosses", schedule.getLosingPitcherLosses() );
         modelMap.put( "gameKey", schedule.getGameKey() );
         return "boxScorePage";
     }
@@ -133,11 +141,12 @@ public class HomeController {
 
     @RequestMapping( value = "/playGame", method = RequestMethod.GET)
     @ResponseBody
-    public boolean startGame (  ) throws NoSuchMethodException, InstantiationException,
+    public boolean startGame ( @RequestParam String yearID, @RequestParam String lgID, @RequestParam String round,
+                               @RequestParam String simName, @RequestParam String gameKey ) throws NoSuchMethodException, InstantiationException,
             SQLException, IllegalAccessException, InvocationTargetException, ClassNotFoundException
     {
         System.out.println("Before launching the game");
-        PlayBall playBall = new PlayBall(1913, "AL", "RS", "clint");
+        PlayBall playBall = new PlayBall( Integer.parseInt( yearID ), lgID, round, simName, gameKey );
         System.out.println("After launching the game");
         return true;
     }

@@ -14,10 +14,11 @@ public class PlayBall {
     private boolean gameOver = false;
     private boolean visitors = true;
 
-    public PlayBall(int yearID, String lgID, String round, String simName) throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException,
+    public PlayBall(int yearID, String lgID, String round, String simName, String gameKey) throws InstantiationException, SQLException, ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException {
         Team visitorTeam;
         Team homeTeam;
+        Schedule schedule;
         League league = new League();
         LineUp lineUp = new LineUp();
         Batter batter = new Batter();
@@ -28,10 +29,16 @@ public class PlayBall {
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
 
+        if ( gameKey == "NA") {
+            schedule = Database.selectSchedule(yearID, lgID);
+        } else {
+            schedule = Database.selectScheduleByYearIDByLgIDByGameKey( yearID, lgID, gameKey );
+        }
+
+        lgID = schedule.getHomeLgId();
+
         league = Database.selectTeamStats(yearID, lgID, league);
         league.setLgID(lgID);
-
-        Schedule schedule = Database.selectSchedule(yearID, lgID);
 
         homeTeam = Database.getTeamInfo(schedule.getHomeTeamId(), yearID);
         visitorTeam = Database.getTeamInfo(schedule.getVisitingTeamId(), yearID);

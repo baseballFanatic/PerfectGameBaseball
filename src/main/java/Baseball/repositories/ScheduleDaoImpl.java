@@ -33,7 +33,9 @@ public class ScheduleDaoImpl implements ScheduleDao
 
             statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, visitingTeamId, homeTeamId, visitingScore, " +
                     "homeScore, winningPitcherName, losingPitcherName, homeLgId," +
-                    "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey FROM pgbs_schedule " +
+                    "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey, homeWins, " +
+                    "homeLosses, awayWins, awayLosses, winningPitcherWins, winningPitcherLosses, losingPitcherWins, " +
+                    "losingPitcherLosses FROM pgbs_schedule " +
                     "where gameYear = ? " +
                     "ORDER BY gameDate ASC" );
             statement.setString( 1, yearID );
@@ -55,6 +57,14 @@ public class ScheduleDaoImpl implements ScheduleDao
                 schedule.setVisitingStartingPitcherName( resultSet.getString( "visitingStartingPitcherName" ) );
                 schedule.setHomeStartingPitcherName( resultSet.getString( "homeStartingPitcherName" ) );
                 schedule.setGameCompleted( resultSet.getString( "gameCompleted" ) );
+                schedule.setHomeWins( resultSet.getInt( "homeWins" ) );
+                schedule.setHomeLosses( resultSet.getInt( "homeLosses" ) );
+                schedule.setAwayWins( resultSet.getInt( "awayWins" ) );
+                schedule.setAwayLosses( resultSet.getInt( "awayLosses" ) );
+                schedule.setWinningPitcherWins( resultSet.getInt( "winningPitcherWins" ) );
+                schedule.setWinningPitcherLosses( resultSet.getInt( "winningPitcherLosses" ) );
+                schedule.setLosingPitcherWins( resultSet.getInt( "losingPitcherWins" ) );
+                schedule.setLosingPitcherLosses( resultSet.getInt( "losingPitcherLosses" ) );
                 schedule.setGameKey( resultSet.getInt( "gameKey" ) );
 
                 schedules.add( schedule );
@@ -87,7 +97,9 @@ public class ScheduleDaoImpl implements ScheduleDao
             PreparedStatement statement;
             statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, gameYear, visitingTeamId, homeTeamId, visitingScore, " +
                     "homeScore, winningPitcherName, losingPitcherName, " +
-                    "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey FROM pgbs_schedule WHERE gameKey = ? " +
+                    "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey, homeWins, homeLosses, " +
+                    "awayWins, awayLosses, winningPitcherWins, winningPitcherLosses, losingPitcherWins, losingPitcherLosses " +
+                    "FROM pgbs_schedule WHERE gameKey = ? " +
                     "ORDER BY gameDate ASC" );
             statement.setInt( 1, gameKey );
 
@@ -108,6 +120,14 @@ public class ScheduleDaoImpl implements ScheduleDao
                 schedule.setVisitingStartingPitcherName( resultSet.getString( "visitingStartingPitcherName" ) );
                 schedule.setHomeStartingPitcherName( resultSet.getString( "homeStartingPitcherName" ) );
                 schedule.setGameCompleted( resultSet.getString( "gameCompleted" ) );
+                schedule.setHomeWins( resultSet.getInt( "homeWins" ) );
+                schedule.setHomeLosses( resultSet.getInt( "homeLosses" ) );
+                schedule.setAwayWins( resultSet.getInt( "awayWins" ) );
+                schedule.setAwayLosses( resultSet.getInt( "awayLosses" ) );
+                schedule.setWinningPitcherWins( resultSet.getInt( "winningPitcherWins" ) );
+                schedule.setWinningPitcherLosses( resultSet.getInt( "winningPitcherLosses" ));
+                schedule.setLosingPitcherWins( resultSet.getInt( "losingPitcherWins" ) );
+                schedule.setLosingPitcherLosses( resultSet.getInt( "losingPitcherLosses" ) );
                 schedule.setGameKey( resultSet.getInt( "gameKey" ) );
             }
 

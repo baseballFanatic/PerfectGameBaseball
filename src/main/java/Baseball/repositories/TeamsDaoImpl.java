@@ -66,4 +66,55 @@ public class TeamsDaoImpl implements TeamsDao
         }
         return teams;
     }
+
+    @Override
+    public List<Team> getTeamsPlayedByYear( String awayYearId, String homeYearId )
+    {
+        Connection connection;
+
+        List<Team> teams = new ArrayList<>();
+
+        try
+        {
+            Class.forName( "com.mysql.jdbc.Driver" ).newInstance();
+
+            connection = DriverManager.getConnection( DB_URL, USER, PASS );
+
+            PreparedStatement statement;
+            statement = connection.prepareStatement( "SELECT name, yearID, teamID, lgID, seasonGames, seasonWins, " +
+                    "seasonLosses, homeWins, homeLosses, awayWins, awayLosses FROM pgbs_teams WHERE yearID=? or yearID = ? " +
+                    "ORDER BY lgID ASC, seasonWins DESC" );
+            statement.setString( 1, awayYearId );
+            statement.setString( 2, homeYearId );
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while ( resultSet.next() )
+            {
+                Team team = new Team();
+                team.setTeamName( resultSet.getString( "name" ) );
+                team.setYearId( resultSet.getInt( "yearID" ) );
+                team.setTeamId( resultSet.getString( "teamID" ) );
+                team.setLgId( resultSet.getString( "lgID" ) );
+                team.getTeamStats().setSeasonGames( resultSet.getInt( "seasonGames" ) );
+                team.getTeamStats().setSeasonWins( resultSet.getInt( "seasonWins" ) );
+                team.getTeamStats().setSeasonLosses( resultSet.getInt( "seasonLosses" ) );
+                team.getTeamStats().setHomeWins( resultSet.getInt( "homeWins" ) );
+                team.getTeamStats().setHomeLosses( resultSet.getInt( "homeLosses" ) );
+                team.getTeamStats().setAwayWins( resultSet.getInt( "awayWins" ) );
+                team.getTeamStats().setAwayLosses( resultSet.getInt( "awayLosses" ) );
+
+                teams.add( team );
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        }
+        catch ( IllegalAccessException | InstantiationException | SQLException | ClassNotFoundException e )
+        {
+            e.printStackTrace();
+        }
+        return teams;
+    }
 }
