@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public class ScheduleDaoImpl implements ScheduleDao
 {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/lahman2016?useSSL=false";
 
     // Database credentials
@@ -96,9 +95,10 @@ public class ScheduleDaoImpl implements ScheduleDao
 
             PreparedStatement statement;
             statement = connection.prepareStatement( "SELECT gameDate, gameMonth, gameDay, gameYear, visitingTeamId, homeTeamId, visitingScore, " +
-                    "homeScore, winningPitcherName, losingPitcherName, " +
+                    "homeScore, winningPitcherName, losingPitcherName, homeHits, homeErrors, visitingHits, visitingErrors, " +
                     "visitingStartingPitcherName, homeStartingPitcherName, gameCompleted, gameKey, homeWins, homeLosses, " +
-                    "awayWins, awayLosses, winningPitcherWins, winningPitcherLosses, losingPitcherWins, losingPitcherLosses " +
+                    "awayWins, awayLosses, winningPitcherWins, winningPitcherLosses, losingPitcherWins, losingPitcherLosses, " +
+                    "losingPitcherName, winningPitcherName " +
                     "FROM pgbs_schedule WHERE gameKey = ? " +
                     "ORDER BY gameDate ASC" );
             statement.setInt( 1, gameKey );
@@ -117,6 +117,10 @@ public class ScheduleDaoImpl implements ScheduleDao
                 schedule.setHomeScore( resultSet.getInt( "homeScore" ) );
                 schedule.setWinningPitcherName( resultSet.getString( "winningPitcherName" ) );
                 schedule.setLosingPitcherName( resultSet.getString( "losingPitcherName" ) );
+                schedule.setHomeHits( resultSet.getInt( "homeHits" ) );
+                schedule.setHomeErrors( resultSet.getInt( "homeErrors" ) );
+                schedule.setVisitingHits( resultSet.getInt( "visitingHits" ) );
+                schedule.setVisitingErrors( resultSet.getInt( "visitingErrors" ) );
                 schedule.setVisitingStartingPitcherName( resultSet.getString( "visitingStartingPitcherName" ) );
                 schedule.setHomeStartingPitcherName( resultSet.getString( "homeStartingPitcherName" ) );
                 schedule.setGameCompleted( resultSet.getString( "gameCompleted" ) );
@@ -128,6 +132,8 @@ public class ScheduleDaoImpl implements ScheduleDao
                 schedule.setWinningPitcherLosses( resultSet.getInt( "winningPitcherLosses" ));
                 schedule.setLosingPitcherWins( resultSet.getInt( "losingPitcherWins" ) );
                 schedule.setLosingPitcherLosses( resultSet.getInt( "losingPitcherLosses" ) );
+                schedule.setLosingPitcherName( resultSet.getString( "losingPitcherName" ) );
+                schedule.setWinningPitcherName( resultSet.getString( "winningPitcherName" ) );
                 schedule.setGameKey( resultSet.getInt( "gameKey" ) );
             }
 

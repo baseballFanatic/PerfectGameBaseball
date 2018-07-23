@@ -1,10 +1,7 @@
 package Baseball.controller;
 
 import Baseball.*;
-import Baseball.repositories.ScheduleDao;
-import Baseball.repositories.SeasonDao;
-import Baseball.repositories.TeamsDao;
-import Baseball.repositories.UsersDao;
+import Baseball.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,17 +14,24 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @Autowired
-    private SeasonDao seasonDao;
+    private final SeasonDao seasonDao;
+
+    private final TeamsDao teamsDao;
+
+    private final UsersDao usersDao;
+
+    private final ScheduleDao scheduleDao;
+
+    private final BoxScoreDao boxScoreDao;
 
     @Autowired
-    private TeamsDao teamsDao;
-
-    @Autowired
-    private UsersDao usersDao;
-
-    @Autowired
-    private ScheduleDao scheduleDao;
+    public HomeController(SeasonDao seasonDao, TeamsDao teamsDao, UsersDao usersDao, ScheduleDao scheduleDao, BoxScoreDao boxScoreDao) {
+        this.seasonDao = seasonDao;
+        this.teamsDao = teamsDao;
+        this.usersDao = usersDao;
+        this.scheduleDao = scheduleDao;
+        this.boxScoreDao = boxScoreDao;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
@@ -37,44 +41,20 @@ public class HomeController {
     public String home() {
         return "perfectGameHome"; }
 
-    @RequestMapping(value = "/office", method = RequestMethod.GET)
-    public String frontOffice( HttpSession session, ModelMap modelMap ) {
-        modelMap.put( "username", session.getAttribute( "username" ) );
-        modelMap.put( "firstName", session.getAttribute( "firstName" ) );
-        modelMap.put( "lastName", session.getAttribute( "lastName" ) );
-        modelMap.put( "active", session.getAttribute( "active" ) );
-        modelMap.put( "recentYear", session.getAttribute( "recentYear" ) );
-        return "frontOffice";
-    }
-
     @RequestMapping(value = "/standings", method = RequestMethod.GET)
     public String standings() { return "standingsPage"; }
-
-    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
-    public String schedule( ModelMap modelMap, HttpSession session ) {
-        int displayYear = 1900;
-        List<Season> allYears = seasonDao.getYears( session.getAttribute( "username" ));
-        for ( Season year : allYears ) {
-            displayYear = year.getYearID();
-            break;
-        }
-        List<Schedule> displaySchedule = scheduleDao.getScheduleByYear( String.valueOf( displayYear ) );
-
-        modelMap.put( "displaySchedule", displaySchedule );
-        modelMap.put( "displayYear", displayYear );
-        modelMap.put( "years", allYears );
-        return "schedulePage";
-    }
-
-    @RequestMapping(value = "/stats", method = RequestMethod.GET)
-    public String stats() { return "statsPage"; }
-
-    @RequestMapping(value = "/teams", method = RequestMethod.GET)
-    public String teams() { return "teamsPage"; }
 
     @RequestMapping(value = "/box", method = RequestMethod.GET)
     public String boxScore( @RequestParam int gameKey, ModelMap modelMap) {
         Schedule schedule = scheduleDao.getScheduleGameByGameKey( gameKey );
+        Team homeTeam = teamsDao.getTeamByYear( schedule.getGameYear(), schedule.getHomeTeamId() );
+        Team visitingTeam = teamsDao.getTeamByYear( schedule.getGameYear(), schedule.getVisitingTeamId() );
+        List<BoxScore> visitorGameBoxScore = boxScoreDao.getBoxScoreByYearIdByGameKeyByTeamID( schedule.getGameYear(), gameKey, visitingTeam.getTeamId() );
+        List<BoxScore> homeGameBoxScore = boxScoreDao.getBoxScoreByYearIdByGameKeyByTeamID( schedule.getGameYear(), gameKey, homeTeam.getTeamId() );
+        boolean homeWon = false;
+        if (schedule.getHomeScore() > schedule.getVisitingScore()) {
+            homeWon = true;
+        }
         modelMap.put( "gameDate", schedule.getGameDate() );
         modelMap.put( "gameDay", schedule.getGameDay());
         modelMap.put( "gameMonth", schedule.getGameMonth() );
@@ -83,6 +63,10 @@ public class HomeController {
         modelMap.put( "homeTeamID", schedule.getHomeTeamId() );
         modelMap.put( "visitingScore", schedule.getVisitingScore() );
         modelMap.put( "homeScore", schedule.getHomeScore() );
+        modelMap.put( "homeHits", schedule.getHomeHits() );
+        modelMap.put( "homeErrors", schedule.getHomeErrors() );
+        modelMap.put( "visitingHits", schedule.getVisitingHits() );
+        modelMap.put( "visitingErrors", schedule.getVisitingErrors() );
         modelMap.put( "visitingTeamWins", schedule.getAwayWins() );
         modelMap.put( "visitingTeamLosses", schedule.getAwayLosses() );
         modelMap.put( "homeTeamWins", schedule.getHomeWins() );
@@ -93,7 +77,14 @@ public class HomeController {
         modelMap.put( "winningPitcherLosses", schedule.getWinningPitcherLosses() );
         modelMap.put( "losingPitcherWins", schedule.getLosingPitcherLosses() );
         modelMap.put( "losingPitcherLosses", schedule.getLosingPitcherLosses() );
+        modelMap.put( "homeTeamFullName", homeTeam.getTeamName() );
+        modelMap.put( "visitingTeamFullName", visitingTeam.getTeamName() );
         modelMap.put( "gameKey", schedule.getGameKey() );
+        modelMap.put( "visitorBoxScore", visitorGameBoxScore );
+        modelMap.put( "homeBoxScore", homeGameBoxScore );
+        modelMap.put( "winningPitcherName", schedule.getWinningPitcherName() );
+        modelMap.put( "losingPitcherName", schedule.getLosingPitcherName() );
+        modelMap.put( "homeWon", homeWon );
         return "boxScorePage";
     }
 
@@ -104,7 +95,6 @@ public class HomeController {
         System.out.println("Got into getSessionUser - " + username);
         return username;
     }
-
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
@@ -135,9 +125,6 @@ public class HomeController {
     }
 
 
-/*    @RequestMapping( value = "/register", method = RequestMethod.GET)
-    @ResponseBody
-    public boolean*/
 
     @RequestMapping( value = "/playGame", method = RequestMethod.GET)
     @ResponseBody
@@ -145,9 +132,8 @@ public class HomeController {
                                @RequestParam String simName, @RequestParam String gameKey ) throws NoSuchMethodException, InstantiationException,
             SQLException, IllegalAccessException, InvocationTargetException, ClassNotFoundException
     {
-        System.out.println("Before launching the game");
         PlayBall playBall = new PlayBall( Integer.parseInt( yearID ), lgID, round, simName, gameKey );
-        System.out.println("After launching the game");
+
         return true;
     }
 
@@ -165,9 +151,5 @@ public class HomeController {
     {
         return teamsDao.getAllTeamsByYear( yearID );
     }
-
-    @RequestMapping(value = "/scheduleMonth", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Schedule> getScheduleByYear( @RequestParam String yearID) { return scheduleDao.getScheduleByYear( yearID ); }
 
 }

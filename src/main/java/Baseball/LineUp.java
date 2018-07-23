@@ -20,7 +20,7 @@ public class LineUp {
         return gamePlayed;
     }
 
-    void setGamePlayed(int gamePlayed) {
+    public void setGamePlayed(int gamePlayed) {
         this.gamePlayed = gamePlayed;
     }
 

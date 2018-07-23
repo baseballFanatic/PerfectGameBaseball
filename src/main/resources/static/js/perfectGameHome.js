@@ -2,6 +2,10 @@ $(document).ready(function() {
     var url = "/users";
     var register = "/register";
 
+    $('#signInModal').on('shown.bs.modal', function() {
+      $('#signInUserName').focus();
+    });
+
     $('#signInUserName').keypress( function(event) {
         if (event.which == 13) {
             event.preventDefault();
@@ -70,7 +74,6 @@ $(document).ready(function() {
             }
         })
     });
-    /*TODO this is not working*/
     $('#success-close').on('click', function() {
         window.location.replace("/office");
     });

@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public class SeasonDaoImpl implements SeasonDao
 {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/lahman2016?useSSL=false";
 
     // Database credentials

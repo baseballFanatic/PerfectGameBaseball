@@ -488,7 +488,7 @@ public class TeamStats {
         return currentWinStreak;
     }
 
-    void setCurrentWinStreak(int currentWinStreak) {
+    public void setCurrentWinStreak(int currentWinStreak) {
         this.currentWinStreak = currentWinStreak;
     }
 
@@ -496,7 +496,7 @@ public class TeamStats {
         return currentLossStreak;
     }
 
-    void setCurrentLossStreak(int currentLossStreak) {
+    public void setCurrentLossStreak(int currentLossStreak) {
         this.currentLossStreak = currentLossStreak;
     }
 

@@ -64,15 +64,13 @@ function loadScheduleData(selectedYear, league) {
         $('#scheduleTableBody').html(scheduleHtml);
 
     $('.playButton').on('click', function() {
-    /*     todo this currently doesn't play the current game selected but instead the next game available */
            var lgID = $('.league-selector.ui-state-active').children().text();
            var gameKey = $(this).attr('data-gameKey');
+           var success = '<span>Game Completed!</span>';
            var playGame = "/playGame?yearID=" + selectedYear + "&lgID=" + lgID + "&round=RS&simName=clint&gameKey=" + gameKey;
            $.getJSON( playGame, function(response) {
                if ( response ) {
-                $('#modalGameCompleted').append(`<span>Game Completed!</span>`);
-               } else {
-                $('#modalGameCompleted').append(`<span>Something bad happened...</span>`);
+                $('.modalMessage').html(success);
                }
            });
         });
@@ -96,6 +94,7 @@ $(document).ready(function() {
 
     $('#modalPlayGame').on('hidden.bs.modal', function() {
         league = $(".league-selector.ui-state-active").text();
+        $('.modalMessage').html("");
         loadScheduleData( selectedYear, league )
     });
 });

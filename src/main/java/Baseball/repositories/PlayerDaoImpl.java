@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public class PlayerDaoImpl implements PlayerDao {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/pgb_db";
 
     // Database credentials

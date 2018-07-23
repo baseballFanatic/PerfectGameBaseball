@@ -25,18 +25,19 @@ public class PlayBall {
         Fielder fielder = new Fielder();
         Pitcher pitcher = new Pitcher();
         Player player = new Player();
-
         List<Integer> visitorLineScore = new ArrayList<>();
         List<Integer> homeLineScore = new ArrayList<>();
+
+/*        Determine which method to use to select a game.  The first will select next available schedule in the list.
+        The second will select schedule based on the gameKey supplied.*/
 
         if ( gameKey == "NA") {
             schedule = Database.selectSchedule(yearID, lgID);
         } else {
             schedule = Database.selectScheduleByYearIDByLgIDByGameKey( yearID, lgID, gameKey );
         }
-
+        // Get the lgID of the home team to determine the league stats for log5 method.
         lgID = schedule.getHomeLgId();
-
         league = Database.selectTeamStats(yearID, lgID, league);
         league.setLgID(lgID);
 

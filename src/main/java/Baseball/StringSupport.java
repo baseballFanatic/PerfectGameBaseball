@@ -107,7 +107,6 @@ public final class StringSupport {
         try {
             result = Integer.parseInt(source);
         } catch (Exception var3) {
-            ;
         }
 
         return result;
@@ -482,7 +481,6 @@ public final class StringSupport {
                         } else {
                             int position;
                             for(position = 0; position < length && position < minChars && source.charAt(position) != delimiter; ++position) {
-                                ;
                             }
 
                             if (position == length) {
@@ -558,7 +556,6 @@ public final class StringSupport {
         try {
             result = Double.parseDouble(source);
         } catch (Exception var4) {
-            ;
         }
 
         return result;

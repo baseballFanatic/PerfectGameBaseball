@@ -75,14 +75,6 @@ public class Batter extends Player {
         this.lgID = lgID;
     }
 
-/*    boolean isAvailability() {
-        return availability;
-    }
-
-    void setAvailability(boolean availability) {
-        this.availability = availability;
-    }*/
-
     public String getTeamID() {
         return teamID;
     }
@@ -247,7 +239,6 @@ public class Batter extends Player {
         this.pitcherReachedOn = pitcherReachedOn;
     }
 
-   // List<Batter> matchPositions(List<Batter> batters, List<Fielder> fielders) {
     HashMap<Integer, Batter> matchPositions(List<Batter> batters, HashMap<Integer, Fielder> fielders){
         //int b = 0;
         HashMap<Integer, Batter> matchedBatters = new HashMap<>();
@@ -260,7 +251,7 @@ public class Batter extends Player {
                 {
                     batter.setPosition(fielders.get(fielder).getPosition());
                     batter.setBattingOrder(fielders.get(fielder).getBattingOrder());
-                    batter.getBatterStats().setGameGamePlayed();
+                    batter.getBatterStats().setGameGamePlayed(1);
                     batter.getBatterStats().setGameGameStarted(1);
                     batter.setAvailable(false);
                     matchedBatters.put(batter.getBattingOrder(), batter);
@@ -346,6 +337,7 @@ public class Batter extends Player {
             if (batter.isAvailable)
             {
                 batter.setPosition(InPlayPosition.PINCH_HITTER);
+                batter.getBatterStats().setGameGamePlayed( 1 );
                 return batter;
             }
         }

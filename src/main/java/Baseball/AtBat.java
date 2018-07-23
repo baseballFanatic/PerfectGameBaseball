@@ -420,6 +420,7 @@ class AtBat {
                         bases.getFirstBase().getBatter().getBatterStats().getGameStolenBases());
                 Fielder catcher = fielder.getCurrentFielder(CATCHER, fielderList);
                 catcher.getFielderStats().setGameRunnersSuccessful(catcher.getFielderStats().getGameRunnersSuccessful() + 1);
+                System.out.printf("Runner successful against %s(%d).%n", catcher.getNameFirst(), catcher.getFielderStats().getGameRunnersSuccessful());
                 Batter first = bases.getFirstBase().getBatter();
                 bases.getSecondBase().occupy(first);
                 bases.getFirstBase().setOccupied(false);
@@ -432,6 +433,7 @@ class AtBat {
                         bases.getSecondBase().getBatter().getBatterStats().getGameStolenBases());
                 Fielder catcher = fielder.getCurrentFielder(CATCHER, fielderList);
                 catcher.getFielderStats().setGameRunnersSuccessful(catcher.getFielderStats().getGameRunnersSuccessful() + 1);
+                System.out.printf("Runner successful against %s(%d).%n", catcher.getNameFirst(), catcher.getFielderStats().getGameRunnersSuccessful());
                 Batter second = bases.getSecondBase().getBatter();
                 bases.getThirdBase().occupy(second);
                 bases.getSecondBase().setOccupied(false);
@@ -455,7 +457,7 @@ class AtBat {
                 catcher.getFielderStats().setGameRunnersThrownOut(catcher.getFielderStats().getGameRunnersThrownOut() + 1);
                 Fielder infielderPutOut = fielder.getCurrentFielder(SECOND_BASE, fielderList);
                 infielderPutOut.getFielderStats().setGamePutOuts(infielderPutOut.getFielderStats().getGamePutOuts() + 1);
-                System.out.printf("Catcher: %s(%d)%nPut Out: %s(%d)", catcher.getNameLast(), catcher.getFielderStats().getGameRunnersThrownOut(),
+                System.out.printf("Catcher caught stealing: %s(%d)%nPut Out: %s(%d)", catcher.getNameLast(), catcher.getFielderStats().getGameRunnersThrownOut(),
                         infielderPutOut.getNameLast(), infielderPutOut.getFielderStats().getGamePutOuts());
                 bases.getFirstBase().setOccupied(false);
                 if (outs.getOuts() == 3) {
@@ -473,7 +475,7 @@ class AtBat {
                 catcher.getFielderStats().setGameRunnersThrownOut(catcher.getFielderStats().getGameRunnersThrownOut() + 1);
                 Fielder infielderPutOut = fielder.getCurrentFielder(THIRD_BASE, fielderList);
                 infielderPutOut.getFielderStats().setGamePutOuts(infielderPutOut.getFielderStats().getGamePutOuts() + 1);
-                System.out.printf("Catcher: %s(%d)%nPut Out: %s(%d)", catcher.getNameLast(), catcher.getFielderStats().getGameRunnersThrownOut(),
+                System.out.printf("Catcher caught stealing: %s(%d)%nPut Out: %s(%d)", catcher.getNameLast(), catcher.getFielderStats().getGameRunnersThrownOut(),
                         infielderPutOut.getNameLast(), infielderPutOut.getFielderStats().getGamePutOuts());
                 bases.getSecondBase().setOccupied(false);
                 if (outs.getOuts() == 3) {

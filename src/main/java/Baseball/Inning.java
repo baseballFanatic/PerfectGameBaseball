@@ -138,7 +138,7 @@ class Inning {
                             currentBatter = currentBatter.getPinchHitterForPitcher(homeBattersReserves);
                             if (currentBatter != null)
                             {
-                                //Removing home pitcher from files.
+                                //Removing home pitcher from batting and fielding files.
                                 batter.removePitcherFromBatters(homeBatters, pitcher.getHomePitcher());
                                 fielder.removePitcherFromFielders(homeFielders, pitcher.getHomePitcher());
                                 Pitcher reliefPitcher = currentPitcher.getReliever(homePitchers, schedule.getGameDate(), currentBatter);

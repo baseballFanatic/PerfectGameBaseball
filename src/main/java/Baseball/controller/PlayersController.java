@@ -15,14 +15,18 @@ import java.util.List;
 
 @Controller
 public class PlayersController {
-    @Autowired
-    private PlayerDao playerDao;
+    private final PlayerDao playerDao;
+
+    private final BatterDao batterDao;
+
+    private final PitcherDao pitcherDao;
 
     @Autowired
-    private BatterDao batterDao;
-
-    @Autowired
-    private PitcherDao pitcherDao;
+    public PlayersController(PlayerDao playerDao, BatterDao batterDao, PitcherDao pitcherDao) {
+        this.playerDao = playerDao;
+        this.batterDao = batterDao;
+        this.pitcherDao = pitcherDao;
+    }
 
     @RequestMapping("/players")
     public String players(Model model) throws ClassNotFoundException {
