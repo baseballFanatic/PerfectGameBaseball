@@ -1,7 +1,6 @@
 package Baseball.repositories;
 
 import Baseball.Team;
-import org.codehaus.groovy.runtime.dgmimpl.arrays.IntegerArrayGetAtMetaMethod;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;

@@ -9,4 +9,6 @@ public interface BatterDao
     List<Batter> getAllBattersByYear( String yearId );
 
     List<Batter> getBatter( String playerId );
+
+    List<Batter> getStatsByPlayerKey( int playerKey );
 }

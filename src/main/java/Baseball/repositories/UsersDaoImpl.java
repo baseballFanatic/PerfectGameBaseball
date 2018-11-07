@@ -4,6 +4,7 @@ import Baseball.StringSupport;
 import Baseball.Users;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class UsersDaoImpl implements UsersDao
     // Database credentials
     private static final String USER = "root";
     private static final String PASS = "password";
+    private Users registeredUser;
 
     @Override
     public List<Users> getUsers()
@@ -69,13 +71,47 @@ public class UsersDaoImpl implements UsersDao
         }
         return false;
     }
-
+    
     @Override
-    public List<Users> getUser( String user )
+    public void addUser (HttpSession session )
     {
         Connection conn;
 
-        List<Users> returnedUsers = new ArrayList<>();
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("INSERT INTO pgbs_registry(username, email, password, firstName, " +
+                    "lastName, active, mostRecentYear) values (?, ?, ?, ?, ?, ?, ?)");
+            stmt.setObject(1, session.getAttribute("username"));
+            stmt.setString(2, "");
+            stmt.setString(3, "");
+            stmt.setObject(4, session.getAttribute("firstName"));
+            stmt.setObject(5, session.getAttribute("lastName"));
+            stmt.setObject(6, session.getAttribute("active"));
+            stmt.setObject(7, session.getAttribute("mostRecentYear"));
+
+            int rs = stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException | SQLException | InstantiationException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Users getUser( String user )
+    {
+        Connection conn;
+
+/*        List<Users> returnedUsers = new ArrayList<>();*/
+        Users returnedUser = new Users();
 
         try {
             // Register JDBC driver
@@ -92,7 +128,7 @@ public class UsersDaoImpl implements UsersDao
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Users returnedUser = new Users();
+/*                Users requestedUser = new Users();*/
                 // Retrieve by column name
                 returnedUser.setUsername( rs.getString( "username" ) );
                 returnedUser.setRecentYear( rs.getInt( "mostRecentYear" ) );
@@ -100,7 +136,7 @@ public class UsersDaoImpl implements UsersDao
                 returnedUser.setLastName( rs.getString( "lastName" ) );
                 returnedUser.setActive( rs.getString( "active" ) );
 
-                returnedUsers.add(returnedUser);
+/*                returnedUser.add(returnedUser);*/
             }
 
             rs.close();
@@ -111,6 +147,6 @@ public class UsersDaoImpl implements UsersDao
             e.printStackTrace();
         }
 
-        return returnedUsers;
+        return returnedUser;
     }
 }

@@ -1,5 +1,6 @@
 package Baseball.repositories;
 
+import Baseball.Batter;
 import Baseball.Player;
 import org.springframework.stereotype.Repository;
 

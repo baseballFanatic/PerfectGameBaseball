@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import sun.misc.Request;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
@@ -100,22 +101,12 @@ public class HomeController {
     @ResponseBody
     public boolean checkUser( @RequestParam String user, HttpSession session )
     {
-        System.out.println( "Last one: " + session.getAttribute( "username" ) );
+        String currentLeague = "MLB";
+        String currentMonth = "4";
         if ( usersDao.checkUser( user ) )
         {
-            List<Users> returnedUser = usersDao.getUser( user );
-            for (Users possibleUser : returnedUser) {
-                session.setAttribute( "username", user );
-                session.setAttribute( "firstName", possibleUser.getFirstName() );
-                session.setAttribute( "lastName", possibleUser.getLastName() );
-                session.setAttribute( "active", possibleUser.getActive() );
-                session.setAttribute( "recentYear", possibleUser.getRecentYear() );
-                System.out.println("username: " + session.getAttribute( "username" ));
-                System.out.println("firstName: " + session.getAttribute( "firstName" ));
-                System.out.println("lastName: " + session.getAttribute( "lastName" ));
-                System.out.println("active: " + session.getAttribute( "active" ));
-                System.out.println("recentYear: " + session.getAttribute( "recentYear" ));
-            }
+            Users returnedUser = usersDao.getUser( user );
+            setSessionUser(user, session, returnedUser, currentLeague, currentMonth);
             return true;
         }
         else
@@ -124,6 +115,74 @@ public class HomeController {
         }
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean registerUser( @RequestParam String user, @RequestParam String firstName,
+                              @RequestParam String lastName, @RequestParam String active,
+                              @RequestParam int mostRecentYear, HttpSession session) {
+        session.setAttribute( "username", user );
+        session.setAttribute("firstName", firstName );
+        session.setAttribute( "lastName", lastName );
+        session.setAttribute( "active", active );
+        session.setAttribute( "mostRecentYear" , mostRecentYear );
+        session.setAttribute("currentLeague", "MLB");
+        session.setAttribute("currentMonth", "4");
+        session.setAttribute("availableGames", false );
+        session.setAttribute("simulatedGames", false );
+        session.setAttribute("displayAll", true );
+
+        usersDao.addUser(session);
+
+        return true;
+    }
+
+    private void setSessionUser(@RequestParam String user, HttpSession session, Users returnedUser,
+                                String currentLeague, String currentMonth) {
+        session.setAttribute( "username", user );
+        session.setAttribute( "firstName", returnedUser.getFirstName() );
+        session.setAttribute( "lastName", returnedUser.getLastName() );
+        session.setAttribute( "active", returnedUser.getActive() );
+        session.setAttribute( "recentYear", returnedUser.getRecentYear() );
+        session.setAttribute("currentLeague", currentLeague );
+        session.setAttribute("currentMonth", currentMonth );
+        session.setAttribute("availableGames", false );
+        session.setAttribute("simulatedGames", false );
+        session.setAttribute("displayAll", true );
+    }
+
+    @RequestMapping(value = "/setSessionLeague", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean setSessionLeague ( @RequestParam String league, HttpSession session ) {
+        session.setAttribute("currentLeague", league);
+        return true;
+    }
+
+    @RequestMapping(value = "/setSessionMonth", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean setSessionMonth ( @RequestParam String month, HttpSession session ) {
+        session.setAttribute("currentMonth", month );
+        return true;
+    }
+
+    @RequestMapping(value = "/setSessionGames", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean setSessionGames ( @RequestParam String gamesDisplay, HttpSession session ) {
+        if (gamesDisplay.equals("availableRadio")) {
+            session.setAttribute("availableGames", true);
+            session.setAttribute("simulatedGames", false);
+            session.setAttribute("displayAll", false);
+
+        } else if (gamesDisplay.equals("simulatedRadio")) {
+            session.setAttribute("availableGames", false);
+            session.setAttribute("simulatedGames", true);
+            session.setAttribute("displayAll", false);
+        } else if (gamesDisplay.equals("allRadio")) {
+            session.setAttribute("availableGames", false);
+            session.setAttribute("simulatedGames", false);
+            session.setAttribute("displayAll", true);
+        }
+        return true;
+    }
 
 
     @RequestMapping( value = "/playGame", method = RequestMethod.GET)

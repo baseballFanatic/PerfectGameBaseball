@@ -132,4 +132,56 @@ public class BatterDaoImpl implements BatterDao
 
         return batters;
     }
+
+    @Override
+    public List<Batter> getStatsByPlayerKey( int playerKey ) {
+        Connection conn;
+
+        List<Batter> batterSeasons = new ArrayList<>();
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            conn = DriverManager.getConnection( DB_URL, USER, PASS );
+
+            PreparedStatement stmt;
+/*            stmt = conn.prepareStatement( "SELECT * FROM pgbs_batters WHERE playerKey = ?");*/
+            stmt = conn.prepareStatement("SELECT players.*, batters.* from master players, pgbs_batters batters where " +
+                    "batters.playerKey=? and players.playerID = batters.playerID");
+            stmt.setInt( 1, playerKey );
+
+            ResultSet rs = stmt.executeQuery();
+
+            while ( rs.next() ) {
+                Batter batterSeason = new Batter();
+                batterSeason.setNameFirst(rs.getString("nameFirst"));
+                batterSeason.setNameLast(rs.getString("nameLast"));
+                batterSeason.setNameGiven(rs.getString("nameGiven"));
+                batterSeason.setBirthYear(rs.getString("birthYear"));
+                batterSeason.setDeathYear(rs.getString("deathYear"));
+                batterSeason.setHeight(rs.getInt("height"));
+                batterSeason.setWeight(rs.getInt("weight"));
+                batterSeason.getBatterStats().setYearID( rs.getInt( "yearID" ) );
+                batterSeason.setTeamID( rs.getString( "teamID" ) );
+                batterSeason.setLgID( rs.getString( "lgID" ) );
+                batterSeason.getBatterStats().setsAtBats( rs.getInt( "sAtBats" ) );
+                batterSeason.getBatterStats().setsRuns( rs.getInt( "sRuns" ) );
+                batterSeason.getBatterStats().setsHits( rs.getInt( "sHits" ) );
+                batterSeason.getBatterStats().setsRbi( rs.getInt( "sRbi" ) );
+                batterSeason.getBatterStats().setsDoubles( rs.getInt( "sDoubles" ) );
+                batterSeason.getBatterStats().setsTriples( rs.getInt( "sTriples" ) );
+                batterSeason.getBatterStats().setsHomeRuns( rs.getInt( "sHomeRuns" ) );
+                batterSeason.getBatterStats().setsStolenBases( rs.getInt("sStolenBases" ) );
+                batterSeason.getBatterStats().setsCaughtStealing( rs.getInt("sCaughtStealing" ) );
+
+                batterSeasons.add( batterSeason );
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch ( IllegalAccessException | SQLException | InstantiationException | ClassNotFoundException e ) {
+            e.printStackTrace();
+        }
+        return batterSeasons;
+    }
 }

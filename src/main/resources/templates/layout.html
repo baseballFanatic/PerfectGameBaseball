@@ -7,9 +7,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+<!--    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
     <!-- Material Design Bootstrap -->
     <link th:href="@{/css/mdb.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.bootstrap4.min.css}" rel="stylesheet"/>
     <!-- Your custom styles (optional) -->
     <link th:href="@{/css/custom.css}" rel="stylesheet"/>
     <meta th:include="this :: head" th:remove="tag"/>
@@ -38,7 +41,7 @@
                         <a class="nav-link" th:href="@{standings}">Standings</a>
                     </li>
                     <li class="nav-item" id="nav-schedule">
-                        <a class="nav-link" th:href="@{schedule?lgId=ML}">Schedule</a>
+                        <a class="nav-link" th:href="@{schedule}">Schedule</a>
                     </li>
                     <!-- Collapsible content -->
                     <div class="collapse navbar-collapse">

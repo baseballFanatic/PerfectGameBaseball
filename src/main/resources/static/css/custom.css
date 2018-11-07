@@ -61,7 +61,7 @@ header {
     text-align: center;
     position: relative;
     height: 20px;
-    font-size: em;
+    font-size: 1em;
     word-spacing: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -368,7 +368,7 @@ a {
 
 #stats-top-nav ul.tabs li a.active {
     color: #fff;
-    padding; 4px 11px 4px 11px;
+    padding: 4px 11px 4px 11px;
     margin-left: 5px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#656464), color-stop(36%,#898989), color-stop(100%,#969696));
     border-radius: 4px;
@@ -701,4 +701,18 @@ table th {
 
 #standingsContainer .data_grid td.dg-team-short a.WS1 {
     background-position: 0 -1596px;
+}
+
+.schedule_data {
+    font-size: .8rem;
+}
+
+.schedule_data,
+.btn {
+    padding: .45rem .5rem;
+
+}
+
+.schedule_data td {
+    text-align: center;
 }

@@ -2,42 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6711f80-d0e5-4cfc-ba1d-bf0f3f63b06c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BoxScoreDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BoxScoreDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_parent_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_parent_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/playersPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/PerfectGameBaseball_test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/AtBat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/AtBat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/BoxScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/BoxScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/DisplayInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/DisplayInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/Inning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/Inning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/LineUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/LineUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/PlayBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/PlayBall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/StringSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/StringSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/TeamStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/TeamStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/FrontOfficeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/FrontOfficeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/StatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/StatsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/RelieverDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/RelieverDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/boxScore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/boxScore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/players.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/playersPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/playersPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/schedulePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/schedulePage.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -141,66 +128,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
+      <file leaf-file-name="players.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/players.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state>
+              <caret column="30" selection-start-column="30" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Database.java">
+      <file leaf-file-name="schedulePage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/schedulePage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2703">
-              <caret line="804" column="164" selection-start-line="804" selection-start-column="164" selection-end-line="804" selection-end-column="164" />
-              <folding>
-                <element signature="method#closeStatement#0;class#Database#0" />
-                <element signature="method#createPgbsBatters#0;class#Database#0" />
-                <element signature="method#createPgbsPitchers#0;class#Database#0" />
-                <element signature="method#createPgbsFielders#0;class#Database#0" />
-                <element signature="method#createPgbsSchedule#0;class#Database#0" />
-                <element signature="method#createPgbsSeasons#0;class#Database#0" />
-                <element signature="method#createPgbsTeams#0;class#Database#0" />
-                <element signature="method#createPgbsLineUp#0;class#Database#0" />
-                <element signature="method#insertPgbsSchedule#0;class#Database#0" />
-                <element signature="method#insertPgbsBatters#0;class#Database#0" />
-                <element signature="method#insertPgbsPitchers#0;class#Database#0" />
-                <element signature="method#insertPgbsFielders#0;class#Database#0" />
-                <element signature="method#insertPgbsSeasons#0;class#Database#0" />
-                <element signature="method#insertPgbsTeams#0;class#Database#0" />
-                <element signature="method#insertPgbsLineUp#0;class#Database#0" />
-                <element signature="method#selectBatters#0;class#Database#0" />
-                <element signature="method#selectPitchers#0;class#Database#0" />
-                <element signature="method#selectFielders#0;class#Database#0" />
-                <element signature="method#selectSchedule#0;class#Database#0" />
-                <element signature="method#setScheduleData#0;class#Database#0" />
-                <element signature="method#selectScheduleByYearIDByLgIDByGameKey#0;class#Database#0" />
-                <element signature="method#selectTeamStats#0;class#Database#0" />
-                <element signature="method#selectStartingFielders#0;class#Database#0" />
-              </folding>
+            <state relative-caret-position="731">
+              <caret line="124" column="84" selection-start-line="124" selection-start-column="84" selection-end-line="124" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BatterStats.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java">
+      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoxScore.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/BoxScore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3706">
-              <caret line="377" selection-start-line="377" selection-end-line="377" />
-              <folding>
-                <element signature="e#11203#11204#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="969">
+              <caret line="57" column="25" lean-forward="true" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -208,30 +158,44 @@
       <file leaf-file-name="TeamsDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+            <state relative-caret-position="17">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeamsController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java">
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-              <folding>
-                <element signature="e#594#595#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="688">
+              <caret line="175" column="58" lean-forward="true" selection-start-line="175" selection-start-column="58" selection-end-line="175" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="boxScorePage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html">
+      <file leaf-file-name="ScheduleController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5406">
-              <caret line="318" column="60" selection-start-line="318" selection-start-column="60" selection-end-line="318" selection-end-column="60" />
+            <state relative-caret-position="184">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScheduleDaoImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2499">
+              <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScheduleDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="105" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
             </state>
           </provider>
         </entry>
@@ -554,7 +518,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6014866622363" />
+        <entry key="$PROJECT_DIR$" value="6027848859154" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="4002028121" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="829777938" />
@@ -738,26 +702,19 @@
         </entry>
       </map>
     </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/Users.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/frontOffice.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/frontOffice.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/FielderStats.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/BatterStats.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/InPlayPosition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/LineupDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/LineupDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/standings.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/statsPage.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/layout.html" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Schedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/TeamStats.java" />
@@ -769,30 +726,42 @@
         <option value="$PROJECT_DIR$/src/main/java/Baseball/AtBat.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/DisplayInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Inning.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/schedulePage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/perfectGameHome.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Batter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/boxScore.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/boxScorePage.html" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/BoxScore.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/StatsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/FrontOfficeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/cda4bf39-dc6e-4009-aef5-4b4145dd13ee/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BoxScoreDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PitcherDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/RelieverDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/Baseball/Database.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/teamsPage.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/playersPage.css" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/players.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/playersPage.html" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/layout.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/schedule.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/schedulePage.html" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java" />
       </list>
     </option>
   </component>
@@ -803,41 +772,17 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-35" />
-    <option name="y" value="-1092" />
+    <option name="x" value="1731" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Security</id>
-          </State>
-          <State>
-            <id>Android Lint for Kotlin</id>
-          </State>
-          <State>
-            <id>Language Injection</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Android</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -872,12 +817,78 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Baseball" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Baseball" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Baseball" type="462c0819:PsiDirectoryNode" />
+              <item name="repositories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PerfectGameBaseball" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PerfectGameBaseball" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1225,7 +1236,28 @@
       <workItem from="1532007593870" duration="862000" />
       <workItem from="1532008975088" duration="6460000" />
       <workItem from="1532094312955" duration="1817000" />
-      <workItem from="1532353630415" duration="620000" />
+      <workItem from="1532353630415" duration="1068000" />
+      <workItem from="1532369545865" duration="1162000" />
+      <workItem from="1532449491649" duration="8000" />
+      <workItem from="1532529587738" duration="16680000" />
+      <workItem from="1532635423527" duration="38000" />
+      <workItem from="1532635482483" duration="1867000" />
+      <workItem from="1532698700364" duration="5479000" />
+      <workItem from="1533049403607" duration="602000" />
+      <workItem from="1533148419216" duration="25000" />
+      <workItem from="1534429982260" duration="745000" />
+      <workItem from="1534532499181" duration="9000" />
+      <workItem from="1539701476524" duration="1118000" />
+      <workItem from="1540824405913" duration="8966000" />
+      <workItem from="1540904737010" duration="10332000" />
+      <workItem from="1540991409143" duration="8820000" />
+      <workItem from="1541077508162" duration="2361000" />
+      <workItem from="1541105505343" duration="2190000" />
+      <workItem from="1541164310998" duration="15898000" />
+      <workItem from="1541431606201" duration="19436000" />
+      <workItem from="1541518632683" duration="210000" />
+      <workItem from="1541518864934" duration="13698000" />
+      <workItem from="1541601211488" duration="11501000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database class to create batter, pitcher, fielder, season, and team tables.  Also added methods to insert players to tables and teams to team table.">
       <created>1495573351057</created>
@@ -1507,11 +1539,18 @@
       <option name="project" value="LOCAL" />
       <updated>1530814543443</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="- added visiting and home team full names to boxScorePage&#10;- added logic to display batter data from model given to boxScorePage&#10;- fixed issue with incorrect stats being added to pgbs_box_score which lead to poor data being displayed in application&#10;- fixed issue with 'Game Completed' remaining in the Play modal when clicking it second time&#10;- fixed issue on boxScorePage with blue highlight not showing up on winning team score&#10;- added pitchers display to the boxScorePage">
+      <created>1532357296260</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1532357296260</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10126000" />
+    <option name="totallyTimeSpent" value="131719000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1523,47 +1562,48 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="JRebel Console" order="8" side_tool="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="JRebel Console" order="8" side_tool="true" weight="0.328125" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="JRebel Executor" order="8" weight="0.32897604" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="JRebel Executor" order="8" weight="0.33035713" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Database" order="4" weight="0.3296875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.328125" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35044643" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32924107" />
       <window_info id="Persistence" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49782136" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4966518" visible="true" weight="0.19029851" />
       <window_info anchor="right" id="Bean Validation" order="4" />
       <window_info id="Web" order="2" side_tool="true" />
-      <window_info id="JRebel" order="2" sideWeight="0.50217867" side_tool="true" weight="0.25" />
-      <window_info id="Learn" order="2" />
+      <window_info id="JRebel" order="2" sideWeight="0.50334823" side_tool="true" weight="0.18390192" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Learn" order="2" weight="0.32995737" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.3296875" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.78104573" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="JRebel Setup Guide" order="5" weight="0.30677083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Database Console" order="8" weight="0.32897604" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Build" order="9" weight="0.32897604" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
     </layout>
@@ -1575,7 +1615,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a bug where fielders were not being accurately put in fielding lineup for position from database.&#10;Checked the Retrosheet data and determined that 1913 was as far back as I could go to start a season without having to automate lineup creation." />
     <MESSAGE value="Added in logic for updating batter, pitcher, and fielder stats to the database following completion of a game.  &#10;Also added in the setting of seasonal data for batter, pitcher, and fielder when selected so they can be updated with game information." />
     <MESSAGE value="Added in the updates to schedule file and stats.&#10;Added in the updates to teams file and stats." />
     <MESSAGE value="Added daysRest to database build.&#10;Fixed nullPointerException due to batters bunting on base.&#10;Fixed log5 method for PitchRestult.&#10;Added check for caughtStealing for leagues that didn't record it.&#10;Adjusted stolen bases for additional criteria to check.&#10;Added calculating complete games and shutouts for pitchers." />
@@ -1600,160 +1639,56 @@
     <MESSAGE value="- got Session to work and to be able to display session information on the Front Office page&#10;- fielding stats are being added into the boxscore but I do not believe they are being properly calculated/applied&#10;- pitcher stats are being added into the boxscore for a game&#10;- added ability to play a game from the schedule page (currently doesn't play the selected game but the next game available)" />
     <MESSAGE value="- added username as input parameter to getYears() in SeasonDao and SeasonDaoImpl&#10;- added simName in where clause of query in getYears() to use username to limit the query&#10;- schedulePage.html builds out the year select using Thymeleaf instead of js&#10;- schedulePage builds out the schedule results using Thymeleaf instead of js&#10;- Box on schedulePage now re-directs to box score page for the relevant gameKey&#10;- added ability to submit user by hitting Enter key&#10;- added league selectors to schedulePage.html&#10;- tied in the league selectors to schedulePage to actually limit schedule results by selected option (MLB, AL, NL)&#10;- deleted index.html file and routed HomeController to point to perfectGameHome for both &quot;/home&quot; and &quot;/&quot;" />
     <MESSAGE value="- added visiting and home scores to boxScorePage&#10;- fixed logos to load logos by year and ID for teams&#10;- added win/loss records to schedule page for pitchers following a game&#10;- fixed schedulePage so that after playing a game and closing the modal the page will reload to the current league&#10;- fixed schedulePage where it will start the right league based off the AL/NL league selector.&#10;- fixed schedulePage to play the game selected by the button" />
-    <option name="LAST_COMMIT_MESSAGE" value="- added visiting and home scores to boxScorePage&#10;- fixed logos to load logos by year and ID for teams&#10;- added win/loss records to schedule page for pitchers following a game&#10;- fixed schedulePage so that after playing a game and closing the modal the page will reload to the current league&#10;- fixed schedulePage where it will start the right league based off the AL/NL league selector.&#10;- fixed schedulePage to play the game selected by the button" />
+    <MESSAGE value="- added visiting and home team full names to boxScorePage&#10;- added logic to display batter data from model given to boxScorePage&#10;- fixed issue with incorrect stats being added to pgbs_box_score which lead to poor data being displayed in application&#10;- fixed issue with 'Game Completed' remaining in the Play modal when clicking it second time&#10;- fixed issue on boxScorePage with blue highlight not showing up on winning team score&#10;- added pitchers display to the boxScorePage" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added visiting and home team full names to boxScorePage&#10;- added logic to display batter data from model given to boxScorePage&#10;- fixed issue with incorrect stats being added to pgbs_box_score which lead to poor data being displayed in application&#10;- fixed issue with 'Game Completed' remaining in the Play modal when clicking it second time&#10;- fixed issue on boxScorePage with blue highlight not showing up on winning team score&#10;- added pitchers display to the boxScorePage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java</url>
-          <line>50</line>
+          <url>file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java</url>
+          <line>36</line>
           <properties />
-          <option name="timeStamp" value="410" />
+          <option name="timeStamp" value="479" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="480" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="475" />
+      <option name="time" value="483" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((JDBC42ResultSet)rs).fullColumnNameToIndex" custom="com.mysql.jdbc.JDBC42ResultSet" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/GameEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/TeamStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="498" column="11" selection-start-line="498" selection-start-column="11" selection-end-line="498" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Pitcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="403" column="39" selection-start-line="403" selection-start-column="39" selection-end-line="403" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="243" selection-start-line="243" selection-end-line="243" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/LineUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
-          <caret line="181" column="17" selection-start-line="181" selection-start-column="17" selection-end-line="181" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_121/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/FielderStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="311" column="9" selection-start-line="311" selection-start-column="9" selection-end-line="311" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/AtBat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="815">
-          <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Inning.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="137" column="67" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/perfectGameHome.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BoxScoreDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <caret line="8" column="84" selection-start-line="8" selection-start-column="84" selection-end-line="8" selection-end-column="84" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/schedulePage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="120" column="51" selection-start-line="120" selection-start-column="51" selection-end-line="120" selection-end-column="51" />
+        <state relative-caret-position="1343">
+          <caret line="79" column="71" selection-start-line="79" selection-start-column="71" selection-end-line="79" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Fielder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7650">
-          <caret line="505" column="16" selection-start-line="505" selection-start-column="16" selection-end-line="505" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/InPlayPosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/DisplayInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2034">
-          <caret line="180" column="9" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/boxScorePage.css" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/PlayBall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Batter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="241" selection-start-line="241" selection-end-line="241" />
         </state>
       </provider>
     </entry>
@@ -1799,37 +1734,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/FrontOfficeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/RelieversController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1868,13 +1776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/LineupDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1889,13 +1790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/RelieverDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1903,84 +1797,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/BoxScore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3706">
-          <caret line="377" selection-start-line="377" selection-end-line="377" />
-          <folding>
-            <element signature="e#11203#11204#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/TeamsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding>
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="804" column="164" selection-start-line="804" selection-start-column="164" selection-end-line="804" selection-end-column="164" />
-          <folding>
-            <element signature="method#closeStatement#0;class#Database#0" />
-            <element signature="method#createPgbsBatters#0;class#Database#0" />
-            <element signature="method#createPgbsPitchers#0;class#Database#0" />
-            <element signature="method#createPgbsFielders#0;class#Database#0" />
-            <element signature="method#createPgbsSchedule#0;class#Database#0" />
-            <element signature="method#createPgbsSeasons#0;class#Database#0" />
-            <element signature="method#createPgbsTeams#0;class#Database#0" />
-            <element signature="method#createPgbsLineUp#0;class#Database#0" />
-            <element signature="method#insertPgbsSchedule#0;class#Database#0" />
-            <element signature="method#insertPgbsBatters#0;class#Database#0" />
-            <element signature="method#insertPgbsPitchers#0;class#Database#0" />
-            <element signature="method#insertPgbsFielders#0;class#Database#0" />
-            <element signature="method#insertPgbsSeasons#0;class#Database#0" />
-            <element signature="method#insertPgbsTeams#0;class#Database#0" />
-            <element signature="method#insertPgbsLineUp#0;class#Database#0" />
-            <element signature="method#selectBatters#0;class#Database#0" />
-            <element signature="method#selectPitchers#0;class#Database#0" />
-            <element signature="method#selectFielders#0;class#Database#0" />
-            <element signature="method#selectSchedule#0;class#Database#0" />
-            <element signature="method#setScheduleData#0;class#Database#0" />
-            <element signature="method#selectScheduleByYearIDByLgIDByGameKey#0;class#Database#0" />
-            <element signature="method#selectTeamStats#0;class#Database#0" />
-            <element signature="method#selectStartingFielders#0;class#Database#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1988,6 +1808,219 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/BoxScore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3706">
+          <caret line="377" selection-start-line="377" selection-end-line="377" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/teamsPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/playersPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/PlayerDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1204">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/FrontOfficeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/UsersDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="88" column="82" selection-start-line="88" selection-start-column="82" selection-end-line="88" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4437">
+          <caret line="804" column="164" selection-start-line="804" selection-start-column="164" selection-end-line="804" selection-end-column="164" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/Batter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2720">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/BatterDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="161" column="60" selection-start-line="161" selection-start-column="60" selection-end-line="161" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/standingsPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1114" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/PlayersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/playersPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2924">
+          <caret line="172" selection-start-line="172" selection-end-line="188" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/perfectGameApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="707" selection-start-line="707" selection-end-line="707" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/TeamsDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/SeasonDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/schedulePage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="124" column="84" selection-start-line="124" selection-start-column="84" selection-end-line="124" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" column="25" lean-forward="true" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="105" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="175" column="58" lean-forward="true" selection-start-line="175" selection-start-column="58" selection-end-line="175" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/controller/ScheduleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Baseball/repositories/ScheduleDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2499">
+          <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
         </state>
       </provider>
     </entry>

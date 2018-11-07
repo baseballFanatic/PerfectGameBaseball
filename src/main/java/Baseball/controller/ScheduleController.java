@@ -31,21 +31,43 @@ public class ScheduleController
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
     public String schedule(ModelMap modelMap, HttpSession session ) {
         int displayYear = 1900;
+        String displayGames = "";
+        Object displayMonth = session.getAttribute("currentMonth");
+        Object league = session.getAttribute("currentLeague");
         List<Season> allYears = seasonDao.getYears( session.getAttribute( "username" ));
         for ( Season year : allYears ) {
             displayYear = year.getYearID();
             break;
         }
-        List<Schedule> displaySchedule = scheduleDao.getScheduleByYear( String.valueOf( displayYear ) );
+
+        if (session.getAttribute("availableGames").equals(true) ) {
+            displayGames = "N";
+        } else if (session.getAttribute("simulatedGames").equals(true) ) {
+            displayGames = "Y";
+        } else if (session.getAttribute("displayAll").equals(true) ) {
+            displayGames = "A";
+        }
+
+        List<Schedule> displaySchedule = scheduleDao.getScheduleByYear( String.valueOf( displayYear ),
+                String.valueOf( displayMonth ), String.valueOf( league ), displayGames );
 
         modelMap.put( "displaySchedule", displaySchedule );
         modelMap.put( "displayYear", displayYear );
         modelMap.put( "years", allYears );
+        modelMap.put( "currentLeague", session.getAttribute("currentLeague") );
+        modelMap.put( "currentMonth", session.getAttribute( "currentMonth") );
+        modelMap.put( "availableGames", session.getAttribute("availableGames") );
+        modelMap.put( "simulatedGames", session.getAttribute("simulatedGames") );
+        modelMap.put( "displayAll", session.getAttribute("displayAll") );
         return "schedulePage";
     }
 
     @RequestMapping(value = "/scheduleMonth", method = RequestMethod.GET)
     @ResponseBody
-    public List<Schedule> getScheduleByYear( @RequestParam String yearID) { return scheduleDao.getScheduleByYear( yearID ); }
+    public List<Schedule> getScheduleByYear( @RequestParam String yearID, @RequestParam String gameMonth, @RequestParam String league) {
+        //TODO: add in update of session currentLeague and month to values from the web page so they can remain while re-loading
+        String displayGames = "A";
+        return scheduleDao.getScheduleByYear( yearID, gameMonth, league, displayGames );
+    }
 
 }

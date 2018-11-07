@@ -2,6 +2,7 @@ package Baseball.repositories;
 
 import Baseball.Users;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface UsersDao
@@ -10,5 +11,7 @@ public interface UsersDao
 
     boolean checkUser(String user);
 
-    List<Users> getUser( String user);
+    Users getUser( String user);
+
+    void addUser (HttpSession session );
 }

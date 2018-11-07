@@ -9,6 +9,7 @@ import Baseball.repositories.PlayerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,12 @@ public class PlayersController {
     }
 
     @RequestMapping("/players")
-    public String players(Model model) throws ClassNotFoundException {
+    public String players(ModelMap modelMap) throws ClassNotFoundException {
+        int playerKey = 412;
+
+        List<Batter> batterStats =  batterDao.getStatsByPlayerKey( playerKey );
+        modelMap.put( "batterStats", batterStats );
+
         return "playersPage";
     }
 
