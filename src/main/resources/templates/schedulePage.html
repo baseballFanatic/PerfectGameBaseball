@@ -133,9 +133,15 @@
                                                 <td class="schedule_data" th:text="${game.winningPitcherName} + ' (' + ${game.winningPitcherWins} + '-' + ${game.winningPitcherLosses} + ')'">N Rucker (1-0)</td>
                                                 <td class="schedule_data" th:text="${game.losingPitcherName} + ' (' + ${game.losingPitcherWins} + '-' + ${game.losingPitcherLosses} + ')'">T Seaton (0-1)</td>
                                                 <!-- IF GAME IS COMPLETED -->
-                                                <td th:if="${game.gameCompleted == 'Y'}"><a class="btn btn-success btn-small schedule_data" th:href="@{'box?gameKey=' + ${game.gameKey}}" role="button">BOX</a></td>
+                                                <td th:if="${game.gameCompleted == 'Y'}"><a class="btn btn-success
+                                                btn-small schedule_data" th:href="@{'box?gameKey=' + ${game.gameKey}}"
+                                                                                            role="button">BOX</a></td>
                                                 <!-- IF GAME IS NOT COMPLETED -->
-                                                <td th:unless="${game.gameCompleted == 'Y'}"><button type="submit" class="btn btn-default btn-small playButton schedule_data" data-toggle="modal" th:attr="data-gameKey=${game.gameKey}" data-target="#modalPlayGame">PLAY</button></td>
+                                                <td th:unless="${game.gameCompleted == 'Y'}"><button type="submit"
+                                                                                                     class="btn btn-default btn-small playButton schedule_data"
+                                                                                                     data-toggle="modal"
+                                                                                                     th:attr="data-gameKey=${game.gameKey}"
+                                                                                                     data-target="#modalPlayGame">PLAY</button></td>
                                             </tr>
                                         </tbody>
                                     </table>

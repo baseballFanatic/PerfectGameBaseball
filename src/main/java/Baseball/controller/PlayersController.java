@@ -1,17 +1,19 @@
 package Baseball.controller;
 
 import Baseball.Batter;
+import Baseball.Fielder;
 import Baseball.Pitcher;
 import Baseball.Player;
 import Baseball.repositories.BatterDao;
+import Baseball.repositories.FielderDao;
 import Baseball.repositories.PitcherDao;
 import Baseball.repositories.PlayerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,28 +24,64 @@ public class PlayersController {
 
     private final PitcherDao pitcherDao;
 
+    private final FielderDao fielderDao;
+
     @Autowired
-    public PlayersController(PlayerDao playerDao, BatterDao batterDao, PitcherDao pitcherDao) {
+    public PlayersController(PlayerDao playerDao, BatterDao batterDao, PitcherDao pitcherDao, FielderDao fielderDao) {
         this.playerDao = playerDao;
         this.batterDao = batterDao;
         this.pitcherDao = pitcherDao;
+        this.fielderDao = fielderDao;
     }
 
     @RequestMapping("/players")
-    public String players(ModelMap modelMap) throws ClassNotFoundException {
-        int playerKey = 412;
+    public String players(ModelMap modelMap, HttpSession session) {
+        Object nameLast = session.getAttribute("playerSearchLastName");
+        Object currentYear = session.getAttribute("recentYear");
 
-        List<Batter> batterStats =  batterDao.getStatsByPlayerKey( playerKey );
-        modelMap.put( "batterStats", batterStats );
+        List<Player> playerNames = playerDao.getPlayerByLastNameByYear( String.valueOf(nameLast),
+                String.valueOf(currentYear));
 
-        return "playersPage";
+        if (playerNames.size() > 0 ) {
+            modelMap.put("playerNames", playerNames);
+        }
+
+        return "playerSearchPage";
     }
 
-    @RequestMapping("/players/{playerId}")
-    public String view(@PathVariable("playerId") String playerId, Model model) throws ClassNotFoundException {
-        List<Player> players = playerDao.getPlayer(playerId);
-        model.addAttribute("players", players);
-        return "players";
+    @RequestMapping("/player")
+    public String displayPlayer (@RequestParam String playerId, ModelMap modelMap, HttpSession session) {
+
+        List<Batter> batters = batterDao.getStatsByPlayerId(playerId);
+        List<Pitcher> pitchers = pitcherDao.getStatsByPlayerId(playerId);
+        List<Fielder> fielders = fielderDao.getStatsByPlayerId(playerId);
+
+        if (batters.isEmpty()) {
+            session.setAttribute("isBatter", false);
+        } else {
+            session.setAttribute("isBatter", true);
+        }
+
+        if (pitchers.isEmpty()) {
+            session.setAttribute("isPitcher", false);
+        } else {
+            session.setAttribute("isPitcher", true);
+        }
+
+        if (fielders.isEmpty()) {
+            session.setAttribute("isFielder", false);
+        } else {
+            session.setAttribute("isFielder", true);
+        }
+
+        modelMap.put("batterStats", batters);
+        modelMap.put("isBatter", session.getAttribute("isBatter"));
+        modelMap.put("pitcherStats", pitchers);
+        modelMap.put("isPitcher", session.getAttribute("isPitcher"));
+        modelMap.put("fielderStats", fielders);
+        modelMap.put("isFielder", session.getAttribute("isFielder"));
+
+        return "playersPage";
     }
 
     @RequestMapping(value = "/hitters", method = RequestMethod.GET)

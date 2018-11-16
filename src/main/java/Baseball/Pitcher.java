@@ -78,7 +78,7 @@ public class Pitcher extends Player {
         return pitchingArm;
     }
 
-    void setPitchingArm(String pitchingArm) {
+    public void setPitchingArm(String pitchingArm) {
         this.pitchingArm = pitchingArm;
     }
 

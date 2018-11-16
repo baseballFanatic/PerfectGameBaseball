@@ -9,4 +9,6 @@ public interface PitcherDao
     List<Pitcher> getAllPitchersByYear( String yearID );
 
     List<Pitcher> getPitcher ( String yearID );
+
+    List<Pitcher> getStatsByPlayerId ( String playerId );
 }

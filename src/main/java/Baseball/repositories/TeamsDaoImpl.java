@@ -17,6 +17,39 @@ public class TeamsDaoImpl implements TeamsDao
     private static final String PASS = "password";
 
     @Override
+    public List<Team> getTeamByYearId(String teamId, String yearId) {
+        Connection connection;
+
+        List<Team> teams = new ArrayList<>();
+
+        try
+        {
+            Class.forName( "com.mysql.jdbc.Driver" ).newInstance();
+
+            connection = DriverManager.getConnection( DB_URL, USER, PASS );
+
+            PreparedStatement statement;
+            statement = connection.prepareStatement( "SELECT name, yearID, teamID, lgID, seasonGames, seasonWins, " +
+                    "seasonLosses, homeWins, homeLosses, awayWins, awayLosses, park, attendance FROM pgbs_teams WHERE yearID=? " +
+                    "and teamID=?" );
+            statement.setString( 1, yearId );
+            statement.setString(2, teamId);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            setTeamDataFromQuery(teams, resultSet);
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch ( IllegalAccessException | InstantiationException | SQLException | ClassNotFoundException e )
+        {
+            e.printStackTrace();
+        }
+        return teams;
+    }
+
+    @Override
     public List<Team> getAllTeamsByYear(String yearID)
     {
         Connection connection;
@@ -31,7 +64,7 @@ public class TeamsDaoImpl implements TeamsDao
 
             PreparedStatement statement;
             statement = connection.prepareStatement( "SELECT name, yearID, teamID, lgID, seasonGames, seasonWins, " +
-                    "seasonLosses, homeWins, homeLosses, awayWins, awayLosses FROM pgbs_teams WHERE yearID=? " +
+                    "seasonLosses, homeWins, homeLosses, awayWins, awayLosses, park, attendance FROM pgbs_teams WHERE yearID=? " +
                     "ORDER BY lgID ASC, seasonWins DESC" );
             statement.setString( 1, yearID );
 
@@ -65,6 +98,8 @@ public class TeamsDaoImpl implements TeamsDao
             team.getTeamStats().setHomeLosses( resultSet.getInt( "homeLosses" ) );
             team.getTeamStats().setAwayWins( resultSet.getInt( "awayWins" ) );
             team.getTeamStats().setAwayLosses( resultSet.getInt( "awayLosses" ) );
+            team.setPark(resultSet.getString("park"));
+            team.getTeamStats().setAttendance(resultSet.getInt("attendance"));
 
             teams.add( team );
         }

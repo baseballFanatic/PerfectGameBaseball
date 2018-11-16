@@ -82,7 +82,9 @@ $(document).ready(function() {
        let gameKey = $(this).attr('data-gameKey');
        let success = '<span>Game Completed!</span>';
        let playGame = "/playGame?yearID=" + selectedYear + "&lgID=" + lgID + "&round=RS&simName=clint&gameKey=" + gameKey;
+       console.log("right before getJSON launch")
        $.getJSON( playGame, function(response) {
+           console.log("right after getJSON launch and before check on response")
            if ( response ) {
                $('.modalMessage').html(success)
                $('#modalPlayGame').on('hidden.bs.modal', function() {

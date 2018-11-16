@@ -9,7 +9,7 @@ public class BatterStats {
             stolenBaseAttempt, stolenBaseSuccess, onBasePercentage,
             battingAverage, sluggingAverage, triplesFactor, speedRating, stolenBases,
             stolenBaseAttemptPercentage, stolenBaseAttemptSuccessPercentage, histPercentPlayed, actualPlayPercent,
-            onBasePlusSlugging;
+            onBasePlusSlugging, sumBattingAverage, sumOnBaseAverage, sumSluggingPercentage, sumOps;
     private int gamesPlayed, runs ,rbi, intentionalWalks ,hitByPitch, sacrificeHits, sacrificeFlies, groundedIntoDp,
             sGamesPlayed, sGamesStarted, sAtBats, sHits, sRuns, caughtStealing, sDoubles, sTriples, sHomeRuns, sRbi,
             sWalks, sStrikeOuts, sHitByPitch, sPlateAppearances, sSacrificeHits, sSacrificeFlies, gameDate, awardPoints,
@@ -21,9 +21,89 @@ public class BatterStats {
             gameSacrificeFly, gameSacrificeHit, gameRispSacrificeFly, gamePlateAppearance, gameStolenBases, gameCaughtStealing,
             sStolenBases, sCaughtStealing, gameRispGidp, yearID, gameNumber, gamePinchAtBat, gamePinchHitHit, gameKey,
             gamePinchHitSingle, gamePinchHitDouble, gamePinchHitTriple, gamePinchHitHomeRun, gamePinchHitRbi, gamePinchHitWalk,
-            gamePinchHitStrikeOut, gamePinchHitGdp;
+            gamePinchHitStrikeOut, gamePinchHitGdp, sumHits, sumAtBats, sumRuns, sumRbi, sumHomeRuns, sumStolenBases;
 
     private String gameField;
+
+    public int getSumHits() {
+        return sumHits;
+    }
+
+    public void setSumHits(int sumHits) {
+        this.sumHits = sumHits;
+    }
+
+    public int getSumAtBats() {
+        return sumAtBats;
+    }
+
+    public void setSumAtBats(int sumAtBats) {
+        this.sumAtBats = sumAtBats;
+    }
+
+    public int getSumRuns() {
+        return sumRuns;
+    }
+
+    public void setSumRuns(int sumRuns) {
+        this.sumRuns = sumRuns;
+    }
+
+    public int getSumRbi() {
+        return sumRbi;
+    }
+
+    public void setSumRbi(int sumRbi) {
+        this.sumRbi = sumRbi;
+    }
+
+    public int getSumHomeRuns() {
+        return sumHomeRuns;
+    }
+
+    public void setSumHomeRuns(int sumHomeRuns) {
+        this.sumHomeRuns = sumHomeRuns;
+    }
+
+    public int getSumStolenBases() {
+        return sumStolenBases;
+    }
+
+    public void setSumStolenBases(int sumStolenBases) {
+        this.sumStolenBases = sumStolenBases;
+    }
+
+    public Double getSumBattingAverage() {
+        return sumBattingAverage;
+    }
+
+    public void setSumBattingAverage(Double sumBattingAverage) {
+        this.sumBattingAverage = sumBattingAverage;
+    }
+
+    public Double getSumOnBaseAverage() {
+        return sumOnBaseAverage;
+    }
+
+    public void setSumOnBaseAverage(Double sumOnBaseAverage) {
+        this.sumOnBaseAverage = sumOnBaseAverage;
+    }
+
+    public Double getSumSluggingPercentage() {
+        return sumSluggingPercentage;
+    }
+
+    public void setSumSluggingPercentage(Double sumSluggingPercentage) {
+        this.sumSluggingPercentage = sumSluggingPercentage;
+    }
+
+    public Double getSumOps() {
+        return sumOps;
+    }
+
+    public void setSumOps(Double sumOps) {
+        this.sumOps = sumOps;
+    }
 
     public int getGameKey()
     {

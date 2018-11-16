@@ -103,7 +103,7 @@ public class Batter extends Player {
         return bats;
     }
 
-    void setBats(Hands bats) {
+    public void setBats(Hands bats) {
         this.bats = bats;
     }
 

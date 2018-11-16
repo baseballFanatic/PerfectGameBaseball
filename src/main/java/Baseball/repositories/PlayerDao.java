@@ -10,6 +10,7 @@ public interface PlayerDao {
 
     List<Player> getPlayer(String playerId);
 
+    List<Player> getPlayerByLastNameByYear(String lastName, String yearId);
 
 
 }

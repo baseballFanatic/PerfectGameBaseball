@@ -1,6 +1,7 @@
 package Baseball.repositories;
 
 import Baseball.Batter;
+import Baseball.Hands;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -134,7 +135,7 @@ public class BatterDaoImpl implements BatterDao
     }
 
     @Override
-    public List<Batter> getStatsByPlayerKey( int playerKey ) {
+    public List<Batter> getStatsByPlayerId( String playerId ) {
         Connection conn;
 
         List<Batter> batterSeasons = new ArrayList<>();
@@ -145,24 +146,49 @@ public class BatterDaoImpl implements BatterDao
 
             PreparedStatement stmt;
 /*            stmt = conn.prepareStatement( "SELECT * FROM pgbs_batters WHERE playerKey = ?");*/
-            stmt = conn.prepareStatement("SELECT players.*, batters.* from master players, pgbs_batters batters where " +
-                    "batters.playerKey=? and players.playerID = batters.playerID");
-            stmt.setInt( 1, playerKey );
+            stmt = conn.prepareStatement("SELECT players.*, batters.*, batters.sHits / batters.sAtBats as BAvg," +
+                    " (batters.sHits + batters.sHitByPitch + batters.sWalks) / batters.sAtBats as OBP," +
+                    " ((batters.sHits - batters.sDoubles - batters.sTriples - batters.sHomeRuns) + " +
+                    "(batters.sDoubles * 2) + (batters.sTriples * 3) + (batters.sHomeRuns * 4) + " +
+                    "batters.sWalks) / batters.sAtBats as SLG," +
+                    " ((batters.sHits + batters.sHitByPitch + batters.sWalks) / batters.sAtBats) + " +
+                    " (((batters.sHits - batters.sDoubles - batters.sTriples - batters.sHomeRuns) + " +
+                    "(batters.sDoubles * 2) + (batters.sTriples * 3) + (batters.sHomeRuns * 4) + " +
+                    "(batters.sWalks)) / batters.sAtBats) as OPS, " +
+                    "sum(sHits) as tHits, sum(sAtBats) as tAtBats, sum(sRuns) as tRuns," +
+                    "sum(sHits) / sum(sAtBats) as tBAvg, sum(sHomeRuns) as tHomeRuns, sum(sRbi) as tRbi," +
+                    "sum(sStolenBases) as tStolenBases, ((sum(sHits) + sum(sWalks) + sum(sHitByPitch)) / sum(sAtBats)) " +
+                    "as tOBP, (((sum(sHits) - sum(sdoubles) - sum(sTriples) - sum(sHomeRuns)) + (sum(sDoubles) * 2) + (sum(sTriples) * 3) + " +
+                    "(sum(sHomeRuns) * 4) + sum(sWalks)) / sum(sAtBats)) as tSLG," +
+                    " ((sum(sHits) + sum(sWalks) + sum(sHitByPitch)) / sum(sAtBats)) + (((sum(sHits) - sum(sDoubles) " +
+                    "- sum(sTriples) - sum(sHomeRuns)) + (sum(sDoubles) * 2) + (sum(sTriples) * 3) + (sum(sHomeRuns) * 4) + sum(sWalks)) / sum(sAtBats))" +
+                    " as tOPS " +
+                    "from master players, pgbs_batters batters where " +
+                    "batters.playerID=? and players.playerID = batters.playerID");
+            stmt.setString( 1, playerId );
 
             ResultSet rs = stmt.executeQuery();
 
             while ( rs.next() ) {
                 Batter batterSeason = new Batter();
+                batterSeason.setPlayerId(rs.getString("playerID"));
                 batterSeason.setNameFirst(rs.getString("nameFirst"));
                 batterSeason.setNameLast(rs.getString("nameLast"));
                 batterSeason.setNameGiven(rs.getString("nameGiven"));
                 batterSeason.setBirthYear(rs.getString("birthYear"));
                 batterSeason.setDeathYear(rs.getString("deathYear"));
+                batterSeason.setDeathCity(rs.getString("deathCity"));
+                batterSeason.setDeathState(rs.getString("deathState"));
                 batterSeason.setHeight(rs.getInt("height"));
                 batterSeason.setWeight(rs.getInt("weight"));
+                batterSeason.setBats(Hands.get( rs.getString("bats") ));
+                batterSeason.setBirthCity(rs.getString("birthCity"));
+                batterSeason.setBirthState(rs.getString("birthState"));
                 batterSeason.getBatterStats().setYearID( rs.getInt( "yearID" ) );
                 batterSeason.setTeamID( rs.getString( "teamID" ) );
                 batterSeason.setLgID( rs.getString( "lgID" ) );
+                batterSeason.getBatterStats().setsGamesPlayed(rs.getInt("sGamesPlayed"));
+                batterSeason.getBatterStats().setsGamesStarted(rs.getInt("sGamesStarted"));
                 batterSeason.getBatterStats().setsAtBats( rs.getInt( "sAtBats" ) );
                 batterSeason.getBatterStats().setsRuns( rs.getInt( "sRuns" ) );
                 batterSeason.getBatterStats().setsHits( rs.getInt( "sHits" ) );
@@ -172,6 +198,20 @@ public class BatterDaoImpl implements BatterDao
                 batterSeason.getBatterStats().setsHomeRuns( rs.getInt( "sHomeRuns" ) );
                 batterSeason.getBatterStats().setsStolenBases( rs.getInt("sStolenBases" ) );
                 batterSeason.getBatterStats().setsCaughtStealing( rs.getInt("sCaughtStealing" ) );
+                batterSeason.getBatterStats().setBattingAverage(rs.getDouble("BAvg"));
+                batterSeason.getBatterStats().setOnBasePercentage(rs.getDouble("OBP"));
+                batterSeason.getBatterStats().setSluggingAverage(rs.getDouble("SLG"));
+                batterSeason.getBatterStats().setSumAtBats(rs.getInt("tAtBats"));
+                batterSeason.getBatterStats().setSumHits(rs.getInt("tHits"));
+                batterSeason.getBatterStats().setSumRuns(rs.getInt("tRuns"));
+                batterSeason.getBatterStats().setSumRbi(rs.getInt("tRbi"));
+                batterSeason.getBatterStats().setSumBattingAverage(rs.getDouble("tBAvg"));
+                batterSeason.getBatterStats().setSumHomeRuns(rs.getInt("tHomeRuns"));
+                batterSeason.getBatterStats().setSumStolenBases(rs.getInt("tStolenBases"));
+                batterSeason.getBatterStats().setOnBasePlusSlugging(rs.getDouble("OPS"));
+                batterSeason.getBatterStats().setSumOnBaseAverage(rs.getDouble("tOBP"));
+                batterSeason.getBatterStats().setSumSluggingPercentage(rs.getDouble("tSLG"));
+                batterSeason.getBatterStats().setSumOps(rs.getDouble("tOPS"));
 
                 batterSeasons.add( batterSeason );
             }

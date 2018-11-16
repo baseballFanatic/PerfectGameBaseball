@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout::site-head">
+    <title>PGBS || Players</title>
+</head>
+<body class="pgbs">
+<!--Main Navigation-->
+<header th:replace="layout::site-header"/>
+<!-- Material input -->
+<!--<main class="mt-5">-->
+<main class="page-wrapper">
+    <div class="container">
+        <section>
+            <div class="card my-4">
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid"/>
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="input-group my-3 col-sm ml-3">
+                        <input type="text" class="form-control" placeholder="Player last name"
+                               aria-label="Player Last Name" aria-describedby="basic-addon2"
+                        id="playerSearchText">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="playerSearchButton">Go</button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="card">
+                    <div id="playerResults" style="opacity: 1;" class="mx-3 my-3">
+                        <div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered" id="playersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Player</th>
+                                        <th>Team</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="player : ${playerNames}">
+                                        <td class="player-search-data">
+                                            <a th:href="@{'player?playerId=' + ${player.playerId}}" role="button"
+                                               th:text="${player.nameLast} + ', ' + ${player.nameFirst}"></a>
+                                        </td>
+                                        <td class="player-search-data" th:text="${player.teamId}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</main>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- PerfectGameHome JavaScript -->
+    <script src="/js/perfectGameApp.js"></script>
+    <script src="/js/perfectGameHome.js"></script>
+    <script src="/js/players.js"></script>
+    <!-- MDB core JavaScript -->
+    <script src="/js/mdb.min.js"></script>
+    <!-- DataTable scripts -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+</body>
+</html>

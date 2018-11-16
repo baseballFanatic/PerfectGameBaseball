@@ -20,9 +20,55 @@
                     </a>
                 </div>
                 <!--/.Card content-->
-                <div>
-                    <p>Coming Soon!</p>
+                <div class="row mx-0 mt-1">
+                    <div class="col" style="text-align:center">
+                        <img th:src="@{'/img/' + ${teamStats[0].teamId} + '- ' + ${teamStats[0].yearId} + '.jpg'}" class="silhouette">
+                    </div>
+                    <div class="col-6">
+                        <h2 th:text="${teamStats[0].yearId} + ' ' + ${teamStats[0].teamName} + ' Statistics'"><strong>Pie Traynor</strong></h2>
+                        <span><strong>Record: </strong></span><span th:text="${teamStats[0].teamStats.seasonWins} + '-' + ${teamStats[0].teamStats.seasonLosses}">Pie Traynor</span><br/>
+                        <span><strong>Manager: </strong>????</span><br/>
+                        <span><strong>Ballpark: </strong></span><span th:text="${teamStats[0].park}"> Right</span><br/>
+                        <span><strong>Attendance: </strong></span><span th:text="${teamStats[0].teamStats.attendance}">Born: November 11, 1898</span><br/>
+                    </div>
                 </div>
+                <button onclick="getSelectedRows()">Get Selected Rows</button>
+                <div id="myGrid" style="height: 200px;width: 1080px;" class="ag-theme-balham"></div>
+
+                <script type="text/javascript" charset="utf-8">
+                    var columnDefs = [
+                        {headerName: "Make", field: "make", checkboxSelection: true},
+                        {headerName: "Model", field: "model"},
+                        {headerName: "Price", field: "price"}
+                    ];
+
+                    var rowData = [
+                        {make: "Toyota", model: "Celica", price: 35000},
+                        {make: "Ford", model: "Mondeo", price: 32000},
+                        {make: "Porsche", model: "Boxter", price: 72000}
+                    ];
+
+                    var gridOptions = {
+                        columnDefs: columnDefs,
+                        rowData: rowData,
+                        enableSorting: true,
+                        rowSelection: 'multiple'
+                    };
+
+                    var eGridDiv = document.querySelector('#myGrid');
+
+                    new agGrid.Grid(eGridDiv, gridOptions);
+
+                    function getSelectedRows() {
+                        var selectedNodes = gridOptions.api.getSelectedNodes()
+                        var selectedData = selectedNodes.map( function(node) { return node.data })
+                        var selectedDataStringPresentation = selectedData.map( function(node) { return node.make + ' ' + node.model }).join(', ')
+                        alert('Selected nodes: ' + selectedDataStringPresentation);
+                    }
+
+                </script>
+
+
             </div>
         </section>
     </div>

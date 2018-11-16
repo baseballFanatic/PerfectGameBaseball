@@ -24,9 +24,11 @@ public class Player {
     private String finalGame;
     private String retroId;
     private String bbrefId;
+    private String teamId;
     String simName;
     private int weight;
     private int height;
+    private String yearId;
     int simNumber;
 
     public Long getId() {
@@ -74,6 +76,22 @@ public class Player {
                 ", height=" + height +
                 ", simNumber=" + simNumber +
                 '}';
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getYearId() {
+        return yearId;
+    }
+
+    public void setYearId(String yearId) {
+        this.yearId = yearId;
     }
 
     public String getSimName()

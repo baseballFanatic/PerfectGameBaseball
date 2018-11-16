@@ -1,4 +1,4 @@
-var otherHeader = `
+let otherHeader = `
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="regular-nav">
         <div class="container">
             <!-- Navbar brand -->
@@ -66,38 +66,15 @@ function User(username, displayName, recentYear) {
     this.recentYear = recentYear;
 }
 
-/*function createStandingsByYear() {
-    var url = "/years";
-    $.getJSON(url, function(response) {
-      var defaultYear = response[0].yearID;
-      var yearHtml = '<option value="' + defaultYear + '">' + defaultYear + '</option>';
-      var defaultHtml = '<tr class="table-standings-header">';
-      defaultHtml += '<th>Team</th>';
-      defaultHtml += '<th>W</th>';
-      defaultHtml += '<th>L</th>';
-      defaultHtml += '<th>%</th>';
-      defaultHtml += '</tr>';
-      $('#standings-table-al').html(defaultHtml);
-      $('#standings-table-nl').html(defaultHtml);
-      var league = 'American';
-      loadTeamsByLeague(league, defaultYear);
-      $.each(response, function(index, year) {
-        var actualYear = year.yearID;
-        yearHtml += '<option value="' + actualYear + '">' + actualYear + '</option>';
-      });
-      $('#simulated-years').html(yearHtml);
-    });
-}*/
-
 function loadTeamsByLeague( league, year ) {
-    var defaultUrl = "/season";
-    var loadYear = 'yearID=' + year;
+    let defaultUrl = "/season";
+    let loadYear = 'yearID=' + year;
     $( '#standings-table-al' ).html('');
     $( '#standings-table-nl' ).html('');
     $.getJSON(defaultUrl, loadYear, function(response) {
         $.each(response, function(index, team) {
-            var winPercentage = team.teamStats.seasonWins / team.teamStats.seasonGames;
-            var teamHtml = '<tr>';
+            let winPercentage = team.teamStats.seasonWins / team.teamStats.seasonGames;
+            let teamHtml = '<tr>';
             teamHtml += '<td>' + team.teamId + '</td>';
             teamHtml += '<td>' + team.teamStats.seasonWins + '</td>';
             teamHtml += '<td>' + team.teamStats.seasonLosses + '</td>';
@@ -116,9 +93,9 @@ function loadTeamsByLeague( league, year ) {
 }
 function loadSimulatedYears() {
     const url = "/years";
-    var addedClass = false;
+    let addedClass = false;
     $.getJSON(url, function(simulatedYears) {
-        var yearHtml = '<option value="';
+        let yearHtml = '<option value="';
         $.each(simulatedYears, function(key, simulatedYear) {
             if (!addedClass) {
                 yearHtml += simulatedYear.yearID + '" selected>'

@@ -1,7 +1,6 @@
 package Baseball;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static java.lang.Math.random;
 

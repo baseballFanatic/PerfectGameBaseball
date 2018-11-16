@@ -1,11 +1,11 @@
-var selectedYear = 1900;
+let selectedYear = 1900;
 
 function loadTeamStandingsData(selectedYear) {
     const getTeams = "/season?yearID=" + selectedYear;
-    var alTableHtml = '';
-    var nlTableHtml = '';
-    var alIndex = 0;
-    var nlIndex = 0;
+    let alTableHtml = '';
+    let nlTableHtml = '';
+    let alIndex = 0;
+    let nlIndex = 0;
     $.getJSON( getTeams, function(teams) {
         const alLeaderWins = teams[0].teamStats.seasonWins;
         const nlLeaderWins = teams[8].teamStats.seasonWins;
@@ -58,7 +58,7 @@ $(document).ready(function() {
     loadSimulatedYears();
 
     $('#simulated-years').change( function() {
-        var changedYear = $('#simulated-years').val();
+        let changedYear = $('#simulated-years').val();
         loadTeamStandingsData(changedYear);
     });
 });

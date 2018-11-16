@@ -17,6 +17,86 @@ public class PitcherDaoImpl implements PitcherDao
     private static final String PASS = "password";
 
     @Override
+    public List<Pitcher> getStatsByPlayerId ( String playerId ) {
+        Connection conn;
+
+        List<Pitcher> pitcherSeasons = new ArrayList<>();
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+/*            stmt = conn.prepareStatement("SELECT nameFirst, nameLast, playerID, teamID, lgID, " +
+                    "yearID, sGamesPlayed, sGamesStarted, sBattersFaced, sHitsAllowed, sHitBatters, sEarnedRuns," +
+                    " sRunsAllowed, sStrikeOutsAllowed, sWalksAllowed, sHomeRunsAllowed, sInningsPitchedOuts," +
+                    " sShutOuts, sCompleteGames, sWins, sLosses, sSaves, sum(sWins) as tWins, sum(sLosses) as tLosses, " +
+                    "sum(sGamesPlayed) as tGamesPlayed, sum(sGamesStarted) as tGamesStarted, sum(sSaves) as tSaves, " +
+                    "sum(sInningsPitchedOuts) as tInningsPitchedOuts, sum(sStrikeOutsAllowed) as tStrikeOutsAllowed" +
+                    " from pgbs_pitchers " +
+                    " where playerID=?");*/
+            stmt = conn.prepareStatement("SELECT nameFirst, nameLast, playerID, teamID, lgID, " +
+                    "yearID, sGamesPlayed, sGamesStarted, sBattersFaced, sHitsAllowed, sHitBatters, sEarnedRuns," +
+                    " sRunsAllowed, sStrikeOutsAllowed, sWalksAllowed, sHomeRunsAllowed, sInningsPitchedOuts," +
+                    " sShutOuts, sCompleteGames, sWins, sLosses, sSaves" +
+                    " from pgbs_pitchers " +
+                    " where playerID=?");
+            stmt.setString(1, playerId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Pitcher pitcher = new Pitcher();
+                // Retrieve by column name
+                pitcher.setNameFirst( rs.getString( "nameFirst" ) );
+                pitcher.setNameLast( rs.getString( "nameLast" ) );
+                pitcher.setPlayerId( rs.getString( "playerID" ) );
+                pitcher.setTeamID( rs.getString( "teamID" ) );
+                pitcher.setLgID( rs.getString( "lgID" ) );
+                pitcher.setYearID(rs.getInt("yearID"));
+/*                pitcher.setPitchingArm(rs.getString("throws"));*/
+                pitcher.getPitcherStats().setsGamesPlayed( rs.getInt( "sGamesPlayed" ) );
+                pitcher.getPitcherStats().setsGamesStarted( rs.getInt( "sGamesStarted" ) );
+                pitcher.getPitcherStats().setsBattersFaced( rs.getInt( "sBattersFaced" ) );
+                pitcher.getPitcherStats().setsHitsAllowed( rs.getInt( "sHitsAllowed" ) );
+                pitcher.getPitcherStats().setsHitBatters( rs.getInt( "sHitBatters" ) );
+                pitcher.getPitcherStats().setsEarnedRuns( rs.getInt( "sEarnedRuns" ) );
+                pitcher.getPitcherStats().setsRunsAllowed( rs.getInt( "sRunsAllowed" ) );
+                pitcher.getPitcherStats().setsStrikeOutAllowed( rs.getInt( "sStrikeOutsAllowed" ) );
+                pitcher.getPitcherStats().setsWalksAllowed( rs.getInt( "sWalksAllowed" ) );
+                pitcher.getPitcherStats().setsHomeRunsAllowed( rs.getInt( "sHomeRunsAllowed" ) );
+                pitcher.getPitcherStats().setsInningsPitchedOuts( rs.getInt( "sInningsPitchedOuts" ) );
+                pitcher.getPitcherStats().setsShutOuts( rs.getInt( "sShutOuts" ) );
+                pitcher.getPitcherStats().setsCompleteGames( rs.getInt( "sCompleteGames" ) );
+                pitcher.getPitcherStats().setsWins( rs.getInt( "sWins" ) );
+                pitcher.getPitcherStats().setsLosses( rs.getInt( "sLosses" ) );
+                pitcher.getPitcherStats().setsSaves( rs.getInt( "sSaves" ) );
+/*                pitcher.getPitcherStats().setSumWins(rs.getInt("tWins"));
+                pitcher.getPitcherStats().setSumLosses(rs.getInt("tLosses"));
+                pitcher.getPitcherStats().setSumSaves(rs.getInt("tSaves"));
+                pitcher.getPitcherStats().setSumGamesPlayed(rs.getInt("tGamesPlayed"));
+                pitcher.getPitcherStats().setSumGamesStarted(rs.getInt("tGamesStarted"));
+                pitcher.getPitcherStats().setSumInningsPitchedOuts(rs.getDouble("tInningsPitchedOuts"));
+                pitcher.getPitcherStats().setSumStrikeOutsAllowed(rs.getInt("tStrikeOutsAllowed"));*/
+
+                pitcherSeasons.add(pitcher);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException | SQLException | InstantiationException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return pitcherSeasons;
+    }
+
+    @Override
     public List<Pitcher> getAllPitchersByYear( String yearID )
     {
         Connection conn;

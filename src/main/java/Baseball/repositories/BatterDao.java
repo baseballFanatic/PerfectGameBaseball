@@ -10,5 +10,5 @@ public interface BatterDao
 
     List<Batter> getBatter( String playerId );
 
-    List<Batter> getStatsByPlayerKey( int playerKey );
+    List<Batter> getStatsByPlayerId( String playerId );
 }

@@ -10,11 +10,57 @@ import java.util.List;
 
 @Repository
 public class PlayerDaoImpl implements PlayerDao {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/pgb_db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/lahman2016?useSSL=false";
 
     // Database credentials
     private static final String USER = "root";
     private static final String PASS = "password";
+
+    @Override
+    public List<Player> getPlayerByLastNameByYear(String lastName, String yearId) {
+        Connection conn;
+
+        List<Player> players = new ArrayList<>();
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            // Open connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            PreparedStatement stmt;
+
+            stmt = conn.prepareStatement("SELECT players.nameLast, players.nameFirst, players.playerId, " +
+                    "batters.yearID, batters.teamID, batters.yearID, batters.playerKey" +
+                    " FROM master players, pgbs_batters batters WHERE players.nameLast=? AND " +
+                    "players.playerID = batters.playerID");
+            stmt.setString(1, lastName);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Player player = new Player();
+                if (rs.getString("yearID").equals(yearId)) {
+                    player.setNameLast( rs.getString("nameLast"));
+                    player.setNameFirst( rs.getString("nameFirst"));
+                    player.setPlayerId( rs.getString("playerId"));
+                    player.setTeamId(rs.getString("teamID"));
+                    player.setYearId(rs.getString("yearId"));
+
+                    players.add(player);
+                }
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IllegalAccessException | SQLException | InstantiationException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return players;
+    }
 
     @Override
     public List<Player> getAllPlayers()

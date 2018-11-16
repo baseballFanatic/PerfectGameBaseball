@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout::site-head">
+    <title>PGBS || Teams Search</title>
+</head>
+<body class="pgbs">
+<!--Main Navigation-->
+<header th:replace="layout::site-header"/>
+<!-- Material input -->
+<!--<main class="mt-5">-->
+<main class="page-wrapper">
+    <div class="container">
+        <section>
+            <div class="card my-4">
+                <!--Card image-->
+                <div class="view overlay">
+                    <img src="../img/background_field_edited.jpg" class="img-fluid"/>
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="btn-group">
+                <!--Dropdown primary-->
+                <div class="dropdown">
+                    <!--Trigger-->
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="teamsDropdown" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Select Team</button>
+                    <!--Menu-->
+                    <div class="dropdown-menu dropdown-primary">
+                        <h6 class="dropdown-header">American League</h6>
+                        <div th:each="team: ${teams}">
+                            <a th:if="${team.lgId == 'AL'}" th:text="${team.teamName}" th:id="${team.teamId}"
+                               class="dropdown-item" th:href="@{'team?teamId=' + ${team.teamId}}">Action</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">National League</h6>
+                        <div th:each="team: ${teams}">
+                            <a th:if="${team.lgId == 'NL'}" th:text="${team.teamName}" th:id="${team.teamId}"
+                               class="dropdown-item" th:href="@{'team?teamId=' + ${team.teamId}}">Action</a>
+                        </div>
+                    </div>
+                </div>
+                <!--/Dropdown primary-->
+            </div>
+
+        </section>
+    </div>
+</main>
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Bootstrap tooltips -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- PerfectGameHome JavaScript -->
+<script src="/js/perfectGameApp.js"></script>
+<script src="/js/perfectGameHome.js"></script>
+<script src="/js/teams.js"></script>
+<!-- MDB core JavaScript -->
+<script src="/js/mdb.min.js"></script>
+<!-- DataTable scripts -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+</body>
+</html>

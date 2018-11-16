@@ -21,16 +21,19 @@
                     </a>
                 </div>
                 <div class="row mx-0 mt-1">
-                    <div class="col">
-                        <img src="/img/anon.png" class="silhouette"/>
+                    <div class="col" style="text-align:center">
+                        <!--<img src="/img/anon.png" class="silhouette"/>-->
+                        <img th:src="@{'/img/' + ${batterStats[0].playerId} + '.jpg'}" class="silhouette">
                     </div>
                     <div class="col-6">
-                        <h3 th:text="${batterStats[0].nameFirst} + ' ' + ${batterStats[0].nameLast}"><strong>Pie Traynor</strong></h3>
+                        <h2 th:text="${batterStats[0].nameFirst} + ' ' + ${batterStats[0].nameLast}"><strong>Pie Traynor</strong></h2>
                         <span><strong>Given Name: </strong></span><span th:text="${batterStats[0].nameGiven}">Pie Traynor</span><br/>
                         <span><strong>Position:</strong> Third Baseman</span><br/>
-                        <span><strong>Bats:</strong> Right * <strong>Throws:</strong> Right</span><br/>
-                        <span><strong>Born: </strong></span><span th:text="${batterStats[0].birthYear}">Born: November 11, 1898</span><br/>
-                        <span><strong>Died: </strong></span><span th:text="${batterStats[0].deathYear}">Died: March 16, 1972</span>
+                        <!-- The below line is currently broken when the player isn't a pitcher there is no pitchingArm
+<!--                        <span><strong>Bats: </strong></span><span th:text="${batterStats[0].bats}"> Right</span> * <strong>Throws: </strong><span th:text="${pitcherStats[0].pitchingArm}"> Right</span><br/>-->
+                        <span><strong>Bats: </strong></span><span th:text="${batterStats[0].bats}"> Right</span> * <strong>Throws: </strong><span> ?????</span><br/>
+                        <span><strong>Born: </strong></span><span th:text="${batterStats[0].birthYear} + ' in ' + ${batterStats[0].birthCity} + ', ' + ${batterStats[0].birthState}">Born: November 11, 1898</span><br/>
+                        <span><strong>Died: </strong></span><span th:text="${batterStats[0].deathYear} + ' in ' + ${batterStats[0].deathCity} + ', ' + ${batterStats[0].deathState}">Died: March 16, 1972</span>
                     </div>
                     <div class="col-4">
                         <ul id="bling">
@@ -50,98 +53,154 @@
                             <p><strong>Career</strong></p>
                         </div>
                     </div>
-                    <div class="p1">
-                        <div>
-                            <h4><strong>WAR</strong></h4>
-                            <p>134.1</p>
+                    <div th:if="${isPitcher}">
+                        <div class="p1">
+                            <div>
+                                <h4><strong>WAR</strong></h4>
+                                <p>????</p>
+                            </div>
+                            <div>
+                                <h4><strong>W</strong></h4>
+                                <p th:text="${pitcherStats[0].pitcherStats.sumWins}">10195</p>
+                            </div>
+                            <div>
+                                <h4><strong>L</strong></h4>
+                                <p th:text="${pitcherStats[0].pitcherStats.sumLosses}">1882</p>
+                            </div>
+                            <div>
+                                <h4><strong>ERA</strong></h4>
+                                <p>???</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4><strong>AB</strong></h4>
-                            <p>10195</p>
+                        <div class="p1">
+                            <div>
+                                <h4><strong>G</strong></h4>
+                                <p th:text="${pitcherStats[0].pitcherStats.sumGamesPlayed}">117</p>
+                            </div>
+                            <div>
+                                <h4><strong>GS</strong></h4>
+                                <p th:text="${pitcherStats[0].pitcherStats.sumGamesStarted}">1531</p>
+                            </div>
+                            <div>
+                                <h4><strong>S</strong></h4>
+                                <p th:text="${pitcherStats[0].pitcherStats.sumSaves}">436</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4><strong>R</strong></h4>
-                            <p>1882</p>
-                        </div>
-                        <div>
-                            <h4><strong>H</strong></h4>
-                            <p>3514</p>
-                        </div>
-                        <div>
-                            <h4><strong>BA</strong></h4>
-                            <p>.345</p>
+                        <div class="p1">
+                            <div>
+                                <h4><strong>IP</strong></h4>
+                                <p th:text="${pitcherStats[0].pitcherStats.sumInningsPitchedOuts}">.428</p>
+                            </div>
+                            <div>
+                                <h4><strong>SO</strong></h4>
+                                <p  th:text="${pitcherStats[0].pitcherStats.sumStrikeOutsAllowed}">.500</p>
+                            </div>
+                            <div>
+                                <h4><strong>WHIP</strong></h4>
+                                <p>????</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="p1">
-                        <div>
-                            <h4><strong>HR</strong></h4>
-                            <p>117</p>
+                    <div th:unless="${isPitcher}">
+                        <div class="p1">
+                            <div>
+                                <h4><strong>WAR</strong></h4>
+                                <p>????</p>
+                            </div>
+                            <div>
+                                <h4><strong>AB</strong></h4>
+                                <p th:text="${batterStats[0].batterStats.sumAtBats}">10195</p>
+                            </div>
+                            <div>
+                                <h4><strong>R</strong></h4>
+                                <p th:text="${batterStats[0].batterStats.sumRuns}">1882</p>
+                            </div>
+                            <div>
+                                <h4><strong>H</strong></h4>
+                                <p th:text="${batterStats[0].batterStats.sumHits}">3514</p>
+                            </div>
+                            <div>
+                                <h4><strong>BA</strong></h4>
+                                <p th:text="${#numbers.formatDecimal(batterStats[0].batterStats.sumBattingAverage, 0, 'COMMA', 3, 'POINT')}">.345</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4><strong>RBI</strong></h4>
-                            <p>1531</p>
+                        <div class="p1">
+                            <div>
+                                <h4><strong>HR</strong></h4>
+                                <p th:text="${batterStats[0].batterStats.sumHomeRuns}">117</p>
+                            </div>
+                            <div>
+                                <h4><strong>RBI</strong></h4>
+                                <p th:text="${batterStats[0].batterStats.sumRbi}">1531</p>
+                            </div>
+                            <div>
+                                <h4><strong>SB</strong></h4>
+                                <p th:text="${batterStats[0].batterStats.sumStolenBases}">436</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4><strong>SB</strong></h4>
-                            <p>436</p>
-                        </div>
-                    </div>
-                    <div class="p1">
-                        <div>
-                            <h4><strong>OBP</strong></h4>
-                            <p>.428</p>
-                        </div>
-                        <div>
-                            <h4><strong>SLG</strong></h4>
-                            <p>.500</p>
-                        </div>
-                        <div>
-                            <h4><strong>OPS</strong></h4>
-                            <p>.928</p>
-                        </div>
-                        <div>
-                            <h4><strong>OPS+</strong></h4>
-                            <p>157</p>
+                        <div class="p1">
+                            <div>
+                                <h4><strong>OBP</strong></h4>
+                                <p th:text="${#numbers.formatDecimal(batterStats[0].batterStats.sumOnBaseAverage, 0, 'COMMA', 3, 'POINT')}">.428</p>
+                            </div>
+                            <div>
+                                <h4><strong>SLG</strong></h4>
+                                <p th:text="${#numbers.formatDecimal(batterStats[0].batterStats.sumSluggingPercentage, 0, 'COMMA', 3, 'POINT')}">.500</p>
+                            </div>
+                            <div>
+                                <h4><strong>OPS</strong></h4>
+                                <p th:text="${#numbers.formatDecimal(batterStats[0].batterStats.sumOps, 0, 'COMMA', 3, 'POINT')}">.928</p>
+                            </div>
                         </div>
                     </div>
                 </div>
     <!--        </section>
             <section>-->
                 <hr>
-<!--                <div class="row mx-2">
-                    <h4>Standard Batting</h4>
-                    <button type="submit" class="btn btn-deep-orange mb-3 mt-0 ml-4">Simulated</button>
-                </div>-->
-                <div id="wrap">
-                    <div class="container">
-                        <h3>Standard Batting</h3>
-                        <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+                <ul class="nav nav-tabs" id="playerTab" role="tablist">
+                    <li class="nav-item" th:if="${isBatter}">
+                        <a class="nav-link active" id="batting-tab" data-toggle="tab" href="#batting" role="tab" aria-controls="batting"
+                           aria-selected="true">Batting</a>
+                    </li>
+                    <li class="nav-item" th:if="${isPitcher}">
+                        <a class="nav-link" id="pitching-tab" data-toggle="tab" href="#pitching" role="tab" aria-controls="pitching"
+                           aria-selected="false">Pitching</a>
+                    </li>
+                    <li class="nav-item" th:if="${isFielder}">
+                        <a class="nav-link" id="fielding-tab" data-toggle="tab" href="#fielding" role="tab" aria-controls="fielding"
+                           aria-selected="false">Fielding</a>
+                    </li>
+                </ul>
+                <div id="wrap" class="tab-content" id="playerTabContent">
+                    <div class="container tab-pane fade show active mb-" th:if="${isBatter}" id="player-tab-batting" role="tabpanel" aria-labelledby="batting-tab">
+                        <h5 class="mt-2">Standard Batting</h5>
+                        <table cellpadding="0" cellspacing="0" border="0" width="1080px" class="datatable table table-striped table-bordered">
                             <thead id="player-stat-heading">
                                 <tr>
                                     <th>Year</th>
                                     <th>Team</th>
-                                    <th>League</th>
-                                    <th>Pos</th>
-                                    <th>AB</th>
-                                    <th>R</th>
-                                    <th>H</th>
-                                    <th>RBI</th>
-                                    <th>2B</th>
-                                    <th>3B</th>
-                                    <th>HR</th>
-                                    <th>SB</th>
-                                    <th>CS</th>
-                                    <th>AVG</th>
-                                    <th>OBP</th>
-                                    <th>OPS</th>
+                                    <th>LG</th>
+                                    <th data-toggle="tooltip" title="Games">G</th>
+                                    <th data-toggle="tooltip" title="At Bats">AB</th>
+                                    <th data-toggle="tooltip" title="Runs">R</th>
+                                    <th data-toggle="tooltip" title="Hits">H</th>
+                                    <th data-toggle="tooltip" title="Runs Batted In">RBI</th>
+                                    <th data-toggle="tooltip" title="Doubles">2B</th>
+                                    <th data-toggle="tooltip" title="Triples">3B</th>
+                                    <th data-toggle="tooltip" title="Home Runs">HR</th>
+                                    <th data-toggle="tooltip" title="Stolen Bases">SB</th>
+                                    <th data-toggle="tooltip" title="Caught Stealing">CS</th>
+                                    <th data-toggle="tooltip" title="Hits/At Bats">AVG</th>
+                                    <th data-toggle="tooltip" title="(H+BB+HBP)/(AB+BB+HBP+SF)">OBP</th>
+                                    <th data-toggle="tooltip" title="On-Base + Slugging Percentage">OPS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="season : ${batterStats}">
+                                <tr th:if="${isBatter}" th:each="season : ${batterStats}">
                                     <td th:text="${season.batterStats.yearID}">1906</td>
                                     <td th:text="${season.teamID}">PHI</td>
                                     <td th:text="${season.lgID}">AL</td>
-                                    <td>3B</td>
+                                    <td th:text="${season.batterStats.sGamesPlayed}">3B</td>
                                     <td th:text="${season.batterStats.sAtBats}">452</td>
                                     <td th:text="${season.batterStats.sRuns}">103</td>
                                     <td th:text="${season.batterStats.sHits}">167</td>
@@ -151,12 +210,86 @@
                                     <td th:text="${season.batterStats.sHomeRuns}">8</td>
                                     <td th:text="${season.batterStats.sStolenBases}">42</td>
                                     <td th:text="${season.batterStats.sCaughtStealing}">13</td>
+                                    <td th:text="${#numbers.formatDecimal(season.batterStats.battingAverage, 0, 'COMMA', 3, 'POINT')}">.332</td>
+                                    <td th:text="${#numbers.formatDecimal(season.batterStats.onBasePercentage, 0, 'COMMA', 3, 'POINT')}">.412</td>
+                                    <td th:text="${#numbers.formatDecimal(season.batterStats.onBasePlusSlugging, 0, 'COMMA', 3, 'POINT')}">.412</td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="container tab-pane fade mb-3" th:if="${isFielder}" id="player-tab-fielding" role="tabpanel" aria-labelledby="fielding-tab">
+                        <h5 class="mt-2">Standard Fielding</h5>
+                        <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+                            <thead id="fielder-stat-heading">
+                            <tr>
+                                <th>Year</th>
+                                <th>Team</th>
+                                <th>POS</th>
+                                <th data-toggle="tooltip" title="Games Played">GP</th>
+                                <th data-toggle="tooltip" title="Games Started">GS</th>
+                                <th data-toggle="tooltip" title="Assists">A</th>
+                                <th data-toggle="tooltip" title="Put Outs">PO</th>
+                                <th data-toggle="tooltip" title="Errors">E</th>
+                                <th data-toggle="tooltip" title="Runners Thrown Out (Catchers)">RTO</th>
+                                <th data-toggle="tooltip" title="Runners Safe (Catchers)">RS</th>
+                                <th data-toggle="tooltip" title="Assists + Put Outs / Assists + Put Outs + Errors">Field %</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="season : ${fielderStats}">
+                                <td th:text="${season.yearID}">1906</td>
+                                <td th:text="${season.teamID}">PHI</td>
+                                <td th:text="${season.pos}">AL</td>
+                                <td th:text="${season.fielderStats.sGamesPlayed}">452</td>
+                                <td th:text="${season.fielderStats.sGamesStarted}">103</td>
+                                <td th:text="${season.fielderStats.sAssists}">167</td>
+                                <td th:text="${season.fielderStats.sPutOuts}">98</td>
+                                <td th:text="${season.fielderStats.sErrors}">47</td>
+                                <td th:text="${season.fielderStats.sRunnersThrownOut}">13</td>
+                                <td th:text="${season.fielderStats.sRunnersSuccessful}">8</td>
+                                <td th:text="${#numbers.formatDecimal(season.fielderStats.fieldingPercentage, 0, 'COMMA', 3, 'POINT')}">42</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="container tab-pane fade mb-3" th:if="${isPitcher}" id="player-tab-pitching" role="tabpanel" aria-labelledby="pitching-tab">
+                        <h5 class="mt-2">Standard Pitching</h5>
+                        <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+                            <thead id="pitcher-stat-heading">
+                            <tr>
+                                <th>Year</th>
+                                <th>Team</th>
+                                <th>LG</th>
+                                <th data-toggle="tooltip" title="Games">GP</th>
+                                <th data-toggle="tooltip" title="Games Started">GS</th>
+                                <th data-toggle="tooltip" title="Wins">W</th>
+                                <th data-toggle="tooltip" title="Losses">L</th>
+                                <th data-toggle="tooltip" title="Saves">S</th>
+                                <th data-toggle="tooltip" title="Innings Pitched">IP</th>
+                                <th data-toggle="tooltip" title="Hits Allowed">HA</th>
+                                <th data-toggle="tooltip" title="Runs Allowed">R</th>
+                                <th data-toggle="tooltip" title="Total Earned Runs Allowed">ER</th>
+                                <th data-toggle="tooltip" title="Earned Runs Allowed Average">ERA</th>
+                                <th data-toggle="tooltip" title="Walks Hits Allowed per 9 Innings">WHIP</th>
+                                <th data-toggle="tooltip" title="Strikeouts per 9 Innings">K/9</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="season : ${pitcherStats}">
+                                    <td th:text="${season.yearID}">1906</td>
+                                    <td th:text="${season.teamID}">PHI</td>
+                                    <td th:text="${season.lgID}">AL</td>
+                                    <td th:text="${season.pitcherStats.sGamesPlayed}">452</td>
+                                    <td th:text="${season.pitcherStats.sGamesStarted}">103</td>
+                                    <td th:text="${season.pitcherStats.sWins}">167</td>
+                                    <td th:text="${season.pitcherStats.sLosses}">98</td>
+                                    <td th:text="${season.pitcherStats.sSaves}">47</td>
+                                    <td th:text="${season.pitcherStats.sInningsPitchedOuts}">13</td>
+                                    <td th:text="${season.pitcherStats.sHitsAllowed}">8</td>
+                                    <td th:text="${season.pitcherStats.sRunsAllowed}">42</td>
+                                    <td th:text="${season.pitcherStats.sEarnedRuns}">13</td>
                                     <td>.332</td>
                                     <td>.412</td>
-                                    <td>.983</td>
+                                    <td>7.5</td>
                                 </tr>
-
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -166,9 +299,6 @@
         </section>
     </div>
 </main>
-    <footer class="page-footer font-small py-2">
-        <div class="text-black text-center" id="off-page-footer">Perfect Game Baseball Simulator</div>
-    </footer>
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

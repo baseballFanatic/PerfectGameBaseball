@@ -4,7 +4,7 @@ package Baseball;
 import java.util.HashMap;
 import java.util.List;
 
-class FielderStats {
+public class FielderStats {
     private int gameErrors, gameAssists, gamePutOuts, gameDoublePlay, gameRunnersThrownOut, gameRunnersSuccessful,
     gamesPlayed, gamesStarted, inningOuts, putOuts, assists, errors, doublePlays, passedBalls, stolenBases,
     caughtStealing, zoneRating, wildPitches, gameGamePlayed, gameGameStarted, sErrors, sAssists, sPutOuts, sRunnersThrownOut,
@@ -232,11 +232,11 @@ class FielderStats {
         this.gameErrors = gameErrors;
     }
 
-    double getFieldingPercentage() {
+    public double getFieldingPercentage() {
         return fieldingPercentage;
     }
 
-    void setFieldingPercentage(double fieldingPercentage) {
+    public void setFieldingPercentage(double fieldingPercentage) {
         this.fieldingPercentage = fieldingPercentage;
     }
 

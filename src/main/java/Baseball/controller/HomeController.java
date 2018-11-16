@@ -127,6 +127,7 @@ public class HomeController {
         session.setAttribute( "mostRecentYear" , mostRecentYear );
         session.setAttribute("currentLeague", "MLB");
         session.setAttribute("currentMonth", "4");
+        session.setAttribute("playerSearchLastName", "");
         session.setAttribute("availableGames", false );
         session.setAttribute("simulatedGames", false );
         session.setAttribute("displayAll", true );
@@ -145,6 +146,7 @@ public class HomeController {
         session.setAttribute( "recentYear", returnedUser.getRecentYear() );
         session.setAttribute("currentLeague", currentLeague );
         session.setAttribute("currentMonth", currentMonth );
+        session.setAttribute("playerSearchLastName", "");
         session.setAttribute("availableGames", false );
         session.setAttribute("simulatedGames", false );
         session.setAttribute("displayAll", true );
@@ -164,22 +166,34 @@ public class HomeController {
         return true;
     }
 
+    @RequestMapping(value = "/setSessionSearchPlayer", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean setSessionSearchPlayer (@RequestParam String lastName, HttpSession session) {
+        session.setAttribute("playerSearchLastName", lastName );
+        return true;
+    }
+
     @RequestMapping(value = "/setSessionGames", method = RequestMethod.GET)
     @ResponseBody
     public boolean setSessionGames ( @RequestParam String gamesDisplay, HttpSession session ) {
-        if (gamesDisplay.equals("availableRadio")) {
-            session.setAttribute("availableGames", true);
-            session.setAttribute("simulatedGames", false);
-            session.setAttribute("displayAll", false);
+        switch (gamesDisplay) {
+            case "availableRadio":
+                session.setAttribute("availableGames", true);
+                session.setAttribute("simulatedGames", false);
+                session.setAttribute("displayAll", false);
 
-        } else if (gamesDisplay.equals("simulatedRadio")) {
-            session.setAttribute("availableGames", false);
-            session.setAttribute("simulatedGames", true);
-            session.setAttribute("displayAll", false);
-        } else if (gamesDisplay.equals("allRadio")) {
-            session.setAttribute("availableGames", false);
-            session.setAttribute("simulatedGames", false);
-            session.setAttribute("displayAll", true);
+                break;
+            case "simulatedRadio":
+                session.setAttribute("availableGames", false);
+                session.setAttribute("simulatedGames", true);
+                session.setAttribute("displayAll", false);
+                break;
+
+            case "allRadio":
+                session.setAttribute("availableGames", false);
+                session.setAttribute("simulatedGames", false);
+                session.setAttribute("displayAll", true);
+                break;
         }
         return true;
     }

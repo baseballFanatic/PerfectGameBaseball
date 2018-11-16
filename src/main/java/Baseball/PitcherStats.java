@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PitcherStats {
     private double probabilityHomeRun, probabilityTriple, probabilityDouble, probabilitySingle, probabilityWalk,
-            probabilityStrikeOut, probabilityHitBatter, era, actualPlayPercent, histPercentPlayed ;
+            probabilityStrikeOut, probabilityHitBatter, era, actualPlayPercent, histPercentPlayed, sumInningsPitchedOuts;
 
     private int earnedRuns, gameBattersFaced, gameHitsAllowed, hitBatters,
             gameRunsAllowed, gameStrikeOutsAllowed, gameWalksAllowed, gameHomeRunsAllowed, gameEarnedRunsAllowed,
@@ -17,7 +17,63 @@ public class PitcherStats {
             groundedIntoDoublePlays, runs, gameShutOuts, gameCompleteGame, gameWin, gameLoss, gameSave,
             sGamesPlayed, sGamesStarted, sBattersFaced, sHitsAllowed, sHitBatters, sEarnedRuns, sRunsAllowed,
             sStrikeOutAllowed, sWalksAllowed, sHomeRunsAllowed, sInningsPitchedOuts, sShutOuts, sCompleteGames,
-            sWins, sLosses, sSaves, daysRest;
+            sWins, sLosses, sSaves, daysRest, sumWins, sumLosses, sumSaves, sumGamesStarted, sumGamesPlayed, sumStrikeOutsAllowed;
+
+    public int getSumWins() {
+        return sumWins;
+    }
+
+    public void setSumWins(int sumWins) {
+        this.sumWins = sumWins;
+    }
+
+    public int getSumLosses() {
+        return sumLosses;
+    }
+
+    public void setSumLosses(int sumLosses) {
+        this.sumLosses = sumLosses;
+    }
+
+    public int getSumSaves() {
+        return sumSaves;
+    }
+
+    public void setSumSaves(int sumSaves) {
+        this.sumSaves = sumSaves;
+    }
+
+    public int getSumGamesStarted() {
+        return sumGamesStarted;
+    }
+
+    public void setSumGamesStarted(int sumGamesStarted) {
+        this.sumGamesStarted = sumGamesStarted;
+    }
+
+    public int getSumGamesPlayed() {
+        return sumGamesPlayed;
+    }
+
+    public void setSumGamesPlayed(int sumGamesPlayed) {
+        this.sumGamesPlayed = sumGamesPlayed;
+    }
+
+    public double getSumInningsPitchedOuts() {
+        return sumInningsPitchedOuts;
+    }
+
+    public void setSumInningsPitchedOuts(double sumInningsPitchedOuts) {
+        this.sumInningsPitchedOuts = sumInningsPitchedOuts;
+    }
+
+    public int getSumStrikeOutsAllowed() {
+        return sumStrikeOutsAllowed;
+    }
+
+    public void setSumStrikeOutsAllowed(int sumStrikeOutsAllowed) {
+        this.sumStrikeOutsAllowed = sumStrikeOutsAllowed;
+    }
 
     private LocalDate lastGameDatePitched;
 

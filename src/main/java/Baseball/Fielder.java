@@ -14,7 +14,7 @@ public class Fielder extends Player {
     private int playerKey, battingOrder, yearID;
     private boolean leftField, centerField, rightField, available, fielderMatched;
 
-    Fielder() {
+    public Fielder() {
     }
 
     private Fielder(String nameFirst, String nameLast, InPlayPosition position) {
@@ -22,6 +22,8 @@ public class Fielder extends Player {
         this.nameLast = nameLast;
         this.position = position;
     }
+
+
 
     public boolean isFielderMatched() {
         return fielderMatched;
@@ -91,7 +93,7 @@ public class Fielder extends Player {
         return teamID;
     }
 
-    void setTeamID(String teamID) {
+    public void setTeamID(String teamID) {
         this.teamID = teamID;
     }
 
@@ -172,7 +174,7 @@ public class Fielder extends Player {
     }
 
 
-    FielderStats getFielderStats() {
+    public FielderStats getFielderStats() {
         return fielderStats;
     }
 
